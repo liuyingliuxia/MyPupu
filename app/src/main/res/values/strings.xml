@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">MyPupu</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="mmm_address">金山工业集...</string>
+    <string name="mmm_search">西瓜蜜瓜（中果） 9.9元</string>
+    <string name="mmm_home">首页</string>
+    <string name="mmm_sort">分类</string>
+    <string name="mmm_recommend">掌柜推荐</string>
+    <string name="mmm_flash">限时抢购</string>
+    <string name="mmm_crazy">疯狂折扣</string>
+    <string name="mmm_fruit">水果</string>
+</resources>
