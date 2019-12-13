@@ -11,4 +11,11 @@
     <string name="mmm_flash">限时抢购</string>
     <string name="mmm_crazy">疯狂折扣</string>
     <string name="mmm_fruit">水果</string>
+    <string name="mmm_goods_title">商品标题</string>
+    <string name="mmm_goods_subtitle">商品副标题</string>
+    <string name="mmm_goods_quantity">商品数量</string>
+    <string name="mmm_goods_remark">商品备注</string>
+    <string name="mmm_Y">￥</string>
+    <string name="mmm_goods_price">价格</string>
+    <string name="mmm_goods_ori_price">原价</string>
 </resources>

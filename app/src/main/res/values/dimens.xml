@@ -47,4 +47,6 @@
     <dimen name="mmm_font_s2">2dp</dimen>
     <dimen name="mmm_font_s8">8dp</dimen>
     <dimen name="mmm_font_s06">0.6dp</dimen>
+    <dimen name="mmm_font_s4">4dp</dimen>
+    <dimen name="mmm_font_s20">20dp</dimen>
 </resources>
