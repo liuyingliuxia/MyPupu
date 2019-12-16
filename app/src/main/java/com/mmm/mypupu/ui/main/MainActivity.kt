@@ -45,7 +45,7 @@ class MainActivity : FragmentActivity(),View.OnClickListener, SwipeRefreshLayout
         val ViewPagerAdapter  = ViewPagerAdapter (this , supportFragmentManager)
         val viewPager : ViewPager = findViewById(R.id.vpMain)
         viewPager.adapter = ViewPagerAdapter
-        val tabs :TabLayout = findViewById(R.id.tbMain)
+        val tabs :TabLayout = findViewById (R.id.tbMain)
         tabs.setupWithViewPager(viewPager)
 
         srlMain.setOnRefreshListener(this)

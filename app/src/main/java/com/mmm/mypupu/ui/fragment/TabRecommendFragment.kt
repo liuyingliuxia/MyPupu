@@ -6,8 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentPagerAdapter
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.mmm.mypupu.R
@@ -30,7 +28,7 @@ class TabRecommendFragment : Fragment() {
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
         mView.rvRecommend.layoutManager =linearLayoutManager
         mView.rvRecommend.adapter = recommendAdapter
-        return mView
+          return mView
     }
 
     fun getList(): MutableList<String> {

@@ -15,13 +15,22 @@ import kotlinx.android.synthetic.main.item_recommend.view.*
 class RecommendationAdapter (var list: MutableList<String>, var context: Context  ):RecyclerView.Adapter <RecyclerView.ViewHolder> (){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        val itemViewImg = LayoutInflater.from(context).inflate(R.layout.item_recomend_img,parent,false)
         val itemView = LayoutInflater.from(context).inflate(R.layout.item_recommend, parent, false)
-        val holder = Holder(itemView)
-        return holder
+        val holder1 = Holder(itemViewImg)
+        val holder2 = Holder(itemView)
+        for ( i in 1 .. list.size.plus(1)){
+            if ( i ==1  )
+                return holder1
+            else
+                return holder2
+
+        }
+        return holder1
     }
 
     override fun getItemCount(): Int {
-        return list.size
+        return list.size.plus(1)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -34,6 +43,5 @@ class RecommendationAdapter (var list: MutableList<String>, var context: Context
     }
 
     class Holder(itemView: View) : RecyclerView.ViewHolder(itemView)
-
 
 }
