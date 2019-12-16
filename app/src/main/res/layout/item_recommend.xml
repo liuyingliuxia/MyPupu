@@ -4,13 +4,14 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:background="@color/color1"
-    android:layout_height="wrap_content">
+    android:layout_height="150dp">
 
     <ImageView
         android:id="@+id/ivGoods"
         android:layout_width="140dp"
-        android:layout_height="180dp"
+        android:layout_height="match_parent"
         android:src="@drawable/goods1"
+        android:padding="@dimen/mmm_font_s20"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"/>
 
@@ -20,7 +21,8 @@
         android:layout_height="wrap_content"
         android:text="@string/mmm_goods_title"
         android:layout_marginTop="@dimen/mmm_font_s10"
-        android:textSize="20dp"
+        android:textSize="16dp"
+        android:textStyle="bold"
         android:textColor="@color/color3"
         app:layout_constraintLeft_toRightOf="@id/ivGoods"
         app:layout_constraintTop_toTopOf="parent"/>
@@ -31,6 +33,7 @@
         android:layout_height="wrap_content"
         android:text="@string/mmm_goods_subtitle"
         android:layout_marginTop="@dimen/mmm_font_s4"
+        android:textSize="@dimen/mmm_font_s10"
         app:layout_constraintTop_toBottomOf="@id/tvTitle"
         app:layout_constraintLeft_toRightOf="@id/ivGoods"/>
 
@@ -40,6 +43,7 @@
         android:layout_height="wrap_content"
         android:text="@string/mmm_goods_quantity"
         android:layout_marginTop="@dimen/mmm_font_s4"
+        android:textSize="@dimen/mmm_font_s10"
         app:layout_constraintTop_toBottomOf="@id/tvSubtitle"
         app:layout_constraintLeft_toRightOf="@id/ivGoods"/>
 
@@ -49,6 +53,7 @@
         android:layout_height="wrap_content"
         android:text="@string/mmm_goods_remark"
         android:textColor="@color/color15"
+        android:textSize="@dimen/mmm_font_s10"
         android:background="@drawable/mmm_c90_s24_s00_w0_r9002"
         android:padding="@dimen/mmm_font_s2"
         android:layout_marginTop="@dimen/mmm_font_s4"
@@ -59,7 +64,7 @@
         android:id="@+id/tvY"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/mmm_Y"
+        android:text="@string/mmm_rmb"
         android:textColor="@color/color16"
         android:layout_marginTop="24dp"
         app:layout_constraintBottom_toBottomOf="@id/tvPrice"
@@ -82,9 +87,10 @@
         android:id="@+id/tvY2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/mmm_Y"
+        android:text="@string/mmm_rmb"
         android:textColor="@color/color6"
         android:layout_marginTop="24dp"
+        android:textSize="@dimen/mmm_font_s12"
         app:layout_constraintBottom_toBottomOf="@id/tvPrice"
         app:layout_constraintLeft_toRightOf="@id/tvPrice" />
 
@@ -92,9 +98,10 @@
         android:id="@+id/tvOriginalPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/mmm_goods_ori_price"
+        android:text="@string/mmm_zero"
         android:textColor="@color/color6"
         android:layout_marginTop="@dimen/mmm_font_s4"
+        android:textSize="@dimen/mmm_font_s12"
         app:layout_constraintBottom_toBottomOf="@id/tvPrice"
         app:layout_constraintLeft_toRightOf="@id/tvY2"/>
 

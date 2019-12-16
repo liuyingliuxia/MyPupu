@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/color1"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
     tools:context=".ui.main.MainActivity">
+
     <LinearLayout
         android:id="@+id/llTitle"
         android:layout_width="match_parent"
@@ -16,47 +24,79 @@
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical">
 
-
         <!--    顶部appbar-->
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:background="@color/color1">
 
+        <!-- 跟随下滑隐藏的标题栏-->
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_scrollFlags="scroll|enterAlways">
-                <include
-                    android:id="@+id/tbMain"
-                    layout="@layout/toolbar_main" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/color1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/mmm_address"
+                    android:textColor="@color/color2"
+                    android:textStyle="bold"
+                    android:drawableLeft="@drawable/ic_place_dark"
+                    android:drawableRight="@drawable/ic_arrow_right_dark"
+                    android:drawablePadding="6dp"
+                    android:layout_marginLeft="@dimen/mmm_font_s10"
+                    android:gravity="center"
+                    android:textSize="20dp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/mmm_font_s10"
+                    android:src="@drawable/ic_msg_dark"/>
+
+            </LinearLayout>
 
         </androidx.appcompat.widget.Toolbar>
 
+
+<!--        首页的搜索框-->
+        <TextView
+            android:id="@+id/tvSearch"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@drawable/mmm_c02_s08_s00_w0_r0201"
+            android:drawableLeft="@drawable/ic_search"
+            android:drawablePadding="@dimen/mmm_font_s8"
+            android:gravity="center_vertical"
+            android:paddingLeft="100dp"
+            android:layout_marginLeft="@dimen/mmm_font_s10"
+            android:layout_marginRight="@dimen/mmm_font_s10"
+            android:text="@string/mmm_search"
+            app:layout_constraintTop_toBottomOf="@id/appBar" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tbMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
     </com.google.android.material.appbar.AppBarLayout>
-
-    <TextView
-        android:id="@+id/tvSearch"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:background="@drawable/mmm_c02_s08_s00_w0_r0201"
-        android:drawableLeft="@drawable/ic_search"
-        android:drawablePadding="@dimen/mmm_font_s8"
-        android:gravity="center_vertical"
-        android:paddingLeft="100dp"
-        android:layout_marginLeft="@dimen/mmm_font_s10"
-        android:layout_marginRight="@dimen/mmm_font_s10"
-        android:text="@string/mmm_search"
-        app:layout_constraintTop_toBottomOf="@id/appBar" />
-
-    <include
-        android:id="@+id/inTab"
-        layout="@layout/tab_main"
-        app:layout_constraintTop_toBottomOf="@id/tvSearch"/>
 
     </LinearLayout>
 
@@ -65,27 +105,17 @@
             android:id="@+id/srlMain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopf="@id/llBottom"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/llTitle"
-            app:layout_constraintVertical_bias="0.517">
-
-            <androidx.core.widget.NestedScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            app:layout_constraintTop_toBottomOf="@id/llTitle">
 
                 <androidx.viewpager.widget.ViewPager
-                    android:id="@+id/vpContent"
+                    android:id="@+id/vpMain"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
                 </androidx.viewpager.widget.ViewPager>
-
-            </androidx.core.widget.NestedScrollView>
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
@@ -104,36 +134,15 @@
                 android:layout_height="@dimen/mmm_font_s06"
                 android:background="@color/color8"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="@dimen/mmm_font_s6"
-                android:layout_gravity="bottom">
-
-
-            <TextView
-                android:id="@+id/tvBottomHome"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/mmm_home"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:clickable="true"
-                android:textColor="@color/color23"
-                android:drawableTop="@drawable/icon_home_tab_home_selected"/>
-
-            <TextView
-                android:id="@+id/tvBottomSort"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/mmm_sort"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:clickable="true"
-                android:drawableTop="@drawable/tool_state_pressed_sort"/>
-            </LinearLayout>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bnvMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@color/color1"
+            app:menu="@menu/bottom_tab" />
 
         </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

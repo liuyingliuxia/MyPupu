@@ -15,7 +15,9 @@
     <string name="mmm_goods_subtitle">商品副标题</string>
     <string name="mmm_goods_quantity">商品数量</string>
     <string name="mmm_goods_remark">商品备注</string>
-    <string name="mmm_Y">￥</string>
+    <string name="mmm_rmb">¥</string>
     <string name="mmm_goods_price">价格</string>
     <string name="mmm_goods_ori_price">原价</string>
+    <string name="main_tab_default" />
+    <string name="mmm_zero">0.0</string>
 </resources>
