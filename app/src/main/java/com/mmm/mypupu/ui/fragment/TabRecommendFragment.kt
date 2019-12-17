@@ -10,11 +10,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.adapter.RecommendationAdapter
+import com.mmm.mypupu.ui.bean.Goods
+import com.mmm.mypupu.ui.data.*
 import kotlinx.android.synthetic.main.fragment_tab_recommend.view.*
 
 class TabRecommendFragment : Fragment() {
 
-    private var list :MutableList<String > = ArrayList ()
+    private var list :MutableList<Goods > = ArrayList ()
     private lateinit var recommendAdapter: RecommendationAdapter
     private lateinit var linearLayoutManager: LinearLayoutManager
     override fun onCreateView(
@@ -31,10 +33,10 @@ class TabRecommendFragment : Fragment() {
           return mView
     }
 
-    fun getList(): MutableList<String> {
+    fun getList(): MutableList<Goods> {
 
-        for (i in 1..10) {
-            list.add(i.times(10).toString())
+        for (i in 0 until goodsImg.size) {
+           list.add( Goods( goodsImg[i], goodsTitle[i] , goodsSubtitle[i], goodsQuantity[i],goodsRemark[i] , goodsPrice[i], goodsOriginPrice[i]))
         }
         return list
     }
