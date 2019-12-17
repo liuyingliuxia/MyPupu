@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--    跟随下滑隐藏的标题栏-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/llAddress"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/mmm_font_s4"
+    android:orientation="horizontal"
+    app:layout_scrollFlags="scroll|enterAlways">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mmm_address"
+        android:textColor="@color/color2"
+        android:textStyle="bold"
+        android:drawableLeft="@drawable/ic_place_dark"
+        android:drawableRight="@drawable/ic_arrow_right_dark"
+        android:drawablePadding="6dp"
+        android:layout_marginLeft="@dimen/mmm_font_s10"
+        android:gravity="center"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginRight="@dimen/mmm_font_s10"
+        android:layout_gravity="right|center_vertical"
+        android:src="@drawable/ic_msg_dark"/>
+
+</LinearLayout>

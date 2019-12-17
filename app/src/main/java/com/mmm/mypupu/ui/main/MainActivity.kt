@@ -41,6 +41,8 @@ class MainActivity : FragmentActivity(),View.OnClickListener, SwipeRefreshLayout
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //设置沉浸式状态栏
         StatusBarCompat.setStatusBarColor(this,getColor(R.color.color1), true);
         val ViewPagerAdapter  = ViewPagerAdapter (this , supportFragmentManager)
         val viewPager : ViewPager = findViewById(R.id.vpMain)
