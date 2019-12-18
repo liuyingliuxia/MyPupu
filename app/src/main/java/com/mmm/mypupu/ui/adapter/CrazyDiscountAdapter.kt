@@ -1,32 +1,35 @@
 package com.mmm.mypupu.ui.adapter
 
+
 import android.content.Context
+import android.content.res.Resources
 import android.graphics.Paint
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.bean.Goods
 import kotlinx.android.synthetic.main.item_recommend.view.*
 
-class RecommendationAdapter (var list: List<Goods>, var context: Context  ): RecyclerView.Adapter<RecyclerView.ViewHolder>(),View.OnClickListener {
+class CrazyDiscountAdapter (var list: List<Goods>, var context: Context  ):
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val TYPE_IMAGE = 0
     private val TYPE_GOODS = 1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
         if ( viewType == TYPE_IMAGE ){
-            val itemViewImg = LayoutInflater.from(context).inflate(R.layout.item_recommend_head, parent,false)
+            val itemViewImg = LayoutInflater.from(context).inflate(R.layout.item_crazy_discount_img, parent,false)
             val holder1 = Holder(itemViewImg)
-                return holder1
-         }
+            return holder1
+        }
 
         else  {
-            val itemView = LayoutInflater.from(context).inflate(R.layout.item_recommend, parent, false)
+            val itemView = LayoutInflater.from(context).inflate(R.layout.item_crazy_discount, parent, false)
             val holder2 = Holder(itemView)
-              return holder2
+            return holder2
         }
     }
 
@@ -54,18 +57,6 @@ class RecommendationAdapter (var list: List<Goods>, var context: Context  ): Rec
             holder.itemView.tvY2.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
             holder.itemView.tvOriginalPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
 
-            holder.itemView.ivAdd.setOnClickListener( object :View.OnClickListener{
-                override fun onClick(v: View?) {
-                    Toast.makeText(context,"+",Toast.LENGTH_SHORT ).show()
-                }
-            })
-
-            holder.itemView.ivSub.setOnClickListener( object :View.OnClickListener{
-                override fun onClick(v: View?) {
-                    Toast.makeText(context,"-",Toast.LENGTH_SHORT ).show()
-                }
-            })
-
         }
     }
 
@@ -75,16 +66,8 @@ class RecommendationAdapter (var list: List<Goods>, var context: Context  ): Rec
         else
             return TYPE_GOODS
 
-   }
+    }
 
     class Holder(itemView: View) : RecyclerView.ViewHolder(itemView)
-
-    override fun onClick(v: View?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    private fun translateImageView() {
-
-    }
 
 }

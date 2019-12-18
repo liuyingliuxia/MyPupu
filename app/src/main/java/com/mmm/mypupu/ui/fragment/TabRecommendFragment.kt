@@ -33,6 +33,11 @@ class TabRecommendFragment : Fragment() {
           return mView
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+    }
+
     fun getList(): MutableList<Goods> {
 
         for (i in 0 until goodsImg.size) {

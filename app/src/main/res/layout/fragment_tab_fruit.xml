@@ -6,10 +6,12 @@
     android:orientation="vertical"
     tools:context=".ui.fragment.TabFruitFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <include
+        layout="@layout/toolbar_fruit"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFruit"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/mmm_fruit" />
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

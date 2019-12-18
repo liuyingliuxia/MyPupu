@@ -6,11 +6,6 @@
     android:orientation="vertical"
     tools:context=".ui.fragment.TabCrazyDiscountFragment">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:src="@drawable/crazy_discount"/>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCrazyDiscount"
         android:layout_width="match_parent"

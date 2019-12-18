@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.appbar.AppBarLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/appBar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color1"
+    android:fitsSystemWindows="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbFruit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <!--    跟随上滑隐藏的toolbar-->
+        <GridLayout
+            android:id="@+id/llAddress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/mmm_font_s4"
+            android:layout_marginLeft="@dimen/mmm_font_s2"
+            android:layout_marginRight="@dimen/mmm_font_s2"
+            android:columnCount="5"
+            android:rowCount="2"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvFruitSort1"
+                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:drawableTop="@drawable/fruit_sort1"
+                android:text="@string/mmm_fruit_sort1"
+                android:textColor="@color/color3"
+                android:gravity="center"
+                android:drawablePadding="@dimen/mmm_font_s6" />
+
+            <TextView
+                android:id="@+id/tvFruitSort2"
+                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:drawableTop="@drawable/fruit_sort2"
+                android:text="@string/mmm_fruit_sort2"
+                android:textColor="@color/color3"
+                android:gravity="center"
+                android:drawablePadding="@dimen/mmm_font_s6" />
+
+            <TextView
+                android:id="@+id/tvFruitSort3"
+                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:drawableTop="@drawable/fruit_sort3"
+                android:text="@string/mmm_fruit_sort3"
+                android:textColor="@color/color3"
+                android:gravity="center"
+                android:drawablePadding="@dimen/mmm_font_s6" />
+
+            <TextView
+                android:id="@+id/tvFruitSort4"
+                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:drawableTop="@drawable/fruit_sort4"
+                android:text="@string/mmm_fruit_sort4"
+                android:textColor="@color/color3"
+                android:gravity="center"
+                android:drawablePadding="@dimen/mmm_font_s6" />
+
+            <TextView
+                android:id="@+id/tvFruitSort5"
+                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:drawableTop="@drawable/fruit_sort5"
+                android:text="@string/mmm_fruit_sort5"
+                android:textColor="@color/color3"
+                android:gravity="center"
+                android:drawablePadding="@dimen/mmm_font_s6" />
+
+            <TextView
+                android:id="@+id/tvFruitSort6"
+                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:drawableTop="@drawable/fruit_sort6"
+                android:text="@string/mmm_fruit_sort6"
+                android:textColor="@color/color3"
+                android:gravity="center"
+                android:drawablePadding="@dimen/mmm_font_s6" />
+
+
+            <TextView
+                android:id="@+id/tvFruitSort7"
+                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:drawableTop="@drawable/fruit_sort7"
+                android:text="@string/mmm_fruit_sort7"
+                android:textColor="@color/color3"
+                android:gravity="center"
+                android:drawablePadding="@dimen/mmm_font_s6" />
+
+            <TextView
+                android:id="@+id/tvFruitSort8"
+                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:drawableTop="@drawable/fruit_sort8"
+                android:text="@string/mmm_fruit_sort8"
+                android:textColor="@color/color3"
+                android:gravity="center"
+                android:drawablePadding="@dimen/mmm_font_s6" />
+
+            <TextView
+                android:id="@+id/tvFruitSort9"
+                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:drawableTop="@drawable/fruit_sort9"
+                android:text="@string/mmm_fruit_sort9"
+                android:textColor="@color/color3"
+                android:gravity="center"
+                android:drawablePadding="@dimen/mmm_font_s6" />
+
+            <TextView
+                android:id="@+id/tvFruitSort10"
+                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:drawableTop="@drawable/fruit_sort10"
+                android:text="@string/mmm_fruit_sort10"
+                android:textColor="@color/color3"
+                android:gravity="center"
+                android:drawablePadding="@dimen/mmm_font_s6" />
+
+        </GridLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/mmm_font_s10"
+            android:layout_marginTop="@dimen/mmm_font_s10"
+            android:background="@color/color7"/>
+
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <!--上滑后pin在顶部-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tbFruit"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:paddingBottom="@dimen/mmm_font_s10"
+        android:paddingTop="@dimen/mmm_font_s10"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mmm_in_stock"
+            android:drawableRight="@drawable/yes"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="60dp"
+            android:layout_gravity="center"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mmm_goods_price"
+            android:drawablePadding="@dimen/mmm_font_s2"
+            android:layout_marginRight="60dp"
+            android:drawableRight="@drawable/icon_indicate_arrow_no_selected"
+            android:layout_gravity="center"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mmm_discount"
+            android:layout_marginRight="60dp"
+            android:drawablePadding="@dimen/mmm_font_s2"
+            android:drawableRight="@drawable/icon_indicate_arrow_no_selected"
+            android:layout_gravity="center"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mmm_filter"
+            android:drawableRight="@drawable/filter"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.appbar.AppBarLayout>

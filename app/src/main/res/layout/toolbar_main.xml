@@ -10,7 +10,7 @@
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         app:layout_scrollFlags="scroll|enterAlways">
 
     <!--    跟随下滑隐藏的toolbar-->
@@ -30,7 +30,6 @@
             android:drawableLeft="@drawable/ic_place_dark"
             android:drawableRight="@drawable/ic_arrow_right_dark"
             android:drawablePadding="6dp"
-            android:layout_marginLeft="@dimen/mmm_font_s10"
             android:gravity="center"
             android:textSize="20dp"/>
 
@@ -56,8 +55,8 @@
                     android:id="@+id/tvSearch"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
-                    android:layout_marginRight="@dimen/mmm_font_s10"
-                    android:layout_marginLeft="@dimen/mmm_font_s10"
+                    android:layout_marginRight="@dimen/mmm_font_s6"
+                    android:layout_marginLeft="@dimen/mmm_font_s6"
                     android:background="@drawable/mmm_c02_s08_s00_w0_r0201"
                     android:drawableLeft="@drawable/ic_search"
                     android:drawablePadding="@dimen/mmm_font_s8"
@@ -69,7 +68,9 @@
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tbMain"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="40dp"
+            app:tabTextColor="@color/color3"
+            app:tabSelectedTextColor="@color/color23"/>
 
 
 

@@ -1,5 +1,7 @@
 package com.mmm.mypupu.ui.main
 
+import android.content.res.Resources
+import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -25,60 +27,32 @@ import com.mmm.mypupu.ui.fragment.TabFruitFragment
 import com.mmm.mypupu.ui.fragment.TabRecommendFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.container.*
-import kotlinx.android.synthetic.main.toolbar.*
+import kotlinx.android.synthetic.main.toolbar_main.*
 import java.util.*
+import kotlin.collections.ArrayList
 
-class MainActivity : FragmentActivity(),View.OnClickListener, SwipeRefreshLayout.OnRefreshListener {
-    private val mStack = Stack <Fragment > ()
-    var mTitleList :MutableList <String> = arrayListOf()
-    var mCrazyFragment : Fragment = TabCrazyDiscountFragment()
-    var mFlashFragment :Fragment = TabFlashSaleFragment()
-    var mFruitFragment :Fragment =TabFruitFragment ()
-    var mRecommend :Fragment = TabRecommendFragment ()
-    var mFragmentList :MutableList <Fragment > = mutableListOf(mCrazyFragment,mFlashFragment,mFruitFragment,mRecommend)
-
+class MainActivity : FragmentActivity(), SwipeRefreshLayout.OnRefreshListener{
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         //设置沉浸式状态栏
-        StatusBarCompat.setStatusBarColor(this,getColor(R.color.color1), true);
-        val ViewPagerAdapter  = ViewPagerAdapter (this , supportFragmentManager)
-        val viewPager : ViewPager = findViewById(R.id.vpMain)
-        viewPager.adapter = ViewPagerAdapter
-        val tabs :TabLayout = findViewById (R.id.tbMain)
-        tabs.setupWithViewPager(viewPager)
+        StatusBarCompat.setStatusBarColor(this,getColor(R.color.color1), true)
 
+        initViewPager()
         srlMain.setOnRefreshListener(this)
+       // tbMain.setOnTabSelectedListener(this)
+    }
 
-        initView()
+    private fun initViewPager () {
+        val ViewPagerAdapter  = ViewPagerAdapter (this , supportFragmentManager)
+        vpMain.adapter = ViewPagerAdapter
+        vpMain.setCurrentItem(0)
+        tbMain.setupWithViewPager(vpMain)
 
     }
 
-    private fun initFragment () {
-        val manager = supportFragmentManager.beginTransaction()
-
-    }
-
-    private fun initView () {
-
-        //设置ViewPager
-       // mViewPagerAdapter = ViewPagerAdapter(context )
-        //设置监听
-
-        mTitleList.add (getString(R.string.mmm_recommend))
-        mTitleList.add (getString(R.string.mmm_flash))
-        mTitleList.add (getString(R.string.mmm_crazy))
-        mTitleList.add (getString(R.string.mmm_fruit))
-    }
-
-    override fun onClick(v: View?) {
-       when (v?.id) {
-
-       }
-    }
 
     override fun onRefresh() {
         Handler().postDelayed(object :Runnable {
@@ -89,4 +63,5 @@ class MainActivity : FragmentActivity(),View.OnClickListener, SwipeRefreshLayout
             }
         },2000)
     }
+
 }

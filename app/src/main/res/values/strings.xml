@@ -20,4 +20,23 @@
     <string name="mmm_goods_ori_price">原价</string>
     <string name="main_tab_default" />
     <string name="mmm_zero">0.0</string>
+    <string name="mmm_discount">折扣</string>
+    <string name="mmm_filter">筛选</string>
+    <string name="mmm_sub">-</string>
+    <string name="mmm_add">+</string>
+    <string name="mmm_one">1</string>
+    <string name="mmm_right_now">立即抢</string>
+    <string name="mmm_in_stock">有货</string>
+
+    <string name="mmm_fruit_sort1">台湾水果节</string>
+    <string name="mmm_fruit_sort2">新品尝鲜</string>
+    <string name="mmm_fruit_sort3">车厘子蓝莓</string>
+    <string name="mmm_fruit_sort4">果切拼盘</string>
+    <string name="mmm_fruit_sort5">桔/橙/柑/&#8230;</string>
+    <string name="mmm_fruit_sort6">苹果/梨/&#8230;</string>
+    <string name="mmm_fruit_sort7">热带水果</string>
+    <string name="mmm_fruit_sort8">葡/提/莓果</string>
+    <string name="mmm_fruit_sort9">奇异果</string>
+    <string name="mmm_fruit_sort10">瓜类</string>
+
 </resources>
