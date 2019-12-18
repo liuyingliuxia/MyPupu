@@ -3,15 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".ui.fragment.TabFruitFragment">
 
-    <include
-        layout="@layout/toolbar_fruit"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvFruit"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:fitsSystemWindows="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+
+        <include
+            layout="@layout/toolbar_fruit"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvFruit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </LinearLayout>

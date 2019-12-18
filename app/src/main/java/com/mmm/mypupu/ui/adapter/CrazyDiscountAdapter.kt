@@ -56,7 +56,9 @@ class CrazyDiscountAdapter (var list: List<Goods>, var context: Context  ):
             //给文字添加删除线
             holder.itemView.tvY2.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
             holder.itemView.tvOriginalPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
-
+            if (goods.mRemark.isNullOrBlank()){
+                holder.itemView.tvRemark.visibility = View.INVISIBLE
+            }
         }
     }
 

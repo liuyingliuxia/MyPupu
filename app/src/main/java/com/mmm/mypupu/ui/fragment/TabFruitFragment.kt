@@ -40,7 +40,7 @@ class TabFruitFragment: Fragment() {
     fun getList(): MutableList<Goods> {
 
         for (i in 0 until goodsImg.size) {
-            list.add( Goods( goodsImg[i], goodsTitle[i] , goodsSubtitle[i], goodsQuantity[i],goodsRemark[i] , goodsPrice[i], goodsOriginPrice[i]))
+            list.add( Goods( fruitImg[i], fruitTitle[i] , fruitSubtitle[i], fruitQuantity[i],fruitRemark[i] , fruitPrice[i], fruitOriPrice[i]))
         }
         return list
     }

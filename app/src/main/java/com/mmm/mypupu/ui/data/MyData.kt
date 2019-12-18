@@ -23,3 +23,11 @@ val fruit_sort :ArrayList <String > = arrayListOf("台湾水果节","新品尝�
 //首页水果分类的图片
 val fruit_sort_img :ArrayList <Int> = arrayListOf(R.drawable.fruit_sort1,R.drawable.fruit_sort2,R.drawable.fruit_sort3,R.drawable.fruit_sort4,R.drawable.fruit_sort5,
     R.drawable.fruit_sort6,R.drawable.fruit_sort7,R.drawable.fruit_sort8,R.drawable.fruit_sort9,R.drawable.fruit_sort10)
+
+val fruitImg :ArrayList <Int > = arrayListOf(R.drawable.fruit_1,R.drawable.fruit_2,R.drawable.fruit_3,R.drawable.fruit_4 , R.drawable.fruit_5)
+val fruitTitle :ArrayList <String> = arrayListOf("平和白肉蜜柚1个","平和红肉蜜柚1个","大荔冬枣500g","褚橙礼盒（一级M)","贵州修文猕猴桃")
+val fruitSubtitle :ArrayList<String> = arrayListOf("鲜嫩多汁，来自蜜柚之乡的甜蜜问候","酸甜可口柚香宜人","皮薄如蝉甘脆清香肉多核小","励志橙清甜少渣冷藏下口感更佳（中果） ","23:00前可配送")
+val fruitQuantity :ArrayList<String> = arrayListOf("0.8kg-1.1kg/个","1.1kg-1.4kg/个","500g/份","5kg±50g/箱","400g-450g/份5-6个")
+val fruitRemark : ArrayList<String> = arrayListOf("特惠","","","","" )
+val fruitPrice :ArrayList <Double> = arrayListOf(4.58,7.98,6.98,99.0,14.8)
+val fruitOriPrice : ArrayList <Double> = arrayListOf(8.98,11.8,9.9,138.0,18.0)

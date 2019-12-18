@@ -5,6 +5,7 @@ import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.mmm.mypupu.R
@@ -53,12 +54,22 @@ class RecommendationAdapter (var list: List<Goods>, var context: Context  ): Rec
             //给文字添加删除线
             holder.itemView.tvY2.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
             holder.itemView.tvOriginalPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+            if (goods.mRemark.isNullOrBlank()){
+                holder.itemView.tvRemark.visibility = View.INVISIBLE
+            }
 
             holder.itemView.ivAdd.setOnClickListener( object :View.OnClickListener{
                 override fun onClick(v: View?) {
-                    Toast.makeText(context,"+",Toast.LENGTH_SHORT ).show()
+                    val mAnimation1 = AnimationUtils.loadAnimation(holder.itemView.context,R.anim.sub)
+                    val mAnimation2 = AnimationUtils.loadAnimation(holder.itemView.context,R.anim.num)
+                    val mAnimation3 = AnimationUtils.loadAnimation(holder.itemView.context,R.anim.add)
+                    holder.itemView.ivSub.startAnimation(mAnimation1)
+                    holder.itemView.tvNum.startAnimation(mAnimation2)
+                    holder.itemView.ivAdd.startAnimation(mAnimation3)
+                   // holder.itemView.tvNum.text
                 }
             })
+
 
             holder.itemView.ivSub.setOnClickListener( object :View.OnClickListener{
                 override fun onClick(v: View?) {
