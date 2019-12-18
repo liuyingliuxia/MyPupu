@@ -10,10 +10,10 @@
         android:fromYDelta="0"
         android:toYDelta="0" />
 
-<!--    <rotate-->
-<!--            android:fromDegrees="0"-->
-<!--            android:pivotX="0"-->
-<!--            android:pivotY="50%"-->
-<!--            android:toDegrees="270" />-->
+    <rotate
+            android:fromDegrees="0"
+            android:pivotX="50%"
+            android:pivotY="50%"
+            android:toDegrees="180" />
 
 </set>
