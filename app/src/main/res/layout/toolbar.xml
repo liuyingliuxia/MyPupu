@@ -1,39 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--    跟随下滑隐藏的标题栏-->
-<LinearLayout
+<com.google.android.material.appbar.AppBarLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/llAddress"
+    android:id="@+id/appBar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/mmm_font_s4"
-    android:orientation="horizontal"
-    app:layout_scrollFlags="scroll|enterAlways">
+    android:background="@color/color1"
+    android:fitsSystemWindows="true">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/mmm_address"
-        android:textColor="@color/color2"
-        android:textStyle="bold"
-        android:drawableLeft="@drawable/ic_place_dark"
-        android:drawableRight="@drawable/ic_arrow_right_dark"
-        android:drawablePadding="6dp"
-        android:layout_marginLeft="@dimen/mmm_font_s10"
-        android:gravity="center"
-        android:textSize="20dp"/>
+        app:layout_scrollFlags="scroll|enterAlways">
 
-    <TextView
-        android:layout_width="0dp"
+    <!--    跟随下滑隐藏的toolbar-->
+    <LinearLayout
+        android:id="@+id/llAddress"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_weight="1"/>
+        android:layout_marginTop="@dimen/mmm_font_s4"
+        android:orientation="horizontal">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginRight="@dimen/mmm_font_s10"
-        android:layout_gravity="right|center_vertical"
-        android:src="@drawable/ic_msg_dark"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mmm_address"
+            android:textColor="@color/color2"
+            android:textStyle="bold"
+            android:drawableLeft="@drawable/ic_place_dark"
+            android:drawableRight="@drawable/ic_arrow_right_dark"
+            android:drawablePadding="6dp"
+            android:layout_marginLeft="@dimen/mmm_font_s10"
+            android:gravity="center"
+            android:textSize="20dp"/>
 
-</LinearLayout>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/mmm_font_s10"
+            android:layout_gravity="right|center_vertical"
+            android:src="@drawable/ic_msg_dark"/>
+
+    </LinearLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+                <!--首页的搜索框-->
+                <TextView
+                    android:id="@+id/tvSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_marginRight="@dimen/mmm_font_s10"
+                    android:layout_marginLeft="@dimen/mmm_font_s10"
+                    android:background="@drawable/mmm_c02_s08_s00_w0_r0201"
+                    android:drawableLeft="@drawable/ic_search"
+                    android:drawablePadding="@dimen/mmm_font_s8"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="100dp"
+                    android:text="@string/mmm_search"
+                    app:layout_constraintTop_toBottomOf="@id/appBar" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tbMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+
+    </com.google.android.material.appbar.AppBarLayout>

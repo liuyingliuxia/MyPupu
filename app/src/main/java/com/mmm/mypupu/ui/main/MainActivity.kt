@@ -24,6 +24,8 @@ import com.mmm.mypupu.ui.fragment.TabFlashSaleFragment
 import com.mmm.mypupu.ui.fragment.TabFruitFragment
 import com.mmm.mypupu.ui.fragment.TabRecommendFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.container.*
+import kotlinx.android.synthetic.main.toolbar.*
 import java.util.*
 
 class MainActivity : FragmentActivity(),View.OnClickListener, SwipeRefreshLayout.OnRefreshListener {
@@ -35,7 +37,6 @@ class MainActivity : FragmentActivity(),View.OnClickListener, SwipeRefreshLayout
     var mRecommend :Fragment = TabRecommendFragment ()
     var mFragmentList :MutableList <Fragment > = mutableListOf(mCrazyFragment,mFlashFragment,mFruitFragment,mRecommend)
 
-    var mViewPagerAdapter: ViewPagerAdapter ? = null
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
