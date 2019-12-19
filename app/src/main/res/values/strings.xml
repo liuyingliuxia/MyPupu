@@ -43,5 +43,21 @@
     <string name="mmm_input_search">请输入商品名</string>
     <string name="mmm_search_word">搜索词</string>
     <string name="mmm_history">历史记录</string>
+    <string name="mmm_hotpot_festival">火锅节</string>
+    <string name="mmm_vegetables">蔬菜</string>
+    <string name="mmm_eggs">肉禽蛋</string>
+    <string name="mmm_seafood">海鲜水产</string>
+    <string name="mmm_condiment">粮油调味料</string>
+    <string name="mmm_breakfast">早点</string>
+    <string name="mmm_frozen">熟食冻品</string>
+    <string name="mmm_milk">牛奶面包</string>
+    <string name="mmm_drinks">酒水冲饮</string>
+    <string name="mmm_snacks">休闲零食</string>
+    <string name="mmm_clean">日用清洁</string>
+    <string name="mmm_makeup">护理美妆</string>
+    <string name="mmm_mother">母婴</string>
+    <string name="mmm_pets">鲜花宠物</string>
+    <string name="mmm_import">进口商品</string>
+    <string name="mmm_specialty">地方特产</string>
 
 </resources>
