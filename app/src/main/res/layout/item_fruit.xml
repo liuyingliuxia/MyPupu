@@ -99,7 +99,7 @@
         android:id="@+id/tvOriginalPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/mmm_zero"
+        android:text="@string/mmm_zero_f"
         android:textColor="@color/color6"
         android:layout_marginTop="@dimen/mmm_font_s4"
         android:textSize="@dimen/mmm_font_s12"
@@ -118,7 +118,6 @@
             android:layout_height="wrap_content"
             android:src="@drawable/sub_able"
             android:layout_marginRight="@dimen/mmm_font_s10"
-            android:scaleType="matrix"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="@id/tvOriginalPrice"/>
 
@@ -126,11 +125,9 @@
             android:id="@+id/tvNum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="visible"
             android:layout_marginRight="@dimen/mmm_font_s10"
             app:layout_constraintRight_toRightOf="parent"
-            android:scaleType="matrix"
-            android:text="@string/mmm_one"
+            android:text="@string/mmm_0"
             app:layout_constraintBottom_toBottomOf="@id/tvOriginalPrice"/>
 
         <ImageView
@@ -138,9 +135,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/add_able"
-            android:scaleType="matrix"
-            android:layout_marginRight="@dimen/mmm_font_s10"
-            />
+            android:layout_marginRight="@dimen/mmm_font_s10" />
 
     </FrameLayout>
     <View

@@ -19,7 +19,8 @@ class Goods :Serializable{
         mQuantity: String,
         mRemark: String,
         mPrice: Double,
-        mOriPrice: Double
+        mOriPrice: Double,
+        mNum : Int
     ) {
         this.mImgPath = mImgPath
         this.mName = mName
@@ -28,6 +29,7 @@ class Goods :Serializable{
         this.mRemark = mRemark
         this.mPrice = mPrice
         this.mOriPrice = mOriPrice
+        this.mNum = mNum
     }
 
 

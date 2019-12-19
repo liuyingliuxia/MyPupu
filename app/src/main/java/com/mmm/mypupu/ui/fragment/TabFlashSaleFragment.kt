@@ -38,7 +38,7 @@ class TabFlashSaleFragment : Fragment() {
     fun getList(): MutableList<Goods> {
 
         for (i in 0 until goodsImg.size) {
-            list.add( Goods( goodsImg[i], goodsTitle[i] , goodsSubtitle[i], goodsQuantity[i],goodsRemark[i] , goodsPrice[i], goodsOriginPrice[i]))
+            list.add( Goods( goodsImg[i], goodsTitle[i] , goodsSubtitle[i], goodsQuantity[i],goodsRemark[i] , goodsPrice[i], goodsOriginPrice[i], goodsNum[i]))
         }
         return list
     }
