@@ -4,8 +4,8 @@
     <dimen name="activity_top_height">42dp</dimen>
 
     <!--shape stroke宽度样式-->
-    <dimen name="shape_stroke_w1">2dp</dimen>
-    <dimen name="shape_stroke_w2">1dp</dimen>
+    <dimen name="shape_stroke_w1">1dp</dimen>
+    <dimen name="shape_stroke_w2">2dp</dimen>
 
 
     <dimen name="design_load_progress_wh">35dp</dimen>
@@ -47,7 +47,13 @@
     <dimen name="mmm_font_s6">6dp</dimen>
     <dimen name="mmm_font_s2">2dp</dimen>
     <dimen name="mmm_font_s8">8dp</dimen>
-    <dimen name="mmm_font_s06">0.6dp</dimen>
+
     <dimen name="mmm_font_s4">4dp</dimen>
     <dimen name="mmm_font_s20">20dp</dimen>
+    <dimen name="mmm_font_s80">80dp</dimen>
+    <dimen name="search_padding_right">150dp</dimen>
+    <dimen name="mmm_font_s90">90dp</dimen>
+
+    <dimen name="mmm_font_s03" >0.3dp</dimen>
+    <dimen name="mmm_font_s06">0.6dp</dimen>
 </resources>

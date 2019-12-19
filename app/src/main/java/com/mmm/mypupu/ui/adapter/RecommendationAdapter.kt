@@ -83,7 +83,7 @@ class RecommendationAdapter (var list: List<Goods>, var context: Context  ): Rec
     class Holder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     override fun onClick(v: View?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     private fun itemAddClick(holder: RecyclerView.ViewHolder, position: Int) {
@@ -95,22 +95,19 @@ class RecommendationAdapter (var list: List<Goods>, var context: Context  ): Rec
             override fun onClick(v: View?) {
                 Log.e("点击了：","+")
                 if (num == 0) {
+                    num++
                  //   val mAnimation1 = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.sub)
                     val mAnimation2 = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.num)
                     val mAnimation3 = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.add)
                   //  holder.itemView.ivSub.startAnimation(mAnimation1)
                    // holder.itemView.tvNum.startAnimation(mAnimation2)
                     holder.itemView.ivAdd.startAnimation(mAnimation3)
-                    num ++
                     holder.itemView.tvNum.text = num.toString()
-                    Log.e("移动后 ，+ 号相对于屏幕左上角的坐标 ","("+holder.itemView.ivAdd.x.toString() +","+ holder.itemView.ivAdd.y.toString()+ ")" )
-                    Log.e("移动前 ，- 号相对于屏幕左上角的坐标 ","("+holder.itemView.ivSub.x.toString() +","+ holder.itemView.ivSub.y.toString()+ ")" )
                     holder.itemView.ivSub.x -= 100
                     holder.itemView.tvNum.x -= 68
-                    Log.e("移动后 ，- 号相对于屏幕左上角的坐标 ","("+holder.itemView.ivSub.x.toString() +","+ holder.itemView.ivSub.y.toString()+ ")" )
 
                 }
-                else  if ( num >= 1 && num < goods.mNum ) {
+                else  if ( num > 0 && num < goods.mNum ) {
                     num ++
                     holder.itemView.tvNum.text = num.toString()
                     Log.e("数量", holder.itemView.tvNum.text.toString() )
@@ -118,6 +115,7 @@ class RecommendationAdapter (var list: List<Goods>, var context: Context  ): Rec
                 else if ( num == goods.mNum){
                     // + 变成灰色
                     holder.itemView.ivAdd.setImageResource( R.drawable.add_unable )
+                    holder.itemView.tvNum.text = num.toString()
                     Toast.makeText(holder.itemView.context,"无法购买更多了",Toast.LENGTH_SHORT).show()
                 }
 
@@ -126,22 +124,22 @@ class RecommendationAdapter (var list: List<Goods>, var context: Context  ): Rec
 
         holder.itemView.ivSub.setOnClickListener( object :View.OnClickListener{
             override fun onClick(v: View?) {
-                Log.e("点击了- ", num.toString())
-                if (num == 0 ) {
+                if ( num ==1 ) {
                     //收起 -
+                    num --
                     val mAnimation1 = AnimationUtils.loadAnimation(holder.itemView.context, R.anim._sub)
                     val mAnimation2 = AnimationUtils.loadAnimation(holder.itemView.context, R.anim._num)
                     val mAnimation3 = AnimationUtils.loadAnimation(holder.itemView.context, R.anim._add)
                   //  holder.itemView.ivSub.startAnimation(mAnimation1)
                    // holder.itemView.tvNum.startAnimation(mAnimation2)
                     holder.itemView.ivAdd.startAnimation(mAnimation3)
-                    Log.e("移动前 ，- 号相对于屏幕左上角的坐标 ","("+holder.itemView.ivSub.x.toString() +","+ holder.itemView.ivSub.y.toString()+ ")" )
                     holder.itemView.ivSub.x += 100
                     holder.itemView.tvNum.x += 68
-                    Log.e("移动后 ，- 号相对于屏幕左上角的坐标 ","("+holder.itemView.ivSub.x.toString() +","+ holder.itemView.ivSub.y.toString()+ ")" )
                     holder.itemView.ivAdd.setImageResource( R.drawable.add_able )
+                    holder.itemView.tvNum.text = num.toString()
+                    Log.e("点击了- ", num.toString())
                 }
-                else  if ( num > 0 ) {
+                else  if ( num > 1 ) {
                     num --
                     holder.itemView.tvNum.text = num.toString()
                     Log.e("数量", holder.itemView.tvNum.text.toString() )

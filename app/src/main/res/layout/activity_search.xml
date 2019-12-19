@@ -5,6 +5,106 @@
     android:layout_width="match_parent"
     android:fitsSystemWindows="true"
     android:layout_height="match_parent"
-    tools:context=".ui.main.SearchActivity">
+    tools:context=".ui.search.SearchActivity">
+
+    <ImageView
+        android:id="@+id/ivBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_common_back_black"
+        android:padding="@dimen/mmm_font_s10"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <AutoCompleteTextView
+        android:id="@+id/etSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mmm_c02_s08_s00_w0_r0201"
+        android:drawablePadding="@dimen/mmm_font_s4"
+        android:layout_marginTop="@dimen/mmm_font_s4"
+        android:paddingBottom="@dimen/mmm_font_s6"
+        android:paddingTop="@dimen/mmm_font_s6"
+        android:paddingLeft="@dimen/mmm_font_s6"
+        android:paddingRight="@dimen/search_padding_right"
+        android:layout_gravity="center_horizontal"
+        android:hint="@string/mmm_input_search"
+        android:imeOptions="actionSearch"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:drawableLeft="@drawable/ic_search"
+        app:layout_constraintLeft_toRightOf="@id/ivBack"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tvSearch" />
+
+    <TextView
+        android:id="@+id/tvSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/mmm_font_s10"
+        android:text="@string/mmm_search"
+        android:textColor="@color/color3"
+        android:textSize="@dimen/mmm_font_s18"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/ivBack"/>
+
+    <TextView
+        android:id="@+id/tvSearchWord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/mmm_font_s20"
+        android:text="@string/mmm_search_word"
+        android:textColor="@color/color3"
+        android:layout_marginTop="@dimen/mmm_font_s20"
+        app:layout_constraintTop_toBottomOf="@+id/etSearch"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/mmm_font_s14"
+        android:text="@string/mmm_history"
+        android:layout_marginTop="@dimen/mmm_font_s20"
+        android:layout_marginLeft="@dimen/mmm_font_s10"
+        app:layout_constraintTop_toBottomOf="@+id/tvSearchWord"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_delete_search_history"
+        android:layout_marginRight="@dimen/mmm_font_s10"
+        app:layout_constraintBottom_toBottomOf="@+id/tvHistory"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:rowCount="2"
+        android:columnCount="3"
+        app:layout_constraintTop_toBottomOf="@+id/tvHistory">
+
+        <include
+            layout="@layout/item_search_history"/>
+
+        <include
+            layout="@layout/item_search_history"/>
+
+        <include
+            layout="@layout/item_search_history"/>
+
+        <include
+            layout="@layout/item_search_history"/>
+
+        <include
+            layout="@layout/item_search_history"/>
+
+        <include
+            layout="@layout/item_search_history"/>
+
+    </GridLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

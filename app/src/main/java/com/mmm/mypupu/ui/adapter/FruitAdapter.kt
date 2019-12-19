@@ -2,9 +2,14 @@ package com.mmm.mypupu.ui.adapter
 
 import android.content.Context
 import android.graphics.Paint
+import android.os.Build
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.bean.Goods
@@ -41,7 +46,70 @@ class FruitAdapter (var list: List<Goods>, var context: Context  ): RecyclerView
                 holder.itemView.tvRemark.visibility = View.INVISIBLE
             }
 
+            itemAddClick(holder, position)
+
         }
+    private fun itemAddClick(holder: RecyclerView.ViewHolder, position: Int) {
+        var num = 0
+        val goods: Goods = list[position ]
+
+        holder.itemView.ivAdd.setOnClickListener( object :View.OnClickListener{
+            @RequiresApi(Build.VERSION_CODES.O)
+            override fun onClick(v: View?) {
+                Log.e("点击了：","+")
+                if (num == 0) {
+                    num++
+                    //   val mAnimation1 = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.sub)
+                    val mAnimation2 = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.num)
+                    val mAnimation3 = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.add)
+                    //  holder.itemView.ivSub.startAnimation(mAnimation1)
+                    // holder.itemView.tvNum.startAnimation(mAnimation2)
+                    holder.itemView.ivAdd.startAnimation(mAnimation3)
+                    holder.itemView.tvNum.text = num.toString()
+                    holder.itemView.ivSub.x -= 100
+                    holder.itemView.tvNum.x -= 68
+
+                }
+                else  if ( num > 0 && num < goods.mNum ) {
+                    num ++
+                    holder.itemView.tvNum.text = num.toString()
+                    Log.e("数量", holder.itemView.tvNum.text.toString() )
+                }
+                else if ( num == goods.mNum){
+                    // + 变成灰色
+                    holder.itemView.ivAdd.setImageResource( R.drawable.add_unable )
+                    holder.itemView.tvNum.text = num.toString()
+                    Toast.makeText(holder.itemView.context,"无法购买更多了", Toast.LENGTH_SHORT).show()
+                }
+
+            }
+        })
+
+        holder.itemView.ivSub.setOnClickListener( object :View.OnClickListener{
+            override fun onClick(v: View?) {
+                if ( num ==1 ) {
+                    //收起 -
+                    num --
+                    val mAnimation1 = AnimationUtils.loadAnimation(holder.itemView.context, R.anim._sub)
+                    val mAnimation2 = AnimationUtils.loadAnimation(holder.itemView.context, R.anim._num)
+                    val mAnimation3 = AnimationUtils.loadAnimation(holder.itemView.context, R.anim._add)
+                    //  holder.itemView.ivSub.startAnimation(mAnimation1)
+                    // holder.itemView.tvNum.startAnimation(mAnimation2)
+                    holder.itemView.ivAdd.startAnimation(mAnimation3)
+                    holder.itemView.ivSub.x += 100
+                    holder.itemView.tvNum.x += 68
+                    holder.itemView.ivAdd.setImageResource( R.drawable.add_able )
+                    holder.itemView.tvNum.text = num.toString()
+                    Log.e("点击了- ", num.toString())
+                }
+                else  if ( num > 1 ) {
+                    num --
+                    holder.itemView.tvNum.text = num.toString()
+                    Log.e("数量", holder.itemView.tvNum.text.toString() )
+                }
+            }
+        })
+    }
     }
 
 

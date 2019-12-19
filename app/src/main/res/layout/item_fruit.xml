@@ -106,38 +106,38 @@
         app:layout_constraintBottom_toBottomOf="@id/tvPrice"
         app:layout_constraintLeft_toRightOf="@id/tvY2"/>
 
-    <FrameLayout
+
+    <ImageView
+        android:id="@+id/ivSub"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:src="@drawable/sub_able"
+        android:layout_marginRight="@dimen/mmm_font_s10"
+        android:elevation="3dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/tvOriginalPrice">
+        app:layout_constraintBottom_toBottomOf="@id/tvOriginalPrice"/>
 
-        <ImageView
-            android:id="@+id/ivSub"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/sub_able"
-            android:layout_marginRight="@dimen/mmm_font_s10"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/tvOriginalPrice"/>
+    <TextView
+        android:id="@+id/tvNum"
+        android:elevation="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        android:layout_marginRight="@dimen/mmm_font_s10"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="@string/mmm_one"
+        app:layout_constraintBottom_toBottomOf="@id/tvOriginalPrice"/>
 
-        <TextView
-            android:id="@+id/tvNum"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/mmm_font_s10"
-            app:layout_constraintRight_toRightOf="parent"
-            android:text="@string/mmm_0"
-            app:layout_constraintBottom_toBottomOf="@id/tvOriginalPrice"/>
+    <ImageView
+        android:id="@+id/ivAdd"
+        android:elevation="3dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/add_able"
+        android:layout_marginRight="@dimen/mmm_font_s10"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/tvOriginalPrice"/>
 
-        <ImageView
-            android:id="@+id/ivAdd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/add_able"
-            android:layout_marginRight="@dimen/mmm_font_s10" />
-
-    </FrameLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="0.3dp"

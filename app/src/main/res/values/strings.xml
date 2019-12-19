@@ -4,7 +4,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="mmm_address">金山工业集...</string>
-    <string name="mmm_search">西瓜蜜瓜（中果） 9.9元</string>
+    <string name="mmm_search">搜索</string>
+    <string name="mmm_search_hint">1元起送，30分钟达</string>
     <string name="mmm_home">首页</string>
     <string name="mmm_sort">分类</string>
     <string name="mmm_recommend">掌柜推荐</string>
@@ -39,5 +40,8 @@
     <string name="mmm_fruit_sort9">奇异果</string>
     <string name="mmm_fruit_sort10">瓜类</string>
     <string name="mmm_0">0</string>
+    <string name="mmm_input_search">请输入商品名</string>
+    <string name="mmm_search_word">搜索词</string>
+    <string name="mmm_history">历史记录</string>
 
 </resources>

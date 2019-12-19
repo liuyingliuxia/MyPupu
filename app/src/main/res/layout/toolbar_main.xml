@@ -62,7 +62,7 @@
                     android:drawablePadding="@dimen/mmm_font_s8"
                     android:gravity="center_vertical"
                     android:paddingLeft="100dp"
-                    android:text="@string/mmm_search"
+                    android:text="@string/mmm_search_hint"
                     app:layout_constraintTop_toBottomOf="@id/appBar" />
 
         <com.google.android.material.tabs.TabLayout
