@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/color8"
+    android:layout_width="@dimen/mmm_font_s90"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/llCatalog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/ivVerCutLine"
+            android:layout_width="@dimen/mmm_font_s4"
+            android:layout_height="@dimen/mmm_font_s20"
+            android:layout_gravity="center_vertical"
+            android:visibility="invisible"
+            android:background="@color/color23"/>
+
+        <TextView
+            android:id="@+id/tvCatalog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/mmm_font_s16"
+            android:paddingBottom="@dimen/mmm_font_s16"
+            android:textSize="@dimen/mmm_font_s12"
+            android:gravity="center"
+            android:textColor="@color/color3"
+            android:text="@string/mmm_hotpot_festival"/>
+
+    </LinearLayout>
+
+</LinearLayout>

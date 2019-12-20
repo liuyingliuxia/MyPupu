@@ -38,15 +38,15 @@ class MainActivity :AppCompatActivity(),View.OnClickListener{
         StatusBarCompat.setStatusBarColor(this, getColor(R.color.color1), true)
         initFragment()
         changeFragment(0)
-       llHome.setOnClickListener (this)
+        llHome.setOnClickListener (this)
         llSort.setOnClickListener(this)
 
     }
 
     private fun initFragment () {
         val manager = supportFragmentManager.beginTransaction()
-        manager.add (R.id.llContainer,mHomeFragment)
-        manager.add (R.id.llContainer,mSortFragment)
+        manager.add (R.id.flContainer,mHomeFragment)
+        manager.add (R.id.flContainer,mSortFragment)
         manager.commit()
         mStack.add(mHomeFragment)
         mStack.add(mSortFragment)

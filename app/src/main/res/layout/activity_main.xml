@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -8,105 +8,98 @@
     android:orientation="vertical"
     android:fitsSystemWindows="true">
 
-    <LinearLayout
-        android:id="@+id/llContainer"
+    <FrameLayout
+        android:id="@+id/flContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/llBottom"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical" />
 
     <LinearLayout
         android:id="@+id/llBottom"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="bottom"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" >
+        android:gravity="bottom">
 
-    <View
-        android:id="@+id/vCutLine"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/mmm_font_s03"
-        android:background = "@color/color7" />
+        <View
+            android:id="@+id/vCutLine"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/mmm_font_s03"
+            android:background = "@color/color7" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/color1">
-
-
-        <LinearLayout
-            android:id="@+id/llHome"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="bottom"
-            android:paddingLeft="@dimen/mmm_font_s20"
-            android:paddingRight="@dimen/mmm_font_s20"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/llSort" >
+            android:layout_marginTop="@dimen/mmm_font_s10"
+            android:background="@color/color1">
 
 
-            <ImageView
-                android:id="@+id/ivHome"
+            <LinearLayout
+                android:id="@+id/llHome"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/icon_home_tab_home_selected" />
-
-            <TextView
-                android:id="@+id/tvHome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/mmm_home"
+                android:layout_height="match_parent"
                 android:gravity="bottom"
-                android:textSize="@dimen/mmm_font_s12"
-                android:textColor="@color/color23" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/llSort"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="bottom"
-            android:paddingLeft="@dimen/mmm_font_s20"
-            android:paddingRight="@dimen/mmm_font_s20"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/llHome">
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/mmm_font_s20"
+                android:paddingRight="@dimen/mmm_font_s20"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/llSort">
 
 
-            <ImageView
-                android:id="@+id/ivSort"
+                <ImageView
+                    android:id="@+id/ivHome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_home_tab_home_selected" />
+
+                <TextView
+                    android:id="@+id/tvHome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    android:text="@string/mmm_home"
+                    android:textColor="@color/color23"
+                    android:textSize="@dimen/mmm_font_s12" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llSort"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/icon_home_tab_category_normal" />
-
-            <TextView
-                android:id="@+id/tvSort"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/mmm_sort"
+                android:layout_height="match_parent"
                 android:gravity="bottom"
-                android:textSize="@dimen/mmm_font_s12"
-                android:textColor="@color/color6" />
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/mmm_font_s20"
+                android:paddingRight="@dimen/mmm_font_s20"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/llHome"
+                app:layout_constraintRight_toRightOf="parent">
 
-        </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <ImageView
+                    android:id="@+id/ivSort"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_home_tab_category_normal" />
+
+                <TextView
+                    android:id="@+id/tvSort"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    android:text="@string/mmm_sort"
+                    android:textColor="@color/color6"
+                    android:textSize="@dimen/mmm_font_s12" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
