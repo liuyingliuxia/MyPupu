@@ -1,0 +1,21 @@
+1. Android Style和自定义属性 ：https://blog.csdn.net/Ithink213/article/details/88315283 
+2. Android Studio精彩案例(七)《ToolBar使用详解<一>》: https://www.cnblogs.com/wanghang/p/6299454.html
+3. 安卓Toolbar使用 Demo(Kotlin) https://www.jianshu.com/p/ee7a0c8e9b59
+4. views-widgets-samples： https://github.com/android/views-widgets-samples 
+5. RecyclerView 的使用： https://developer.android.google.cn/guide/topics/ui/layout/recyclerview?hl=en 
+6. 项目实战太阳花： https://github.com/android/sunflower.git 
+7. Android ApiXML文件的属性值 :https://developer.android.google.cn/reference/kotlin/android/view/View.html#attr_View
+8. android组件化方案、二维码扫码、Kotlin新闻客户端、动画特效等源码： https://blog.csdn.net/ld11620967/article/details/79064732
+9. Gradle官方文档： https://docs.gradle.org/current/userguide/userguide.html
+第三周：
+10.Android中 shape 属性详解 ：https://www.cnblogs.com/MianActivity/p/5867776.html 
+11. Kotlin之下拉刷新与上拉加载控件 ：https://www.jianshu.com/p/d2f57dc7f20f
+12.【Kotlin】RecyclerView使用(一)：https://www.jianshu.com/p/b90ad9334c5e
+13.Kotlin中使用BottomNavigationView实现底部导航: https://blog.csdn.net/qq_33842627/article/details/80273876
+14.下拉刷新上拉加载数据列表实现（Kotlin版） https://blog.csdn.net/laozhumakelovemanuo/article/details/73436502
+15. Kotlin中SwipeRefreshLayout结合RecyclerView下拉刷新上拉加载 https://m.wang1314.com/doc/webapp/topic/13926444.html
+16. ConstraintLayout(约束布局)的使用：https://www.jianshu.com/p/106e4282a383
+17. Material Design之CoordinatorLayout+AppBarLayout实现上滑隐藏ToolBar-Material Design使用：https://blog.csdn.net/lijinhua7602/article/details/50217009
+18. android利用layout_behavior属性实现上滑屏幕，隐藏底部菜单栏： https://www.jianshu.com/p/7d4e0a5b86c2
+19. ViewPager+Fragment使用（Kotlin）： https://www.jianshu.com/p/8777171e216e
+20. 让你明明白白的使用RecyclerView——SnapHelper详解： https://www.jianshu.com/p/e54db232df62

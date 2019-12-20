@@ -58,5 +58,4 @@ class HomeFragment : Fragment(),SwipeRefreshLayout.OnRefreshListener {
             }
         },2000)
     }
-
 }

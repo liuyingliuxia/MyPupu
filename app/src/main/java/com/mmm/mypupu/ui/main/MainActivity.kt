@@ -15,6 +15,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.githang.statusbar.StatusBarCompat
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.data.searchHint
 import com.mmm.mypupu.ui.fragment.HomeFragment
@@ -38,9 +39,8 @@ class MainActivity :AppCompatActivity(),View.OnClickListener{
         StatusBarCompat.setStatusBarColor(this, getColor(R.color.color1), true)
         initFragment()
         changeFragment(0)
-        llHome.setOnClickListener (this)
-        llSort.setOnClickListener(this)
-
+        rbHome.setOnClickListener(this)
+        rbSort.setOnClickListener(this)
     }
 
     private fun initFragment () {
@@ -61,23 +61,14 @@ class MainActivity :AppCompatActivity(),View.OnClickListener{
         manager.commit()
     }
 
-    override fun onClick(v: View?) {
+   override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.llHome -> {
-                ivHome.setImageResource(R.drawable.icon_home_tab_home_selected)
-                ivSort.setImageResource(R.drawable.icon_home_tab_category_normal)
-                tvHome.setTextColor(resources.getColor(R.color.color23))
-                tvSort.setTextColor(resources.getColor(R.color.color6))
+            R.id.rbHome -> {
                 changeFragment(0)
             }
 
-            R.id.llSort -> {
-                ivHome.setImageResource(R.drawable.icon_home_tab_home_normal)
-                ivSort.setImageResource(R.drawable.icon_home_tab_category_selected)
-                tvHome.setTextColor(resources.getColor(R.color.color6))
-                tvSort.setTextColor(resources.getColor(R.color.color23))
+            R.id.rbSort -> {
                 changeFragment(1)
-
             }
         }
     }

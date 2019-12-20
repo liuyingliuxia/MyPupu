@@ -49,6 +49,7 @@
     <dimen name="mmm_font_s8">8dp</dimen>
 
     <dimen name="mmm_font_s4">4dp</dimen>
+    <dimen name="mmm_font_s5">5dp</dimen>
     <dimen name="mmm_font_s20">20dp</dimen>
     <dimen name="mmm_font_s80">80dp</dimen>
     <dimen name="search_padding_right">150dp</dimen>

@@ -37,4 +37,8 @@
         <item name="contentInsetStart">0dp</item>
     </style>
 
+    <style name="TabRadioButton" parent="Widget.AppCompat.Toolbar">
+        <item name="contentInsetStart">0dp</item>
+    </style>
+
 </resources>
