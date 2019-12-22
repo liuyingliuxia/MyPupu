@@ -75,7 +75,21 @@
         app:layout_constraintTop_toBottomOf="@+id/tvSearchWord"
         app:layout_constraintLeft_toLeftOf="parent"/>
 
+    <TextView
+        android:id="@+id/tvNoHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/mmm_font_s14"
+        android:text="@string/mmm_no_history"
+        android:layout_marginTop="@dimen/mmm_font_s20"
+        android:layout_marginLeft="@dimen/mmm_font_s10"
+        android:textColor="@color/color6"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@+id/tvSearchWord"
+        app:layout_constraintLeft_toRightOf="@+id/tvHistory"/>
+
     <ImageView
+        android:id="@+id/ivClean"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/icon_delete_search_history"
@@ -84,6 +98,14 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <GridLayout
+        android:id="@+id/glContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:rowCount="2"
+        android:columnCount="3"
+        app:layout_constraintTop_toBottomOf="@+id/tvHistory"/>
+
+<!--    <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:rowCount="2"
@@ -108,6 +130,6 @@
         <include
             layout="@layout/item_search_history"/>
 
-    </GridLayout>
+    </GridLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

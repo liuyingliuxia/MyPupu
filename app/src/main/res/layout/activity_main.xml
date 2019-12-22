@@ -27,21 +27,8 @@
         <View
             android:id="@+id/vCutLine"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/mmm_font_s03"
+            android:layout_height="@dimen/mmm_font_s06"
             android:background = "@color/color7" />
-
-<!--      <com.google.android.material.bottomnavigation.BottomNavigationView-->
-<!--          android:id="@+id/bnvMain"-->
-<!--          style="@style/Widget.Design.BottomNavigationView"-->
-<!--          android:layout_width="match_parent"-->
-<!--          android:layout_height="56dp"-->
-<!--          android:layout_gravity="bottom"-->
-<!--          app:elevation="16dp"-->
-<!--          app:itemIconTint="@drawable/state_selected_c6_c23"-->
-<!--          app:itemTextColor="@drawable/state_selected_c6_c23"-->
-<!--          app:layout_behavior="com.meiji.toutiao.widget.behavior.BottomNavigationBehavior"-->
-<!--          app:menu="@menu/bottom_main"/>-->
-
 
        <RadioGroup
            android:layout_width="match_parent"
@@ -59,7 +46,7 @@
                android:drawableTop="@drawable/tool_state_pressed_home"
                android:gravity="center"
                android:text="@string/mmm_home"
-               android:textColor="@drawable/state_selected_c6_c23"/>
+               android:textColor="@drawable/state_selected_c6_c23" />
 
            <RadioButton
                android:id="@+id/rbSort"
