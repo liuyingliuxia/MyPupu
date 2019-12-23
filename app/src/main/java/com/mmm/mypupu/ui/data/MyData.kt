@@ -30,3 +30,7 @@ val fruitQuantity :ArrayList<String> = arrayListOf("0.8kg-1.1kg/个","1.1kg-1.4k
 val fruitRemark : ArrayList<String> = arrayListOf("特惠","","","","" )
 val fruitPrice :ArrayList <Double> = arrayListOf(4.58,7.98,6.98,99.0,14.8)
 val fruitOriPrice : ArrayList <Double> = arrayListOf(8.98,11.8,9.9,138.0,18.0)
+
+val searchAutoCompleteGoods : ArrayList <String> = arrayListOf("流星包" , "西瓜" ,"小西瓜" ,"无籽西瓜" ,"智利蓝莓","橙味啤酒","车厘子","榴莲班戟","当妮","鳗工厂蒲烧鳗鱼" ,
+    "砂糖桔" , "鲜牛奶" ,"蒙牛" ,"优益","乳酸菌饮品","百香果","纯牛奶","酸奶", "特仑苏","纯甄风味酸牛奶" ,"真果粒" ,"麦燕麦牛","牛奶红枣", "碧渔狭鳕鱼", "福建水果",
+    "福建特产","习酒", "下酒菜","中国劲酒","中外名酒","玉米","卫龙","非腌制牛排","鱼","大黄鱼","鱿鱼","丁香鱼","鳕鱼")

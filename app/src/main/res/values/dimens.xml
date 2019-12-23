@@ -30,7 +30,8 @@
     <dimen name="main_tab_stagger_height">48dp</dimen>
     <dimen name="goods_tab_height">38dp</dimen>
 
-    <dimen name="fruit_sort_width">75dp</dimen>
+    <dimen name="fruit_sort_width">50dp</dimen>
+    <dimen name="mmm_font_fruit">14dp</dimen>
     <dimen name="item_paddingleft">60dp</dimen>
 
     <!--MMM 项目字体大小规格-->
@@ -52,9 +53,10 @@
     <dimen name="mmm_font_s5">5dp</dimen>
     <dimen name="mmm_font_s20">20dp</dimen>
     <dimen name="mmm_font_s80">80dp</dimen>
-    <dimen name="search_padding_right">150dp</dimen>
+    <dimen name="search_padding_right">120dp</dimen>
     <dimen name="mmm_font_s90">90dp</dimen>
 
     <dimen name="mmm_font_s03" >0.3dp</dimen>
     <dimen name="mmm_font_s06">0.6dp</dimen>
+    <dimen name="mmm_font_s60">60dp</dimen>
 </resources>

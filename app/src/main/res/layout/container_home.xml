@@ -5,7 +5,6 @@
     android:id="@+id/srlMain"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_weight="1"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <!--    ViewPager显示的内容+ 下拉刷新-->

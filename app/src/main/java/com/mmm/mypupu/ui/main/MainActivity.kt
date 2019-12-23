@@ -45,8 +45,8 @@ class MainActivity :AppCompatActivity(),View.OnClickListener{
 
     private fun initFragment () {
         val manager = supportFragmentManager.beginTransaction()
-        manager.add (R.id.flContainer,mHomeFragment)
-        manager.add (R.id.flContainer,mSortFragment)
+        manager.add (R.id.llContainer,mHomeFragment)
+        manager.add (R.id.llContainer,mSortFragment)
         manager.commit()
         mStack.add(mHomeFragment)
         mStack.add(mSortFragment)

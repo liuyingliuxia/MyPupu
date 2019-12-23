@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:fitsSystemWindows="true"
     android:layout_height="match_parent"
+    android:background="@color/color1"
+    android:orientation="vertical"
     tools:context=".ui.search.SearchActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
     <ImageView
         android:id="@+id/ivBack"
@@ -16,29 +23,52 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <AutoCompleteTextView
-        android:id="@+id/etSearch"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/mmm_font_s4"
+        android:layout_weight="1"
         android:background="@drawable/mmm_c02_s08_s00_w0_r0201"
-        android:drawableLeft="@drawable/ic_search"
-        android:drawablePadding="@dimen/mmm_font_s4"
-        android:hint="@string/mmm_input_search"
-        android:imeOptions="actionSearch"
-        android:maxLines="1"
-        android:maxLength="8"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/mmm_font_s4"
         android:paddingLeft="@dimen/mmm_font_s6"
         android:paddingTop="@dimen/mmm_font_s6"
-        android:paddingRight="@dimen/search_padding_right"
-        android:paddingBottom="@dimen/mmm_font_s6"
-        android:singleLine="true"
+        android:paddingBottom="@dimen/mmm_font_s6">
 
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toRightOf="@id/ivBack"
-        app:layout_constraintRight_toLeftOf="@id/tvSearch"
-        app:layout_constraintTop_toTopOf="parent" />
+        <AutoCompleteTextView
+            android:id="@+id/actSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="@dimen/mmm_font_s10"
+            android:background="@null"
+            android:completionThreshold="1"
+            android:drawableLeft="@drawable/ic_search"
+            android:drawablePadding="@dimen/mmm_font_s10"
+            android:hint="@string/mmm_input_search"
+            android:imeOptions="actionSearch"
+            android:maxLength="8"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textSize="@dimen/mmm_font_s16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <ImageView
+            android:id="@+id/ivClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/close_2"
+            android:layout_gravity="end|center_vertical"
+            android:visibility="invisible"
+            android:paddingRight="@dimen/mmm_font_s10"
+            android:background="@drawable/mmm_c02_s08_s00_w0_r0201"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/tvSearch"
@@ -47,89 +77,14 @@
         android:padding="@dimen/mmm_font_s10"
         android:text="@string/mmm_search"
         android:textColor="@color/color3"
-        android:textSize="@dimen/mmm_font_s18"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/ivBack"/>
+        android:textSize="@dimen/mmm_font_s18" />
 
-    <TextView
-        android:id="@+id/tvSearchWord"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/mmm_font_s20"
-        android:text="@string/mmm_search_word"
-        android:textColor="@color/color3"
-        android:layout_marginTop="@dimen/mmm_font_s20"
-        app:layout_constraintTop_toBottomOf="@+id/etSearch"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvHistory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/mmm_font_s14"
-        android:text="@string/mmm_history"
-        android:layout_marginTop="@dimen/mmm_font_s20"
-        android:layout_marginLeft="@dimen/mmm_font_s10"
-        app:layout_constraintTop_toBottomOf="@+id/tvSearchWord"
-        app:layout_constraintLeft_toLeftOf="parent"/>
-
-    <TextView
-        android:id="@+id/tvNoHistory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/mmm_font_s14"
-        android:text="@string/mmm_no_history"
-        android:layout_marginTop="@dimen/mmm_font_s20"
-        android:layout_marginLeft="@dimen/mmm_font_s10"
-        android:textColor="@color/color6"
-        android:visibility="invisible"
-        app:layout_constraintTop_toBottomOf="@+id/tvSearchWord"
-        app:layout_constraintLeft_toRightOf="@+id/tvHistory"/>
-
-    <ImageView
-        android:id="@+id/ivClean"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/icon_delete_search_history"
-        android:layout_marginRight="@dimen/mmm_font_s10"
-        app:layout_constraintBottom_toBottomOf="@+id/tvHistory"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <GridLayout
-        android:id="@+id/glContainer"
+    <LinearLayout
+        android:id="@+id/llContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:rowCount="2"
-        android:columnCount="3"
-        app:layout_constraintTop_toBottomOf="@+id/tvHistory"/>
+        android:orientation="vertical" />
 
-<!--    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:rowCount="2"
-        android:columnCount="3"
-        app:layout_constraintTop_toBottomOf="@+id/tvHistory">
-
-        <include
-            layout="@layout/item_search_history"/>
-
-        <include
-            layout="@layout/item_search_history"/>
-
-        <include
-            layout="@layout/item_search_history"/>
-
-        <include
-            layout="@layout/item_search_history"/>
-
-        <include
-            layout="@layout/item_search_history"/>
-
-        <include
-            layout="@layout/item_search_history"/>
-
-    </GridLayout>-->
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

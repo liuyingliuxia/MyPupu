@@ -12,8 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include
-            layout="@layout/toolbar_fruit"/>
+        <include layout="@layout/toolbar_fruit"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvFruit"
