@@ -1,6 +1,8 @@
 package com.mmm.mypupu.ui.adapter
 
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.content.res.Resources
 import android.graphics.Paint
@@ -77,6 +79,39 @@ class CrazyDiscountAdapter (var list: List<Goods>, var context: Context  ):
     }
 
     class Holder(itemView: View) : RecyclerView.ViewHolder(itemView)
+
+    fun itemAddClickAnimator (holder: RecyclerView.ViewHolder){
+        //+ 号旋转 用 补间动画
+        val mAnimation = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.add)
+        holder.itemView.ivAdd.startAnimation(mAnimation)
+        // 数字部分直接平移 x轴
+        holder.itemView.tvNum.x -= 68
+        // - 号 旋转平移 同时进行 用 属性动画
+        val mIvSub = holder.itemView.ivSub
+        val objectAnimatorR : ObjectAnimator = ObjectAnimator.ofFloat(mIvSub ,"rotation",0f,180f)
+        val objectAnimatorX : ObjectAnimator = ObjectAnimator.ofFloat(mIvSub ,"translationX",0f,-100f)
+        val animatorSet  = AnimatorSet()
+        animatorSet.playTogether(objectAnimatorR,objectAnimatorX)
+        animatorSet.duration = 200
+        animatorSet.start()
+    }
+
+    fun itemSubClickAnimator (holder: RecyclerView.ViewHolder){
+        //+ 号旋转 用 补间动画
+        val mAnimation = AnimationUtils.loadAnimation(holder.itemView.context, R.anim._add)
+        holder.itemView.ivAdd.startAnimation(mAnimation)
+        // 数字部分直接平移 x轴
+        holder.itemView.tvNum.x += 68
+        // - 号 旋转平移 同时进行 用 属性动画
+        val mIvSub = holder.itemView.ivSub
+        val objectAnimatorRSub : ObjectAnimator = ObjectAnimator.ofFloat(mIvSub ,"rotation",-180f,0f)
+        val objectAnimatorTSubX : ObjectAnimator = ObjectAnimator.ofFloat(mIvSub ,"translationX",-100f,0f)
+        val animatorSet  = AnimatorSet()
+        animatorSet.playTogether(objectAnimatorTSubX,objectAnimatorRSub)
+        animatorSet.duration = 200
+        animatorSet.start()
+    }
+
     private fun itemAddClick(holder: RecyclerView.ViewHolder, position: Int) {
         var num = 0
         val goods: Goods = list[position ]
@@ -87,15 +122,8 @@ class CrazyDiscountAdapter (var list: List<Goods>, var context: Context  ):
                 Log.e("点击了：","+")
                 if (num == 0) {
                     num++
-                    //   val mAnimation1 = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.sub)
-                    val mAnimation2 = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.num)
-                    val mAnimation3 = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.add)
-                    //  holder.itemView.ivSub.startAnimation(mAnimation1)
-                    // holder.itemView.tvNum.startAnimation(mAnimation2)
-                    holder.itemView.ivAdd.startAnimation(mAnimation3)
                     holder.itemView.tvNum.text = num.toString()
-                    holder.itemView.ivSub.x -= 100
-                    holder.itemView.tvNum.x -= 68
+                    itemAddClickAnimator(holder)
 
                 }
                 else  if ( num > 0 && num < goods.mNum ) {
@@ -118,14 +146,7 @@ class CrazyDiscountAdapter (var list: List<Goods>, var context: Context  ):
                 if ( num ==1 ) {
                     //收起 -
                     num --
-                    val mAnimation1 = AnimationUtils.loadAnimation(holder.itemView.context, R.anim._sub)
-                    val mAnimation2 = AnimationUtils.loadAnimation(holder.itemView.context, R.anim._num)
-                    val mAnimation3 = AnimationUtils.loadAnimation(holder.itemView.context, R.anim._add)
-                    //  holder.itemView.ivSub.startAnimation(mAnimation1)
-                    // holder.itemView.tvNum.startAnimation(mAnimation2)
-                    holder.itemView.ivAdd.startAnimation(mAnimation3)
-                    holder.itemView.ivSub.x += 100
-                    holder.itemView.tvNum.x += 68
+                    itemSubClickAnimator(holder)
                     holder.itemView.ivAdd.setImageResource( R.drawable.add_able )
                     holder.itemView.tvNum.text = num.toString()
                     Log.e("点击了- ", num.toString())

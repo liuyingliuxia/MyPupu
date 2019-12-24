@@ -70,7 +70,7 @@ class SearchResultAdapter (var list: List<Goods>, var context: Context  ): Recyc
                 if (num == 0) {
                     num++
                     //   val mAnimation1 = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.sub)
-                    val mAnimation2 = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.num)
+
                     val mAnimation3 = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.add)
                     //  holder.itemView.ivSub.startAnimation(mAnimation1)
                     // holder.itemView.tvNum.startAnimation(mAnimation2)
@@ -98,12 +98,8 @@ class SearchResultAdapter (var list: List<Goods>, var context: Context  ): Recyc
                 if (num == 1) {
                     //收起 -
                     num--
-                    val mAnimation1 = AnimationUtils.loadAnimation(holder.itemView.context, R.anim._sub)
-                    val mAnimation2 = AnimationUtils.loadAnimation(holder.itemView.context, R.anim._num)
-                    val mAnimation3 = AnimationUtils.loadAnimation(holder.itemView.context, R.anim._add)
-                    //  holder.itemView.ivSub.startAnimation(mAnimation1)
-                    // holder.itemView.tvNum.startAnimation(mAnimation2)
-                    holder.itemView.ivAdd.startAnimation(mAnimation3)
+
+
                     holder.itemView.ivSub.x += 100
                     holder.itemView.tvNum.x += 68
                     holder.itemView.ivAdd.setImageResource(R.drawable.add_able)

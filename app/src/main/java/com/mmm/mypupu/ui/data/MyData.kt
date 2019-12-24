@@ -23,6 +23,13 @@ public val goodsNum :ArrayList <Int> = arrayListOf(5,7,3,5,3,2,3,3,2,3,1,2,5,6,4
 public val searchHint :ArrayList <String > = arrayListOf("悠菜来流星包 0.99元" , "西瓜蜜瓜（中果） 9.8元" ,"智利蓝莓 9.9元","法国进口1664橙味啤酒 7.5元",
             "碧渔狭鳕鱼 8.9元", "鼓山牌福建老酒 6.9元","澳洲车厘子 28.8元","五彩玉米 5.98元","卫龙风味海带 5.5元")
 
+//首页的水果分类栏
+val fruit_sort :ArrayList <String > = arrayListOf("台湾水果节","新品尝鲜","车厘子蓝莓","果切拼盘","桔/橙/柑/...",
+    "苹果/梨/..." ,"热爱水果" ,"葡/提/莓果","奇异果","瓜类")
+//首页水果分类的图片
+val fruit_sort_img :ArrayList <Int> = arrayListOf(R.drawable.fruit_sort1,R.drawable.fruit_sort2,R.drawable.fruit_sort3,R.drawable.fruit_sort4,R.drawable.fruit_sort5,
+    R.drawable.fruit_sort6,R.drawable.fruit_sort7,R.drawable.fruit_sort8,R.drawable.fruit_sort9,R.drawable.fruit_sort10)
+
 val fruitImg :ArrayList <Int > = arrayListOf(R.drawable.fruit_1,R.drawable.fruit_2,R.drawable.fruit_3,R.drawable.fruit_4 , R.drawable.fruit_5)
 val fruitTitle :ArrayList <String> = arrayListOf("平和白肉蜜柚1个","平和红肉蜜柚1个","大荔冬枣500g","褚橙礼盒（一级M)","贵州修文猕猴桃")
 val fruitSubtitle :ArrayList<String> = arrayListOf("鲜嫩多汁，来自蜜柚之乡的甜蜜问候","酸甜可口柚香宜人","皮薄如蝉甘脆清香肉多核小","励志橙清甜少渣冷藏下口感更佳（中果） ","23:00前可配送")

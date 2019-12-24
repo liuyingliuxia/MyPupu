@@ -19,3 +19,4 @@
 18. android利用layout_behavior属性实现上滑屏幕，隐藏底部菜单栏： https://www.jianshu.com/p/7d4e0a5b86c2
 19. ViewPager+Fragment使用（Kotlin）： https://www.jianshu.com/p/8777171e216e
 20. 让你明明白白的使用RecyclerView——SnapHelper详解： https://www.jianshu.com/p/e54db232df62
+21. Android中属性动画1----ObjectAnimator的基本使用（平移，缩放，渐变，旋转） :https://blog.csdn.net/zhaihaohao1/article/details/78584478

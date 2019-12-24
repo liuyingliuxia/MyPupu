@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/ivFruitSort"
+        android:layout_width="@dimen/fruit_sort_width"
+        android:layout_height="@dimen/fruit_sort_height"
+        android:src="@drawable/fruit_sort1"/>
+
+    <TextView
+        android:id="@+id/tvFruitSort1"
+        android:layout_height="wrap_content"
+        android:layout_width="@dimen/fruit_sort_width"
+        android:text="@string/mmm_fruit_sort1"
+        android:textColor="@color/color3"
+        android:layout_marginTop="@dimen/mmm_font_s10"
+        android:textSize="@dimen/mmm_font_fruit"
+        android:gravity="center" />
+
+</LinearLayout>

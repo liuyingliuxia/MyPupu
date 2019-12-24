@@ -30,7 +30,8 @@
     <dimen name="main_tab_stagger_height">48dp</dimen>
     <dimen name="goods_tab_height">38dp</dimen>
 
-    <dimen name="fruit_sort_width">50dp</dimen>
+    <dimen name="fruit_sort_width">72dp</dimen>
+    <dimen name="fruit_sort_height">60dp</dimen>
     <dimen name="mmm_font_fruit">14dp</dimen>
     <dimen name="item_paddingleft">60dp</dimen>
 
@@ -59,4 +60,6 @@
     <dimen name="mmm_font_s03" >0.3dp</dimen>
     <dimen name="mmm_font_s06">0.6dp</dimen>
     <dimen name="mmm_font_s60">60dp</dimen>
+    <dimen name="fruit_sort_padding">8dp</dimen>
+    <dimen name="mmm_fruit_margin_top">6dp</dimen>
 </resources>
