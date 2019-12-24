@@ -3,14 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/iHome"
-        android:enabled="true"
         android:icon="@drawable/icon_home_tab_home_normal"
         android:title="@string/mmm_home"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="always"/>
     <item
         android:id="@+id/iSort"
-        android:enabled="true"
         android:icon="@drawable/icon_home_tab_category_normal"
         android:title="@string/mmm_sort"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="always"/>
 </menu>

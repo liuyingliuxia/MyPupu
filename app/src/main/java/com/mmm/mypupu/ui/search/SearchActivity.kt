@@ -1,5 +1,6 @@
 package com.mmm.mypupu.ui.search
 
+import android.annotation.TargetApi
 import android.content.Context
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -7,11 +8,9 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.view.KeyEvent
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
@@ -35,19 +34,25 @@ class SearchActivity : AppCompatActivity(),TextWatcher {
     val mHistoryFragmemt by lazy { SearchHistoryFragmemt() }
     val mResultFragment by lazy { SearchResultFragment() }
     val mInputFragment by lazy {SearchInputFragment()}
+    @TargetApi(Build.VERSION_CODES.O)
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
         //设置沉浸式状态栏
         StatusBarCompat.setStatusBarColor(this,getColor(R.color.color1), true)
+        //进入视图时 获取焦点并 强制显示软键盘
+        actSearch.isFocusable = true
+        actSearch.isFocusableInTouchMode = true
+        actSearch.requestFocus()
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
+
         initFragment()
         changeFragment(0)
-        ivBack.setOnClickListener { v -> this.finish()}
+        ivBack.setOnClickListener {  this.finish()}
         actSearch.addTextChangedListener(this)
         initInput(this)
-      /*  var mAutoAdapter = ArrayAdapter<String> (this,R.layout.item_search_text_auto,searchAutoCompleteGoods)
-        actSearch.setAdapter(mAutoAdapter)*/
+
     }
 
     //输入的判断 并 添加搜索记录
@@ -59,20 +64,36 @@ class SearchActivity : AppCompatActivity(),TextWatcher {
                     if ( actSearch.text.isNullOrEmpty()) {
                         Toast.makeText(context , "输入不能为空！", Toast.LENGTH_SHORT).show()
                     }
-                    else {//输入不为空时，跳转搜索页面
-                        changeFragment(1)
+                    else {//输入不为空时，跳转搜索页面 并传值
+                        val bundle = Bundle()
+                        Log.e("输入的内容",actSearch.text.toString())
+                        bundle.putString("Key",actSearch.text.toString())
+                        val manager = supportFragmentManager.beginTransaction()
+                        val rFragmemt = SearchResultFragment()
+                        rFragmemt.arguments = bundle
+                        manager.add(R.id.llContainer,rFragmemt)
+                        manager.commit()
+                        manager.show(rFragmemt)
+                        hideKeyforard(actSearch)
+                        return false
                     }
+                    return false
                 }
                 return false
             }
         })
 
-        ivClose.setOnClickListener { v -> run{
+        ivClose.setOnClickListener { run{
             actSearch.text = null
             ivClose.visibility  =View.INVISIBLE
             changeFragment(0)
           }
         }
+    }
+    //强制隐藏软键盘
+    private fun hideKeyforard (view:View) {
+        val inputMethodManager = this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken,InputMethodManager.HIDE_NOT_ALWAYS)
     }
 
     private fun initFragment () {
@@ -94,7 +115,6 @@ class SearchActivity : AppCompatActivity(),TextWatcher {
         manager.show (mStack[position])
         manager.commit()
     }
-
     override fun afterTextChanged(s: Editable?) {
         if (actSearch.text.isNullOrEmpty()){
             changeFragment(0)

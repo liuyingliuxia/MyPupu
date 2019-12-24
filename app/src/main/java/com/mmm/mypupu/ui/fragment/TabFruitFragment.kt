@@ -20,7 +20,6 @@ import com.mmm.mypupu.ui.bean.Goods
 import com.mmm.mypupu.ui.data.*
 import kotlinx.android.synthetic.main.fragment_tab_fruit.view.*
 import kotlinx.android.synthetic.main.fragment_tab_recommend.view.*
-import kotlinx.android.synthetic.main.item_fruit_sort.*
 import kotlinx.android.synthetic.main.toolbar_fruit.*
 
 class TabFruitFragment: Fragment() {

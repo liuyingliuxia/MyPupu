@@ -58,3 +58,9 @@ android:singleLine="true"
 
     }
 13. public int indexOf(int ch): 返回指定字符在字符串中第一次出现处的索引，如果此字符串中没有这样的字符，则返回 -1。
+
+14.   //进入视图时 获取焦点并 强制显示软键盘
+            actSearch.isFocusable = true
+            actSearch.isFocusableInTouchMode = true
+            actSearch.requestFocus()
+            window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)

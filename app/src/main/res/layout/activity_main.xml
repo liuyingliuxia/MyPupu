@@ -19,8 +19,7 @@
         android:id="@+id/llBottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="bottom">
+        android:orientation="vertical">
 
         <View
             android:id="@+id/vCutLine"
@@ -60,6 +59,12 @@
        </RadioGroup>
 
     </LinearLayout>
+
+  <!--  <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bnvMain"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mmm_font_s60"
+        app:menu="@menu/bottom_main"/>-->
 
 </LinearLayout>
 

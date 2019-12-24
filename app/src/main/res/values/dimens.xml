@@ -62,4 +62,6 @@
     <dimen name="mmm_font_s60">60dp</dimen>
     <dimen name="fruit_sort_padding">8dp</dimen>
     <dimen name="mmm_fruit_margin_top">6dp</dimen>
+    <dimen name="mmm_font_s100">100dp</dimen>
+    <dimen name="mmm_font_s200">200dp</dimen>
 </resources>

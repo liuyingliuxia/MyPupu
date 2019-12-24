@@ -61,7 +61,7 @@ class MainActivity :AppCompatActivity(),View.OnClickListener{
         manager.commit()
     }
 
-   override fun onClick(v: View?) {
+    override fun onClick(v: View?) {
         when (v?.id) {
             R.id.rbHome -> {
                 changeFragment(0)

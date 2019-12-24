@@ -24,11 +24,14 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clSearch"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:background="@drawable/mmm_c02_s08_s00_w0_r0201"
         android:orientation="horizontal"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:layout_marginTop="@dimen/mmm_font_s4"
         android:paddingLeft="@dimen/mmm_font_s6"
         android:paddingTop="@dimen/mmm_font_s6"

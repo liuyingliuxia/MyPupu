@@ -1,4 +1,4 @@
-package com.mmm.mypupu.ui.main
+package com.mmm.mypupu.ui.adapter
 
 import android.content.Context
 import android.view.ViewGroup
@@ -27,7 +27,7 @@ class ViewPagerAdapter (var context: Context , fm: FragmentManager) : FragmentSt
     var mFruitFragment :Fragment = TabFruitFragment ()
     var mRecommend :Fragment = TabRecommendFragment ()
 
-    var mFragmentList :MutableList <Fragment > = mutableListOf(mRecommend,mFlashFragment,mCrazyFragment,mFruitFragment)
+    var mFragmentList :MutableList <Fragment> = mutableListOf(mRecommend,mFlashFragment,mCrazyFragment,mFruitFragment)
 
     override fun getItem(position: Int): Fragment {
         return mFragmentList[position]

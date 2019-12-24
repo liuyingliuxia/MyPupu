@@ -12,7 +12,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.data.searchHint
-import com.mmm.mypupu.ui.main.ViewPagerAdapter
+import com.mmm.mypupu.ui.adapter.ViewPagerAdapter
 import com.mmm.mypupu.ui.search.SearchActivity
 import kotlinx.android.synthetic.main.container_home.*
 import kotlinx.android.synthetic.main.toolbar_main.*
@@ -43,7 +43,7 @@ class HomeFragment : Fragment(),SwipeRefreshLayout.OnRefreshListener {
     }
 
     private fun initViewPager () {
-        val ViewPagerAdapter  = ViewPagerAdapter (context!! , getChildFragmentManager())
+        val ViewPagerAdapter  = ViewPagerAdapter(context!!, getChildFragmentManager())
         vpMain.adapter = ViewPagerAdapter
         vpMain.setCurrentItem(0)
         tbMain.setupWithViewPager(vpMain)

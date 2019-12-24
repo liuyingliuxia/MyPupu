@@ -60,5 +60,6 @@
     <string name="mmm_import">进口商品</string>
     <string name="mmm_specialty">地方特产</string>
     <string name="mmm_no_history">没有历史搜索记录</string>
+    <string name="mmm_no_goods">没有相关商品</string>
 
 </resources>
