@@ -32,7 +32,6 @@ class Goods :Serializable{
         this.mNum = mNum
     }
 
-
     override fun toString(): String {
         return "Goods(mImgPath='$mImgPath', mName='$mName', mSubtitle='$mSubtitle', mQuantity='$mQuantity', mRemark='$mRemark', mPrice=$mPrice, mOriPrice=$mOriPrice, mNum=$mNum)"
     }

@@ -9,4 +9,73 @@
         android:layout_height="175dp"
         android:src="@drawable/flash_sale"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mmm_flash_time16"
+        android:textColor="@color/color1"
+        android:background="@color/color23"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/mmm_font_s10"
+        android:gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/mmm_font_s16"
+        android:textColor="@color/color3"
+        android:text="@string/mmm_far_start"/>
+
+    <TextView
+        android:id="@+id/tvHour"
+        android:layout_width="@dimen/oval_radius"
+        android:layout_height="@dimen/oval_radius"
+        android:background="@drawable/mmm_o01_s03_s00"
+        android:text="@string/mmm_hour"
+        android:textColor="@color/color1"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/mmm_font_s4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/mmm_font_s2"
+            android:paddingRight="@dimen/mmm_font_s2"
+            android:textColor="@color/color3"
+            android:textSize="@dimen/mmm_font_s20"
+            android:text="@string/mmm_colon"/>
+
+        <TextView
+            android:id="@+id/tvMinute"
+            android:layout_width="@dimen/oval_radius"
+            android:layout_height="@dimen/oval_radius"
+            android:background="@drawable/mmm_o01_s03_s00"
+            android:text="@string/mmm_hour"
+            android:textColor="@color/color1"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/mmm_font_s2"
+            android:paddingRight="@dimen/mmm_font_s2"
+            android:textColor="@color/color3"
+            android:textSize="@dimen/mmm_font_s20"
+            android:text="@string/mmm_colon"/>
+
+        <TextView
+            android:id="@+id/tvSecond"
+            android:layout_width="@dimen/oval_radius"
+            android:layout_height="@dimen/oval_radius"
+            android:background="@drawable/mmm_o01_s03_s00"
+            android:text="@string/mmm_hour"
+            android:textColor="@color/color1"
+            android:gravity="center" />
+
+    </LinearLayout>
+
 </LinearLayout>

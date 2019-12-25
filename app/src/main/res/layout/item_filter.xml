@@ -1,73 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--上滑后pin在顶部的筛选-->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/llItem"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/tbFruit"
-    android:paddingLeft="@dimen/mmm_font_s20"
-    android:paddingRight="@dimen/mmm_font_s20"
-    android:paddingBottom="@dimen/mmm_font_s10"
-    android:paddingTop="@dimen/mmm_font_s10"
-    android:orientation="horizontal">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
+        android:id="@+id/llItem"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tbFruit"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvInStock"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/mmm_in_stock"
-            android:drawableRight="@drawable/tool_state_pressed_in_stock"
-            android:layout_gravity="left"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            android:paddingLeft="@dimen/mmm_font_s20"
+            android:paddingRight="@dimen/mmm_font_s20"
+            android:paddingBottom="@dimen/mmm_font_s10"
+            android:background="@color/color1"
+            android:paddingTop="@dimen/mmm_font_s10">
 
+            <CheckBox
+                android:id="@+id/tvInStock"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:button="@null"
+                android:drawableRight="@drawable/tool_state_pressed_in_stock"
+                android:text="@string/mmm_in_stock"
+                android:textColor="@drawable/state_selected_c5_c23"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tvPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:drawableRight="@drawable/tool_state_pressed_arrow"
-            android:drawablePadding="@dimen/mmm_font_s2"
-            android:text="@string/mmm_goods_price"
-            android:layout_marginLeft="50dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/tvInStock"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/tvInStock"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/tvFilter"
+                app:layout_constraintVertical_bias="0.0">
 
-        <TextView
-            android:id="@+id/tvDiscount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/mmm_discount"
-            android:layout_marginLeft="50dp"
-            app:layout_constraintHorizontal_bias="0.8"
-            android:drawablePadding="@dimen/mmm_font_s2"
-            android:drawableRight="@drawable/tool_state_pressed_arrow"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/tvPrice" />
+               <!-- 记得要修改id命名规范-->
+                <RadioButton
+                    android:id="@+id/rbPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textColor="@drawable/state_selected_c5_c23"
+                    android:drawablePadding="@dimen/mmm_font_s2"
+                    android:button="@null"
+                    android:text="@string/mmm_goods_price"
+                    android:drawableEnd="@drawable/tool_state_pressed_arrow"
+                    android:drawableRight="@drawable/tool_state_pressed_arrow" />
 
+                <RadioButton
+                    android:id="@+id/rbDiscount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mmm_discount"
+                    android:button="@null"
+                    android:layout_marginLeft="50dp"
+                    android:drawablePadding="@dimen/mmm_font_s2"
+                    android:textColor="@drawable/state_selected_c5_c23"
+                    android:drawableRight="@drawable/tool_state_pressed_arrow" />
 
-        <TextView
-            android:id="@+id/tvFilter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableRight="@drawable/filter"
-            android:text="@string/mmm_filter"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent"/>
+            </RadioGroup>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/tvFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/filter"
+                android:text="@string/mmm_filter"
+                android:button="@null"
+                android:textColor="@color/color5"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/mmm_font_s03"
+            android:background="@color/color8"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
 </LinearLayout>

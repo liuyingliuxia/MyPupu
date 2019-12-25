@@ -32,8 +32,8 @@ class HomeFragment : Fragment(),SwipeRefreshLayout.OnRefreshListener {
         initViewPager()
         srlMain.setOnRefreshListener(this)
 
-        tvSearch.setOnClickListener{ v ->
-            run {
+        tvSearch.setOnClickListener{
+           kotlin.run {
                 val intent  = Intent()
                 intent.setClass(this@HomeFragment.context!!, SearchActivity::class.java)
                 startActivity(intent)
@@ -45,7 +45,7 @@ class HomeFragment : Fragment(),SwipeRefreshLayout.OnRefreshListener {
     private fun initViewPager () {
         val ViewPagerAdapter  = ViewPagerAdapter(context!!, getChildFragmentManager())
         vpMain.adapter = ViewPagerAdapter
-        vpMain.setCurrentItem(0)
+        vpMain.currentItem = 0
         tbMain.setupWithViewPager(vpMain)
 
     }
@@ -56,6 +56,6 @@ class HomeFragment : Fragment(),SwipeRefreshLayout.OnRefreshListener {
                 tvSearch.text = searchHint [i]
                 srlMain.isRefreshing = false
             }
-        },2000)
+        },1000)
     }
 }

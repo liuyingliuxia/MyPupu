@@ -49,10 +49,9 @@ class SearchHistoryFragmemt : Fragment(){
     }
 
 
- /*   //添加历史记录itm到容器
+    //添加历史记录itm到容器
     private fun addHistory ():TextView {
-        val mAllHistory : CustomLayout = findViewById(R.id.clHistoryContent)
-        this.layoutInflater.inflate(R.layout.item_search_history, mAllHistory)
+        this.layoutInflater.inflate(R.layout.item_search_history, clHistoryContent)
         return tvHistoryItem
-    }*/
+    }
 }

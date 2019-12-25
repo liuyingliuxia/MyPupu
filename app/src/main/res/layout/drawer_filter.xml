@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/llDrawerFilter"
+    android:background="@color/color1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mmm_goods_label"
+        android:textColor="@color/color6"
+        android:layout_marginTop="@dimen/mmm_font_s20"
+        android:layout_marginLeft="@dimen/mmm_font_s20"/>
+
+        <com.mmm.mypupu.ui.widgets.InclusiveRadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="4"
+                android:rowCount="2"
+                android:layout_marginTop="@dimen/mmm_font_s16"
+                android:orientation="horizontal"
+                android:padding="@dimen/mmm_font_s8">
+
+                <RadioButton
+                    android:id="@+id/rbLabelNew"
+                    android:layout_width="@dimen/filter_label_width"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mmm_new"
+                    android:gravity="center"
+                    android:button="@null"
+                    android:paddingTop="@dimen/mmm_font_s8"
+                    android:paddingBottom="@dimen/mmm_font_s8"
+                    android:background="@drawable/tool_state_pressed_label"
+                    android:layout_marginRight="@dimen/mmm_font_s8"
+                    android:layout_marginBottom="@dimen/mmm_font_s8"
+                    android:textColor="@drawable/state_selected_c3_c23"/>
+
+                <RadioButton
+                    android:id="@+id/rbLabelFlash"
+                    android:layout_width="@dimen/filter_label_width"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mmm_flash_3"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/mmm_font_s8"
+                    android:paddingBottom="@dimen/mmm_font_s8"
+                    android:layout_marginRight="@dimen/mmm_font_s8"
+                    android:background="@drawable/tool_state_pressed_label"
+                    android:textColor="@drawable/state_selected_c3_c23"/>
+
+                <RadioButton
+                    android:id="@+id/rbLabelDiscount"
+                    android:layout_width="@dimen/filter_label_width"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mmm_discount"
+                    android:gravity="center"
+                    android:button="@null"
+                    android:paddingTop="@dimen/mmm_font_s8"
+                    android:paddingBottom="@dimen/mmm_font_s8"
+                    android:layout_marginRight="@dimen/mmm_font_s8"
+                    android:background="@drawable/tool_state_pressed_label"
+                    android:textColor="@drawable/state_selected_c3_c23"/>
+
+                <RadioButton
+                    android:id="@+id/rbLabelNewman"
+                    android:layout_width="@dimen/filter_label_width"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mmm_new_man"
+                    android:gravity="center"
+                    android:button="@null"
+                    android:paddingTop="@dimen/mmm_font_s8"
+                    android:paddingBottom="@dimen/mmm_font_s8"
+                    android:background="@drawable/tool_state_pressed_label"
+                    android:textColor="@drawable/state_selected_c3_c23"/>
+
+                <RadioButton
+                    android:id="@+id/rbLabelSpecial"
+                    android:layout_width="@dimen/filter_label_width"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/tool_state_pressed_label"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/mmm_font_s20"
+                    android:paddingTop="@dimen/mmm_font_s8"
+                    android:paddingRight="@dimen/mmm_font_s20"
+                    android:paddingBottom="@dimen/mmm_font_s8"
+                    android:text="@string/mmm_special"
+                    android:textColor="@drawable/state_selected_c3_c23" />
+
+                <RadioButton
+                    android:id="@+id/rbLabelHot"
+                    android:layout_width="@dimen/filter_label_width"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mmm_hot"
+                    android:gravity="center"
+                    android:button="@null"
+                    android:paddingLeft="@dimen/mmm_font_s20"
+                    android:paddingRight="@dimen/mmm_font_s20"
+                    android:paddingTop="@dimen/mmm_font_s8"
+                    android:paddingBottom="@dimen/mmm_font_s8"
+                    android:background="@drawable/tool_state_pressed_label"
+                    android:textColor="@drawable/state_selected_c3_c23"/>
+
+                <RadioButton
+                    android:layout_width="@dimen/filter_label_width"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mmm_new"
+                    android:gravity="center"
+                    android:button="@null"
+                    android:paddingLeft="@dimen/mmm_font_s20"
+                    android:paddingRight="@dimen/mmm_font_s20"
+                    android:paddingTop="@dimen/mmm_font_s8"
+                    android:paddingBottom="@dimen/mmm_font_s8"
+                    android:visibility="gone"
+                    android:background="@drawable/tool_state_pressed_label"
+                    android:textColor="@drawable/state_selected_c3_c23"/>
+
+                <RadioButton
+                    android:layout_width="@dimen/filter_label_width"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mmm_new"
+                    android:gravity="center"
+                    android:button="@null"
+                    android:paddingLeft="@dimen/mmm_font_s20"
+                    android:paddingRight="@dimen/mmm_font_s20"
+                    android:paddingTop="@dimen/mmm_font_s8"
+                    android:visibility="gone"
+                    android:paddingBottom="@dimen/mmm_font_s8"
+                    android:background="@drawable/tool_state_pressed_label"
+                    android:textColor="@drawable/state_selected_c3_c23"/>
+            </GridLayout>
+
+    </com.mmm.mypupu.ui.widgets.InclusiveRadioGroup>
+
+
+
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mmm_font_s03"
+        android:layout_marginTop="@dimen/mmm_font_s16"
+        android:background="@color/color7"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvReset"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:paddingTop="@dimen/mmm_font_s10"
+            android:paddingBottom="@dimen/mmm_font_s10"
+            android:layout_height="wrap_content"
+            android:text="@string/mmm_reset"
+            android:textColor="@color/color3"
+            android:layout_weight="1" />
+
+        <View
+            android:layout_width="@dimen/mmm_font_s03"
+            android:layout_height="match_parent"
+            android:background="@color/color7"/>
+
+        <TextView
+            android:id="@+id/tvOk"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:paddingTop="@dimen/mmm_font_s10"
+            android:paddingBottom="@dimen/mmm_font_s10"
+            android:layout_height="wrap_content"
+            android:text="@string/mmm_ok"
+            android:textColor="@color/color23"
+            android:layout_weight="3" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mmm_font_s06"
+        android:background="@color/color7"/>
+
+</LinearLayout>

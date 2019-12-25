@@ -58,13 +58,17 @@ class SearchResultFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener{
     }
 
    private fun getList(): MutableList<Goods> {
-        for (i in 0 until goodsImg.size) {
-//            if ( goodsTitle.contains(key)){
+       if (activity!!.actSearch.text .equals("蘑菇"))
+           {
+               for (i in 0..2)
+                   list.add(Goods(sResultImg[i], sResultTitle[i], sResultSubTitle[i], sResultQuantity[i], sResultRemark[i], sResultPrice[i], sResultOriPrice[i], goodsNum[i]))
+           }
+        else{
+           for (i in 0 until goodsImg.size) {
                 list.add( Goods( goodsImg[i], goodsTitle[i] , goodsSubtitle[i], goodsQuantity[i], goodsRemark[i] , goodsPrice[i], goodsOriginPrice[i], goodsNum[i]))
-//            }
-//            else
-//              list.clear()
-        }
+           }
+       }
+
         Log.e("获取的结果长度",list.size.toString())
 
         return list
@@ -73,8 +77,8 @@ class SearchResultFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener{
     override fun onRefresh() {
         Handler().postDelayed(object :Runnable {
             override fun run() {
-                srlMain.isRefreshing = false
+                srlSearch.isRefreshing = false
             }
-        },2000)
+        },500)
     }
 }

@@ -36,7 +36,6 @@ class ViewPagerAdapter (var context: Context , fm: FragmentManager) : FragmentSt
     override fun getPageTitle(position: Int): CharSequence? {
 
         return context.resources.getString(mTabTitle[position])
-
     }
 
     override fun getCount(): Int {

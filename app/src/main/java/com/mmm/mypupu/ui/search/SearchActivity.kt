@@ -42,17 +42,30 @@ class SearchActivity : AppCompatActivity(),TextWatcher {
         //设置沉浸式状态栏
         StatusBarCompat.setStatusBarColor(this,getColor(R.color.color1), true)
         //进入视图时 获取焦点并 强制显示软键盘
-        actSearch.isFocusable = true
-        actSearch.isFocusableInTouchMode = true
-        actSearch.requestFocus()
-        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
-
+        showKeyBoard()
         initFragment()
-        changeFragment(0)
         ivBack.setOnClickListener {  this.finish()}
         actSearch.addTextChangedListener(this)
         initInput(this)
-
+        actSearch.setOnClickListener { kotlin.run {
+             showKeyBoard()
+          }
+        }
+        actSearch.setOnFocusChangeListener(object :View.OnFocusChangeListener{
+            override fun onFocusChange(v: View?, hasFocus: Boolean) {
+                if (actSearch.isFocusable == true)
+                {
+                    if (actSearch.text.isEmpty())
+                         changeFragment(0)
+                    /*else
+                         changeFragment(2)*/
+                }
+                else
+                {
+                    changeFragment(1)
+                }
+            }
+        })
     }
 
     //输入的判断 并 添加搜索记录
@@ -74,6 +87,7 @@ class SearchActivity : AppCompatActivity(),TextWatcher {
                         manager.add(R.id.llContainer,rFragmemt)
                         manager.commit()
                         manager.show(rFragmemt)
+                        actSearch.isFocusable = false
                         hideKeyforard(actSearch)
                         return false
                     }
@@ -94,6 +108,15 @@ class SearchActivity : AppCompatActivity(),TextWatcher {
     private fun hideKeyforard (view:View) {
         val inputMethodManager = this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(view.windowToken,InputMethodManager.HIDE_NOT_ALWAYS)
+    }
+
+    private fun showKeyBoard (){
+        //进入视图时 获取焦点并 强制显示软键盘
+        actSearch.isFocusable = true
+        actSearch.isFocusableInTouchMode = true
+        actSearch.requestFocus()
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
+
     }
 
     private fun initFragment () {
@@ -143,7 +166,15 @@ class SearchActivity : AppCompatActivity(),TextWatcher {
         }
         else {
             ivClose.visibility = View.VISIBLE
-            changeFragment(2)
+            val bundle = Bundle()
+            Log.e("输入的内容",actSearch.text.toString())
+            bundle.putString("Key",actSearch.text.toString())
+            val manager = supportFragmentManager.beginTransaction()
+            val iFragmemt = SearchInputFragment()
+            iFragmemt.arguments = bundle
+            manager.add(R.id.llContainer,iFragmemt)
+            manager.commit()
+            manager.show(iFragmemt)
         }
     }
 }

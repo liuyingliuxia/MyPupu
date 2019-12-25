@@ -61,5 +61,20 @@
     <string name="mmm_specialty">地方特产</string>
     <string name="mmm_no_history">没有历史搜索记录</string>
     <string name="mmm_no_goods">没有相关商品</string>
+    <string name="mmm_goods_label">商品标签</string>
+    <string name="mmm_new">新品</string>
+    <string name="mmm_flash_3">限时购</string>
+    <string name="mmm_new_man">新人专享</string>
+    <string name="mmm_special">特价</string>
+    <string name="mmm_hot">热卖</string>
+    <string name="mmm_reset">重置</string>
+    <string name="mmm_ok">完成</string>
+    <string name="mmm_far_start">离本场开始</string>
+    <string name="mmm_far_end">离本场结束</string>
+    <string name="mmm_hour">01</string>
+    <string name="mmm_colon">:</string>
+    <string name="mmm_flash_time16">今天16:00</string>
+    <string name="mmm_flash_time18">今天18:00</string>
+    <string name="mmm_flash_time20">今天20:00</string>
 
 </resources>

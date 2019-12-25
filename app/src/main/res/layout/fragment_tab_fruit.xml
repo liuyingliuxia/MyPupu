@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.mmm.mypupu.ui.widgets.VerticalDrawerLayout
+    android:id="@+id/vdFilter"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".ui.fragment.TabFruitFragment">
-
+    <!--内容页-->
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:fitsSystemWindows="true"
         android:layout_width="match_parent"
@@ -17,9 +19,12 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvFruit"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-</LinearLayout>
+   <!-- 上下抽屉页-->
+    <include layout="@layout/drawer_filter"/>
+
+</com.mmm.mypupu.ui.widgets.VerticalDrawerLayout>

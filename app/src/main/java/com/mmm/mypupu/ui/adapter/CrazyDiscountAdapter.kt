@@ -4,9 +4,7 @@ package com.mmm.mypupu.ui.adapter
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Context
-import android.content.res.Resources
 import android.graphics.Paint
-import android.graphics.drawable.Drawable
 import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
@@ -28,7 +26,7 @@ class CrazyDiscountAdapter (var list: List<Goods>, var context: Context  ):
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
         if ( viewType == TYPE_IMAGE ){
-            val itemViewImg = LayoutInflater.from(context).inflate(R.layout.item_crazy_discount_img, parent,false)
+            val itemViewImg = LayoutInflater.from(context).inflate(R.layout.item_crazy_discount_head, parent,false)
             val holder1 = Holder(itemViewImg)
             return holder1
         }

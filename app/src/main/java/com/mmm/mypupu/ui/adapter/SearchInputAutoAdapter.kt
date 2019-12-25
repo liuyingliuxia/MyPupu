@@ -20,12 +20,22 @@ import com.mmm.mypupu.ui.bean.Goods
 import com.mmm.mypupu.ui.data.goodsNum
 import kotlinx.android.synthetic.main.item_anto_complete.view.*
 import kotlinx.android.synthetic.main.item_recommend.view.*
+import kotlinx.android.synthetic.main.item_search_auto.view.*
 
 class SearchInputAutoAdapter (var list: List<String>, var context: Context  ): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
+    var onClick: OnItemClickListener? = null
+
+    fun setOnItemClick(onItemClickListener: OnItemClickListener) {
+        this.onClick = onItemClickListener
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val itemView = LayoutInflater.from(context).inflate(R.layout.item_fruit, parent, false)
+        val itemView = LayoutInflater.from(context).inflate(R.layout.item_search_auto, parent, false)
         val holder = Holder(itemView)
+        itemView.setOnClickListener{
+            onClick!!.OnItemClick(itemView , itemView.tag as Int)
+        }
         return holder
     }
 
@@ -35,8 +45,15 @@ class SearchInputAutoAdapter (var list: List<String>, var context: Context  ): R
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         holder.itemView.tag = position
-        holder.itemView.tvAutoFill.text = list[position]
+        holder.itemView.tvAutoComplete.text = list[position]
+        holder.itemView.tvAutoComplete.setOnClickListener { run{
 
+            }
+        }
+    }
+
+    interface OnItemClickListener {
+        fun OnItemClick(view: View, position: Int)
     }
 }
 
