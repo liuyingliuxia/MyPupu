@@ -9,13 +9,14 @@
     tools:context=".ui.fragment.TabFlashSaleFragment">
 
     <include
-        layout="@layout/item_flash_sale_head"/>
+        layout="@layout/item_flash_sale_head"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <LinearLayout
         android:id="@+id/llFlashSale"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_behavior = "@string/appbar_scrolling_view_behavior"/>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </LinearLayout>

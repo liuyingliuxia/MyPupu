@@ -10,23 +10,13 @@ import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.bean.Goods
 import kotlinx.android.synthetic.main.item_recommend.view.*
 
-class FlashSaleAdapter (var list: List<Goods>, var context: Context  ): RecyclerView.Adapter<RecyclerView.ViewHolder>(),View.OnClickListener {
-    private val TYPE_IMAGE = 0
-    private val TYPE_GOODS = 1
+class FlashSaleAdapter (var list: List<Goods>, var context: Context  ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
-        if ( viewType == TYPE_IMAGE ){
-            val itemViewImg = LayoutInflater.from(context).inflate(R.layout.item_flash_sale_head, parent,false)
-            val holder1 = Holder(itemViewImg)
-            return holder1
-        }
-
-        else  {
             val itemView = LayoutInflater.from(context).inflate(R.layout.item_flash_sale, parent, false)
-            val holder2 = Holder(itemView)
-            return holder2
-        }
+            val holder = Holder(itemView)
+            return holder
     }
 
     override fun getItemCount(): Int {
@@ -35,10 +25,6 @@ class FlashSaleAdapter (var list: List<Goods>, var context: Context  ): Recycler
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val goods: Goods = list[position ]
-
-        if (TYPE_IMAGE ==  holder.itemViewType) {
-
-        }else if(TYPE_GOODS == holder.itemViewType){
 
             holder.itemView.tag = position
 
@@ -54,23 +40,12 @@ class FlashSaleAdapter (var list: List<Goods>, var context: Context  ): Recycler
             holder.itemView.tvOriginalPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
             if (goods.mRemark.isEmpty()){
                 holder.itemView.tvRemark.visibility = View.INVISIBLE
-            }
         }
     }
 
-    override fun getItemViewType(position: Int): Int {
-        if ( position == 0)
-            return TYPE_IMAGE
-        else
-            return TYPE_GOODS
-
-    }
 
     class Holder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
-    override fun onClick(v: View?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
 
 }

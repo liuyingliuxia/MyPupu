@@ -1,7 +1,9 @@
 package com.mmm.mypupu.ui.fragment
 
 
+import android.content.Context
 import android.os.Bundle
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,15 +18,13 @@ import kotlinx.android.synthetic.main.fragment_tab_crazy_discount.view.*
 import kotlinx.android.synthetic.main.fragment_tab_flash_sale.view.*
 import kotlinx.android.synthetic.main.fragment_tab_fruit.view.*
 import kotlinx.android.synthetic.main.item_flash_sale_head.*
+import kotlinx.android.synthetic.main.item_flash_sale_head.view.*
 import java.util.*
 import kotlin.collections.ArrayList
 
-class TabFlashSaleFragment : Fragment(),View.OnClickListener{
+class TabFlashSaleFragment : Fragment()/*,View.OnClickListener*/{
 
-    private var list :MutableList<Goods > = ArrayList ()
     val mStack = Stack <Fragment> ()
-    private lateinit var flashSaleAdapter: FlashSaleAdapter
-    private lateinit var linearLayoutManager: LinearLayoutManager
     private val flashTimeFragment = FlashTimeFragment()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,17 +37,19 @@ class TabFlashSaleFragment : Fragment(),View.OnClickListener{
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        llTime9.setOnClickListener(this)
-        llTime11.setOnClickListener(this)
-        llTime14.setOnClickListener(this)
-        llTime16.setOnClickListener(this)
+        //initFragment()
+//        llTime9.setOnClickListener(this)
+//        llTime11.setOnClickListener(this)
+//        llTime14.setOnClickListener(this)
+//        llTime16.setOnClickListener(this)
+          startTimer(view)
     }
     private fun initFragment () {
         val manager = activity!!.supportFragmentManager.beginTransaction()
         manager.add (R.id.llFlashSale,flashTimeFragment)
-        manager.add (R.id.llFlashSale,flashTimeFragment)
-        manager.add (R.id.llFlashSale,flashTimeFragment)
-        manager.add (R.id.llFlashSale,flashTimeFragment)
+//        manager.add (R.id.llFlashSale,flashTimeFragment)
+//        manager.add (R.id.llFlashSale,flashTimeFragment)
+//        manager.add (R.id.llFlashSale,flashTimeFragment)
         manager.commit()
         mStack.add(flashTimeFragment)
 
@@ -62,23 +64,54 @@ class TabFlashSaleFragment : Fragment(),View.OnClickListener{
         manager.commit()
     }
 
-    override fun onClick(v: View?) {
+/*    override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.llTime11 -> {
-                changeFragment(0)
-            }
-
-            R.id.llTime14 -> {
-                changeFragment(1)
-            }
             R.id.llTime9 -> {
                 changeFragment(0)
             }
 
+            R.id.llTime11 -> {
+                changeFragment(0)
+            }
+            R.id.llTime14 -> {
+                changeFragment(0)
+            }
+
             R.id.llTime16 -> {
-                changeFragment(1)
+                changeFragment(0)
             }
         }
+    }*/
+
+
+ /*   fun startTime (){
+        val time = Timer()
+        val timerTask = object : TimerTask(){
+            override fun run() {
+                var second = 0
+                second++
+                var mTime = second
+              // tvSecond.setText(mTime)
+                //在次线程 不能更新主界面ui
+            }
+
+        }
+
+        time.schedule(timerTask,1000)
+
+    }*/
+
+    fun startTimer (v:View) {
+        Handler().postDelayed( object :Runnable {
+            override fun run() {
+                var second = 0
+                second++
+                val mTime = second
+                v.tvSecond.setText(mTime)
+
+            }
+
+        },1000)
     }
 
 }
