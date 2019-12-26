@@ -92,7 +92,11 @@ class TabFruitFragment: Fragment(),View.OnClickListener {
           }
 
           R.id.tvOk ->{
-              vdFilter.closeDrawer()
+              Log.e("抽屉","快关！")
+              if ( vdFilter.isDrawerOpen) {
+                  vdFilter.closeDrawer()
+                  Log.e("抽屉","关！")
+              }
           }
 
           R.id.tvFilter ->{

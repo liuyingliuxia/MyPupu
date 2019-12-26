@@ -49,3 +49,5 @@ val sResultQuantity :ArrayList <String> = arrayListOf("","","")
 val sResultRemark: ArrayList<String> = arrayListOf("","","")
 val sResultPrice: ArrayList<Double> = arrayListOf(5.8,6.32,3.15)
 val sResultOriPrice :ArrayList<Double>  = arrayListOf(7.9,8.8,4.8)
+
+val test :ArrayList<String> = arrayListOf("1","2","3","4","5","6","7","8","9","10")

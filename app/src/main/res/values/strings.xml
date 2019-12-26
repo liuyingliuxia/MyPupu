@@ -73,8 +73,14 @@
     <string name="mmm_far_end">离本场结束</string>
     <string name="mmm_hour">01</string>
     <string name="mmm_colon">:</string>
-    <string name="mmm_flash_time16">今天16:00</string>
-    <string name="mmm_flash_time18">今天18:00</string>
-    <string name="mmm_flash_time20">今天20:00</string>
+
+    <string name="mmm_flash_time9">09:00</string>
+    <string name="mmm_flash_time11">11:00</string>
+    <string name="mmm_flash_time14">14:00</string>
+    <string name="mmm_flash_time16">16:00</string>
+    <string name="mmm_flash_time18">18:00</string>
+    <string name="mmm_flash_time20">20:00</string>
+    <string name="mmm_flashing">抢购中</string>
+    <string name="mmm_about_to_begin">即将开始</string>
 
 </resources>

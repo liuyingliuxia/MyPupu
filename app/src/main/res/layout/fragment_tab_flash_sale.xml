@@ -8,10 +8,14 @@
     android:fitsSystemWindows="true"
     tools:context=".ui.fragment.TabFlashSaleFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvFlashSale"
+    <include
+        layout="@layout/item_flash_sale_head"/>
+
+    <LinearLayout
+        android:id="@+id/llFlashSale"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         app:layout_behavior = "@string/appbar_scrolling_view_behavior"/>
 
 </LinearLayout>

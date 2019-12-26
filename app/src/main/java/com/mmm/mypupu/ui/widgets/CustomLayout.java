@@ -24,6 +24,7 @@ public class CustomLayout extends ViewGroup {
     /**
      * 要求所有的孩子测量自己的大小，然后根据这些孩子的大小完成自己的尺寸测量
      */
+
     @SuppressLint("NewApi")
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {

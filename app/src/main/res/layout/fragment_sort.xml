@@ -42,13 +42,18 @@
         app:layout_constraintRight_toRightOf="parent"
         android:orientation="horizontal">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvSortItem"
+        <com.mmm.mypupu.ui.widgets.InclusiveRadioGroup
             android:layout_width="90dp"
-            android:layout_height="match_parent"
-            app:tabSelectedTextColor="@color/color23"
-            app:tabTextColor="@color/color3" />
+            android:layout_height="match_parent">
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSortItem"
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
+                app:tabSelectedTextColor="@color/color23"
+                app:tabTextColor="@color/color3" />
+
+        </com.mmm.mypupu.ui.widgets.InclusiveRadioGroup>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvSortContext"
             android:layout_width="match_parent"

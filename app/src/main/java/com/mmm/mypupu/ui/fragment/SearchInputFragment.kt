@@ -1,5 +1,6 @@
 package com.mmm.mypupu.ui.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.text.TextUtils.indexOf
 import android.util.Log
@@ -7,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 
@@ -20,18 +22,11 @@ import kotlinx.android.synthetic.main.fragment_search_input.view.*
 import kotlinx.android.synthetic.main.fragment_tab_fruit.view.*
 
 class SearchInputFragment : Fragment() {
-    var key: String = ""
     private var list: MutableList<String> = ArrayList()
     private lateinit var mInputAutoAdapter: SearchInputAutoAdapter
     private lateinit var linearLayoutManager: LinearLayoutManager
-    private var mResultFragment = Fragment()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val mView = inflater.inflate(R.layout.fragment_search_input, container, false)
-        if (arguments?.getString("Key").isNullOrEmpty())
-            Log.e("警告：", "传过来的值为空")
-        else {
-            key = arguments?.getString("Key")!!
-            Log.e("传过来的值为", key)
             list = getList()
             mInputAutoAdapter = SearchInputAutoAdapter(list, context!!)
             linearLayoutManager = LinearLayoutManager(context)
@@ -42,21 +37,36 @@ class SearchInputFragment : Fragment() {
                 override fun OnItemClick(view: View, position: Int) {
                   activity!!.actSearch.setText(  list[position] )
                   // 直接进行搜索
-                    val fm = activity!!.supportFragmentManager
-                    fm.beginTransaction().replace(activity!!.llContainer.id,mResultFragment).commit()
+                    changeFragment()
+                    hideKeyforard(view)
                     activity!!.actSearch.isFocusable = false
                 }
             })
-        }
         return mView
     }
-        fun getList(): MutableList<String> {
+
+    fun getList(): MutableList<String> {
             /*   if ( searchAutoCompleteGoods.indexOf(key) != -1 ){
             list.add(searchAutoCompleteGoods[searchAutoCompleteGoods.indexOf(key)])
             }*/
+
+            //筛选
             for (i in 0..searchAutoCompleteGoods.size.minus(1))
                 list.add(searchAutoCompleteGoods[i])
             return list
         }
 
+    //强制隐藏软键盘
+    private fun hideKeyforard (view:View) {
+        val inputMethodManager = activity!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+    }
+
+    private fun changeFragment () {
+        val manager = activity!!.supportFragmentManager.beginTransaction()
+        manager.add(R.id.llContainer,SearchResultFragment())
+        manager.hide (this@SearchInputFragment)
+        manager.show (SearchResultFragment())
+        manager.commit()
+    }
 }

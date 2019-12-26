@@ -52,7 +52,7 @@ class FlashSaleAdapter (var list: List<Goods>, var context: Context  ): Recycler
             //给文字添加删除线
             holder.itemView.tvY2.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
             holder.itemView.tvOriginalPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
-            if (goods.mRemark.isNullOrBlank()){
+            if (goods.mRemark.isEmpty()){
                 holder.itemView.tvRemark.visibility = View.INVISIBLE
             }
         }

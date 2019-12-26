@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -13,7 +14,7 @@
         android:textSize="@dimen/mmm_font_s14"
         android:text="@string/mmm_history"
         android:layout_marginTop="@dimen/mmm_font_s20"
-        android:layout_marginLeft="@dimen/mmm_font_s10"
+        android:layout_marginLeft="@dimen/mmm_font_s16"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"/>
 
@@ -34,17 +35,104 @@
         android:id="@+id/ivClean"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/mmm_font_s20"
         android:src="@drawable/icon_delete_search_history"
-        android:layout_marginRight="@dimen/mmm_font_s10"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/tvHistory"
         app:layout_constraintRight_toRightOf="parent" />
 
-    <com.mmm.mypupu.ui.widgets.CustomLayout
-        android:id="@+id/clHistoryContent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-       android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/tvHistory"/>
+           <!-- 6个历史记录的item-->
+        <TextView
+            android:id="@+id/tvHistory1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mmm_history"
+            android:background="@drawable/mmm_c90_s01_s07_w1_r9006"
+            android:textColor="@color/color3"
+            android:paddingLeft="@dimen/mmm_font_s8"
+            android:paddingRight="@dimen/mmm_font_s8"
+            android:paddingTop="@dimen/mmm_font_s4"
+            android:paddingBottom="@dimen/mmm_font_s4"
+            android:layout_marginLeft="@dimen/mmm_font_s20"
+            android:layout_marginTop="@dimen/mmm_font_s20"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvHistory"/>
+
+        <TextView
+            android:id="@+id/tvHistory2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mmm_history"
+            android:background="@drawable/mmm_c90_s01_s07_w1_r9006"
+            android:textColor="@color/color3"
+            android:paddingLeft="@dimen/mmm_font_s8"
+            android:paddingRight="@dimen/mmm_font_s8"
+            android:paddingTop="@dimen/mmm_font_s4"
+            android:paddingBottom="@dimen/mmm_font_s4"
+            android:layout_marginLeft="@dimen/mmm_font_s10"
+            app:layout_constraintTop_toTopOf="@+id/tvHistory1"
+            app:layout_constraintLeft_toRightOf="@+id/tvHistory1"/>
+
+        <TextView
+            android:id="@+id/tvHistory3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mmm_history"
+            android:background="@drawable/mmm_c90_s01_s07_w1_r9006"
+            android:textColor="@color/color3"
+            android:paddingLeft="@dimen/mmm_font_s8"
+            android:paddingRight="@dimen/mmm_font_s8"
+            android:paddingTop="@dimen/mmm_font_s4"
+            android:paddingBottom="@dimen/mmm_font_s4"
+            android:layout_marginLeft="@dimen/mmm_font_s10"
+            app:layout_constraintTop_toTopOf="@+id/tvHistory2"
+            app:layout_constraintLeft_toRightOf="@+id/tvHistory2"/>
+
+        <TextView
+            android:id="@+id/tvHistory4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mmm_history"
+            android:background="@drawable/mmm_c90_s01_s07_w1_r9006"
+            android:textColor="@color/color3"
+            android:paddingLeft="@dimen/mmm_font_s8"
+            android:paddingRight="@dimen/mmm_font_s8"
+            android:paddingTop="@dimen/mmm_font_s4"
+            android:paddingBottom="@dimen/mmm_font_s4"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/tvHistory1"
+            app:layout_constraintLeft_toLeftOf="@+id/tvHistory1"/>
+
+        <TextView
+            android:id="@+id/tvHistory5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mmm_history"
+            android:background="@drawable/mmm_c90_s01_s07_w1_r9006"
+            android:textColor="@color/color3"
+            android:paddingLeft="@dimen/mmm_font_s8"
+            android:paddingRight="@dimen/mmm_font_s8"
+            android:paddingTop="@dimen/mmm_font_s4"
+            android:paddingBottom="@dimen/mmm_font_s4"
+            android:layout_marginLeft="@dimen/mmm_font_s10"
+            android:layout_marginTop="@dimen/mmm_font_s20"
+            app:layout_constraintTop_toBottomOf="@+id/tvHistory2"
+            app:layout_constraintLeft_toRightOf="@+id/tvHistory4"/>
+
+        <TextView
+            android:id="@+id/tvHistory6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mmm_history"
+            android:background="@drawable/mmm_c90_s01_s07_w1_r9006"
+            android:textColor="@color/color3"
+            android:paddingLeft="@dimen/mmm_font_s8"
+            android:paddingRight="@dimen/mmm_font_s8"
+            android:paddingTop="@dimen/mmm_font_s4"
+            android:paddingBottom="@dimen/mmm_font_s4"
+            android:layout_marginLeft="@dimen/mmm_font_s10"
+            android:layout_marginTop="@dimen/mmm_font_s20"
+            app:layout_constraintTop_toBottomOf="@+id/tvHistory3"
+            app:layout_constraintLeft_toRightOf="@+id/tvHistory5"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

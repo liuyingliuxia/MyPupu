@@ -24,6 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:button="@null"
             android:paddingTop="@dimen/mmm_font_s16"
             android:paddingBottom="@dimen/mmm_font_s16"
             android:text="@string/mmm_hotpot_festival"

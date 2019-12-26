@@ -1,63 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.mmm.mypupu.ui.widgets.VerticalDrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:id="@+id/vdSearchFilter"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/mmm_font_s06"
-        android:background="@color/color7"/>
-
-     <include
-         layout="@layout/item_filter"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/mmm_font_s03"
-        android:background="@color/color7"/>
-
-    <FrameLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/srlSearch"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="invisible">
+            android:layout_height="@dimen/mmm_font_s06"
+            android:background="@color/color7"/>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvSearchResult"
+         <include
+             layout="@layout/item_filter"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/mmm_font_s03"
+            android:background="@color/color7"/>
+
+           <!-- 有商品时显示：-->
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/srlSearch"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:visibility="invisible">
 
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvSearchResult"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
-        <LinearLayout
-            android:id="@+id/llNoGoods"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+           <!-- 无商品时显示：-->
+            <LinearLayout
+                android:id="@+id/llNoGoods"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/mmm_font_s200"
-                    android:src="@drawable/no_goods" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/mmm_font_s200"
+                        android:src="@drawable/no_goods" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/mmm_font_s16"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/mmm_font_s20"
-                    android:textColor="@color/color6"
-                    android:text="@string/mmm_no_goods"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/mmm_font_s16"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/mmm_font_s20"
+                        android:textColor="@color/color6"
+                        android:text="@string/mmm_no_goods"/>
 
-        </LinearLayout>
+            </LinearLayout>
 
-    </FrameLayout>
+    </LinearLayout>
+        <!-- 上下抽屉页-->
+    <include layout="@layout/drawer_filter"/>
 
-</LinearLayout>
+</com.mmm.mypupu.ui.widgets.VerticalDrawerLayout>
