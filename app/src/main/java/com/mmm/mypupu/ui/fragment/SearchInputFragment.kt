@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.mmm.mypupu.R
@@ -17,6 +18,9 @@ import com.mmm.mypupu.ui.adapter.FruitAdapter
 import com.mmm.mypupu.ui.adapter.SearchInputAutoAdapter
 import com.mmm.mypupu.ui.bean.Goods
 import com.mmm.mypupu.ui.data.*
+import com.mmm.mypupu.ui.search.SearchActivity
+import com.mmm.mypupu.ui.widgets.SaveHistory
+import com.mmm.mypupu.util.FragmentUtil
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.fragment_search_input.view.*
 import kotlinx.android.synthetic.main.fragment_tab_fruit.view.*
@@ -37,12 +41,21 @@ class SearchInputFragment : Fragment() {
                 override fun OnItemClick(view: View, position: Int) {
                   activity!!.actSearch.setText(  list[position] )
                   // 直接进行搜索
-                    changeFragment()
+                    toSearch()
+                    //添加历史记录
+                    SaveHistory.saveSearchHistory(activity!!.actSearch.text.toString(),context)
                     hideKeyforard(view)
                     activity!!.actSearch.isFocusable = false
                 }
             })
         return mView
+    }
+
+    private fun toSearch () {
+
+        val manager = activity!!.supportFragmentManager.beginTransaction()
+        manager.replace(R.id.llContainer,SearchResultFragment())
+        manager.commit()
     }
 
     fun getList(): MutableList<String> {
@@ -57,16 +70,9 @@ class SearchInputFragment : Fragment() {
         }
 
     //强制隐藏软键盘
-    private fun hideKeyforard (view:View) {
+    private fun hideKeyforard (view: View) {
         val inputMethodManager = activity!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
     }
 
-    private fun changeFragment () {
-        val manager = activity!!.supportFragmentManager.beginTransaction()
-        manager.add(R.id.llContainer,SearchResultFragment())
-        manager.hide (this@SearchInputFragment)
-        manager.show (SearchResultFragment())
-        manager.commit()
-    }
 }

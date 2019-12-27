@@ -20,6 +20,7 @@ import androidx.fragment.app.Fragment
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.widgets.CustomLayout
 import com.mmm.mypupu.ui.widgets.SaveHistory
+import com.mmm.mypupu.util.CountDown
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.fragment_search_history.*
 import kotlinx.android.synthetic.main.item_search_history.*
@@ -39,7 +40,9 @@ class SearchHistoryFragmemt : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val mHistoryArray : ArrayList<TextView> = arrayListOf(tvHistory1,tvHistory2,tvHistory3,tvHistory4,tvHistory5,tvHistory6)
+        view.postInvalidate()
         addHistory(mHistoryArray)
+        //清空历史记录
         ivClean.setOnClickListener { v -> run{
             AlertDialog.Builder(context!!)
                 .setMessage("确认删除全部搜索历史")
@@ -56,27 +59,34 @@ class SearchHistoryFragmemt : Fragment(){
                 .setNeutralButton("取消", null)
                 .create()
                 .show()
-              }
-
+              } }
+        //历史记录item点击事件：
         for ( i in 0..5) {
+
+            if (mHistoryArray[i].text.isEmpty()){
+                mHistoryArray[i].visibility = View.INVISIBLE
+            }
+            else
+                mHistoryArray[i].visibility = View.VISIBLE
+
             mHistoryArray[i].setOnClickListener {
                 kotlin.run {
                     activity!!.actSearch.setText(mHistoryArray[i].text)
                     // 直接进行搜索
-                    changeFragment()
+                     toSearch()
                     hideKeyforard(view)
                     activity!!.actSearch.isFocusable = false
-              }
+                }
             }
-          }
         }
+
+        view.postInvalidate()
     }
 
-    private fun changeFragment () {
+    private fun toSearch () {
+
         val manager = activity!!.supportFragmentManager.beginTransaction()
-        manager.add(R.id.llContainer,SearchResultFragment())
-        manager.hide (this@SearchHistoryFragmemt)
-        manager.show (SearchResultFragment())
+        manager.replace(R.id.llContainer,SearchResultFragment())
         manager.commit()
     }
 
@@ -94,10 +104,13 @@ class SearchHistoryFragmemt : Fragment(){
             Log.e("无历史记录：",mSaveList.toString())
             for ( i in 0..5)
              mHistoryArray[i].visibility = View.INVISIBLE
+            tvNoHistory.visibility = View.VISIBLE
+            ivClean.visibility = View.INVISIBLE
         }
         else {
             Log.e("历史记录：",mSaveList.toString())
-
+            tvNoHistory.visibility = View.INVISIBLE
+            ivClean.visibility = View.VISIBLE
             for (i in 0..mSaveList.size.minus(1)) {
                  mHistoryArray[i].visibility = View.VISIBLE
                  mHistoryArray[i].setText( mSaveList[i])

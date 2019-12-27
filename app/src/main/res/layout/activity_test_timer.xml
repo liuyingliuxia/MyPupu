@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".test.TestTimerActivity">
+
+<!--    <Chronometer
+        android:id="@+id/ctTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/mmm_font_s10"
+        android:background="@drawable/mmm_o01_s03_s00"
+        android:textColor="@color/color1"
+        android:focusable="true"/>
+
+
+    <Button
+        android:id="@+id/btnGo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color3"
+        android:text="@string/mmm_ok"/>-->
+
+    <include
+        layout="@layout/item_flash_sale_head"/>
+
+    <com.mmm.mypupu.ui.widgets.CountdownButton
+        android:id="@+id/btnCountDown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mmm_ok"/>
+</LinearLayout>

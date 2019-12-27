@@ -17,6 +17,7 @@ import com.mmm.mypupu.ui.adapter.RecommendationAdapter
 import com.mmm.mypupu.ui.adapter.SearchResultAdapter
 import com.mmm.mypupu.ui.bean.Goods
 import com.mmm.mypupu.ui.data.*
+import com.mmm.mypupu.util.ItemState.changedItemState3
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.activity_search.tvSearch
 import kotlinx.android.synthetic.main.container_home.*
@@ -28,7 +29,6 @@ import kotlinx.android.synthetic.main.item_filter.*
 import kotlinx.android.synthetic.main.toolbar_main.*
 
 class SearchResultFragment : Fragment(),View.OnClickListener, SwipeRefreshLayout.OnRefreshListener{
-    private var rbClickTiems = 0
     private var list :MutableList<Goods > = ArrayList ()
     private lateinit var searchResultAdapter: SearchResultAdapter
     private lateinit var linearLayoutManager: LinearLayoutManager
@@ -92,32 +92,7 @@ class SearchResultFragment : Fragment(),View.OnClickListener, SwipeRefreshLayout
         },500)
     }
 
-    //三种点击状态的切换
-    fun changedItemState3 (rb : RadioButton){
-        when (rbClickTiems){
-            0 -> {
-                rbClickTiems ++
-                rb.setTextColor(resources.getColor(R.color.color23))
-                val drawable = resources.getDrawable(R.drawable.icon_indicate_arrow_top_selected)
-                drawable.setBounds(0,0,drawable.minimumWidth,drawable.minimumHeight)
-                rb.setCompoundDrawables(null,null,drawable,null)
-            }
-            1 -> {
-                rbClickTiems ++
-                rb.setTextColor(resources.getColor(R.color.color23))
-                val drawable = resources.getDrawable(R.drawable.icon_indicate_arrow_bottom_selected)
-                drawable.setBounds(0,0,drawable.minimumWidth,drawable.minimumHeight)
-                rb.setCompoundDrawables(null,null,drawable,null)
-            }
-            2 -> {
-                rbClickTiems = 0
-                rb.setTextColor(resources.getColor(R.color.color5))
-                val drawable = resources.getDrawable(R.drawable.icon_indicate_arrow_no_selected)
-                drawable.setBounds(0,0,drawable.minimumWidth,drawable.minimumHeight)
-                rb.setCompoundDrawables(null,null,drawable,null)
-            }
-        }
-    }
+
 
     @SuppressLint("WrongConstant")
     override fun onClick(v: View?) {
@@ -126,12 +101,12 @@ class SearchResultFragment : Fragment(),View.OnClickListener, SwipeRefreshLayout
             }
             R.id.rbPrice ->{
                 Log.e("折扣 选中状态 ", rbDiscount.isChecked.toString())
-                changedItemState3(rbPrice)
+                changedItemState3(rbPrice,v)
             }
             R.id.rbDiscount ->{
                 Log.e("价格 选中状态 ", rbPrice.isChecked.toString())
                 rbDiscount.isChecked = !rbPrice.isChecked
-                changedItemState3(rbDiscount)
+                changedItemState3(rbDiscount,v)
             }
 
             R.id.tvOk ->{

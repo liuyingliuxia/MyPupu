@@ -71,7 +71,7 @@
     <string name="mmm_ok">完成</string>
     <string name="mmm_far_start">离本场开始</string>
     <string name="mmm_far_end">离本场结束</string>
-    <string name="mmm_hour">01</string>
+    <string name="mmm_hour">00</string>
     <string name="mmm_colon">:</string>
 
     <string name="mmm_flash_time9">09:00</string>

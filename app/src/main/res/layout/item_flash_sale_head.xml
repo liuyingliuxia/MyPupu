@@ -11,7 +11,8 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/color7">
 
         <!--抢购时间栏-->
         <LinearLayout
@@ -176,15 +177,15 @@
             android:textColor="@color/color3"
             android:text="@string/mmm_far_start"/>
 
-        <TextView
-            android:id="@+id/tvHour"
-            android:layout_width="@dimen/oval_radius"
-            android:layout_height="@dimen/oval_radius"
-            android:background="@drawable/mmm_o01_s03_s00"
-            android:text="@string/mmm_hour"
-            android:textColor="@color/color1"
-            android:gravity="center"
-            android:layout_marginLeft="@dimen/mmm_font_s4" />
+            <TextView
+                android:id="@+id/tvHour"
+                android:layout_width="@dimen/oval_radius"
+                android:layout_height="@dimen/oval_radius"
+                android:layout_marginLeft="@dimen/mmm_font_s4"
+                android:background="@drawable/mmm_o01_s03_s00"
+                android:gravity="center"
+                android:text="@string/mmm_hour"
+                android:textColor="@color/color1" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -224,5 +225,12 @@
 
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/mmm_font_s8"
+            android:layout_marginTop="115dp"
+            android:background="@color/color7"/>
+
     </FrameLayout>
+
 </LinearLayout>

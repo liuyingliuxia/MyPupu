@@ -70,4 +70,5 @@
     <dimen name="mmm_font_s66">66dp</dimen>
     <dimen name="mmm_font_s600">600dp</dimen>
     <dimen name="mmm_font_s800">800dp</dimen>
+    <dimen name="mmm_font_s120">120dp</dimen>
 </resources>

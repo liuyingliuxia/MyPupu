@@ -2,15 +2,22 @@ package com.mmm.mypupu.ui.adapter
 
 import android.content.Context
 import android.graphics.Paint
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.bean.Goods
+import kotlinx.android.synthetic.main.item_flash_sale_head.view.*
 import kotlinx.android.synthetic.main.item_recommend.view.*
+import java.text.ParsePosition
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
-class FlashSaleAdapter (var list: List<Goods>, var context: Context  ): RecyclerView.Adapter<RecyclerView.ViewHolder>(),View.OnClickListener {
+class FlashSaleAdapter (var list: List<Goods>, var context: Context  ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val TYPE_IMAGE = 0
     private val TYPE_GOODS = 1
 
@@ -35,9 +42,16 @@ class FlashSaleAdapter (var list: List<Goods>, var context: Context  ): Recycler
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val goods: Goods = list[position ]
-
+        //放在主线程 ，更新 ui
         if (TYPE_IMAGE ==  holder.itemViewType) {
-
+            holder.itemView.tag = position
+            val timeList = getNow()
+            if (timeList[0] < 9 ){
+                countDown(timeList[2])
+          /*      holder.itemView.tvHour.setText( timeList[0])
+                holder.itemView.tvMinute.setText(timeList[1])
+                holder.itemView.tvSecond.setText(timeList[2])*/
+            }
         }else if(TYPE_GOODS == holder.itemViewType){
 
             holder.itemView.tag = position
@@ -66,11 +80,41 @@ class FlashSaleAdapter (var list: List<Goods>, var context: Context  ): Recycler
 
     }
 
+
     class Holder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
-    override fun onClick(v: View?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+
+
+    fun  countDown( second : Int ) : String  {
+        var mSecond = ""
+        object : CountDownTimer(second.times(1000).toLong(), 1000) {
+
+            override fun onTick(millisUntilFinished: Long) {
+                val sec = millisUntilFinished.div(1000)
+                if ( sec > 9 )
+                    mSecond = sec.toString()
+                else
+                   mSecond = "0" + sec.toString()
+            }
+            override fun onFinish() {
+                mSecond = "59"
+            }
+
+        }.start()
+        return mSecond
     }
 
 
+
+    fun getNow(): List<Int> {
+     /*   if (android.os.Build.VERSION.SDK_INT >= 24){
+            return SimpleDateFormat(" HH:mm:ss").format(Date())
+        }else{*/
+            var tms = Calendar.getInstance()
+            val mTimeList = arrayListOf<Int>(tms.get(Calendar.HOUR_OF_DAY),tms.get(Calendar.MINUTE),tms.get(Calendar.SECOND))
+            return mTimeList
+       // }
+
+    }
 }
