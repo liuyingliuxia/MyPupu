@@ -34,6 +34,7 @@
                 <LinearLayout
                     android:id="@+id/llFruitSort1"
                     android:orientation="vertical"
+                    android:tag="@string/mmm_fruit_sort1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
@@ -60,6 +61,7 @@
                     android:id="@+id/llFruitSort2"
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
+                    android:tag="@string/mmm_fruit_sort2"
                     android:layout_height="wrap_content">
 
                     <ImageView
@@ -83,6 +85,7 @@
                     android:id="@+id/llFruitSort3"
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
+                    android:tag="@string/mmm_fruit_sort3"
                     android:layout_height="wrap_content">
 
                     <ImageView
@@ -105,6 +108,7 @@
                 <LinearLayout
                     android:id="@+id/llFruitSort4"
                     android:orientation="vertical"
+                    android:tag="@string/mmm_fruit_sort4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
@@ -128,6 +132,7 @@
                 <LinearLayout
                     android:id="@+id/llFruitSort5"
                     android:orientation="vertical"
+                    android:tag="@string/mmm_fruit_sort5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
@@ -152,6 +157,7 @@
                 <LinearLayout
                     android:id="@+id/llFruitSort6"
                     android:orientation="vertical"
+                    android:tag="@string/mmm_fruit_sort6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
@@ -175,6 +181,7 @@
                 <LinearLayout
                     android:id="@+id/llFruitSort7"
                     android:orientation="vertical"
+                    android:tag="@string/mmm_fruit_sort7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
@@ -198,6 +205,7 @@
                 <LinearLayout
                     android:id="@+id/llFruitSort8"
                     android:orientation="vertical"
+                    android:tag="@string/mmm_fruit_sort8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
@@ -221,6 +229,7 @@
                 <LinearLayout
                     android:id="@+id/llFruitSort9"
                     android:orientation="vertical"
+                    android:tag="@string/mmm_fruit_sort9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
@@ -244,6 +253,7 @@
                 <LinearLayout
                     android:id="@+id/llFruitSort10"
                     android:orientation="vertical"
+                    android:tag="@string/mmm_fruit_sort10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 

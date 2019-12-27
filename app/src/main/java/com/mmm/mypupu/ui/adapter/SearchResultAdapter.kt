@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import android.widget.RadioButton
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.view.marginRight
@@ -18,10 +19,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.bean.Goods
 import com.mmm.mypupu.ui.data.goodsNum
+import com.mmm.mypupu.util.myToast
 import kotlinx.android.synthetic.main.item_recommend.view.*
 
 class SearchResultAdapter (var list: List<Goods>, var context: Context  ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
+    private var rbClickTiems = 0
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
             val itemView = LayoutInflater.from(context).inflate(R.layout.item_recommend, parent, false)
             val holder= Holder(itemView)
@@ -55,6 +57,9 @@ class SearchResultAdapter (var list: List<Goods>, var context: Context  ): Recyc
             holder.itemView.ivSub.focusable = View.FOCUSABLE
             holder.itemView.requestFocus()
             itemAddClick(holder, position)
+            holder.itemView.llItemGoods.setOnClickListener { run{
+                myToast.myToast(context,goods.toString())
+            } }
     }
 
 
@@ -138,4 +143,5 @@ class SearchResultAdapter (var list: List<Goods>, var context: Context  ): Recyc
             }
         })
     }
+
 }

@@ -33,6 +33,6 @@ class Goods :Serializable{
     }
 
     override fun toString(): String {
-        return "Goods(mImgPath='$mImgPath', mName='$mName', mSubtitle='$mSubtitle', mQuantity='$mQuantity', mRemark='$mRemark', mPrice=$mPrice, mOriPrice=$mOriPrice, mNum=$mNum)"
+        return " 你点击了：$mName, 价格是：$mPrice 元"
     }
 }

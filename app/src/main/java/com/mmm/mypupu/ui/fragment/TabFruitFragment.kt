@@ -10,10 +10,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout
-import android.widget.ImageView
-import android.widget.RadioButton
-import android.widget.TextView
+import android.widget.*
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 
@@ -23,16 +20,20 @@ import com.mmm.mypupu.ui.adapter.RecommendationAdapter
 import com.mmm.mypupu.ui.bean.Goods
 import com.mmm.mypupu.ui.data.*
 import com.mmm.mypupu.ui.widgets.VerticalDrawerLayout
+import com.mmm.mypupu.util.myToast
 import kotlinx.android.synthetic.main.fragment_tab_fruit.*
 import kotlinx.android.synthetic.main.fragment_tab_fruit.view.*
 import kotlinx.android.synthetic.main.item_filter.*
 import kotlinx.android.synthetic.main.item_fruit.*
+import kotlinx.android.synthetic.main.toolbar_fruit.*
 
 class TabFruitFragment: Fragment(),View.OnClickListener {
     private var rbClickTiems = 0
     private var list :MutableList<Goods > = ArrayList ()
     private lateinit var fruitAdapter: FruitAdapter
     private lateinit var linearLayoutManager: LinearLayoutManager
+
+
     @SuppressLint("WrongConstant")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val mView = inflater.inflate(R.layout.fragment_tab_fruit, container, false)
@@ -47,12 +48,19 @@ class TabFruitFragment: Fragment(),View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+         val FruitSortList :ArrayList<LinearLayout>  = arrayListOf( llFruitSort1,llFruitSort2,llFruitSort3,llFruitSort4 ,llFruitSort5,
+            llFruitSort6 ,llFruitSort7,llFruitSort8,llFruitSort9 ,llFruitSort10 )
         tvInStock.setOnClickListener(this)
         rbPrice.setOnClickListener(this)
         rbDiscount.setOnClickListener(this)
         tvFilter.setOnClickListener(this)
-    }
 
+        for ( i in 0 until FruitSortList.size ){
+            FruitSortList[i].setOnClickListener { kotlin.run {
+                myToast.myToast(context!!,FruitSortList[i].tag.toString())
+            } }
+        }
+    }
 
     fun getList(): MutableList<Goods> {
 

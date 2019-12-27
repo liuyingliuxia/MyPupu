@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/mmm_c90_s07_s00_w0_r9010" android:state_checked="true" />
+    <item android:drawable="@drawable/mmm_c90_s07_s00_w0_r9010" android:state_selected="true" />
+    <item android:drawable="@drawable/mmm_c90_s15_s00_w0_r9004" />
+</selector>

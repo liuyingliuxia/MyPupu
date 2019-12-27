@@ -52,7 +52,6 @@ class RecommendationAdapter (var list: List<Goods>, var context: Context  ): Rec
         }else if(TYPE_GOODS == holder.itemViewType){
 
             holder.itemView.tag = position
-
             holder.itemView.ivGoods.setImageResource(goods.mImgPath)
             holder.itemView.tvTitle.text = goods.mName
             holder.itemView.tvSubtitle.text = goods.mSubtitle
@@ -70,7 +69,7 @@ class RecommendationAdapter (var list: List<Goods>, var context: Context  ): Rec
             holder.itemView.ivSub.setClickable(true)
             holder.itemView.ivSub.focusable = View.FOCUSABLE
             holder.itemView.requestFocus()
-           itemAddClick(holder , position)
+            itemAddClick(holder , position)
 
         }
     }
@@ -125,6 +124,11 @@ class RecommendationAdapter (var list: List<Goods>, var context: Context  ): Rec
         var num = 0
         val goods: Goods = list[position ]
 
+        holder.itemView.llItemGoods.setOnClickListener{
+            run {
+                Toast.makeText(context,goods.toString(),Toast.LENGTH_SHORT).show()
+            }
+        }
         holder.itemView.ivAdd.setOnClickListener( object :View.OnClickListener{
             @RequiresApi(Build.VERSION_CODES.O)
             override fun onClick(v: View?) {
@@ -165,6 +169,16 @@ class RecommendationAdapter (var list: List<Goods>, var context: Context  ): Rec
                 }
             }
         })
+    }
+
+    var onClick: RecommendationAdapter.OnItemClickListener? = null
+
+    fun setOnItemClick(onItemClickListener: RecommendationAdapter.OnItemClickListener) {
+        this.onClick = onItemClickListener
+    }
+
+    interface OnItemClickListener {
+        fun OnItemClick(view: View, position: Int)
     }
 
 }

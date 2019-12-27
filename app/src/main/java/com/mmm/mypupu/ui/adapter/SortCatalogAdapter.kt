@@ -44,7 +44,7 @@ class SortCatalogAdapter (private val context: Context , private val list: Array
         if ( ITEM_NAME == holder.itemViewType){
         holder.itemView.tvCatalog.text = item
         holder.itemView.tag = position
-        holder.itemView.llCatalog.setOnClickListener { v ->
+        holder.itemView.llCatalog.setOnClickListener {
             run {
                 holder.itemView.llCatalog.background = holder.itemView.resources.getDrawable(R.color.color1)
                 holder.itemView.ivVerCutLine.visibility = View.VISIBLE
@@ -55,7 +55,7 @@ class SortCatalogAdapter (private val context: Context , private val list: Array
                }
             }
            }
-        else { }
+
     }
 
     //整个item 点击事件的方法

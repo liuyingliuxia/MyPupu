@@ -15,7 +15,19 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.bean.Goods
+import kotlinx.android.synthetic.main.item_fruit.view.*
 import kotlinx.android.synthetic.main.item_recommend.view.*
+import kotlinx.android.synthetic.main.item_recommend.view.ivAdd
+import kotlinx.android.synthetic.main.item_recommend.view.ivGoods
+import kotlinx.android.synthetic.main.item_recommend.view.ivSub
+import kotlinx.android.synthetic.main.item_recommend.view.tvNum
+import kotlinx.android.synthetic.main.item_recommend.view.tvOriginalPrice
+import kotlinx.android.synthetic.main.item_recommend.view.tvPrice
+import kotlinx.android.synthetic.main.item_recommend.view.tvQuantity
+import kotlinx.android.synthetic.main.item_recommend.view.tvRemark
+import kotlinx.android.synthetic.main.item_recommend.view.tvSubtitle
+import kotlinx.android.synthetic.main.item_recommend.view.tvTitle
+import kotlinx.android.synthetic.main.item_recommend.view.tvY2
 
 class FruitAdapter (var list: List<Goods>, var context: Context  ): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
@@ -50,6 +62,11 @@ class FruitAdapter (var list: List<Goods>, var context: Context  ): RecyclerView
 
             itemAddClick(holder, position)
 
+        holder.itemView.llItemFruit.setOnClickListener{
+            run {
+                Toast.makeText(context,goods.toString(),Toast.LENGTH_SHORT).show()
+            }
+        }
         }
 
     fun itemAddClickAnimator (holder: RecyclerView.ViewHolder){

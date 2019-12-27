@@ -16,7 +16,19 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.bean.Goods
+import kotlinx.android.synthetic.main.item_crazy_discount.view.*
 import kotlinx.android.synthetic.main.item_recommend.view.*
+import kotlinx.android.synthetic.main.item_recommend.view.ivAdd
+import kotlinx.android.synthetic.main.item_recommend.view.ivGoods
+import kotlinx.android.synthetic.main.item_recommend.view.ivSub
+import kotlinx.android.synthetic.main.item_recommend.view.tvNum
+import kotlinx.android.synthetic.main.item_recommend.view.tvOriginalPrice
+import kotlinx.android.synthetic.main.item_recommend.view.tvPrice
+import kotlinx.android.synthetic.main.item_recommend.view.tvQuantity
+import kotlinx.android.synthetic.main.item_recommend.view.tvRemark
+import kotlinx.android.synthetic.main.item_recommend.view.tvSubtitle
+import kotlinx.android.synthetic.main.item_recommend.view.tvTitle
+import kotlinx.android.synthetic.main.item_recommend.view.tvY2
 
 class CrazyDiscountAdapter (var list: List<Goods>, var context: Context  ):
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -65,6 +77,11 @@ class CrazyDiscountAdapter (var list: List<Goods>, var context: Context  ):
                 holder.itemView.tvRemark.visibility = View.INVISIBLE
             }
             itemAddClick(holder,position)
+            holder.itemView.llItemCrazy.setOnClickListener{
+                run {
+                    Toast.makeText(context,goods.toString(),Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 

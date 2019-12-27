@@ -36,7 +36,7 @@ class MainActivity :AppCompatActivity(),View.OnClickListener{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         //设置沉浸式状态栏
-         StatusBarCompat.setStatusBarColor(this, getColor(R.color.color1), true)
+        StatusBarCompat.setStatusBarColor(this, getColor(R.color.color1), true)
         initFragment()
         changeFragment(0)
         rbHome.setOnClickListener(this)
@@ -72,6 +72,5 @@ class MainActivity :AppCompatActivity(),View.OnClickListener{
             }
         }
     }
-
 
 }

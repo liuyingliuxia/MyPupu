@@ -6,12 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.adapter.RecommendationAdapter
+import com.mmm.mypupu.ui.adapter.SearchInputAutoAdapter
 import com.mmm.mypupu.ui.bean.Goods
 import com.mmm.mypupu.ui.data.*
+import com.mmm.mypupu.ui.widgets.SaveHistory
+import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.fragment_tab_recommend.view.*
 
 class TabRecommendFragment : Fragment() {
@@ -42,7 +46,6 @@ class TabRecommendFragment : Fragment() {
     }
 
     companion object {
-
         @JvmStatic
         fun newInstance(sectionNumber: Int): TabRecommendFragment {
             return TabRecommendFragment().apply {

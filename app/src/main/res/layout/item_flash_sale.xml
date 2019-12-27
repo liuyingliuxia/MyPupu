@@ -5,6 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:background="@color/color1"
+    android:id="@+id/llItemFlash"
     android:layout_height="130dp">
 
     <ImageView
@@ -108,6 +109,7 @@
         app:layout_constraintLeft_toRightOf="@id/tvY2"/>
 
     <TextView
+        android:id="@+id/tvNowRush"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/mmm_right_now"
@@ -118,7 +120,7 @@
         android:paddingTop="@dimen/mmm_font_s2"
         android:paddingBottom="2dp"
         android:layout_marginRight="@dimen/mmm_font_s10"
-        android:background="@drawable/mmm_c90_s15_s00_w0_r9004"
+        android:background="@drawable/tool_state_pressed_rush"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="@id/tvPrice"/>
