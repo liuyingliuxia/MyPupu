@@ -30,7 +30,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.math.absoluteValue
 
-class FlashSaleAdapter (var list: List<Goods>, var context: Context  ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class FlashSaleAdapter (var list: ArrayList<Goods>, var context: Context  ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val TYPE_IMAGE = 0
     private val TYPE_GOODS = 1
 
@@ -136,7 +136,6 @@ class FlashSaleAdapter (var list: List<Goods>, var context: Context  ): Recycler
                 countDown2(holder)
             }
             override fun onTick(millisUntilFinished: Long) {
-                val timeList = getNow()
                /* holder.itemView.tvHour.setText(timeList[0])
                 holder.itemView.tvMinute.setText(timeList[1])*/
                 val sec = millisUntilFinished.div(1000)

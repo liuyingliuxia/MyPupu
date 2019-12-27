@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.fragment_tab_recommend.view.*
 
 class FlashTimeFragment : Fragment() {
 
-    private var list :MutableList<Goods > = ArrayList ()
+    private var list :ArrayList<Goods > = ArrayList ()
     private lateinit var flashAdapter: FlashSaleAdapter
     private lateinit var linearLayoutManager: LinearLayoutManager
     override fun onCreateView(
@@ -35,7 +35,7 @@ class FlashTimeFragment : Fragment() {
         return mView
     }
 
-    fun getList(): MutableList<Goods> {
+    fun getList(): ArrayList<Goods> {
 
         for (i in 0 until goodsImg.size) {
             list.add(Goods(goodsImg[i], goodsTitle[i], goodsSubtitle[i], goodsQuantity[i], goodsRemark[i], goodsPrice[i], goodsOriginPrice[i], goodsNum[i]))

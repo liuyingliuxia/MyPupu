@@ -51,3 +51,11 @@ val sResultPrice: ArrayList<Double> = arrayListOf(5.8,6.32,3.15)
 val sResultOriPrice :ArrayList<Double>  = arrayListOf(7.9,8.8,4.8)
 
 val test :ArrayList<String> = arrayListOf("1","2","3","4","5","6","7","8","9","10")
+
+val mCatalogText :ArrayList<String> = arrayListOf("火锅节","水果", "蔬菜", "肉禽蛋", "海鲜水产", "粮油调味料", "早点", "熟食冻品", "牛奶面包", "酒水冲饮", "休闲零食",
+    "日用清洁" ,"护理美妆", "母婴", "鲜花宠物", "进口商品 ","地方特产")
+
+val mContentHeadImg :ArrayList<Int > = arrayListOf(R.drawable.sort_head1,R.drawable.sort_head2,R.drawable.sort_head3,
+    R.drawable.sort_head1, R.drawable.sort_head5,R.drawable.sort_head6,R.drawable.sort_head7, R.drawable.sort_head8,R.drawable.sort_head9,
+    R.drawable.sort_head10,R.drawable.sort_head11,R.drawable.sort_head12, R.drawable.sort_head13,R.drawable.sort_head14,
+    R.drawable.sort_head15,R.drawable.sort_head16,R.drawable.sort_head17)

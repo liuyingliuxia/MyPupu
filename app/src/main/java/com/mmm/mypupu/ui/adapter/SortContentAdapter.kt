@@ -12,11 +12,12 @@ import android.widget.AdapterView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.mmm.mypupu.R
+import com.mmm.mypupu.ui.bean.Catalog
 import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.item_sort_catalog.view.*
 import kotlinx.android.synthetic.main.item_sort_content.view.*
 
-class SortContentAdapter (private val context: Context , private val list: ArrayList<Int> ):RecyclerView.Adapter<RecyclerView.ViewHolder>()  {
+class SortContentAdapter (private val context: Context , private val list: ArrayList<Catalog> ):RecyclerView.Adapter<RecyclerView.ViewHolder>()  {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
             val itemView = LayoutInflater.from(context).inflate(R.layout.item_sort_content, parent, false)
@@ -30,8 +31,9 @@ class SortContentAdapter (private val context: Context , private val list: Array
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val item = list[position]
-         holder.itemView.ivContent.setImageResource(item)
+         val mCatalog :Catalog = list[position]
+
          holder.itemView.tag = position
+        holder.itemView.ivHead.setImageResource(mCatalog.mHeadImg)
         }
 }
