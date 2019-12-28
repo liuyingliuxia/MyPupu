@@ -28,10 +28,11 @@
 
 
             <ImageView
-                android:layout_width="80dp"
+                android:id="@+id/ivSort1_1"
+                android:layout_width="72dp"
                 android:layout_height="@dimen/mmm_font_s60"
-                android:src="@drawable/sort1_1"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:src="@drawable/sort1_1" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -55,6 +56,7 @@
 
 
             <ImageView
+                android:id="@+id/ivSort1_2"
                 android:layout_width="80dp"
                 android:layout_height="@dimen/mmm_font_s60"
                 android:src="@drawable/sort1_1"
@@ -82,6 +84,7 @@
 
 
             <ImageView
+                android:id="@+id/ivSort1_3"
                 android:layout_width="80dp"
                 android:layout_height="@dimen/mmm_font_s60"
                 android:src="@drawable/sort1_1"
@@ -109,6 +112,7 @@
 
 
             <ImageView
+                android:id="@+id/ivSort1_4"
                 android:layout_width="80dp"
                 android:layout_height="@dimen/mmm_font_s60"
                 android:src="@drawable/sort1_1"
@@ -352,10 +356,10 @@
 
 
             <ImageView
-                android:layout_width="80dp"
+                android:layout_width="76dp"
                 android:layout_height="@dimen/mmm_font_s60"
-                android:src="@drawable/icon_more"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:src="@drawable/icon_more" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -375,7 +379,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="@dimen/mmm_font_s20"
-            android:visibility="invisible"
+            android:visibility="visible"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1">
 
@@ -402,7 +406,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:visibility="invisible"
+            android:visibility="visible"
             android:padding="@dimen/mmm_font_s20"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1">

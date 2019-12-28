@@ -46,4 +46,6 @@ dependencies {
     implementation 'com.ashokvarma.android:bottom-navigation-bar:2.1.0'
     //RecyclerView通用适配器
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.28'
+  /*  implementation 'com.github.CarGuo.LazyRecyclerAdapter:CommonRecycler-Kotlin:v4.0.0'*/
+
 }

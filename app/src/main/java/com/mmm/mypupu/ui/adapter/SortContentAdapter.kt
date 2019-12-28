@@ -13,6 +13,8 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.bean.Catalog
+import com.mmm.mypupu.ui.data.mSortHeadTag
+import com.mmm.mypupu.util.myToast
 import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.item_sort_catalog.view.*
 import kotlinx.android.synthetic.main.item_sort_content.view.*
@@ -34,6 +36,14 @@ class SortContentAdapter (private val context: Context , private val list: Array
          val mCatalog :Catalog = list[position]
 
          holder.itemView.tag = position
-        holder.itemView.ivHead.setImageResource(mCatalog.mHeadImg)
+         holder.itemView.ivHead.setImageResource(mCatalog.mHeadImg)
+         val h = holder.itemView
+         h.ivHead.setOnClickListener{run{
+            myToast.myToast(context, mSortHeadTag[position])
+        }}
+
+
         }
+
+
 }

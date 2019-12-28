@@ -108,7 +108,7 @@
         app:layout_constraintBottom_toBottomOf="@id/tvPrice"
         app:layout_constraintLeft_toRightOf="@id/tvY2"/>
 
-    <TextView
+    <RadioButton
         android:id="@+id/tvNowRush"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -119,6 +119,7 @@
         android:paddingRight="@dimen/mmm_font_s10"
         android:paddingTop="@dimen/mmm_font_s2"
         android:paddingBottom="2dp"
+        android:button="@null"
         android:layout_marginRight="@dimen/mmm_font_s10"
         android:background="@drawable/tool_state_pressed_rush"
         app:layout_constraintRight_toRightOf="parent"

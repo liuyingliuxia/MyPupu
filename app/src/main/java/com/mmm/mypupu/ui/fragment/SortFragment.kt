@@ -11,9 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
 import androidx.annotation.RequiresApi
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearSnapHelper
-import androidx.recyclerview.widget.SnapHelper
+import androidx.recyclerview.widget.*
 
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.adapter.SortContentAdapter
@@ -47,9 +45,7 @@ class SortFragment : Fragment() {
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
         mView.rvContent.layoutManager =linearLayoutManager
         mView.rvContent.adapter = sortContentAdapter
-        //点击定位到对应的 item
-        val snap = LinearSnapHelper()
-        snap.attachToRecyclerView(vp2SortContext)
+
         return mView
     }
 
@@ -60,6 +56,9 @@ class SortFragment : Fragment() {
 
         initCatalogText(mCatalogId)
 
+        //一次只能滑动一页，不能快速滑动
+        val pagerSnapHelper = PagerSnapHelper()
+        pagerSnapHelper.attachToRecyclerView(rvContent)
         ivSearch.setOnClickListener{v->run{
             val intent  = Intent()
             intent.setClass(this@SortFragment.context!!, SearchActivity::class.java)
@@ -78,9 +77,12 @@ class SortFragment : Fragment() {
 
 
     fun initCatalogText (mList :ArrayList <RadioButton> ){
+        val llm : LinearLayoutManager = rvContent.layoutManager as LinearLayoutManager
+
         for ( i in 0 .. 16 ){
             mList[i].setText(mCatalogText[i])
             mList[i].setOnClickListener { run{
+                //让其他按钮变回原样
                 mList[i].setTypeface(Typeface.defaultFromStyle(Typeface.BOLD))
                 val mSize: Float = resources.getDimension(R.dimen.mmm_font_s5)
                 mList[i].setTextSize(mSize)
@@ -92,8 +94,33 @@ class SortFragment : Fragment() {
                 {
                     mList[k].setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL))
                     val mSizeNor: Float = resources.getDimension(R.dimen.mmm_font_s4)
-                    mList[k].setTextSize(mSizeNor)}
+                    mList[k].setTextSize(mSizeNor)
+                }
+                //切换到指定的item
+             /*同样效果
+              llm.scrollToPositionWithOffset( i , 0 )
+                llm.stackFromEnd = false*/
+                moveToPosition(i)
             } }
         }
     }
+
+
+    private var move = false
+    fun moveToPosition(index : Int){
+        val firstItem = linearLayoutManager.findFirstVisibleItemPosition()
+        val lastItem = linearLayoutManager.findLastVisibleItemPosition()
+        if ( index <= firstItem){
+            rvContent.scrollToPosition(index)
+        }else if ( index <= lastItem){
+            val top = rvContent.getChildAt(index - firstItem).top
+            rvContent.scrollBy(0,top)
+        }else {
+            rvContent.scrollToPosition(index)
+            move = true
+        }
+    }
+
+
+
 }

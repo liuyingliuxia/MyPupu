@@ -25,7 +25,7 @@ public val searchHint :ArrayList <String > = arrayListOf("悠菜来流星包 0.9
 
 //首页的水果分类栏
 val fruit_sort :ArrayList <String > = arrayListOf("台湾水果节","新品尝鲜","车厘子蓝莓","果切拼盘","桔/橙/柑/...",
-    "苹果/梨/..." ,"热爱水果" ,"葡/提/莓果","奇异果","瓜类")
+    "苹果/梨/..." ,"热带水果" ,"葡/提/莓果","奇异果","瓜类")
 //首页水果分类的图片
 val fruit_sort_img :ArrayList <Int> = arrayListOf(R.drawable.fruit_sort1,R.drawable.fruit_sort2,R.drawable.fruit_sort3,R.drawable.fruit_sort4,R.drawable.fruit_sort5,
     R.drawable.fruit_sort6,R.drawable.fruit_sort7,R.drawable.fruit_sort8,R.drawable.fruit_sort9,R.drawable.fruit_sort10)
@@ -59,3 +59,52 @@ val mContentHeadImg :ArrayList<Int > = arrayListOf(R.drawable.sort_head1,R.drawa
     R.drawable.sort_head1, R.drawable.sort_head5,R.drawable.sort_head6,R.drawable.sort_head7, R.drawable.sort_head8,R.drawable.sort_head9,
     R.drawable.sort_head10,R.drawable.sort_head11,R.drawable.sort_head12, R.drawable.sort_head13,R.drawable.sort_head14,
     R.drawable.sort_head15,R.drawable.sort_head16,R.drawable.sort_head17)
+
+val mSortName1 : ArrayList<String >  = arrayListOf("肉" , "鱼虾蟹贝", "蔬菜" ,"丸子/面条" ,"豆制品","酒水饮料","熟食卤味" ,"水果","酸奶甜点" ,"调味底料","餐具","一次性用品","全部火锅节")
+val mSortName2 : ArrayList<String> = arrayListOf("水果礼盒","台湾水果节","新品尝鲜","车厘子蓝莓","果切拼盘","桔/橙/柑/柚",
+    "苹果/梨/香蕉" ,"热带水果" ,"奇异果","瓜类","桃/李/杏/枣","进口水果","全部水果")
+val mSortName3 : ArrayList<String> = arrayListOf("平价菜","稀奇菜","方便菜","火锅菜","地方菜","有机蔬菜","绿色认证蔬菜","品牌蔬菜","叶菜","根茎菜","调味菜",
+    "豆瓜果茄","菌菇","豆制品","沙拉/配料","干货","酱料","全部蔬菜")
+val mSortName4 : ArrayList<String> = arrayListOf("平价猪肉","土猪肉","火锅肉片","牛肉","羊肉","蛋","土鸡土鸭","鸡鸭禽肉","煲汤滋补","牛排","方便菜","香肠腊味","烧烤撸串","全部肉禽蛋")
+val mSortName5 : ArrayList<String> = arrayListOf("大闸蟹","三文鱼/鳕鱼","深海捕捞","地方特色水产","天然河鲜","鱼","虾","蟹","贝","鱿鱼章鱼","生蚝海参",
+    "海蜇海藻","方便菜","海产干货","全部海鲜水产")
+val mSortImg1 :ArrayList<Int> = arrayListOf(R.drawable.sort1_1,R.drawable.sort1_2,R.drawable.sort1_3,R.drawable.sort1_4,R.drawable.sort1_5,R.drawable.sort1_6,
+R.drawable.sort1_7,R.drawable.sort1_8,R.drawable.sort1_9,R.drawable.sort1_10,R.drawable.sort1_11,R.drawable.sort1_12,R.drawable.icon_more)
+
+val mSortImg2 : ArrayList<Int> = arrayListOf(R.drawable.sort2_1,R.drawable.fruit_sort1,R.drawable.fruit_sort2,R.drawable.fruit_sort3,R.drawable.fruit_sort4,R.drawable.fruit_sort5,
+    R.drawable.fruit_sort6,R.drawable.fruit_sort7,R.drawable.fruit_sort8,R.drawable.fruit_sort9,R.drawable.fruit_sort10,R.drawable.sort2_12,R.drawable.sort2_13,R.drawable.icon_more)
+
+val mSortNum :ArrayList<Int> = arrayListOf(13,14,18,14,15,16,14,14,15,22,14,20,14,9,9,12,6)
+val mSortHeadTag :ArrayList<String> = arrayListOf("燃情火锅季","徐香猕猴桃 6.98元/500g","悠拣菜七叶心 2.99元/300g","燃情火锅季","碧渔鱿鱼（冻） 29.8元/300g",
+    "合味道杯面（部分） 满15减3元","大希地帕尼尼 满20减8元","猪肚莲子汤 49.9元/750g","新希望低温纯牛奶 1.9元/180ml" ,"法国进口1664啤酒 7.5元/250ml","沃隆系列产品 满99减30元",
+    "学生文具 满48减10元", "樱花花瓣沐浴露 19.9元/380ml","宝宝的圣诞礼物 精选上市","宠物系列 （部分） 满25减5元","什锦巧克力制品 69元/650g","马大姐糖果 买一送一")
+
+val mAllName1 :ArrayList<String> = arrayListOf("肉","水果礼盒","平价菜","平价猪肉","大闸蟹","网红驾到","面包烘培","卤味","鲜奶","整箱特惠","网红驾到","冬日防寒","面部护肤",
+    "婴幼儿奶粉","鲜花","进口海鲜","福州特产")
+
+val mAllName2 :ArrayList<String> = arrayListOf("鱼虾蟹贝","台湾水果节","稀奇菜")
+
+val mAllName3 :ArrayList<String> = arrayListOf("蔬菜","新品尝鲜")
+
+val mAllName4 :ArrayList<String> = arrayListOf("丸子/面条","车厘子蓝莓")
+
+val mAllName5 :ArrayList<String> = arrayListOf("豆制品","果切拼盘")
+
+val mAllName6 :ArrayList<String> = arrayListOf("酒水饮料","桔/橙/柑/柚")
+
+val mAllName7 :ArrayList<String> = arrayListOf("熟食卤味","苹果/梨/香蕉")
+
+val mAllName8 :ArrayList<String> = arrayListOf("水果" ,"热带水果")
+
+val mAllName9 :ArrayList<String> = arrayListOf("酸奶/甜点", "葡/提/莓果")
+
+val mAllName10 :ArrayList<String> = arrayListOf("调味底料","奇异果")
+
+val mAllName11 :ArrayList<String> = arrayListOf("餐具","瓜类")
+
+val mAllName12 :ArrayList<String> = arrayListOf("一次性用品","桃/李/杏/枣")
+
+val mAllName13 :ArrayList<String> = arrayListOf("全部火锅节","进口水果")
+val mAllName14 :ArrayList<String> = arrayListOf("","全部水果")
+
+val mAllName15 :ArrayList<String> = arrayListOf("")
