@@ -28,18 +28,19 @@
 
 
             <ImageView
-                android:id="@+id/ivSort1_1"
-                android:layout_width="72dp"
-                android:layout_height="@dimen/mmm_font_s60"
-                android:layout_gravity="center"
-                android:src="@drawable/sort1_1" />
+                android:id="@+id/ivSort1"
+                android:layout_width="80dp"
+                android:layout_height="60dp"
+                android:src="@drawable/close_2"
+                android:layout_gravity="center" />
 
             <TextView
+                android:id="@+id/tvSort1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/mmm_meat"
                 android:textColor="@color/color3"
                 android:layout_marginTop="@dimen/mmm_font_s2"
+                android:text="@string/mmm_zero"
                 android:textSize="@dimen/mmm_font_s16"
                 android:layout_gravity="center"/>
 
@@ -56,18 +57,19 @@
 
 
             <ImageView
-                android:id="@+id/ivSort1_2"
+                android:id="@+id/ivSort2"
                 android:layout_width="80dp"
                 android:layout_height="@dimen/mmm_font_s60"
-                android:src="@drawable/sort1_1"
+                android:src="@drawable/close_2"
                 android:layout_gravity="center"/>
 
             <TextView
+                android:id="@+id/tvSort2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/mmm_meat"
                 android:textColor="@color/color3"
                 android:layout_marginTop="@dimen/mmm_font_s2"
+                android:text="@string/mmm_zero"
                 android:textSize="@dimen/mmm_font_s16"
                 android:layout_gravity="center"/>
 
@@ -84,16 +86,17 @@
 
 
             <ImageView
-                android:id="@+id/ivSort1_3"
+                android:id="@+id/ivSort3"
                 android:layout_width="80dp"
                 android:layout_height="@dimen/mmm_font_s60"
-                android:src="@drawable/sort1_1"
+                android:src="@drawable/close_2"
                 android:layout_gravity="center"/>
 
             <TextView
+                android:id="@+id/tvSort3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/mmm_meat"
+                 android:text="@string/mmm_zero"
                 android:textColor="@color/color3"
                 android:layout_marginTop="@dimen/mmm_font_s2"
                 android:textSize="@dimen/mmm_font_s16"
@@ -112,16 +115,17 @@
 
 
             <ImageView
-                android:id="@+id/ivSort1_4"
+                android:id="@+id/ivSort4"
                 android:layout_width="80dp"
                 android:layout_height="@dimen/mmm_font_s60"
-                android:src="@drawable/sort1_1"
+                android:src="@drawable/close_2"
                 android:layout_gravity="center"/>
 
             <TextView
+                android:id="@+id/tvSort4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/mmm_meat"
+                 android:text="@string/mmm_zero"
                 android:textColor="@color/color3"
                 android:layout_marginTop="@dimen/mmm_font_s2"
                 android:textSize="@dimen/mmm_font_s16"
@@ -140,15 +144,17 @@
 
 
             <ImageView
+                android:id="@+id/ivSort5"
                 android:layout_width="80dp"
                 android:layout_height="@dimen/mmm_font_s60"
-                android:src="@drawable/sort1_1"
+                android:src="@drawable/close_2"
                 android:layout_gravity="center"/>
 
             <TextView
+                android:id="@+id/tvSort5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/mmm_meat"
+                 android:text="@string/mmm_zero"
                 android:textColor="@color/color3"
                 android:layout_marginTop="@dimen/mmm_font_s2"
                 android:textSize="@dimen/mmm_font_s16"
@@ -167,15 +173,17 @@
 
 
             <ImageView
+                android:id="@+id/ivSort6"
                 android:layout_width="80dp"
                 android:layout_height="@dimen/mmm_font_s60"
-                android:src="@drawable/sort1_1"
+                android:src="@drawable/close_2"
                 android:layout_gravity="center"/>
 
             <TextView
+                android:id="@+id/tvSort6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/mmm_meat"
+                 android:text="@string/mmm_zero"
                 android:textColor="@color/color3"
                 android:layout_marginTop="@dimen/mmm_font_s2"
                 android:textSize="@dimen/mmm_font_s16"
@@ -194,15 +202,17 @@
 
 
             <ImageView
+                android:id="@+id/ivSort7"
                 android:layout_width="80dp"
                 android:layout_height="@dimen/mmm_font_s60"
-                android:src="@drawable/sort1_1"
+                android:src="@drawable/close_2"
                 android:layout_gravity="center"/>
 
             <TextView
+                android:id="@+id/tvSort7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/mmm_meat"
+                 android:text="@string/mmm_zero"
                 android:textColor="@color/color3"
                 android:layout_marginTop="@dimen/mmm_font_s2"
                 android:textSize="@dimen/mmm_font_s16"
@@ -221,15 +231,17 @@
 
 
             <ImageView
+                android:id="@+id/ivSort8"
                 android:layout_width="80dp"
                 android:layout_height="@dimen/mmm_font_s60"
-                android:src="@drawable/sort1_1"
+                android:src="@drawable/close_2"
                 android:layout_gravity="center"/>
 
             <TextView
+                android:id="@+id/tvSort8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/mmm_meat"
+                 android:text="@string/mmm_zero"
                 android:textColor="@color/color3"
                 android:layout_marginTop="@dimen/mmm_font_s2"
                 android:textSize="@dimen/mmm_font_s16"
@@ -248,15 +260,17 @@
 
 
             <ImageView
+                android:id="@+id/ivSort9"
                 android:layout_width="80dp"
                 android:layout_height="@dimen/mmm_font_s60"
-                android:src="@drawable/sort1_1"
+                android:src="@drawable/close_2"
                 android:layout_gravity="center"/>
 
             <TextView
+                android:id="@+id/tvSort9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/mmm_meat"
+                 android:text="@string/mmm_zero"
                 android:textColor="@color/color3"
                 android:layout_marginTop="@dimen/mmm_font_s2"
                 android:textSize="@dimen/mmm_font_s16"
@@ -275,15 +289,17 @@
 
 
             <ImageView
+                android:id="@+id/ivSort10"
                 android:layout_width="80dp"
                 android:layout_height="@dimen/mmm_font_s60"
-                android:src="@drawable/sort1_1"
+                android:src="@drawable/close_2"
                 android:layout_gravity="center"/>
 
             <TextView
+                android:id="@+id/tvSort10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/mmm_meat"
+                 android:text="@string/mmm_zero"
                 android:textColor="@color/color3"
                 android:layout_marginTop="@dimen/mmm_font_s2"
                 android:textSize="@dimen/mmm_font_s16"
@@ -302,15 +318,17 @@
 
 
             <ImageView
+                android:id="@+id/ivSort11"
                 android:layout_width="80dp"
                 android:layout_height="@dimen/mmm_font_s60"
-                android:src="@drawable/sort1_1"
+                android:src="@drawable/close_2"
                 android:layout_gravity="center"/>
 
             <TextView
+                android:id="@+id/tvSort11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/mmm_meat"
+                 android:text="@string/mmm_zero"
                 android:textColor="@color/color3"
                 android:layout_marginTop="@dimen/mmm_font_s2"
                 android:textSize="@dimen/mmm_font_s16"
@@ -327,17 +345,18 @@
             android:layout_columnWeight="1"
             android:layout_rowWeight="1">
 
-
             <ImageView
+                android:id="@+id/ivSort12"
                 android:layout_width="80dp"
                 android:layout_height="@dimen/mmm_font_s60"
-                android:src="@drawable/sort1_1"
+                android:src="@drawable/close_2"
                 android:layout_gravity="center"/>
 
             <TextView
+                android:id="@+id/tvSort12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/mmm_meat"
+                 android:text="@string/mmm_zero"
                 android:textColor="@color/color3"
                 android:layout_marginTop="@dimen/mmm_font_s2"
                 android:textSize="@dimen/mmm_font_s16"
@@ -356,17 +375,19 @@
 
 
             <ImageView
+                android:id="@+id/ivSort13"
                 android:layout_width="76dp"
                 android:layout_height="@dimen/mmm_font_s60"
-                android:layout_gravity="center"
-                android:src="@drawable/icon_more" />
+                android:src="@drawable/close_2"
+                android:layout_gravity="center" />
 
             <TextView
+                android:id="@+id/tvSort13"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/mmm_meat"
+                 android:text="@string/mmm_zero"
                 android:textColor="@color/color3"
-                android:visibility="invisible"
+                android:visibility="visible"
                 android:layout_marginTop="@dimen/mmm_font_s2"
                 android:textSize="@dimen/mmm_font_s16"
                 android:layout_gravity="center"/>
@@ -385,15 +406,17 @@
 
 
             <ImageView
+                android:id="@+id/ivSort14"
                 android:layout_width="80dp"
                 android:layout_height="@dimen/mmm_font_s60"
-                android:src="@drawable/sort1_1"
+                android:src="@drawable/close_2"
                 android:layout_gravity="center"/>
 
             <TextView
+                android:id="@+id/tvSort14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/mmm_meat"
+                 android:text="@string/mmm_zero"
                 android:textColor="@color/color3"
                 android:layout_marginTop="@dimen/mmm_font_s2"
                 android:textSize="@dimen/mmm_font_s16"
@@ -413,15 +436,17 @@
 
 
             <ImageView
+                android:id="@+id/ivSort15"
                 android:layout_width="80dp"
                 android:layout_height="@dimen/mmm_font_s60"
-                android:src="@drawable/sort1_1"
+                android:src="@drawable/close_2"
                 android:layout_gravity="center"/>
 
             <TextView
+                android:id="@+id/tvSort15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/mmm_meat"
+                 android:text="@string/mmm_zero"
                 android:textColor="@color/color3"
                 android:layout_marginTop="@dimen/mmm_font_s2"
                 android:textSize="@dimen/mmm_font_s16"

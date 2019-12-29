@@ -21,6 +21,7 @@
     <string name="mmm_goods_ori_price">原价</string>
     <string name="main_tab_default" />
     <string name="mmm_zero_f">0.0</string>
+    <string name="mmm_zero">0</string>
     <string name="mmm_discount">折扣</string>
     <string name="mmm_filter">筛选</string>
     <string name="mmm_sub">-</string>

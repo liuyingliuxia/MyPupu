@@ -25,7 +25,7 @@
             android:background="@color/color7"/>
 
            <!-- 有商品时显示：-->
-            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            <com.mmm.mypupu.ui.widgets.VpSwipeRefreshLayout
                 android:id="@+id/srlSearch"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -36,7 +36,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 
-            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+            </com.mmm.mypupu.ui.widgets.VpSwipeRefreshLayout>
            <!-- 无商品时显示：-->
             <LinearLayout
                 android:id="@+id/llNoGoods"

@@ -79,7 +79,7 @@ class FlashSaleAdapter (var list: ArrayList<Goods>, var context: Context  ): Rec
                 }
 
                 minHour == 11 && maxHour == 14 ->{
-                    holder.itemView.tvHour.setText("0"+13.minus(timeList[0]).absoluteValue.toString())
+                    holder.itemView.tvHour.setText("0"+Math.abs(13.minus(timeList[0])).toString())
                 }
                 minHour == 14 && maxHour == 16 -> {
                     holder.itemView.tvHour.setText("0"+15.minus(timeList[0]).absoluteValue.toString())

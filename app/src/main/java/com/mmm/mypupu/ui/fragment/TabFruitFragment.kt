@@ -2,29 +2,23 @@ package com.mmm.mypupu.ui.fragment
 
 
 import android.annotation.SuppressLint
-import android.media.Image
 import android.os.Bundle
 import android.util.Log
-import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.adapter.FruitAdapter
-import com.mmm.mypupu.ui.adapter.RecommendationAdapter
 import com.mmm.mypupu.ui.bean.Goods
 import com.mmm.mypupu.ui.data.*
-import com.mmm.mypupu.ui.widgets.VerticalDrawerLayout
-import com.mmm.mypupu.util.myToast
+import com.mmm.mypupu.util.mT
 import kotlinx.android.synthetic.main.fragment_tab_fruit.*
 import kotlinx.android.synthetic.main.fragment_tab_fruit.view.*
 import kotlinx.android.synthetic.main.item_filter.*
-import kotlinx.android.synthetic.main.item_fruit.*
 import kotlinx.android.synthetic.main.toolbar_fruit.*
 
 class TabFruitFragment: Fragment(),View.OnClickListener {
@@ -57,7 +51,8 @@ class TabFruitFragment: Fragment(),View.OnClickListener {
 
         for ( i in 0 until FruitSortList.size ){
             FruitSortList[i].setOnClickListener { kotlin.run {
-                myToast.myToast(context!!,FruitSortList[i].tag.toString())
+                mT.t(context!!, FruitSortList[i].tag.toString())
+
             } }
         }
     }

@@ -38,11 +38,14 @@ class Catalog : Serializable {
     var mItemName15 :String = " "
  /*   var mItemNum : Int = 0*/
 
-    constructor(mHeadImg: Int) {
-        this.mHeadImg = mHeadImg
-    }
+//    constructor(mHeadImg: Int) {
+//        this.mHeadImg = mHeadImg
+//    }
 
-    constructor(mHeadImg: Int, mItemImg1: Int, mItemName1: String, mItemImg2: Int, mItemName2: String, mItemImg3: Int, mItemName3: String, mItemImg4: Int, mItemName4: String, mItemImg5: Int, mItemName5: String, mItemImg6: Int, mItemName6: String, mItemImg7: Int, mItemName7: String, mItemImg8: Int, mItemName8: String, mItemImg9: Int, mItemName9: String, mItemImg10: Int, mItemName10: String, mItemImg11: Int, mItemName11: String, mItemImg12: Int, mItemName12: String, mItemImg13: Int, mItemName13: String, mItemImg14: Int, mItemName14: String, mItemImg15: Int, mItemName15: String, mItemNum: Int) {
+    constructor(mHeadImg: Int, mItemImg1: Int, mItemName1: String, mItemImg2: Int, mItemName2: String, mItemImg3: Int, mItemName3: String, mItemImg4: Int,
+                mItemName4: String, mItemImg5: Int, mItemName5: String, mItemImg6: Int, mItemName6: String, mItemImg7: Int, mItemName7: String, mItemImg8: Int,
+                mItemName8: String, mItemImg9: Int, mItemName9: String, mItemImg10: Int, mItemName10: String, mItemImg11: Int, mItemName11: String, mItemImg12: Int,
+                mItemName12: String, mItemImg13: Int, mItemName13: String, mItemImg14: Int, mItemName14: String, mItemImg15: Int, mItemName15: String) {
         this.mHeadImg = mHeadImg
         this.mItemImg1 = mItemImg1
         this.mItemName1 = mItemName1
@@ -77,4 +80,18 @@ class Catalog : Serializable {
 //        this.mItemNum = mItemNum
     }
 
+    constructor(mHeadImg: Int,mItemImg1: Int, mItemName1: String, mItemImg2: Int, mItemName2: String, mItemImg3: Int, mItemName3: String) {
+        this.mHeadImg = mHeadImg
+        this.mItemImg1 = mItemImg1
+        this.mItemName1 = mItemName1
+        this.mItemImg2 = mItemImg2
+        this.mItemName2 = mItemName2
+        this.mItemImg3 = mItemImg3
+        this.mItemName3 = mItemName3
+    }
+    /*constructor(mHeadImg: Int,mItemImg15: Int, mItemName15: String) {
+        this.mHeadImg = mHeadImg
+        this.mItemImg15 = mItemImg15
+        this.mItemName15 = mItemName15
+    }*/
 }
