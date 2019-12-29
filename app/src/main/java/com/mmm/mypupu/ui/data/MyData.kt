@@ -30,13 +30,16 @@ val fruit_sort :ArrayList <String > = arrayListOf("台湾水果节","新品尝�
 val fruit_sort_img :ArrayList <Int> = arrayListOf(R.drawable.fruit_sort1,R.drawable.fruit_sort2,R.drawable.fruit_sort3,R.drawable.fruit_sort4,R.drawable.fruit_sort5,
     R.drawable.fruit_sort6,R.drawable.fruit_sort7,R.drawable.fruit_sort8,R.drawable.fruit_sort9,R.drawable.fruit_sort10)
 
-val fruitImg :ArrayList <Int > = arrayListOf(R.drawable.fruit_1,R.drawable.fruit_2,R.drawable.fruit_3,R.drawable.fruit_4 , R.drawable.fruit_5)
-val fruitTitle :ArrayList <String> = arrayListOf("平和白肉蜜柚1个","平和红肉蜜柚1个","大荔冬枣500g","褚橙礼盒（一级M)","贵州修文猕猴桃")
-val fruitSubtitle :ArrayList<String> = arrayListOf("鲜嫩多汁，来自蜜柚之乡的甜蜜问候","酸甜可口柚香宜人","皮薄如蝉甘脆清香肉多核小","励志橙清甜少渣冷藏下口感更佳（中果） ","23:00前可配送")
-val fruitQuantity :ArrayList<String> = arrayListOf("0.8kg-1.1kg/个","1.1kg-1.4kg/个","500g/份","5kg±50g/箱","400g-450g/份5-6个")
-val fruitRemark : ArrayList<String> = arrayListOf("特惠","","","","" )
-val fruitPrice :ArrayList <Double> = arrayListOf(4.58,7.98,6.98,99.0,14.8)
-val fruitOriPrice : ArrayList <Double> = arrayListOf(8.98,11.8,9.9,138.0,18.0)
+val fruitImg :ArrayList <Int > = arrayListOf(R.drawable.fruit_1,R.drawable.fruit_2,R.drawable.fruit_3,R.drawable.fruit_4 , R.drawable.fruit_5,
+    R.drawable.fruit_6,R.drawable.fruit_7,R.drawable.fruit_8,R.drawable.fruit_9 , R.drawable.fruit_10,R.drawable.fruit_11)
+val fruitTitle :ArrayList <String> = arrayListOf("平和白肉蜜柚1个","平和红肉蜜柚1个","大荔冬枣500g","褚橙礼盒（一级M)","贵州修文猕猴桃","翠蜜枣礼盒2kg±50g/箱",
+      "软心红心芭乐400g-500g/份","天宝香蕪700g-800g/份","浙江涌泉蜜括450g-500g/份","牛奶草莓250g-280g/盒","")
+val fruitSubtitle :ArrayList<String> = arrayListOf("鲜嫩多汁，来自蜜柚之乡的甜蜜问候","酸甜可口柚香宜人","皮薄如蝉甘脆清香肉多核小","励志橙清甜少渣冷藏下口感更佳（中果） ","23:00前可配送","肉质脆嫩清甜多汁（去皮口感...",
+    "每人限购3份","每人限购3份","每人限购3份","香甜可口，果皮略微擦伤不喜...","满足想要更好的你清香脆甜","","")
+val fruitQuantity :ArrayList<String> = arrayListOf("0.8kg-1.1kg/个","1.1kg-1.4kg/个","500g/份","5kg±50g/箱","400g-450g/份5-6个","","","","","","")
+val fruitRemark : ArrayList<String> = arrayListOf("特惠","","","","","","满59元减10元 特惠" ,"","","特惠","特惠")
+val fruitPrice :ArrayList <Double> = arrayListOf(4.58,7.98,6.98,99.0,14.8,39.8,6.98,5.98,5.38,14.8,9.9)
+val fruitOriPrice : ArrayList <Double> = arrayListOf(8.98,11.8,9.9,138.0,18.0,69.0,8.9,8.9,12.5,26.0,19.8)
 
 val searchAutoCompleteGoods : ArrayList <String> = arrayListOf("流星包" , "西瓜" ,"小西瓜" ,"无籽西瓜" ,"智利蓝莓","橙味啤酒","车厘子","榴莲班戟","当妮","鳗工厂蒲烧鳗鱼" ,
     "砂糖桔" , "鲜牛奶" ,"蒙牛" ,"优益","乳酸菌饮品","百香果","纯牛奶","酸奶", "特仑苏","纯甄风味酸牛奶" ,"真果粒" ,"麦燕麦牛","牛奶红枣", "碧渔狭鳕鱼", "福建水果",
@@ -61,7 +64,7 @@ val mContentHeadImg :ArrayList<Int > = arrayListOf(R.drawable.sort_head1,R.drawa
     R.drawable.sort_head15,R.drawable.sort_head16,R.drawable.sort_head17)
 
 
-val mSortNum :ArrayList<Int> = arrayListOf(13,14,18,14,15,16,14,14,15,22,14,20,14,9,9,12,6)
+
 
 val mSortHeadTag :ArrayList<String> = arrayListOf("燃情火锅季","徐香猕猴桃 6.98元/500g","悠拣菜七叶心 2.99元/300g","燃情火锅季","碧渔鱿鱼（冻） 29.8元/300g",
     "合味道杯面（部分） 满15减3元","大希地帕尼尼 满20减8元","猪肚莲子汤 49.9元/750g","新希望低温纯牛奶 1.9元/180ml" ,"法国进口1664啤酒 7.5元/250ml","沃隆系列产品 满99减30元",
@@ -86,31 +89,31 @@ val mAllName6 :ArrayList<String> = arrayListOf("酒水饮料","桔/橙/柑/柚",
     "宝宝口腔","猫粮","进口酒","全部地方特产")
 
 val mAllName7 :ArrayList<String> = arrayListOf("熟食卤味","苹果/梨/香蕉","绿色认证蔬菜","土鸡土鸭","虾","调味粉","麦片冲调","面条/米粉","进口奶","黄酒/保健酒","巧克力","火锅烧烤","男士护理",
-    "早教益智","宠物零食","进口粮油","0")
+    "早教益智","宠物零食","进口粮油","")
 
 val mAllName8 :ArrayList<String> = arrayListOf("水果" ,"热带水果","品牌蔬菜","鸡鸭禽肉","蟹","酱油/醋","饼干糕点","沙拉西餐","常温奶","甜米酒","肉干肉松","一次性用品","身体护理",
-    "孕妈","宠物用品","进口母婴","0")
+    "孕妈","宠物用品","进口母婴","")
 
 val mAllName9 :ArrayList<String> = arrayListOf("酸奶/甜点", "葡/提/莓果","叶菜","煲汤滋补","贝","煲汤/香料","拌面水饺","即食料理","豆奶豆浆","预调酒","泡爪卤味","餐具杯壶","避孕情趣",
-    "全部母婴","全部鲜花宠物","进口牛奶","0")
+    "全部母婴","全部鲜花宠物","进口牛奶","")
 
 val mAllName10 :ArrayList<String> = arrayListOf("调味底料","奇异果","根茎菜","牛排","鱿鱼章鱼","五谷杂粮","五谷杂粮","特色小吃","烘培食材","水","海产小食","清洁工具","美发用品",
-    "0","0","进口日用","0")
+    "","","进口日用","")
 
 val mAllName11 :ArrayList<String> = arrayListOf("餐具","瓜类","调味菜","方便菜","生蚝海参","面条/粉丝","奶酪黄油","火腿香肠","奶粉","可乐汽水","冰淇淋","日用家居","卸妆洁面",
-    "0","0","进口美妆","0")
+    "","","进口美妆","")
 
 val mAllName12 :ArrayList<String> = arrayListOf("一次性用品","桃/李/杏/枣","豆瓜果茄","香肠腊味","海蜇海藻","面粉烘培","甜品/甜粥","老字号","中式小点","茶饮料","糖果果冻","生活电器","护肤工具",
-    "0","0","全部进口商品","0")
+    "","","全部进口商品","")
 
 val mAllName13 :ArrayList<String> = arrayListOf("全部火锅节","进口水果","菌菇","烧烤撸串","方便菜","南北干货","咖啡奶茶","地方美食","奶酪黄油","果汁","辣条/熟食","数码配件","电动美容仪",
-    "0","0","0","0")
+    "","","","")
 
-val mAllName14 :ArrayList<String> = arrayListOf("0","全部水果","豆制品","全部肉禽蛋","海产干货","海产干货","全部早点","全部熟食冻品","甜品点心","功能饮料","全部休闲零食","内衣裤","全部护理美妆",
-    "0","0","0","0")
+val mAllName14 :ArrayList<String> = arrayListOf("","全部水果","豆制品","全部肉禽蛋","海产干货","海产干货","全部早点","全部熟食冻品","甜品点心","功能饮料","全部休闲零食","内衣裤","全部护理美妆",
+    "","","","")
 
-val mAllName15 :ArrayList<String> = arrayListOf("0","0","全部蔬菜","0","全部海鲜水产","全部粮油调味","0","0","全部牛奶面包","全部酒水冲饮","0","全部日用清洁","0",
-    "0","0","0","0")
+val mAllName15 :ArrayList<String> = arrayListOf("","","全部蔬菜","","全部海鲜水产","全部粮油调味","","","全部牛奶面包","全部酒水冲饮","","全部日用清洁","",
+    "","","","")
 
 val mAllItemImg1 : ArrayList<Int> = arrayListOf(R.drawable.sort1_1,R.drawable.sort2_1,R.drawable.sort3_1,R.drawable.sort4_1,R.drawable.sort5_1,R.drawable.sort6_1,
     R.drawable.sort7_1,R.drawable.sort8_1,R.drawable.sort9_1,R.drawable.sort10_1,R.drawable.sort11_1,R.drawable.sort12_1,R.drawable.sort13_1,R.drawable.sort14_1,R.drawable.sort15_1,
@@ -140,37 +143,39 @@ val mAllItemImg6 : ArrayList<Int> = arrayListOf(R.drawable.sort1_6,R.drawable.fr
 
 val mAllItemImg7 : ArrayList<Int> = arrayListOf(R.drawable.sort1_7,R.drawable.fruit_sort6,R.drawable.sort3_7,R.drawable.sort4_7,R.drawable.sort5_7,R.drawable.sort6_7,
     R.drawable.sort7_7,R.drawable.sort8_7,R.drawable.sort9_7,R.drawable.sort10_7,R.drawable.sort11_7,R.drawable.sort12_7,R.drawable.sort13_7,R.drawable.sort14_7,R.drawable.sort15_7,
-    R.drawable.sort16_7,R.drawable.close_2)
+    R.drawable.sort16_7,R.drawable.item_bg_white)
 
 
 val mAllItemImg8 : ArrayList<Int> = arrayListOf(R.drawable.sort1_8,R.drawable.fruit_sort7,R.drawable.sort3_8,R.drawable.sort4_8,R.drawable.sort5_8,R.drawable.sort6_8,
     R.drawable.sort7_8,R.drawable.sort8_8,R.drawable.sort9_8,R.drawable.sort10_8,R.drawable.sort11_8,R.drawable.sort12_8,R.drawable.sort13_8,R.drawable.sort14_8,
-    R.drawable.sort15_8, R.drawable.sort16_8,R.drawable.close_2)
+    R.drawable.sort15_8, R.drawable.sort16_8,R.drawable.item_bg_white)
 
 val mAllItemImg9 : ArrayList<Int> = arrayListOf(R.drawable.sort1_9,R.drawable.fruit_sort8,R.drawable.sort3_9,R.drawable.sort4_9,R.drawable.sort5_9,R.drawable.sort6_9,
     R.drawable.sort7_9,R.drawable.sort8_9,R.drawable.sort9_9,R.drawable.sort10_9,R.drawable.sort11_9,R.drawable.sort12_9,R.drawable.sort13_9,R.drawable.icon_more,
-    R.drawable.icon_more, R.drawable.sort16_9,R.drawable.close_2)
+    R.drawable.icon_more, R.drawable.sort16_9,R.drawable.item_bg_white)
 
 val mAllItemImg10 : ArrayList<Int> = arrayListOf(R.drawable.sort1_10,R.drawable.fruit_sort9,R.drawable.sort3_10,R.drawable.sort4_10,R.drawable.sort5_10,R.drawable.sort6_10,
-    R.drawable.sort7_10,R.drawable.sort8_10,R.drawable.sort9_10,R.drawable.sort10_10,R.drawable.sort11_10,R.drawable.sort12_10,R.drawable.sort13_10,R.drawable.close_2,R.drawable.close_2,
-    R.drawable.sort16_1,R.drawable.close_2)
+    R.drawable.sort7_10,R.drawable.sort8_10,R.drawable.sort9_10,R.drawable.sort10_10,R.drawable.sort11_10,R.drawable.sort12_10,R.drawable.sort13_10,R.drawable.item_bg_white,R.drawable.item_bg_white,
+    R.drawable.sort16_1,R.drawable.item_bg_white)
 
 
 val mAllItemImg11 : ArrayList<Int> = arrayListOf(R.drawable.sort1_11,R.drawable.fruit_sort10,R.drawable.sort3_11,R.drawable.sort4_11,R.drawable.sort5_11,R.drawable.sort6_11,
-    R.drawable.sort7_11,R.drawable.sort8_11,R.drawable.sort9_11,R.drawable.sort10_11,R.drawable.sort11_11,R.drawable.sort12_11,R.drawable.sort13_11,R.drawable.close_2,
-    R.drawable.close_2, R.drawable.sort16_11,R.drawable.close_2)
+    R.drawable.sort7_11,R.drawable.sort8_11,R.drawable.sort9_11,R.drawable.sort10_11,R.drawable.sort11_11,R.drawable.sort12_11,R.drawable.sort13_11,R.drawable.item_bg_white,
+    R.drawable.item_bg_white, R.drawable.sort16_11,R.drawable.item_bg_white)
 
 val mAllItemImg12 : ArrayList<Int> = arrayListOf(R.drawable.sort1_12,R.drawable.sort2_12,R.drawable.sort3_12,R.drawable.sort4_12,R.drawable.sort5_12,R.drawable.sort6_12,
-    R.drawable.sort7_12,R.drawable.sort8_12,R.drawable.sort9_12,R.drawable.sort10_12,R.drawable.sort11_12,R.drawable.sort12_12,R.drawable.sort13_12,R.drawable.close_2,
-    R.drawable.close_2, R.drawable.icon_more,R.drawable.close_2)
+    R.drawable.sort7_12,R.drawable.sort8_12,R.drawable.sort9_12,R.drawable.sort10_12,R.drawable.sort11_12,R.drawable.sort12_12,R.drawable.sort13_12,R.drawable.item_bg_white,
+    R.drawable.item_bg_white, R.drawable.icon_more,R.drawable.item_bg_white)
 
 val mAllItemImg13 : ArrayList<Int> = arrayListOf(R.drawable.icon_more,R.drawable.sort2_13,R.drawable.sort3_13,R.drawable.sort4_13,R.drawable.sort5_13,R.drawable.sort6_13,
-    R.drawable.sort7_13,R.drawable.sort8_13,R.drawable.sort9_13,R.drawable.sort10_13,R.drawable.sort11_13,R.drawable.sort12_13,R.drawable.sort13_13,R.drawable.close_2,R.drawable.close_2,
-    R.drawable.close_2,R.drawable.close_2)
+    R.drawable.sort7_13,R.drawable.sort8_13,R.drawable.sort9_13,R.drawable.sort10_13,R.drawable.sort11_13,R.drawable.sort12_13,R.drawable.sort13_13,R.drawable.item_bg_white,R.drawable.item_bg_white,
+    R.drawable.item_bg_white,R.drawable.item_bg_white)
 
 
-val mAllItemImg14 : ArrayList<Int> = arrayListOf(R.drawable.close_2,R.drawable.close_2,R.drawable.sort3_14,R.drawable.icon_more,R.drawable.sort5_14,R.drawable.sort6_14,
-    R.drawable.icon_more,R.drawable.icon_more,R.drawable.sort9_14,R.drawable.sort10_14,R.drawable.icon_more,R.drawable.sort12_14,R.drawable.icon_more,R.drawable.close_2,R.drawable.close_2,R.drawable.close_2,R.drawable.close_2)
+val mAllItemImg14 : ArrayList<Int> = arrayListOf(R.drawable.item_bg_white,R.drawable.icon_more,R.drawable.sort3_14,R.drawable.icon_more,R.drawable.sort5_14,R.drawable.sort6_14,
+    R.drawable.icon_more,R.drawable.icon_more,R.drawable.sort9_14,R.drawable.sort10_14,R.drawable.icon_more,R.drawable.sort12_14,R.drawable.icon_more,R.drawable.item_bg_white,R.drawable.item_bg_white,R.drawable.item_bg_white,R.drawable.item_bg_white)
 
-val mAllItemImg15 : ArrayList<Int> = arrayListOf(R.drawable.close_2,R.drawable.close_2 ,R.drawable.icon_more,R.drawable.close_2,R.drawable.icon_more,R.drawable.icon_more,
-    R.drawable.close_2,R.drawable.close_2,R.drawable.icon_more,R.drawable.icon_more,R.drawable.close_2,R.drawable.icon_more,R.drawable.close_2,R.drawable.close_2,R.drawable.close_2,R.drawable.close_2,R.drawable.close_2)
+val mAllItemImg15 : ArrayList<Int> = arrayListOf(R.drawable.item_bg_white,R.drawable.item_bg_white ,R.drawable.icon_more,R.drawable.item_bg_white,R.drawable.icon_more,R.drawable.icon_more,
+    R.drawable.item_bg_white,R.drawable.item_bg_white,R.drawable.icon_more,R.drawable.icon_more,R.drawable.item_bg_white,R.drawable.icon_more,R.drawable.item_bg_white,R.drawable.item_bg_white,
+    R.drawable.item_bg_white,R.drawable.item_bg_white,R.drawable.item_bg_white)
+val mSortNum :ArrayList<Int> = arrayListOf(13,14,18,14,15,16,14,14,15,22,14,20,14,9,9,12,6)

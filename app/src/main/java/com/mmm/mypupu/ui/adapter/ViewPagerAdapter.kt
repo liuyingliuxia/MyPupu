@@ -42,4 +42,7 @@ class ViewPagerAdapter (var context: Context , fm: FragmentManager) : FragmentSt
      return mFragmentList.size
     }
 
+    override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
+
+    }
 }

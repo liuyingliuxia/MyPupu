@@ -80,18 +80,9 @@ class Catalog : Serializable {
 //        this.mItemNum = mItemNum
     }
 
-    constructor(mHeadImg: Int,mItemImg1: Int, mItemName1: String, mItemImg2: Int, mItemName2: String, mItemImg3: Int, mItemName3: String) {
-        this.mHeadImg = mHeadImg
-        this.mItemImg1 = mItemImg1
-        this.mItemName1 = mItemName1
-        this.mItemImg2 = mItemImg2
-        this.mItemName2 = mItemName2
-        this.mItemImg3 = mItemImg3
-        this.mItemName3 = mItemName3
-    }
-    /*constructor(mHeadImg: Int,mItemImg15: Int, mItemName15: String) {
+    constructor(mHeadImg: Int,mItemImg15: Int, mItemName15: String) {
         this.mHeadImg = mHeadImg
         this.mItemImg15 = mItemImg15
         this.mItemName15 = mItemName15
-    }*/
+    }
 }

@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.fragment_tab_fruit.view.*
 
 class TabFlashSaleFragment : Fragment() {
 
-        private var list :ArrayList<Goods > = ArrayList ()
+    private var list :ArrayList<Goods > = ArrayList ()
     private lateinit var flashSaleAdapter: FlashSaleAdapter
     private lateinit var linearLayoutManager: LinearLayoutManager
     override fun onCreateView(

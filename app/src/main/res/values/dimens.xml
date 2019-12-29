@@ -36,7 +36,7 @@
     <dimen name="item_paddingleft">60dp</dimen>
     <dimen name="filter_label_width">84dp</dimen>
     <dimen name="oval_radius">22dp</dimen>
-
+    <dimen name="mmm_sort_text">12dp</dimen>
     <!--MMM 项目字体大小规格-->
     <dimen name="mmm_font_s10">10dp</dimen>
     <dimen name="mmm_font_s11">11dp</dimen>
@@ -72,4 +72,7 @@
     <dimen name="mmm_font_s800">800dp</dimen>
     <dimen name="mmm_font_s120">120dp</dimen>
     <dimen name="mmm_font_s3">3dp</dimen>
+    <dimen name="mmm_sort_item">100dp</dimen>
+    <dimen name="mmm_font_s400">400dp</dimen>
+    <dimen name="mmm_item_padding">10dp</dimen>
 </resources>

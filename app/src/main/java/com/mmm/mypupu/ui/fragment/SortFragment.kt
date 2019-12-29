@@ -20,23 +20,16 @@ import com.mmm.mypupu.ui.bean.Catalog
 import com.mmm.mypupu.ui.bean.Goods
 import com.mmm.mypupu.ui.data.*
 import com.mmm.mypupu.ui.search.SearchActivity
-import kotlinx.android.synthetic.main.fragment_sort.*
-import kotlinx.android.synthetic.main.fragment_sort.ivSearch
-import kotlinx.android.synthetic.main.fragment_sort.view.*
-import kotlinx.android.synthetic.main.fragment_sort.vp2SortContext
 import kotlinx.android.synthetic.main.fragment_sort_test.*
 import kotlinx.android.synthetic.main.fragment_sort_test.view.*
+import kotlin.math.absoluteValue
 
 class SortFragment : Fragment() {
     private var list :ArrayList<Catalog> = ArrayList ()
-    private var allItemImgList :ArrayList<ArrayList<Int>> = arrayListOf( mAllItemImg1, mAllItemImg2, mAllItemImg3, mAllItemImg4, mAllItemImg5, mAllItemImg6,
-        mAllItemImg7, mAllItemImg8, mAllItemImg9, mAllItemImg10, mAllItemImg11, mAllItemImg12, mAllItemImg13, mAllItemImg14, mAllItemImg15)
-
-    private var allNameList  = arrayListOf( mAllName1, mAllName2, mAllName3, mAllName4, mAllName5, mAllName6,
-        mAllName7, mAllName8, mAllName9, mAllName10, mAllName11, mAllName12, mAllName13, mAllName14, mAllName15)
 
     private lateinit var sortContentAdapter: SortContentAdapter
-    private lateinit var linearLayoutManager: LinearLayoutManager
+    private lateinit var gridLayoutManager: GridLayoutManager
+    private var lastposion: Int = 0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -47,20 +40,21 @@ class SortFragment : Fragment() {
         //初始化右侧显示内容
         val mlist = getList()
         sortContentAdapter = SortContentAdapter(context!!, mlist )
-        linearLayoutManager = LinearLayoutManager(context)
-        linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
-        mView.rvContent.layoutManager =linearLayoutManager
+        gridLayoutManager = GridLayoutManager(context,1)
+        mView.rvContent.layoutManager =gridLayoutManager
         mView.rvContent.adapter = sortContentAdapter
 
         return mView
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val mCatalogId :ArrayList<RadioButton> = arrayListOf(rbCatalog1,rbCatalog2,rbCatalog3,rbCatalog4,rbCatalog5,rbCatalog6,rbCatalog7,
             rbCatalog8,rbCatalog9,rbCatalog10,rbCatalog11,rbCatalog12,rbCatalog13,rbCatalog14,rbCatalog15,rbCatalog16,rbCatalog17)
             initCatalogText(mCatalogId)
-            test()
+
+            rbCatalog1.isChecked = true
             //一次只能滑动一页，不能快速滑动
             val pagerSnapHelper = PagerSnapHelper()
             pagerSnapHelper.attachToRecyclerView(rvContent)
@@ -71,16 +65,51 @@ class SortFragment : Fragment() {
 
             }}
             //滑动时，左侧导航栏同步改变选中状态
-            //rvContent.onFlingListener
+
+            rvContent.addOnScrollListener(object :RecyclerView.OnScrollListener(){
+
+                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                    super.onScrollStateChanged(recyclerView, newState)
+                    val manager = recyclerView!!.layoutManager as GridLayoutManager
+                    // 当不滚动时
+                    if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                        //获取最后一个完全显示的ItemPosition
+                        lastposion = manager.findLastCompletelyVisibleItemPosition().absoluteValue
+                        mCatalogId[lastposion].isChecked = true
+                        for (j in 0 until lastposion) {
+                            mCatalogId[j].isChecked = false
+                            goBackOtherRB(mCatalogId , lastposion )
+                        }
+                        for (k in lastposion + 1..16) {
+                            mCatalogId[k].isChecked = false
+                            goBackOtherRB(mCatalogId , lastposion )
+                        }
+
+                        if ( mCatalogId[lastposion].isChecked == false) {
+                            goBackOtherRB(mCatalogId , lastposion )
+                        }else{
+                            mCatalogId[lastposion].setTypeface(Typeface.defaultFromStyle(Typeface.BOLD))
+                            val mSize: Float = resources.getDimension(R.dimen.mmm_font_s5)
+                            mCatalogId[lastposion].setTextSize(mSize)
+                        }
+                        Log.e("state" ,   mCatalogId[lastposion].isChecked.toString())
+                    }
+                }
+
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+
+                }
+            })
     }
 
-    //测试数据完整性
+ /*   //测试数据完整性
     fun test (){
         for ( i in 0 until allItemImgList.size){
                 val length= allItemImgList[i].size
                 Log.e("图片数据长度第$i 个",length.toString())
         }
-    }
+    }*/
     fun getList(): ArrayList<Catalog> {
 
         for (i in 0 until mContentHeadImg.size) {
@@ -92,20 +121,6 @@ class SortFragment : Fragment() {
         return list
     }
 
-    fun getList3():ArrayList<Catalog> {
-        for ( i in 0 until mAllItemImg1.size) {
-            list.add(Catalog(mContentHeadImg[i],mAllItemImg1[i], mAllName1[i],mAllItemImg2[i], mAllName2[i],mAllItemImg3[i], mAllName3[i]))
-        }
-        return list
-    }
-
-
- /*   fun getLastList():ArrayList<Catalog> {
-        for ( i in 0 until mAllItemImg15.size) {
-            list.add(Catalog(mContentHeadImg[i],mAllItemImg15[i], mAllName15[i]))
-        }
-        return list
-    }*/
 
     fun initCatalogText (mList :ArrayList <RadioButton> ){
         val llm : LinearLayoutManager = rvContent.layoutManager as LinearLayoutManager
@@ -113,46 +128,31 @@ class SortFragment : Fragment() {
         for ( i in 0 .. 16 ){
             mList[i].setText(mCatalogText[i])
             mList[i].setOnClickListener { run{
-                //让其他按钮变回原样
-                mList[i].setTypeface(Typeface.defaultFromStyle(Typeface.BOLD))
-                val mSize: Float = resources.getDimension(R.dimen.mmm_font_s5)
-                mList[i].setTextSize(mSize)
-                for ( j in 0 until i  )
-                {mList[j].setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL))
-                    val mSizeNor: Float = resources.getDimension(R.dimen.mmm_font_s4)
-                    mList[j].setTextSize(mSizeNor)}
-                for ( k in i+1 .. 16  )
-                {
-                    mList[k].setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL))
-                    val mSizeNor: Float = resources.getDimension(R.dimen.mmm_font_s4)
-                    mList[k].setTextSize(mSizeNor)
-                }
+               goBackOtherRB(mList , i)
                 //切换到指定的item
-            // 同样效果
-              llm.scrollToPositionWithOffset( i , 0 )
+                llm.scrollToPositionWithOffset(i, 0)
                 llm.stackFromEnd = false
-                //moveToPosition(i)
+
             } }
         }
     }
 
-
-    private var move = false
-
-    fun moveToPosition(index : Int){
-        val firstItem = linearLayoutManager.findFirstVisibleItemPosition()
-        val lastItem = linearLayoutManager.findLastVisibleItemPosition()
-        if ( index <= firstItem){
-            rvContent.scrollToPosition(index)
-        }else if ( index <= lastItem){
-            val top = rvContent.getChildAt(index - firstItem).top
-            rvContent.scrollBy(0,top)
-        }else {
-            rvContent.scrollToPosition(index)
-            move = true
-        }
+fun goBackOtherRB(mList: ArrayList<RadioButton> , i :Int) {
+    //选中的按钮 变大
+    mList[i].setTypeface(Typeface.defaultFromStyle(Typeface.BOLD))
+    val mSize: Float = resources.getDimension(R.dimen.mmm_font_s5)
+    mList[i].setTextSize(mSize)
+    //让其他按钮变回原样
+    for (j in 0 until i) {
+        mList[j].setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL))
+        val mSizeNor: Float = resources.getDimension(R.dimen.mmm_font_s4)
+        mList[j].setTextSize(mSizeNor)
+    }
+    for (k in i + 1..16) {
+        mList[k].setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL))
+        val mSizeNor: Float = resources.getDimension(R.dimen.mmm_font_s4)
+        mList[k].setTextSize(mSizeNor)
     }
 
-
-
+}
 }

@@ -14,9 +14,11 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.data.searchHint
 import com.mmm.mypupu.ui.adapter.ViewPagerAdapter
+import com.mmm.mypupu.ui.data.goodsPrice
 import com.mmm.mypupu.ui.search.SearchActivity
 import kotlinx.android.synthetic.main.container_home.*
 import kotlinx.android.synthetic.main.toolbar_main.*
+import java.util.*
 
 
 class HomeFragment : Fragment(),SwipeRefreshLayout.OnRefreshListener {
@@ -46,6 +48,8 @@ class HomeFragment : Fragment(),SwipeRefreshLayout.OnRefreshListener {
 
     private fun initViewPager () {
         val ViewPagerAdapter  = ViewPagerAdapter(context!!, getChildFragmentManager())
+        //设置预加载数 全部的fragment
+        vpMain.offscreenPageLimit = 4
         vpMain.adapter = ViewPagerAdapter
         vpMain.currentItem = 0
         tbMain.setupWithViewPager(vpMain)
@@ -54,8 +58,13 @@ class HomeFragment : Fragment(),SwipeRefreshLayout.OnRefreshListener {
     override fun onRefresh() {
         Handler().postDelayed(object :Runnable {
             override fun run() {
-                var i = (0 until searchHint.size).random()
+                var i :Int = (0 until searchHint.size).random()
                 tvSearch.text = searchHint [i]
+               /* for (j in 0 .. 6) {
+                    goodsPrice[j] += i.minus(3.20)
+                    //保留两位小数
+                var mDouble =   Formatter().format("%.2f", goodsPrice[j]).toString()
+                }*/
                 srlMain.isRefreshing = false
             }
         },1000)

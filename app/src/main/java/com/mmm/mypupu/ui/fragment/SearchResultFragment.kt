@@ -41,7 +41,7 @@ class SearchResultFragment : Fragment(),View.OnClickListener, SwipeRefreshLayout
         super.onViewCreated(view, savedInstanceState)
         srlSearch.setOnRefreshListener(this)
 
-        tvInStock.setOnClickListener(this)
+        cbInStock.setOnClickListener(this)
         rbPrice.setOnClickListener(this)
         rbDiscount.setOnClickListener(this)
         tvFilter.setOnClickListener(this)
@@ -97,7 +97,7 @@ class SearchResultFragment : Fragment(),View.OnClickListener, SwipeRefreshLayout
     @SuppressLint("WrongConstant")
     override fun onClick(v: View?) {
         when (v?.id){
-            R.id.tvInStock ->{
+            R.id.cbInStock ->{
             }
             R.id.rbPrice ->{
                 Log.e("折扣 选中状态 ", rbDiscount.isChecked.toString())

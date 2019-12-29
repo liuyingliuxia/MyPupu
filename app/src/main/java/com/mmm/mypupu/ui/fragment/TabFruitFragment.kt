@@ -20,6 +20,7 @@ import kotlinx.android.synthetic.main.fragment_tab_fruit.*
 import kotlinx.android.synthetic.main.fragment_tab_fruit.view.*
 import kotlinx.android.synthetic.main.item_filter.*
 import kotlinx.android.synthetic.main.toolbar_fruit.*
+import java.util.Collections.swap
 
 class TabFruitFragment: Fragment(),View.OnClickListener {
     private var rbClickTiems = 0
@@ -44,7 +45,7 @@ class TabFruitFragment: Fragment(),View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
          val FruitSortList :ArrayList<LinearLayout>  = arrayListOf( llFruitSort1,llFruitSort2,llFruitSort3,llFruitSort4 ,llFruitSort5,
             llFruitSort6 ,llFruitSort7,llFruitSort8,llFruitSort9 ,llFruitSort10 )
-        tvInStock.setOnClickListener(this)
+        cbInStock.setOnClickListener(this)
         rbPrice.setOnClickListener(this)
         rbDiscount.setOnClickListener(this)
         tvFilter.setOnClickListener(this)
@@ -65,6 +66,35 @@ class TabFruitFragment: Fragment(),View.OnClickListener {
         return list
     }
 
+    fun getInstockList(): MutableList<Goods> {
+
+        for (i in 0 until fruitImg.size step 3) {
+            list.add( Goods( fruitImg[i], fruitTitle[i] , fruitSubtitle[i], fruitQuantity[i],fruitRemark[i] , fruitPrice[i], fruitOriPrice[i], goodsNum[i]))
+
+        }
+        return list
+    }
+
+    fun getPriceList1(): MutableList<Goods> {
+        var zheng = 0 .. fruitImg.size.minus(1)
+        var fan = zheng.reversed()
+        for (i in fan) {
+            list.add( Goods( fruitImg[i], fruitTitle[i] , fruitSubtitle[i], fruitQuantity[i],fruitRemark[i] , fruitPrice[i], fruitOriPrice[i], goodsNum[i]))
+
+        }
+        return list
+    }
+
+    fun getPriceList3(): MutableList<Goods> {
+        var zheng = 0 .. fruitImg.size.minus(1)
+        var fan = zheng.reversed()
+        for (i in fan step 3) {
+            list.add( Goods( fruitImg[i], fruitTitle[i] , fruitSubtitle[i], fruitQuantity[i],fruitRemark[i] , fruitPrice[i], fruitOriPrice[i], goodsNum[i]))
+
+        }
+        return list
+    }
+
     companion object {
         @JvmStatic
         fun newInstance(sectionNumber: Int): TabRecommendFragment {
@@ -79,19 +109,36 @@ class TabFruitFragment: Fragment(),View.OnClickListener {
     @SuppressLint("WrongConstant")
     override fun onClick(v: View?) {
       when (v?.id){
-          R.id.tvInStock ->{
-            rvFruit.refreshDrawableState()
+          R.id.cbInStock ->{
+              if (cbInStock.isChecked == true) {
+                  list.clear()
+                  list = getInstockList()
+                  fruitAdapter = FruitAdapter(list, context!!)
+                  linearLayoutManager = LinearLayoutManager(context)
+                  linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
+                  rvFruit.layoutManager = linearLayoutManager
+                  rvFruit.adapter = fruitAdapter
+              }
+              else
+              {
+                  list.clear()
+                  list = getList()
+                  fruitAdapter = FruitAdapter(list, context!!)
+                  linearLayoutManager = LinearLayoutManager(context)
+                  linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
+                  rvFruit.layoutManager = linearLayoutManager
+                  rvFruit.adapter = fruitAdapter
+              }
           }
           R.id.rbPrice ->{
               Log.e("折扣 选中状态 ", rbDiscount.isChecked.toString())
               changedItemState3(rbPrice)
-              rvFruit.refreshDrawableState()
+
           }
           R.id.rbDiscount ->{
               Log.e("价格 选中状态 ", rbPrice.isChecked.toString())
               rbDiscount.isChecked = !rbPrice.isChecked
               changedItemState3(rbDiscount)
-              rvFruit.refreshDrawableState()
           }
 
           R.id.tvOk ->{
@@ -112,29 +159,70 @@ class TabFruitFragment: Fragment(),View.OnClickListener {
           }
       }
     }
+
+    //冒泡排序
+    fun bubbleSort(list: ArrayList<Int>) {
+        if (list.size == 0) return
+        val maxIndex = list.size - 1
+        for (n in 0 until maxIndex) {
+            for (i in 0 until maxIndex - n) {
+                if (list[i] > list[i + 1]) {
+                    swap(list, i, i + 1)
+                }
+            }
+        }
+    }
+
+
         //三种点击状态的切换
     fun changedItemState3 (rb :RadioButton){
         when (rbClickTiems){
             0 -> {
+                //从小到大排序
                 rbClickTiems ++
                 rb.setTextColor(resources.getColor(R.color.color23))
                 val drawable = resources.getDrawable(R.drawable.icon_indicate_arrow_top_selected)
                 drawable.setBounds(0,0,drawable.minimumWidth,drawable.minimumHeight)
                 rb.setCompoundDrawables(null,null,drawable,null)
+
+                list.clear()
+                list = getPriceList1()
+                fruitAdapter = FruitAdapter(list, context!!)
+                linearLayoutManager = LinearLayoutManager(context)
+                linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
+                rvFruit.layoutManager = linearLayoutManager
+                rvFruit.adapter = fruitAdapter
             }
             1 -> {
+                //从大到小排序
                 rbClickTiems ++
                 rb.setTextColor(resources.getColor(R.color.color23))
                 val drawable = resources.getDrawable(R.drawable.icon_indicate_arrow_bottom_selected)
                 drawable.setBounds(0,0,drawable.minimumWidth,drawable.minimumHeight)
                 rb.setCompoundDrawables(null,null,drawable,null)
+
+                list.clear()
+                list = getList()
+                fruitAdapter = FruitAdapter(list, context!!)
+                linearLayoutManager = LinearLayoutManager(context)
+                linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
+                rvFruit.layoutManager = linearLayoutManager
+                rvFruit.adapter = fruitAdapter
             }
             2 -> {
+                //还原
                 rbClickTiems = 0
                 rb.setTextColor(resources.getColor(R.color.color5))
                 val drawable = resources.getDrawable(R.drawable.icon_indicate_arrow_no_selected)
                 drawable.setBounds(0,0,drawable.minimumWidth,drawable.minimumHeight)
                 rb.setCompoundDrawables(null,null,drawable,null)
+
+                list.clear()
+                fruitAdapter = FruitAdapter(list, context!!)
+                linearLayoutManager = LinearLayoutManager(context)
+                linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
+                rvFruit.layoutManager = linearLayoutManager
+                rvFruit.adapter = fruitAdapter
             }
         }
     }

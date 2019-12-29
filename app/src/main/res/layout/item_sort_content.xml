@@ -1,67 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <ImageView
-        android:id="@+id/ivHead"
-        android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:src="@drawable/sort_head1"/>
-
     <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="720dp"
         android:columnCount="3"
         android:rowCount="6"
-        android:layout_gravity="center"
+        android:background="@color/color1"
+         xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/ivHead"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_columnSpan="3"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:src="@drawable/sort_head1"/>
 
         <LinearLayout
             android:id="@+id/llSort1_1"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/mmm_font_s100"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="@dimen/mmm_font_s20"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1">
+            android:padding="@dimen/mmm_font_s10">
 
 
             <ImageView
                 android:id="@+id/ivSort1"
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="60dp"
-                android:src="@drawable/close_2"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:src="@drawable/item_bg_white" />
 
             <TextView
                 android:id="@+id/tvSort1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/color3"
+                android:layout_gravity="center"
                 android:layout_marginTop="@dimen/mmm_font_s2"
                 android:text="@string/mmm_zero"
-                android:textSize="@dimen/mmm_font_s16"
-                android:layout_gravity="center"/>
+                android:textColor="@color/color3"
+                android:textSize="@dimen/mmm_sort_text" />
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/llSort1_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/mmm_font_s100"
+            android:layout_height="@dimen/mmm_sort_item"
             android:orientation="vertical"
-            android:padding="@dimen/mmm_font_s20"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1">
+            android:padding="@dimen/mmm_font_s10">
 
 
             <ImageView
                 android:id="@+id/ivSort2"
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/mmm_font_s60"
-                android:src="@drawable/close_2"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:src="@drawable/item_bg_white" />
 
             <TextView
                 android:id="@+id/tvSort2"
@@ -70,27 +66,25 @@
                 android:textColor="@color/color3"
                 android:layout_marginTop="@dimen/mmm_font_s2"
                 android:text="@string/mmm_zero"
-                android:textSize="@dimen/mmm_font_s16"
+                android:textSize="@dimen/mmm_sort_text"
                 android:layout_gravity="center"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/llSort1_3"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/mmm_font_s100"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="@dimen/mmm_font_s20"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1">
+            android:padding="@dimen/mmm_item_padding">
 
 
             <ImageView
                 android:id="@+id/ivSort3"
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/mmm_font_s60"
-                android:src="@drawable/close_2"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:src="@drawable/item_bg_white" />
 
             <TextView
                 android:id="@+id/tvSort3"
@@ -99,26 +93,24 @@
                  android:text="@string/mmm_zero"
                 android:textColor="@color/color3"
                 android:layout_marginTop="@dimen/mmm_font_s2"
-                android:textSize="@dimen/mmm_font_s16"
+                android:textSize="@dimen/mmm_sort_text"
                 android:layout_gravity="center"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/llSort1_4"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/mmm_font_s100"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="@dimen/mmm_font_s20"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1">
+            android:padding="@dimen/mmm_item_padding">
 
 
             <ImageView
                 android:id="@+id/ivSort4"
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/mmm_font_s60"
-                android:src="@drawable/close_2"
+                android:src="@drawable/item_bg_white"
                 android:layout_gravity="center"/>
 
             <TextView
@@ -128,27 +120,24 @@
                  android:text="@string/mmm_zero"
                 android:textColor="@color/color3"
                 android:layout_marginTop="@dimen/mmm_font_s2"
-                android:textSize="@dimen/mmm_font_s16"
+                android:textSize="@dimen/mmm_sort_text"
                 android:layout_gravity="center"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/llSort1_5"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/mmm_font_s100"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="@dimen/mmm_font_s20"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1">
-
+            android:padding="@dimen/mmm_item_padding">
 
             <ImageView
                 android:id="@+id/ivSort5"
-                android:layout_width="80dp"
-                android:layout_height="@dimen/mmm_font_s60"
-                android:src="@drawable/close_2"
-                android:layout_gravity="center"/>
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:src="@drawable/item_bg_white" />
 
             <TextView
                 android:id="@+id/tvSort5"
@@ -157,26 +146,24 @@
                  android:text="@string/mmm_zero"
                 android:textColor="@color/color3"
                 android:layout_marginTop="@dimen/mmm_font_s2"
-                android:textSize="@dimen/mmm_font_s16"
+                android:textSize="@dimen/mmm_sort_text"
                 android:layout_gravity="center"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/llSort1_6"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/mmm_font_s100"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="@dimen/mmm_font_s20"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1">
+            android:padding="@dimen/mmm_item_padding">
 
 
             <ImageView
                 android:id="@+id/ivSort6"
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/mmm_font_s60"
-                android:src="@drawable/close_2"
+                android:src="@drawable/item_bg_white"
                 android:layout_gravity="center"/>
 
             <TextView
@@ -186,26 +173,24 @@
                  android:text="@string/mmm_zero"
                 android:textColor="@color/color3"
                 android:layout_marginTop="@dimen/mmm_font_s2"
-                android:textSize="@dimen/mmm_font_s16"
+                android:textSize="@dimen/mmm_sort_text"
                 android:layout_gravity="center"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/llSort1_7"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/mmm_font_s100"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="@dimen/mmm_font_s20"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1">
+            android:padding="@dimen/mmm_item_padding">
 
 
             <ImageView
                 android:id="@+id/ivSort7"
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/mmm_font_s60"
-                android:src="@drawable/close_2"
+                android:src="@drawable/item_bg_white"
                 android:layout_gravity="center"/>
 
             <TextView
@@ -215,55 +200,51 @@
                  android:text="@string/mmm_zero"
                 android:textColor="@color/color3"
                 android:layout_marginTop="@dimen/mmm_font_s2"
-                android:textSize="@dimen/mmm_font_s16"
+                android:textSize="@dimen/mmm_sort_text"
                 android:layout_gravity="center"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/llSort1_8"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/mmm_font_s100"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="@dimen/mmm_font_s20"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1">
+            android:padding="@dimen/mmm_item_padding">
 
 
             <ImageView
                 android:id="@+id/ivSort8"
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/mmm_font_s60"
-                android:src="@drawable/close_2"
+                android:src="@drawable/item_bg_white"
                 android:layout_gravity="center"/>
 
             <TextView
                 android:id="@+id/tvSort8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                 android:text="@string/mmm_zero"
-                android:textColor="@color/color3"
+                android:layout_gravity="center"
                 android:layout_marginTop="@dimen/mmm_font_s2"
-                android:textSize="@dimen/mmm_font_s16"
-                android:layout_gravity="center"/>
+                android:text="@string/mmm_zero"
+                android:textColor="@color/color3"
+                android:textSize="@dimen/mmm_sort_text" />
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/llSort1_9"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/mmm_font_s100"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="@dimen/mmm_font_s20"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1">
+            android:padding="@dimen/mmm_item_padding">
 
 
             <ImageView
                 android:id="@+id/ivSort9"
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/mmm_font_s60"
-                android:src="@drawable/close_2"
+                android:src="@drawable/item_bg_white"
                 android:layout_gravity="center"/>
 
             <TextView
@@ -273,26 +254,24 @@
                  android:text="@string/mmm_zero"
                 android:textColor="@color/color3"
                 android:layout_marginTop="@dimen/mmm_font_s2"
-                android:textSize="@dimen/mmm_font_s16"
+                android:textSize="@dimen/mmm_sort_text"
                 android:layout_gravity="center"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/llSort1_10"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/mmm_font_s100"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="@dimen/mmm_font_s20"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1">
+            android:padding="@dimen/mmm_item_padding">
 
 
             <ImageView
                 android:id="@+id/ivSort10"
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/mmm_font_s60"
-                android:src="@drawable/close_2"
+                android:src="@drawable/item_bg_white"
                 android:layout_gravity="center"/>
 
             <TextView
@@ -302,26 +281,24 @@
                  android:text="@string/mmm_zero"
                 android:textColor="@color/color3"
                 android:layout_marginTop="@dimen/mmm_font_s2"
-                android:textSize="@dimen/mmm_font_s16"
+                android:textSize="@dimen/mmm_sort_text"
                 android:layout_gravity="center"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/llSort1_11"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/mmm_font_s100"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="@dimen/mmm_font_s20"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1">
+            android:padding="@dimen/mmm_item_padding">
 
 
             <ImageView
                 android:id="@+id/ivSort11"
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/mmm_font_s60"
-                android:src="@drawable/close_2"
+                android:src="@drawable/item_bg_white"
                 android:layout_gravity="center"/>
 
             <TextView
@@ -331,25 +308,23 @@
                  android:text="@string/mmm_zero"
                 android:textColor="@color/color3"
                 android:layout_marginTop="@dimen/mmm_font_s2"
-                android:textSize="@dimen/mmm_font_s16"
+                android:textSize="@dimen/mmm_sort_text"
                 android:layout_gravity="center"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/llSort1_12"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/mmm_font_s100"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="@dimen/mmm_font_s20"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1">
+            android:padding="@dimen/mmm_item_padding">
 
             <ImageView
                 android:id="@+id/ivSort12"
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/mmm_font_s60"
-                android:src="@drawable/close_2"
+                android:src="@drawable/item_bg_white"
                 android:layout_gravity="center"/>
 
             <TextView
@@ -359,26 +334,24 @@
                  android:text="@string/mmm_zero"
                 android:textColor="@color/color3"
                 android:layout_marginTop="@dimen/mmm_font_s2"
-                android:textSize="@dimen/mmm_font_s16"
+                android:textSize="@dimen/mmm_sort_text"
                 android:layout_gravity="center"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/llSort1_13"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/mmm_font_s100"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="@dimen/mmm_font_s20"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1">
+            android:padding="@dimen/mmm_item_padding">
 
 
             <ImageView
                 android:id="@+id/ivSort13"
-                android:layout_width="76dp"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/mmm_font_s60"
-                android:src="@drawable/close_2"
+                android:src="@drawable/item_bg_white"
                 android:layout_gravity="center" />
 
             <TextView
@@ -389,27 +362,24 @@
                 android:textColor="@color/color3"
                 android:visibility="visible"
                 android:layout_marginTop="@dimen/mmm_font_s2"
-                android:textSize="@dimen/mmm_font_s16"
+                android:textSize="@dimen/mmm_sort_text"
                 android:layout_gravity="center"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/llSort1_14"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/mmm_font_s100"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="@dimen/mmm_font_s20"
-            android:visibility="visible"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1">
+            android:padding="@dimen/mmm_item_padding">
 
 
             <ImageView
                 android:id="@+id/ivSort14"
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/mmm_font_s60"
-                android:src="@drawable/close_2"
+                android:src="@drawable/item_bg_white"
                 android:layout_gravity="center"/>
 
             <TextView
@@ -419,27 +389,24 @@
                  android:text="@string/mmm_zero"
                 android:textColor="@color/color3"
                 android:layout_marginTop="@dimen/mmm_font_s2"
-                android:textSize="@dimen/mmm_font_s16"
+                android:textSize="@dimen/mmm_sort_text"
                 android:layout_gravity="center"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/llSort1_15"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/mmm_font_s100"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:visibility="visible"
-            android:padding="@dimen/mmm_font_s20"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1">
+            android:padding="@dimen/mmm_item_padding">
 
 
             <ImageView
                 android:id="@+id/ivSort15"
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/mmm_font_s60"
-                android:src="@drawable/close_2"
+                android:src="@drawable/item_bg_white"
                 android:layout_gravity="center"/>
 
             <TextView
@@ -449,11 +416,9 @@
                  android:text="@string/mmm_zero"
                 android:textColor="@color/color3"
                 android:layout_marginTop="@dimen/mmm_font_s2"
-                android:textSize="@dimen/mmm_font_s16"
+                android:textSize="@dimen/mmm_sort_text"
                 android:layout_gravity="center"/>
 
         </LinearLayout>
 
     </GridLayout>
-
-</LinearLayout>

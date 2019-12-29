@@ -38,35 +38,6 @@ class SortContentAdapter (private val context: Context , private val list: Array
          h.ivHead.setOnClickListener{run{
             mT.t(context, mSortHeadTag[position])
         }}
-
-            h.ivSort1.setImageResource(mCatalog.mItemImg1)
-            h.tvSort1.setText(mCatalog.mItemName1)
-            Log.e("最后一项",h.tvSort1.text.toString())
-
-            h.llSort1_1.setOnClickListener {
-                run {
-                    mT.t(context, mAllName1[position])
-                }
-            }
-
-/*
-        h.ivSort2.setImageResource(mCatalog.mItemImg2)
-        h.tvSort2.setText(mCatalog.mItemName2)
-        Log.e("最后一项",h.tvSort1.text.toString())
-            h.llSort1_2.setOnClickListener {
-                run {
-                    mT.t(context, mAllName1[position])
-                }
-        }
-
-        h.ivSort3.setImageResource(mCatalog.mItemImg3)
-        h.tvSort3.setText(mCatalog.mItemName3)
-        Log.e("最后一项",h.tvSort1.text.toString())
-            h.llSort1_3.setOnClickListener {
-                run {
-                    mT.t(context, mAllName1[position])
-                }
-        }*/
         
         val ItemIV :ArrayList<ImageView> = arrayListOf(h.ivSort1,h.ivSort2,h.ivSort3,h.ivSort4,h.ivSort5,h.ivSort6,h.ivSort7,h.ivSort8,h.ivSort9,h.ivSort10,
             h.ivSort11,h.ivSort12,h.ivSort3,h.ivSort14,h.ivSort15)
@@ -85,23 +56,26 @@ class SortContentAdapter (private val context: Context , private val list: Array
             mCatalog.mItemName7,mCatalog.mItemName8,mCatalog.mItemName9,mCatalog.mItemName10,mCatalog.mItemName11,mCatalog.mItemName12,mCatalog.mItemName13,mCatalog.mItemName14,
             mCatalog.mItemName15)
 
-        //val closeImg :Drawable.ConstantState? = h.resources.getDrawable(R.drawable.close_2).constantState
+       // val closeImg :Drawable.ConstantState? = h.resources.getDrawable(R.drawable.close_2).constantState
 
-        for (i in 0 until 2){
+        for (i in 0 until 14){
            // val trueImg :Drawable.ConstantState? = ItemIV[i]?.drawable.constantState
-            //判断为空时 不设置图片和文字
+           // 判断为空时 不设置图片和文字
                 ItemIV[i].setImageResource((catalogIV[i]))
                 ItemTV[i].setText(catalogTV[i])
-           /* if (ItemTV[i].text.isNullOrEmpty()){
+            if (ItemTV[i].text.toString() == "0"){
+                Log.e("text bool", (ItemTV[i].text.toString() == "0").toString())
+                ItemIV[i].visibility = View.GONE
+                ItemTV[i].visibility = View.GONE
                 ItemLL[i].visibility = View.GONE
-            }*/
+            }
 
-        /*    if (!(ItemTV[i].text.isNullOrEmpty())){
+            if (!(ItemTV[i].text.toString() == "")){
                 ItemLL[i].setOnClickListener { run {
                     mT.t(context, ItemTV[i].text.toString())
                 }
            }
-         }*/
+         }
        }
     }
 
