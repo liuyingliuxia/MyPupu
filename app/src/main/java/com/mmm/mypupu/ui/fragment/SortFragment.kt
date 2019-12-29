@@ -29,7 +29,7 @@ class SortFragment : Fragment() {
 
     private lateinit var sortContentAdapter: SortContentAdapter
     private lateinit var gridLayoutManager: GridLayoutManager
-    private var lastposion: Int = 0
+    private var lastposition: Int = 0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -74,25 +74,31 @@ class SortFragment : Fragment() {
                     // 当不滚动时
                     if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                         //获取最后一个完全显示的ItemPosition
-                        lastposion = manager.findLastCompletelyVisibleItemPosition().absoluteValue
-                        mCatalogId[lastposion].isChecked = true
-                        for (j in 0 until lastposion) {
-                            mCatalogId[j].isChecked = false
-                            goBackOtherRB(mCatalogId , lastposion )
-                        }
-                        for (k in lastposion + 1..16) {
-                            mCatalogId[k].isChecked = false
-                            goBackOtherRB(mCatalogId , lastposion )
-                        }
+                        lastposition = manager.findLastCompletelyVisibleItemPosition()
+                        //滑动到特殊的位置会报错 闪退     java.lang.ArrayIndexOutOfBoundsException: length=17; index=-1
+                        Log.e("position", lastposition.toString())
+                        if (lastposition == -1) {
+                            Log.e("position", lastposition.toString())
+                        } else {
+                            mCatalogId[lastposition].isChecked = true
+                            for (j in 0 until lastposition) {
+                                mCatalogId[j].isChecked = false
+                                goBackOtherRB(mCatalogId, lastposition)
+                            }
+                            for (k in lastposition + 1..16) {
+                                mCatalogId[k].isChecked = false
+                                goBackOtherRB(mCatalogId, lastposition)
+                            }
 
-                        if ( mCatalogId[lastposion].isChecked == false) {
-                            goBackOtherRB(mCatalogId , lastposion )
-                        }else{
-                            mCatalogId[lastposion].setTypeface(Typeface.defaultFromStyle(Typeface.BOLD))
-                            val mSize: Float = resources.getDimension(R.dimen.mmm_font_s5)
-                            mCatalogId[lastposion].setTextSize(mSize)
+                            if (mCatalogId[lastposition].isChecked == false) {
+                                goBackOtherRB(mCatalogId, lastposition)
+                            } else {
+                                mCatalogId[lastposition].setTypeface(Typeface.defaultFromStyle(Typeface.BOLD))
+                                val mSize: Float = resources.getDimension(R.dimen.mmm_font_s5)
+                                mCatalogId[lastposition].setTextSize(mSize)
+                            }
+                            Log.e("state", mCatalogId[lastposition].isChecked.toString())
                         }
-                        Log.e("state" ,   mCatalogId[lastposion].isChecked.toString())
                     }
                 }
 
