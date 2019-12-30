@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
     <GridLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="300dp"
-        android:layout_height="720dp"
+        android:layout_height="700dp"
         android:columnCount="3"
         android:rowCount="6"
         android:background="@color/color1"
-         xmlns:android="http://schemas.android.com/apk/res/android"
+        android:padding="@dimen/mmm_font_s10"
         android:orientation="horizontal">
 
         <ImageView
@@ -19,7 +20,7 @@
 
         <LinearLayout
             android:id="@+id/llSort1_1"
-            android:layout_width="@dimen/mmm_font_s100"
+            android:layout_width="@dimen/item_sort_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="@dimen/mmm_font_s10">
@@ -46,8 +47,8 @@
 
         <LinearLayout
             android:id="@+id/llSort1_2"
-            android:layout_width="@dimen/mmm_font_s100"
-            android:layout_height="@dimen/mmm_sort_item"
+            android:layout_width="@dimen/item_sort_content"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="@dimen/mmm_font_s10">
 
@@ -73,7 +74,7 @@
 
         <LinearLayout
             android:id="@+id/llSort1_3"
-            android:layout_width="@dimen/mmm_font_s100"
+            android:layout_width="@dimen/item_sort_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="@dimen/mmm_item_padding">
@@ -100,7 +101,7 @@
 
         <LinearLayout
             android:id="@+id/llSort1_4"
-            android:layout_width="@dimen/mmm_font_s100"
+            android:layout_width="@dimen/item_sort_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="@dimen/mmm_item_padding">
@@ -127,7 +128,7 @@
 
         <LinearLayout
             android:id="@+id/llSort1_5"
-            android:layout_width="@dimen/mmm_font_s100"
+            android:layout_width="@dimen/item_sort_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="@dimen/mmm_item_padding">
@@ -153,7 +154,7 @@
 
         <LinearLayout
             android:id="@+id/llSort1_6"
-            android:layout_width="@dimen/mmm_font_s100"
+            android:layout_width="@dimen/item_sort_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="@dimen/mmm_item_padding">
@@ -180,7 +181,7 @@
 
         <LinearLayout
             android:id="@+id/llSort1_7"
-            android:layout_width="@dimen/mmm_font_s100"
+            android:layout_width="@dimen/item_sort_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="@dimen/mmm_item_padding">
@@ -207,7 +208,7 @@
 
         <LinearLayout
             android:id="@+id/llSort1_8"
-            android:layout_width="@dimen/mmm_font_s100"
+            android:layout_width="@dimen/item_sort_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="@dimen/mmm_item_padding">
@@ -234,7 +235,7 @@
 
         <LinearLayout
             android:id="@+id/llSort1_9"
-            android:layout_width="@dimen/mmm_font_s100"
+            android:layout_width="@dimen/item_sort_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="@dimen/mmm_item_padding">
@@ -261,7 +262,7 @@
 
         <LinearLayout
             android:id="@+id/llSort1_10"
-            android:layout_width="@dimen/mmm_font_s100"
+            android:layout_width="@dimen/item_sort_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="@dimen/mmm_item_padding">
@@ -288,7 +289,7 @@
 
         <LinearLayout
             android:id="@+id/llSort1_11"
-            android:layout_width="@dimen/mmm_font_s100"
+            android:layout_width="@dimen/item_sort_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="@dimen/mmm_item_padding">
@@ -315,7 +316,7 @@
 
         <LinearLayout
             android:id="@+id/llSort1_12"
-            android:layout_width="@dimen/mmm_font_s100"
+            android:layout_width="@dimen/item_sort_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="@dimen/mmm_item_padding">
@@ -341,7 +342,7 @@
 
         <LinearLayout
             android:id="@+id/llSort1_13"
-            android:layout_width="@dimen/mmm_font_s100"
+            android:layout_width="@dimen/item_sort_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="@dimen/mmm_item_padding">
@@ -369,7 +370,7 @@
 
         <LinearLayout
             android:id="@+id/llSort1_14"
-            android:layout_width="@dimen/mmm_font_s100"
+            android:layout_width="@dimen/item_sort_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="@dimen/mmm_item_padding">
@@ -396,7 +397,7 @@
 
         <LinearLayout
             android:id="@+id/llSort1_15"
-            android:layout_width="@dimen/mmm_font_s100"
+            android:layout_width="@dimen/item_sort_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="@dimen/mmm_item_padding">

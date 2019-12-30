@@ -43,6 +43,6 @@ class ViewPagerAdapter (var context: Context , fm: FragmentManager) : FragmentSt
     }
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
-
+          //  super.destroyItem(container, position, `object`)
     }
 }

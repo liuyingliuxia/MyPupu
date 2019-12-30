@@ -42,8 +42,6 @@ class HomeFragment : Fragment(),SwipeRefreshLayout.OnRefreshListener {
                 startActivity(intent)
             }
         }
-
-
     }
 
     private fun initViewPager () {

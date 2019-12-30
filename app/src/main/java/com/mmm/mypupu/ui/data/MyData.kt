@@ -32,11 +32,11 @@ val fruit_sort_img :ArrayList <Int> = arrayListOf(R.drawable.fruit_sort1,R.drawa
 
 val fruitImg :ArrayList <Int > = arrayListOf(R.drawable.fruit_1,R.drawable.fruit_2,R.drawable.fruit_3,R.drawable.fruit_4 , R.drawable.fruit_5,
     R.drawable.fruit_6,R.drawable.fruit_7,R.drawable.fruit_8,R.drawable.fruit_9 , R.drawable.fruit_10,R.drawable.fruit_11)
-val fruitTitle :ArrayList <String> = arrayListOf("平和白肉蜜柚1个","平和红肉蜜柚1个","大荔冬枣500g","褚橙礼盒（一级M)","贵州修文猕猴桃","翠蜜枣礼盒2kg±50g/箱",
-      "软心红心芭乐400g-500g/份","天宝香蕪700g-800g/份","浙江涌泉蜜括450g-500g/份","牛奶草莓250g-280g/盒","")
+val fruitTitle :ArrayList <String> = arrayListOf("平和白肉蜜柚1个","平和红肉蜜柚1个","大荔冬枣500g","褚橙礼盒（一级M)","贵州修文猕猴桃","翠蜜枣礼盒",
+      "软心红心芭乐","天宝香蕪","浙江涌泉蜜括","牛奶草莓","雪莲果")
 val fruitSubtitle :ArrayList<String> = arrayListOf("鲜嫩多汁，来自蜜柚之乡的甜蜜问候","酸甜可口柚香宜人","皮薄如蝉甘脆清香肉多核小","励志橙清甜少渣冷藏下口感更佳（中果） ","23:00前可配送","肉质脆嫩清甜多汁（去皮口感...",
     "每人限购3份","每人限购3份","每人限购3份","香甜可口，果皮略微擦伤不喜...","满足想要更好的你清香脆甜","","")
-val fruitQuantity :ArrayList<String> = arrayListOf("0.8kg-1.1kg/个","1.1kg-1.4kg/个","500g/份","5kg±50g/箱","400g-450g/份5-6个","","","","","","")
+val fruitQuantity :ArrayList<String> = arrayListOf("0.8kg-1.1kg/个","1.1kg-1.4kg/个","500g/份","5kg±50g/箱","400g-450g/份5-6个","2kg±50g/箱","400g-500g/份","700g-800g/份","450g-500g/份","250g-280g/盒","500g/份")
 val fruitRemark : ArrayList<String> = arrayListOf("特惠","","","","","","满59元减10元 特惠" ,"","","特惠","特惠")
 val fruitPrice :ArrayList <Double> = arrayListOf(4.58,7.98,6.98,99.0,14.8,39.8,6.98,5.98,5.38,14.8,9.9)
 val fruitOriPrice : ArrayList <Double> = arrayListOf(8.98,11.8,9.9,138.0,18.0,69.0,8.9,8.9,12.5,26.0,19.8)

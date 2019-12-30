@@ -6,23 +6,24 @@ import android.graphics.Typeface
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
 import androidx.annotation.RequiresApi
-import androidx.recyclerview.widget.*
-
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.PagerSnapHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.adapter.SortContentAdapter
 import com.mmm.mypupu.ui.bean.Catalog
-import com.mmm.mypupu.ui.bean.Goods
 import com.mmm.mypupu.ui.data.*
 import com.mmm.mypupu.ui.search.SearchActivity
 import kotlinx.android.synthetic.main.fragment_sort_test.*
 import kotlinx.android.synthetic.main.fragment_sort_test.view.*
-import kotlin.math.absoluteValue
+
 
 class SortFragment : Fragment() {
     private var list :ArrayList<Catalog> = ArrayList ()
@@ -70,11 +71,11 @@ class SortFragment : Fragment() {
 
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                     super.onScrollStateChanged(recyclerView, newState)
-                    val manager = recyclerView!!.layoutManager as GridLayoutManager
+                    val manager = recyclerView.layoutManager as GridLayoutManager
                     // 当不滚动时
                     if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                         //获取最后一个完全显示的ItemPosition
-                        lastposition = manager.findLastCompletelyVisibleItemPosition()
+                        lastposition = manager.findFirstVisibleItemPosition()
                         //滑动到特殊的位置会报错 闪退     java.lang.ArrayIndexOutOfBoundsException: length=17; index=-1
                         Log.e("position", lastposition.toString())
                         if (lastposition == -1) {
@@ -98,13 +99,8 @@ class SortFragment : Fragment() {
                                 mCatalogId[lastposition].setTextSize(mSize)
                             }
                             Log.e("state", mCatalogId[lastposition].isChecked.toString())
-                        }
+                      }
                     }
-                }
-
-                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                    super.onScrolled(recyclerView, dx, dy)
-
                 }
             })
     }
@@ -133,6 +129,7 @@ class SortFragment : Fragment() {
 
         for ( i in 0 .. 16 ){
             mList[i].setText(mCatalogText[i])
+
             mList[i].setOnClickListener { run{
                goBackOtherRB(mList , i)
                 //切换到指定的item

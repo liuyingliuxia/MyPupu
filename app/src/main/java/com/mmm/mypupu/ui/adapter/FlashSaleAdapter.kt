@@ -70,7 +70,7 @@ class FlashSaleAdapter (var list: ArrayList<Goods>, var context: Context  ): Rec
             else if( subMinu > 9 )
                 holder.itemView.tvMinute.setText(subMinu.toString())
 
-            when (timeList[0] > minHour && timeList[0] <= maxHour){
+            when (timeList[0] >= minHour && timeList[0] <= maxHour){
                  minHour == 0,maxHour == 9 -> {
                      holder.itemView.tvHour.setText("0"+8.minus(timeList[0]).absoluteValue.toString())
                  }
