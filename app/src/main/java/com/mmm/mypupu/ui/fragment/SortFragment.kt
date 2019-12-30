@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -18,16 +19,19 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.adapter.SortContentAdapter
+import com.mmm.mypupu.ui.adapter.SortLeftAdapter
 import com.mmm.mypupu.ui.bean.Catalog
 import com.mmm.mypupu.ui.data.*
 import com.mmm.mypupu.ui.search.SearchActivity
+import kotlinx.android.synthetic.main.fragment_sort.view.*
 import kotlinx.android.synthetic.main.fragment_sort_test.*
 import kotlinx.android.synthetic.main.fragment_sort_test.view.*
-
+import kotlinx.android.synthetic.main.fragment_sort_test.view.rvContent
 
 class SortFragment : Fragment() {
     private var list :ArrayList<Catalog> = ArrayList ()
-
+    private var tvLeftList: ArrayList<TextView?>  = ArrayList()
+    private lateinit var sortLeftAdapter: SortLeftAdapter
     private lateinit var sortContentAdapter: SortContentAdapter
     private lateinit var gridLayoutManager: GridLayoutManager
     private var lastposition: Int = 0
@@ -36,7 +40,14 @@ class SortFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val mView = inflater.inflate(R.layout.fragment_sort_test, container, false)
+        val mView = inflater.inflate(R.layout.fragment_sort, container, false)
+        //初始化左侧内容
+        val mLeftText = mCatalogText
+
+        sortLeftAdapter = SortLeftAdapter (context!!, mLeftText,mView.rvContent)
+        gridLayoutManager = GridLayoutManager(context,1)
+        mView.rvLeft.layoutManager =gridLayoutManager
+        mView.rvLeft.adapter = sortLeftAdapter
 
         //初始化右侧显示内容
         val mlist = getList()
@@ -51,11 +62,11 @@ class SortFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val mCatalogId :ArrayList<RadioButton> = arrayListOf(rbCatalog1,rbCatalog2,rbCatalog3,rbCatalog4,rbCatalog5,rbCatalog6,rbCatalog7,
-            rbCatalog8,rbCatalog9,rbCatalog10,rbCatalog11,rbCatalog12,rbCatalog13,rbCatalog14,rbCatalog15,rbCatalog16,rbCatalog17)
-            initCatalogText(mCatalogId)
+        //val mCatalogId :ArrayList<RadioButton> = arrayListOf(rbCatalog1,rbCatalog2,rbCatalog3,rbCatalog4,rbCatalog5,rbCatalog6,rbCatalog7,
+          //  rbCatalog8,rbCatalog9,rbCatalog10,rbCatalog11,rbCatalog12,rbCatalog13,rbCatalog14,rbCatalog15,rbCatalog16,rbCatalog17)
+            //initCatalogText(mCatalogId)
 
-            rbCatalog1.isChecked = true
+          //  rbCatalog1.isChecked = true
             //一次只能滑动一页，不能快速滑动
             val pagerSnapHelper = PagerSnapHelper()
             pagerSnapHelper.attachToRecyclerView(rvContent)
@@ -65,9 +76,22 @@ class SortFragment : Fragment() {
                 startActivity(intent)
 
             }}
+
+       /* val llmLeft = view.rvLeft.layoutManager
+        val llmRight = view.rvContent.layoutManager
+        for ( i in 0 until mCatalogText.size)
+        {
+            tvLeftList[i] = llmLeft!!.findViewByPosition(i)
+            tvLeftList[i]!!.setOnClickListener { kotlin.run {
+                tvLeftList[i]!!.isEnabled = false
+                goBackOther(tvLeftList , i )
+                //切换到指定的item
+                llmRight!!.scrollToPosition(i)
+            } }
+        }*/
             //滑动时，左侧导航栏同步改变选中状态
 
-            rvContent.addOnScrollListener(object :RecyclerView.OnScrollListener(){
+       /*     rvContent.addOnScrollListener(object :RecyclerView.OnScrollListener(){
 
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                     super.onScrollStateChanged(recyclerView, newState)
@@ -102,7 +126,7 @@ class SortFragment : Fragment() {
                       }
                     }
                 }
-            })
+            })*/
     }
 
  /*   //测试数据完整性
@@ -112,6 +136,7 @@ class SortFragment : Fragment() {
                 Log.e("图片数据长度第$i 个",length.toString())
         }
     }*/
+
     fun getList(): ArrayList<Catalog> {
 
         for (i in 0 until mContentHeadImg.size) {
@@ -123,11 +148,11 @@ class SortFragment : Fragment() {
         return list
     }
 
-
+/*
     fun initCatalogText (mList :ArrayList <RadioButton> ){
         val llm : LinearLayoutManager = rvContent.layoutManager as LinearLayoutManager
 
-        for ( i in 0 .. 16 ){
+        for ( i in 0 until mCatalogText.size ){
             mList[i].setText(mCatalogText[i])
 
             mList[i].setOnClickListener { run{
@@ -138,24 +163,25 @@ class SortFragment : Fragment() {
 
             } }
         }
-    }
+    }*/
 
-fun goBackOtherRB(mList: ArrayList<RadioButton> , i :Int) {
+fun goBackOther(mList: ArrayList<TextView?> , i :Int) {
     //选中的按钮 变大
-    mList[i].setTypeface(Typeface.defaultFromStyle(Typeface.BOLD))
+    mList[i]?.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD))
     val mSize: Float = resources.getDimension(R.dimen.mmm_font_s5)
-    mList[i].setTextSize(mSize)
+    mList[i]?.setTextSize(mSize)
     //让其他按钮变回原样
     for (j in 0 until i) {
-        mList[j].setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL))
+        mList[j]?.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL))
         val mSizeNor: Float = resources.getDimension(R.dimen.mmm_font_s4)
-        mList[j].setTextSize(mSizeNor)
+        mList[j]?.setTextSize(mSizeNor)
+        mList[j]?.isEnabled = true
     }
     for (k in i + 1..16) {
-        mList[k].setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL))
+        mList[k]?.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL))
         val mSizeNor: Float = resources.getDimension(R.dimen.mmm_font_s4)
-        mList[k].setTextSize(mSizeNor)
+        mList[k]?.setTextSize(mSizeNor)
+        mList[k]?.isEnabled = true
+        }
     }
-
-}
 }

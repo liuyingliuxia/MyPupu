@@ -47,5 +47,6 @@ dependencies {
     //RecyclerView通用适配器
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.28'
   /*  implementation 'com.github.CarGuo.LazyRecyclerAdapter:CommonRecycler-Kotlin:v4.0.0'*/
-
+   //图片加载框架
+   implementation 'com.github.bumptech.glide:glide:3.7.0'
 }

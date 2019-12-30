@@ -63,6 +63,7 @@ class FlashSaleAdapter (var list: ArrayList<Goods>, var context: Context  ): Rec
             var timeList = getNow()
             Log.e("now",timeList.toString())
             countDown(holder,timeList[2].minus(59).absoluteValue)
+
             val subMinu = timeList[1].minus(59).absoluteValue
             if  ( subMinu >= 0 && subMinu <= 9 )
                 holder.itemView.tvMinute.setText("0"+subMinu.absoluteValue)
@@ -70,22 +71,22 @@ class FlashSaleAdapter (var list: ArrayList<Goods>, var context: Context  ): Rec
             else if( subMinu > 9 )
                 holder.itemView.tvMinute.setText(subMinu.toString())
 
-            when (timeList[0] >= minHour && timeList[0] <= maxHour){
+            when (timeList[0] > minHour && timeList[0] <= maxHour){
                  minHour == 0,maxHour == 9 -> {
-                     holder.itemView.tvHour.setText("0"+8.minus(timeList[0]).absoluteValue.toString())
+                     holder.itemView.tvHour.setText(toTwo((8.minus(timeList[0])).absoluteValue))
                  }
                 minHour == 9 && maxHour == 11 ->{
-                    holder.itemView.tvHour.setText("0"+10.minus(timeList[0]).absoluteValue.toString())
+                    holder.itemView.tvHour.setText(toTwo((10.minus(timeList[0])).absoluteValue))
                 }
 
                 minHour == 11 && maxHour == 14 ->{
-                    holder.itemView.tvHour.setText("0"+Math.abs(13.minus(timeList[0])).toString())
+                    holder.itemView.tvHour.setText(toTwo((13.minus(timeList[0])).absoluteValue))
                 }
                 minHour == 14 && maxHour == 16 -> {
-                    holder.itemView.tvHour.setText("0"+15.minus(timeList[0]).absoluteValue.toString())
+                    holder.itemView.tvHour.setText(toTwo((15.minus(timeList[0])).absoluteValue))
                 }
                 minHour == 16 && maxHour == 24 ->{
-                    holder.itemView.tvHour.setText("0"+23.minus(timeList[0]).absoluteValue.toString())
+                    holder.itemView.tvHour.setText(toTwo((23.minus(timeList[0])).absoluteValue))
                 }
             }
 
@@ -134,14 +135,18 @@ class FlashSaleAdapter (var list: ArrayList<Goods>, var context: Context  ): Rec
         object : CountDownTimer(second.times(1000).toLong(), 1000) {
             override fun onFinish() {
                 val subMinu = getNow()[1].minus(59).absoluteValue
-
-                holder.itemView.tvMinute.setText(toDouble(subMinu.minus(1)))
-                countDown2(holder)
+                if ( subMinu == 0 ){
+                    holder.itemView.tvMinute.setText("59")
+                    countDown2(holder)
+                }else {
+                    holder.itemView.tvMinute.setText(toTwo(subMinu.minus(1)))
+                    countDown2(holder)
+                }
             }
             override fun onTick(millisUntilFinished: Long) {
 
                 val sec = millisUntilFinished.div(1000)
-                holder.itemView.tvSecond.setText(toDouble(sec.toInt()))
+                holder.itemView.tvSecond.setText(toTwo(sec.toInt()))
             }
         }.start()
     }
@@ -155,7 +160,7 @@ class FlashSaleAdapter (var list: ArrayList<Goods>, var context: Context  ): Rec
             }
             override fun onTick(millisUntilFinished: Long) {
                 val sec = millisUntilFinished.div(1000)
-                holder.itemView.tvSecond.setText(toDouble(sec.toInt()))
+                holder.itemView.tvSecond.setText(toTwo(sec.toInt()))
             }
         }.start()
     }
@@ -174,7 +179,7 @@ class FlashSaleAdapter (var list: ArrayList<Goods>, var context: Context  ): Rec
 
     }
 
-    fun toDouble (time:Int ) :String  {
+    fun toTwo (time:Int ) :String  {
         if (time > 9)
             return time.toString()
         else

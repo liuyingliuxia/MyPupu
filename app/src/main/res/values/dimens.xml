@@ -38,6 +38,7 @@
     <dimen name="oval_radius">22dp</dimen>
     <dimen name="mmm_sort_text">12dp</dimen>
     <dimen name="item_sort_content">93dp</dimen>
+    <dimen name="item_sort_padding_right">10dp</dimen>
     <!--MMM 项目字体大小规格-->
     <dimen name="mmm_font_s10">10dp</dimen>
     <dimen name="mmm_font_s11">11dp</dimen>

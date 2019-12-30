@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tvCatalog"
+    android:layout_width="@dimen/mmm_font_s100"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:paddingTop="@dimen/mmm_font_s16"
+    android:background="@drawable/tool_state_pressed_sort_catalog"
+    android:paddingBottom="@dimen/mmm_font_s16"
+    android:paddingRight="@dimen/item_sort_padding_right"
+    android:button="@null"
+    android:text="@string/mmm_hotpot_festival"
+    android:textColor="@drawable/state_selected_c3_c23"
+    android:textSize="@dimen/mmm_font_s12" />

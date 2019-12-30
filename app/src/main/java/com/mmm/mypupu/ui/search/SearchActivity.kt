@@ -74,10 +74,27 @@ class SearchActivity : AppCompatActivity(),TextWatcher {
             actSearch.text = null
             showKeyBoard()
         } }
+
+        actSearch.setOnClickListener { run {
+            showKeyBoard()
+        } }
+
+        tvSearch.setOnClickListener {
+            run{
+                if ( actSearch.text.isNullOrEmpty()) {
+                    Toast.makeText(this , "输入不能为空！", Toast.LENGTH_SHORT).show()
+                } else {
+                    actSearch.isFocusable = false
+                    hideKeyforard(actSearch)
+                    //添加历史记录
+                    SaveHistory.saveSearchHistory(actSearch.text.toString(),this)
+                    replaceFragment(mResultFragment,R.id.llContainer)
+                }
+            }
+        }
 }
     private fun initFirst(){
         showKeyBoard()
-     //   initFragment()
         //初始化显示第一个 fragment
         addFragment(mHistoryFragmemt,R.id.llContainer)
         ivBack.setOnClickListener {  this.finish()}
@@ -97,28 +114,6 @@ class SearchActivity : AppCompatActivity(),TextWatcher {
         actSearch.requestFocus()
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
     }
-
-/*    private fun initFragment () {
-        val manager = supportFragmentManager.beginTransaction()
-        manager.add (R.id.llContainer,mHistoryFragmemt)
-        manager.add (R.id.llContainer,mResultFragment)
-        manager.add (R.id.llContainer,mInputFragment)
-        manager.commit()
-        mStack.add(mHistoryFragmemt)
-        mStack.add(mResultFragment)
-        mStack.add(mInputFragment)
-    }*/
-
-/*      fun changeFragment (position: Int) {
-         val manager = supportFragmentManager.beginTransaction()
-        for (fragment in mStack){
-            manager.hide (fragment)
-           // 隐藏 在 自动补全时的 fragment ,manager.hide()
-        }
-        manager.show (mStack[position])
-        manager.commit()
-    }*/
-
 
     //输入框文字变化后
     override fun afterTextChanged(s: Editable?) {

@@ -58,11 +58,7 @@ class HomeFragment : Fragment(),SwipeRefreshLayout.OnRefreshListener {
             override fun run() {
                 var i :Int = (0 until searchHint.size).random()
                 tvSearch.text = searchHint [i]
-               /* for (j in 0 .. 6) {
-                    goodsPrice[j] += i.minus(3.20)
-                    //保留两位小数
-                var mDouble =   Formatter().format("%.2f", goodsPrice[j]).toString()
-                }*/
+
                 srlMain.isRefreshing = false
             }
         },1000)

@@ -36,9 +36,11 @@
 
             <ScrollView
                 android:id="@+id/svLeft"
-                android:layout_width="@dimen/mmm_font_s100"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:scrollbars="none"
+                android:foregroundGravity="center"
+                app:layout_constraintHorizontal_weight="1"
                 app:layout_constraintTop_toBottomOf="@+id/vCutLine"
                 app:layout_constraintLeft_toLeftOf="parent">
 
@@ -55,26 +57,27 @@
                         android:id="@+id/rbCatalog1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
+                        android:gravity="center_horizontal"
                         android:paddingTop="@dimen/mmm_font_s16"
                         android:background="@drawable/tool_state_pressed_sort_catalog"
                         android:paddingBottom="@dimen/mmm_font_s16"
+                        android:paddingRight="@dimen/item_sort_padding_right"
                         android:button="@null"
                         android:text="@string/mmm_hotpot_festival"
                         android:textColor="@drawable/state_selected_c3_c23"
                         android:textSize="@dimen/mmm_font_s12" />
 
                     <RadioButton
-                        
                         android:id="@+id/rbCatalog2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
+                        android:gravity="center_horizontal"
                         android:paddingTop="@dimen/mmm_font_s16"
                         android:background="@drawable/tool_state_pressed_sort_catalog"
                         android:paddingBottom="@dimen/mmm_font_s16"
                         android:button="@null"
                         android:text="@string/mmm_hotpot_festival"
+                        android:paddingRight="@dimen/item_sort_padding_right"
                         android:textColor="@drawable/state_selected_c3_c23"
                         android:textSize="@dimen/mmm_font_s12" />
                     <RadioButton
@@ -82,12 +85,13 @@
                         android:id="@+id/rbCatalog3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
+                        android:gravity="center_horizontal"
                         android:paddingTop="@dimen/mmm_font_s16"
                         android:background="@drawable/tool_state_pressed_sort_catalog"
                         android:paddingBottom="@dimen/mmm_font_s16"
                         android:button="@null"
                         android:text="@string/mmm_hotpot_festival"
+                        android:paddingRight="@dimen/item_sort_padding_right"
                         android:textColor="@drawable/state_selected_c3_c23"
                         android:textSize="@dimen/mmm_font_s12" />
                     <RadioButton
@@ -101,6 +105,7 @@
                         android:paddingBottom="@dimen/mmm_font_s16"
                         android:button="@null"
                         android:text="@string/mmm_hotpot_festival"
+                        android:paddingRight="@dimen/item_sort_padding_right"
                         android:textColor="@drawable/state_selected_c3_c23"
                         android:textSize="@dimen/mmm_font_s12" />
 
@@ -114,6 +119,7 @@
                         android:paddingBottom="@dimen/mmm_font_s16"
                         android:button="@null"
                         android:text="@string/mmm_hotpot_festival"
+                        android:paddingRight="@dimen/item_sort_padding_right"
                         android:textColor="@drawable/state_selected_c3_c23"
                         android:textSize="@dimen/mmm_font_s12" />
 
@@ -127,6 +133,7 @@
                         android:paddingBottom="@dimen/mmm_font_s16"
                         android:button="@null"
                         android:text="@string/mmm_hotpot_festival"
+                        android:paddingRight="@dimen/item_sort_padding_right"
                         android:textColor="@drawable/state_selected_c3_c23"
                         android:textSize="@dimen/mmm_font_s12" />
 
@@ -140,6 +147,7 @@
                         android:background="@drawable/tool_state_pressed_sort_catalog"
                         android:paddingBottom="@dimen/mmm_font_s16"
                         android:button="@null"
+                        android:paddingRight="@dimen/item_sort_padding_right"
                         android:text="@string/mmm_hotpot_festival"
                         android:textColor="@drawable/state_selected_c3_c23"
                         android:textSize="@dimen/mmm_font_s12" />
@@ -154,6 +162,7 @@
                         android:paddingBottom="@dimen/mmm_font_s16"
                         android:button="@null"
                         android:text="@string/mmm_hotpot_festival"
+                        android:paddingRight="@dimen/item_sort_padding_right"
                         android:textColor="@drawable/state_selected_c3_c23"
                         android:textSize="@dimen/mmm_font_s12" />
                     <RadioButton
@@ -167,6 +176,7 @@
                         android:paddingBottom="@dimen/mmm_font_s16"
                         android:button="@null"
                         android:text="@string/mmm_hotpot_festival"
+                        android:paddingRight="@dimen/item_sort_padding_right"
                         android:textColor="@drawable/state_selected_c3_c23"
                         android:textSize="@dimen/mmm_font_s12" />
                     <RadioButton
@@ -180,6 +190,7 @@
                         android:paddingBottom="@dimen/mmm_font_s16"
                         android:button="@null"
                         android:text="@string/mmm_hotpot_festival"
+                        android:paddingRight="@dimen/item_sort_padding_right"
                         android:textColor="@drawable/state_selected_c3_c23"
                         android:textSize="@dimen/mmm_font_s12" />
                     <RadioButton
@@ -192,11 +203,11 @@
                         android:paddingBottom="@dimen/mmm_font_s16"
                         android:button="@null"
                         android:text="@string/mmm_hotpot_festival"
+                        android:paddingRight="@dimen/item_sort_padding_right"
                         android:textColor="@drawable/state_selected_c3_c23"
                         android:textSize="@dimen/mmm_font_s12" />
 
                     <RadioButton
-                        
                         android:id="@+id/rbCatalog12"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -205,6 +216,7 @@
                         android:background="@drawable/tool_state_pressed_sort_catalog"
                         android:paddingBottom="@dimen/mmm_font_s16"
                         android:button="@null"
+                        android:paddingRight="@dimen/item_sort_padding_right"
                         android:text="@string/mmm_hotpot_festival"
                         android:textColor="@drawable/state_selected_c3_c23"
                         android:textSize="@dimen/mmm_font_s12" />
@@ -218,6 +230,7 @@
                         android:background="@drawable/tool_state_pressed_sort_catalog"
                         android:paddingBottom="@dimen/mmm_font_s16"
                         android:button="@null"
+                        android:paddingRight="@dimen/item_sort_padding_right"
                         android:text="@string/mmm_hotpot_festival"
                         android:textColor="@drawable/state_selected_c3_c23"
                         android:textSize="@dimen/mmm_font_s12" />
@@ -232,6 +245,7 @@
                         android:paddingBottom="@dimen/mmm_font_s16"
                         android:button="@null"
                         android:text="@string/mmm_hotpot_festival"
+                        android:paddingRight="@dimen/item_sort_padding_right"
                         android:textColor="@drawable/state_selected_c3_c23"
                         android:textSize="@dimen/mmm_font_s12" />
                     <RadioButton
@@ -245,6 +259,7 @@
                         android:paddingBottom="@dimen/mmm_font_s16"
                         android:button="@null"
                         android:text="@string/mmm_hotpot_festival"
+                        android:paddingRight="@dimen/item_sort_padding_right"
                         android:textColor="@drawable/state_selected_c3_c23"
                         android:textSize="@dimen/mmm_font_s12" />
 
@@ -259,6 +274,7 @@
                         android:paddingBottom="@dimen/mmm_font_s16"
                         android:button="@null"
                         android:text="@string/mmm_hotpot_festival"
+                        android:paddingRight="@dimen/item_sort_padding_right"
                         android:textColor="@drawable/state_selected_c3_c23"
                         android:textSize="@dimen/mmm_font_s12" />
 
@@ -267,6 +283,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:paddingRight="@dimen/item_sort_padding_right"
                         android:paddingTop="@dimen/mmm_font_s16"
                         android:background="@drawable/tool_state_pressed_sort_catalog"
                         android:paddingBottom="@dimen/mmm_font_s16"
@@ -289,6 +306,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            app:layout_constraintHorizontal_weight="2"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/svLeft"
             app:layout_constraintTop_toBottomOf="@+id/vCutLine" />
