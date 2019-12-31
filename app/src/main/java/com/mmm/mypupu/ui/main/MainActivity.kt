@@ -42,16 +42,11 @@ class MainActivity :AppCompatActivity(),View.OnClickListener{
         setContentView(R.layout.activity_main_test)
         //设置沉浸式状态栏
         StatusBarCompat.setStatusBarColor(this, getColor(R.color.color1), true)
-//        replaceFragment(HomeFragment(), R.id.llContainer)
-//        initFragment()
-//        changeFragment(0)
+
         initViewPager()
         rbHome.setOnClickListener(this)
         rbSort.setOnClickListener(this)
 
-//        bnvMain.setOnNavigationItemSelectedListener {
-//            BottomNavigationView.OnNavigationItemSelectedListener { }
-//        }
     }
 
     private fun initViewPager () {
@@ -84,14 +79,10 @@ class MainActivity :AppCompatActivity(),View.OnClickListener{
 
         when (v?.id) {
             R.id.rbHome -> {
-//                replaceFragment(HomeFragment(),R.id.llContainer)
-//                changeFragment(0)
                 nvpMain.currentItem = 0
             }
 
             R.id.rbSort -> {
-//                replaceFragment(SortFragment(),R.id.llContainer)
-//                changeFragment(1)
                 nvpMain.currentItem = 1
             }
         }

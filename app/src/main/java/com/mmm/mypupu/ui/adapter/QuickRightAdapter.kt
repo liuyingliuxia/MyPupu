@@ -10,11 +10,11 @@ import com.mmm.mypupu.ui.bean.Catalog
 import com.mmm.mypupu.ui.bean.RightBean
 import kotlinx.android.synthetic.main.item_sort_content.view.*
 
-class QuickRightAdapter(var layoutId:Int,var datas:List<RightBean>): BaseQuickAdapter<RightBean, BaseViewHolder>(layoutId,datas) {
+class QuickRightAdapter( layoutId:Int, datas:List<RightBean>): BaseQuickAdapter<RightBean, BaseViewHolder>(layoutId,datas) {
 
 
     override fun convert(helper: BaseViewHolder?, item: RightBean?) {
 
-        helper!!.getView<TextView>(R.id.tvSort1).setText(item!!.name)
+        helper!!.getView<ImageView>(ivHead).setImageResource(item!!.imgHeadId)
     }
 }

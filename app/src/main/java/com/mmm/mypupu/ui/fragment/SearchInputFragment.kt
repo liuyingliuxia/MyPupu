@@ -59,10 +59,6 @@ class SearchInputFragment : Fragment() {
     }
 
     fun getList(): MutableList<String> {
-            /*   if ( searchAutoCompleteGoods.indexOf(key) != -1 ){
-            list.add(searchAutoCompleteGoods[searchAutoCompleteGoods.indexOf(key)])
-            }*/
-
             //筛选
             for (i in 0..searchAutoCompleteGoods.size.minus(1))
                 list.add(searchAutoCompleteGoods[i])

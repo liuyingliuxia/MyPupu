@@ -63,9 +63,6 @@ val mContentHeadImg :ArrayList<Int > = arrayListOf(R.drawable.sort_head1,R.drawa
     R.drawable.sort_head10,R.drawable.sort_head11,R.drawable.sort_head12, R.drawable.sort_head13,R.drawable.sort_head14,
     R.drawable.sort_head15,R.drawable.sort_head16,R.drawable.sort_head17)
 
-
-
-
 val mSortHeadTag :ArrayList<String> = arrayListOf("燃情火锅季","徐香猕猴桃 6.98元/500g","悠拣菜七叶心 2.99元/300g","燃情火锅季","碧渔鱿鱼（冻） 29.8元/300g",
     "合味道杯面（部分） 满15减3元","大希地帕尼尼 满20减8元","猪肚莲子汤 49.9元/750g","新希望低温纯牛奶 1.9元/180ml" ,"法国进口1664啤酒 7.5元/250ml","沃隆系列产品 满99减30元",
     "学生文具 满48减10元", "樱花花瓣沐浴露 19.9元/380ml","宝宝的圣诞礼物 精选上市","宠物系列 （部分） 满25减5元","什锦巧克力制品 69元/650g","马大姐糖果 买一送一")

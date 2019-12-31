@@ -19,62 +19,40 @@ import kotlinx.android.synthetic.main.fragment_tab_crazy_discount.view.*
 
 class TabCrazyDiscountFragment : Fragment() {
     var num: Int = 0
-    private var list :MutableList<Goods > = ArrayList ()
+    var INIT_LIST_NUM = 5
     private lateinit var crazyDiscountAdapter: CrazyDiscountAdapter
     private lateinit var linearLayoutManager: LinearLayoutManager
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val mView = inflater.inflate(R.layout.fragment_tab_crazy_discount, container, false)
-        list = getList()
-        crazyDiscountAdapter = CrazyDiscountAdapter(list, context!!)
-        linearLayoutManager = LinearLayoutManager(context)
-        linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
-        mView.rvCrazyDiscount.layoutManager =linearLayoutManager
-        mView.rvCrazyDiscount.adapter = crazyDiscountAdapter
-        return mView
+        return inflater.inflate(R.layout.fragment_tab_crazy_discount, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val mList = Goods.newGoodsList(INIT_LIST_NUM)
+        mList.addAll(mList)
+        crazyDiscountAdapter = CrazyDiscountAdapter(mList, context!!)
+        linearLayoutManager = LinearLayoutManager(context)
+        linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
+        rvCrazyDiscount.layoutManager =linearLayoutManager
+        rvCrazyDiscount.adapter = crazyDiscountAdapter
+
         rvCrazyDiscount.addOnScrollListener(object :RecyclerView.OnScrollListener(){
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
                 //1代表底部,返回true表示没到底部,还可以滑
-                var isBottom = rvCrazyDiscount.canScrollVertically(1)
+                val isBottom = rvCrazyDiscount.canScrollVertically(1)
                 if ( isBottom == false && num ==0 ){
                     mT.t(context!! , "继续下滑加载更多")
-                    list = getHalfList()
-                    crazyDiscountAdapter = CrazyDiscountAdapter(list, context!!)
-                    linearLayoutManager = LinearLayoutManager(context)
-                    linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
-                    rvCrazyDiscount.layoutManager =linearLayoutManager
-                    rvCrazyDiscount.adapter = crazyDiscountAdapter
+                        mList.addAll(Goods.newGoodsList(INIT_LIST_NUM))
+                    crazyDiscountAdapter.notifyDataSetChanged()
                     num ++
                 }
                 else if (isBottom == false && num > 0  )
                     mT.t(context!! , "没有更多了")
             }
-
         })
-
     }
-    fun getList(): MutableList<Goods> {
-
-        for (i in 0 until goodsImg.size.div(2)) {
-            list.add( Goods( goodsImg[i], goodsTitle[i] , goodsSubtitle[i], goodsQuantity[i],goodsRemark[i] , goodsPrice[i], goodsOriginPrice[i], goodsNum[i]))
-        }
-        return list
-    }
-
-    fun getHalfList(): MutableList<Goods> {
-
-        for (i in goodsImg.size.div(2) until  goodsImg.size ) {
-            list.add( Goods( goodsImg[i], goodsTitle[i] , goodsSubtitle[i], goodsQuantity[i],goodsRemark[i] , goodsPrice[i], goodsOriginPrice[i], goodsNum[i]))
-
-        }
-        return list
-    }
-
 }

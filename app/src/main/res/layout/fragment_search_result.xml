@@ -64,6 +64,7 @@
 
     </LinearLayout>
         <!-- 上下抽屉页-->
-    <include layout="@layout/drawer_filter"/>
+    <include
+        layout="@layout/drawer_filter"/>
 
 </com.mmm.mypupu.ui.widgets.VerticalDrawerLayout>

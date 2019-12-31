@@ -1,5 +1,7 @@
 package com.mmm.mypupu.ui.bean
 
+import com.mmm.mypupu.ui.data.mAllName1
+import com.mmm.mypupu.ui.data.mSortHeadTag
 import java.io.Serializable
 
 
@@ -77,12 +79,36 @@ class Catalog : Serializable {
         this.mItemName14 = mItemName14
         this.mItemImg15 = mItemImg15
         this.mItemName15 = mItemName15
-//        this.mItemNum = mItemNum
     }
 
-    constructor(mHeadImg: Int,mItemImg15: Int, mItemName15: String) {
-        this.mHeadImg = mHeadImg
-        this.mItemImg15 = mItemImg15
-        this.mItemName15 = mItemName15
+    constructor(mHeadImg: Int, mItemImg1: Int, mItemName1: String, mItemImg2: Int, mItemName2: String, mItemImg3: Int, mItemName3: String, mItemImg4: Int,
+                mItemName4: String, mItemImg5: Int, mItemName5: String, mItemImg6: Int, mItemName6: String){
+            this.mHeadImg = mHeadImg
+            this.mItemImg1 = mItemImg1
+            this.mItemName1 = mItemName1
+            this.mItemImg2 = mItemImg2
+            this.mItemName2 = mItemName2
+            this.mItemImg3 = mItemImg3
+            this.mItemName3 = mItemName3
+            this.mItemImg4 = mItemImg4
+            this.mItemName4 = mItemName4
+            this.mItemImg5 = mItemImg5
+            this.mItemName5 = mItemName5
+            this.mItemImg6 = mItemImg6
+            this.mItemName6 = mItemName6
+    }
+
+    companion object{
+        fun newCatalog():Catalog{
+            val catalog = Catalog(0,0,"",0,"",
+                0,"",0,"",0,"" ,0 ,"" )
+            val index :Int = (0 until mAllName1.size).random()
+
+            return catalog
+            }
+
+        fun newCatalogList() {
+
+        }
     }
 }

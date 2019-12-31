@@ -3,6 +3,7 @@ package com.mmm.mypupu.ui.fragment
 
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.util.TypedValue
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -23,12 +24,13 @@ import com.mmm.mypupu.util.mT
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.activity_search.tvSearch
 import kotlinx.android.synthetic.main.container_home.*
+import kotlinx.android.synthetic.main.fragment_tab_flash_sale.*
 import kotlinx.android.synthetic.main.fragment_tab_recommend.*
 import kotlinx.android.synthetic.main.fragment_tab_recommend.view.*
 import kotlinx.android.synthetic.main.toolbar_main.*
 
-class TabRecommendFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener{
-
+class TabRecommendFragment : Fragment(){
+    var count = 0
     private var list :MutableList<Goods > = ArrayList ()
     private lateinit var recommendAdapter: RecommendationAdapter
     private lateinit var linearLayoutManager: LinearLayoutManager
@@ -36,57 +38,45 @@ class TabRecommendFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener{
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val mView = inflater.inflate(R.layout.fragment_tab_recommend, container, false)
-        list = getList()
-        recommendAdapter = RecommendationAdapter(list, context!!)
-        linearLayoutManager = LinearLayoutManager(context)
-        linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
-        mView.rvRecommend.layoutManager =linearLayoutManager
-        mView.rvRecommend.adapter = recommendAdapter
-          return mView
+           return inflater.inflate(R.layout.fragment_tab_recommend, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-      /*  view.srlRecommend.setProgressViewOffset(false , 0 , TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP , 24F,
-            resources.displayMetrics).toInt())*/
+        val randNum = ( 0..10 ).random()
+        list = Goods.newGoodsList(randNum)
+        recommendAdapter = RecommendationAdapter(list, context!!)
+        linearLayoutManager = LinearLayoutManager(context)
+        linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
+        rvRecommend.layoutManager =linearLayoutManager
+        rvRecommend.adapter = recommendAdapter
 
-        view.srlRecommend.setOnRefreshListener(this)
-        view.srlRecommend.isRefreshing = false
-
-    }
-
-    fun getList(): MutableList<Goods> {
-
-        for (i in 0 until goodsImg.size) {
-           list.add( Goods( goodsImg[i], goodsTitle[i] , goodsSubtitle[i], goodsQuantity[i],goodsRemark[i] , goodsPrice[i], goodsOriginPrice[i], goodsNum[i]))
-        }
-        return list
-    }
-
-    fun getReverseList(): MutableList<Goods> {
-        var zheng = 0 until goodsImg.size
-        var reverse = zheng.reversed()
-        for (i in reverse ) {
-            list.add( Goods( goodsImg[i], goodsTitle[i] , goodsSubtitle[i], goodsQuantity[i],goodsRemark[i] , goodsPrice[i], goodsOriginPrice[i], goodsNum[i]))
-        }
-        return list
-    }
-
-    override fun onRefresh() {
-        Handler().postDelayed(object :Runnable {
-            override fun run() {
-                list.clear()
-                list = getReverseList()
-                recommendAdapter = RecommendationAdapter(list, context!!)
-                linearLayoutManager = LinearLayoutManager(context)
-                linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
-                rvRecommend.layoutManager =linearLayoutManager
-                rvRecommend.adapter = recommendAdapter
-                mT.t(context!!, "刷新成功")
+        srlRecommend.setOnRefreshListener{
+            srlRecommend.postDelayed({
                 srlRecommend.isRefreshing = false
+            }, 50)
+            list.clear()
+            list.addAll(Goods.newGoodsList(7))
+            recommendAdapter.notifyDataSetChanged()
+        }
+
+        rvRecommend.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                //1代表底部,返回true表示没到底部,还可以滑
+                val isBottom = rvRecommend.canScrollVertically(1)
+                if ( isBottom == false && count < 2 ){
+                    mT.t(context!! , "继续下滑加载更多")
+                    list.addAll(Goods.newGoodsList(3))
+                    recommendAdapter.notifyDataSetChanged()
+                    count ++
+                    if ( count == 2 ){
+                        mT.t(context!! , "没有更多了")
+                        Log.e("次数", count.toString())
+                    }
+                }
             }
-        }, 500)
+        })
     }
 
 }

@@ -41,15 +41,14 @@ class SearchResultFragment : Fragment(),View.OnClickListener, SwipeRefreshLayout
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         srlSearch.setOnRefreshListener(this)
-
         cbInStock.setOnClickListener(this)
         rbPrice.setOnClickListener(this)
         rbDiscount.setOnClickListener(this)
         tvFilter.setOnClickListener(this)
 
         Log.e("输入的结果是", activity!!.actSearch.text.toString())
-
-            list = getList()
+            val randNum = (0..14).random()
+            list = Goods.newGoodsList(randNum)
             if (list.isNotEmpty()) {
                 view.srlSearch.visibility = View.VISIBLE
                 view.llNoGoods.visibility = View.GONE
@@ -65,25 +64,6 @@ class SearchResultFragment : Fragment(),View.OnClickListener, SwipeRefreshLayout
             }
     }
 
-   private fun getList(): MutableList<Goods> {
-       val input =  activity!!.actSearch.text.toString()
-       if (input.contentEquals("蘑菇")) {
-               for (i in 0..2)
-                   list.add(Goods(sResultImg[i], sResultTitle[i], sResultSubTitle[i], sResultQuantity[i], sResultRemark[i], sResultPrice[i], sResultOriPrice[i], goodsNum[i]))
-        }
-
-       else if(input.contentEquals("0")) {
-                list.clear()
-       }
-
-       else{
-           for (i in 0 until goodsImg.size) {
-                list.add( Goods( goodsImg[i], goodsTitle[i] , goodsSubtitle[i], goodsQuantity[i], goodsRemark[i] , goodsPrice[i], goodsOriginPrice[i], goodsNum[i]))
-           }
-       }
-
-        return list
-    }
 
     override fun onRefresh() {
         Handler().postDelayed(object :Runnable {
@@ -94,28 +74,22 @@ class SearchResultFragment : Fragment(),View.OnClickListener, SwipeRefreshLayout
     }
 
 
+
     @SuppressLint("WrongConstant")
     override fun onClick(v: View?) {
         when (v?.id){
             R.id.cbInStock ->{
                 if (cbInStock.isChecked == true) {
                     list.clear()
-                    list = getInstockList()
-                    searchResultAdapter = SearchResultAdapter(list, context!!)
-                    linearLayoutManager = LinearLayoutManager(context)
-                    linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
-                    rvSearchResult.layoutManager = linearLayoutManager
-                    rvSearchResult.adapter = searchResultAdapter
+                    list.addAll(Goods.newFruitList(6))
+                    searchResultAdapter.notifyDataSetChanged()
+
                 }
                 else
                 {
                     list.clear()
-                    list = getList()
-                    searchResultAdapter = SearchResultAdapter(list, context!!)
-                    linearLayoutManager = LinearLayoutManager(context)
-                    linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
-                    rvSearchResult.layoutManager = linearLayoutManager
-                    rvSearchResult.adapter = searchResultAdapter
+                    list.addAll(Goods.newFruitList(10))
+                    searchResultAdapter.notifyDataSetChanged()
                 }
             }
             R.id.rbPrice ->{
@@ -148,25 +122,6 @@ class SearchResultFragment : Fragment(),View.OnClickListener, SwipeRefreshLayout
         }
     }
 
-    fun getInstockList(): MutableList<Goods> {
-
-        for (i in 0 until fruitImg.size step 3) {
-            list.add( Goods( fruitImg[i], fruitTitle[i] , fruitSubtitle[i], fruitQuantity[i],fruitRemark[i] , fruitPrice[i], fruitOriPrice[i], goodsNum[i]))
-
-        }
-        return list
-    }
-
-    fun getPriceList1(): MutableList<Goods> {
-        var zheng = 0 .. fruitImg.size.minus(1)
-        var fan = zheng.reversed()
-        for (i in fan) {
-            list.add( Goods( fruitImg[i], fruitTitle[i] , fruitSubtitle[i], fruitQuantity[i],fruitRemark[i] , fruitPrice[i], fruitOriPrice[i], goodsNum[i]))
-
-        }
-        return list
-    }
-
     //三种点击状态的切换
     fun changedItemState3 (rb :RadioButton){
         when (rbClickTiems){
@@ -177,14 +132,9 @@ class SearchResultFragment : Fragment(),View.OnClickListener, SwipeRefreshLayout
                 val drawable = resources.getDrawable(R.drawable.icon_indicate_arrow_top_selected)
                 drawable.setBounds(0,0,drawable.minimumWidth,drawable.minimumHeight)
                 rb.setCompoundDrawables(null,null,drawable,null)
-
                 list.clear()
-                list = getPriceList1()
-                searchResultAdapter = SearchResultAdapter(list, context!!)
-                linearLayoutManager = LinearLayoutManager(context)
-                linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
-                rvSearchResult.layoutManager = linearLayoutManager
-                rvSearchResult.adapter = searchResultAdapter
+                list.addAll(Goods.newFruitList(10))
+                searchResultAdapter.notifyDataSetChanged()
             }
             1 -> {
                 //从大到小排序
@@ -195,12 +145,8 @@ class SearchResultFragment : Fragment(),View.OnClickListener, SwipeRefreshLayout
                 rb.setCompoundDrawables(null,null,drawable,null)
 
                 list.clear()
-                list = getList()
-                searchResultAdapter = SearchResultAdapter(list, context!!)
-                linearLayoutManager = LinearLayoutManager(context)
-                linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
-                rvSearchResult.layoutManager = linearLayoutManager
-                rvSearchResult.adapter = searchResultAdapter
+                list.addAll(Goods.newFruitList(10))
+                searchResultAdapter.notifyDataSetChanged()
             }
             2 -> {
                 //还原
@@ -211,11 +157,8 @@ class SearchResultFragment : Fragment(),View.OnClickListener, SwipeRefreshLayout
                 rb.setCompoundDrawables(null,null,drawable,null)
 
                 list.clear()
-                searchResultAdapter = SearchResultAdapter(list, context!!)
-                linearLayoutManager = LinearLayoutManager(context)
-                linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
-                rvSearchResult.layoutManager = linearLayoutManager
-                rvSearchResult.adapter = searchResultAdapter
+                list.addAll(Goods.newFruitList(10))
+                searchResultAdapter.notifyDataSetChanged()
             }
         }
     }

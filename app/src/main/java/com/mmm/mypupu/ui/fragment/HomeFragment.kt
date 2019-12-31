@@ -47,7 +47,7 @@ class HomeFragment : Fragment(),SwipeRefreshLayout.OnRefreshListener {
     private fun initViewPager () {
         val ViewPagerAdapter  = ViewPagerAdapter(context!!, getChildFragmentManager())
         //设置预加载数 全部的fragment
-        vpMain.offscreenPageLimit = 4
+        vpMain.offscreenPageLimit = 3
         vpMain.adapter = ViewPagerAdapter
         vpMain.currentItem = 0
         tbMain.setupWithViewPager(vpMain)

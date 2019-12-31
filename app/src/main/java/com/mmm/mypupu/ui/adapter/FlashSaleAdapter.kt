@@ -30,19 +30,17 @@ import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.math.absoluteValue
 
-class FlashSaleAdapter (var list: ArrayList<Goods>, var context: Context  ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class FlashSaleAdapter(var list: ArrayList<Goods>, var context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val TYPE_IMAGE = 0
     private val TYPE_GOODS = 1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
-        if ( viewType == TYPE_IMAGE ){
-            val itemViewImg = LayoutInflater.from(context).inflate(R.layout.item_flash_sale_head, parent,false)
+        if (viewType == TYPE_IMAGE) {
+            val itemViewImg = LayoutInflater.from(context).inflate(R.layout.item_flash_sale_head, parent, false)
             val holder1 = Holder(itemViewImg)
             return holder1
-        }
-
-        else  {
+        } else {
             val itemView = LayoutInflater.from(context).inflate(R.layout.item_flash_sale, parent, false)
             val holder2 = Holder(itemView)
             return holder2
@@ -54,43 +52,42 @@ class FlashSaleAdapter (var list: ArrayList<Goods>, var context: Context  ): Rec
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val goods: Goods = list[position ]
+        val goods: Goods = list[position]
         var maxHour = 0
         var minHour = 0
         //放在主线程 ，更新 ui
-        if (TYPE_IMAGE ==  holder.itemViewType) {
+        if (TYPE_IMAGE == holder.itemViewType) {
             holder.itemView.tag = position
             var timeList = getNow()
-            Log.e("now",timeList.toString())
-            countDown(holder,timeList[2].minus(59).absoluteValue)
+            Log.e("now", timeList.toString())
+            countDown(holder, timeList[2].minus(59).absoluteValue)
 
             val subMinu = timeList[1].minus(59).absoluteValue
-            if  ( subMinu >= 0 && subMinu <= 9 )
-                holder.itemView.tvMinute.setText("0"+subMinu.absoluteValue)
-
-            else if( subMinu > 9 )
+            if (subMinu >= 0 && subMinu <= 9)
+                holder.itemView.tvMinute.setText("0" + subMinu.absoluteValue)
+            else if (subMinu > 9)
                 holder.itemView.tvMinute.setText(subMinu.toString())
 
-            when (timeList[0] > minHour && timeList[0] <= maxHour){
-                 minHour == 0,maxHour == 9 -> {
-                     holder.itemView.tvHour.setText(toTwo((8.minus(timeList[0])).absoluteValue))
-                 }
-                minHour == 9 && maxHour == 11 ->{
+            when (timeList[0] > minHour && timeList[0] <= maxHour) {
+                minHour == 0, maxHour == 9 -> {
+                    holder.itemView.tvHour.setText(toTwo((8.minus(timeList[0])).absoluteValue))
+                }
+                minHour == 9 && maxHour == 11 -> {
                     holder.itemView.tvHour.setText(toTwo((10.minus(timeList[0])).absoluteValue))
                 }
 
-                minHour == 11 && maxHour == 14 ->{
+                minHour == 11 && maxHour == 14 -> {
                     holder.itemView.tvHour.setText(toTwo((13.minus(timeList[0])).absoluteValue))
                 }
                 minHour == 14 && maxHour == 16 -> {
                     holder.itemView.tvHour.setText(toTwo((15.minus(timeList[0])).absoluteValue))
                 }
-                minHour == 16 && maxHour == 24 ->{
+                minHour == 16 && maxHour == 24 -> {
                     holder.itemView.tvHour.setText(toTwo((23.minus(timeList[0])).absoluteValue))
                 }
             }
 
-        }else if(TYPE_GOODS == holder.itemViewType){
+        } else if (TYPE_GOODS == holder.itemViewType) {
 
             holder.itemView.tag = position
 
@@ -104,17 +101,17 @@ class FlashSaleAdapter (var list: ArrayList<Goods>, var context: Context  ): Rec
             //给文字添加删除线
             holder.itemView.tvY2.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
             holder.itemView.tvOriginalPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
-            if (goods.mRemark.isEmpty()){
+            if (goods.mRemark.isEmpty()) {
                 holder.itemView.tvRemark.visibility = View.INVISIBLE
             }
-            holder.itemView.llItemFlash.setOnClickListener{
+            holder.itemView.llItemFlash.setOnClickListener {
                 run {
-                    Toast.makeText(context,goods.toString(),Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, goods.toString(), Toast.LENGTH_SHORT).show()
                 }
             }
-            holder.itemView.tvNowRush.setOnClickListener{
+            holder.itemView.tvNowRush.setOnClickListener {
                 run {
-                    Toast.makeText(context,"抢购成功！",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "抢购成功！", Toast.LENGTH_SHORT).show()
                     holder.itemView.tvNowRush.isClickable = false
                 }
             }
@@ -122,7 +119,7 @@ class FlashSaleAdapter (var list: ArrayList<Goods>, var context: Context  ): Rec
     }
 
     override fun getItemViewType(position: Int): Int {
-        if ( position == 0)
+        if (position == 0)
             return TYPE_IMAGE
         else
             return TYPE_GOODS
@@ -131,18 +128,19 @@ class FlashSaleAdapter (var list: ArrayList<Goods>, var context: Context  ): Rec
 
     class Holder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
-    fun  countDown( holder: RecyclerView.ViewHolder,second : Int )   {
+    fun countDown(holder: RecyclerView.ViewHolder, second: Int) {
         object : CountDownTimer(second.times(1000).toLong(), 1000) {
             override fun onFinish() {
                 val subMinu = getNow()[1].minus(59).absoluteValue
-                if ( subMinu == 0 ){
+                if (subMinu == 0) {
                     holder.itemView.tvMinute.setText("59")
                     countDown2(holder)
-                }else {
+                } else {
                     holder.itemView.tvMinute.setText(toTwo(subMinu.minus(1)))
                     countDown2(holder)
                 }
             }
+
             override fun onTick(millisUntilFinished: Long) {
 
                 val sec = millisUntilFinished.div(1000)
@@ -151,13 +149,14 @@ class FlashSaleAdapter (var list: ArrayList<Goods>, var context: Context  ): Rec
         }.start()
     }
 
-    fun  countDown2( holder: RecyclerView.ViewHolder)   {
+    fun countDown2(holder: RecyclerView.ViewHolder) {
         object : CountDownTimer(60.times(1000).toLong(), 1000) {
             override fun onFinish() {
                 var min = getNow()[1]
                 holder.itemView.tvMinute.setText(min.minus(1).toString())
                 start()
             }
+
             override fun onTick(millisUntilFinished: Long) {
                 val sec = millisUntilFinished.div(1000)
                 holder.itemView.tvSecond.setText(toTwo(sec.toInt()))
@@ -167,19 +166,19 @@ class FlashSaleAdapter (var list: ArrayList<Goods>, var context: Context  ): Rec
 
 
     fun getNow(): List<Int> {
-     /*   if (android.os.Build.VERSION.SDK_INT >= 24){
-            return SimpleDateFormat(" HH:mm:ss").format(Date())
-        }else{*/
-            var tms = Calendar.getInstance()
-            //时区： 东八区，北京时间 HOUR_OF_DAY 24小时制
-             tms.timeZone = TimeZone.getTimeZone("GMT+8")
-            val mTimeList = arrayListOf<Int>(tms.get(Calendar.HOUR_OF_DAY),tms.get(Calendar.MINUTE),tms.get(Calendar.SECOND))
-            return mTimeList
-       // }
+        /*   if (android.os.Build.VERSION.SDK_INT >= 24){
+               return SimpleDateFormat(" HH:mm:ss").format(Date())
+           }else{*/
+        var tms = Calendar.getInstance()
+        //时区： 东八区，北京时间 HOUR_OF_DAY 24小时制
+        tms.timeZone = TimeZone.getTimeZone("GMT+8")
+        val mTimeList = arrayListOf<Int>(tms.get(Calendar.HOUR_OF_DAY), tms.get(Calendar.MINUTE), tms.get(Calendar.SECOND))
+        return mTimeList
+        // }
 
     }
 
-    fun toTwo (time:Int ) :String  {
+    fun toTwo(time: Int): String {
         if (time > 9)
             return time.toString()
         else

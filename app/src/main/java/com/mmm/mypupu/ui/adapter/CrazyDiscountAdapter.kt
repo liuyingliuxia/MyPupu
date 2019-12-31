@@ -30,20 +30,18 @@ import kotlinx.android.synthetic.main.item_recommend.view.tvSubtitle
 import kotlinx.android.synthetic.main.item_recommend.view.tvTitle
 import kotlinx.android.synthetic.main.item_recommend.view.tvY2
 
-class CrazyDiscountAdapter (var list: List<Goods>, var context: Context  ):
+class CrazyDiscountAdapter(var list: List<Goods>, var context: Context) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val TYPE_IMAGE = 0
     private val TYPE_GOODS = 1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
-        if ( viewType == TYPE_IMAGE ){
-            val itemViewImg = LayoutInflater.from(context).inflate(R.layout.item_crazy_discount_head, parent,false)
+        if (viewType == TYPE_IMAGE) {
+            val itemViewImg = LayoutInflater.from(context).inflate(R.layout.item_crazy_discount_head, parent, false)
             val holder1 = Holder(itemViewImg)
             return holder1
-        }
-
-        else  {
+        } else {
             val itemView = LayoutInflater.from(context).inflate(R.layout.item_crazy_discount, parent, false)
             val holder2 = Holder(itemView)
             return holder2
@@ -55,14 +53,13 @@ class CrazyDiscountAdapter (var list: List<Goods>, var context: Context  ):
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val goods: Goods = list[position ]
+        val goods: Goods = list[position]
 
-        if (TYPE_IMAGE ==  holder.itemViewType) {
+        if (TYPE_IMAGE == holder.itemViewType) {
 
-        }else if(TYPE_GOODS == holder.itemViewType){
+        } else if (TYPE_GOODS == holder.itemViewType) {
 
             holder.itemView.tag = position
-
             holder.itemView.ivGoods.setImageResource(goods.mImgPath)
             holder.itemView.tvTitle.text = goods.mName
             holder.itemView.tvSubtitle.text = goods.mSubtitle
@@ -73,20 +70,20 @@ class CrazyDiscountAdapter (var list: List<Goods>, var context: Context  ):
             //给文字添加删除线
             holder.itemView.tvY2.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
             holder.itemView.tvOriginalPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
-            if (goods.mRemark.isNullOrBlank()){
+            if (goods.mRemark.isEmpty()) {
                 holder.itemView.tvRemark.visibility = View.INVISIBLE
             }
-            itemAddClick(holder,position)
-            holder.itemView.llItemCrazy.setOnClickListener{
+            itemAddClick(holder, position)
+            holder.itemView.llItemCrazy.setOnClickListener {
                 run {
-                    Toast.makeText(context,goods.toString(),Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, goods.toString(), Toast.LENGTH_SHORT).show()
                 }
             }
         }
     }
 
     override fun getItemViewType(position: Int): Int {
-        if ( position == 0)
+        if (position == 0)
             return TYPE_IMAGE
         else
             return TYPE_GOODS
@@ -95,7 +92,7 @@ class CrazyDiscountAdapter (var list: List<Goods>, var context: Context  ):
 
     class Holder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
-    fun itemAddClickAnimator (holder: RecyclerView.ViewHolder){
+    fun itemAddClickAnimator(holder: RecyclerView.ViewHolder) {
         //+ 号旋转 用 补间动画
         val mAnimation = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.add)
         holder.itemView.ivAdd.startAnimation(mAnimation)
@@ -103,15 +100,15 @@ class CrazyDiscountAdapter (var list: List<Goods>, var context: Context  ):
         holder.itemView.tvNum.x -= 68
         // - 号 旋转平移 同时进行 用 属性动画
         val mIvSub = holder.itemView.ivSub
-        val objectAnimatorR : ObjectAnimator = ObjectAnimator.ofFloat(mIvSub ,"rotation",0f,180f)
-        val objectAnimatorX : ObjectAnimator = ObjectAnimator.ofFloat(mIvSub ,"translationX",0f,-100f)
-        val animatorSet  = AnimatorSet()
-        animatorSet.playTogether(objectAnimatorR,objectAnimatorX)
+        val objectAnimatorR: ObjectAnimator = ObjectAnimator.ofFloat(mIvSub, "rotation", 0f, 180f)
+        val objectAnimatorX: ObjectAnimator = ObjectAnimator.ofFloat(mIvSub, "translationX", 0f, -100f)
+        val animatorSet = AnimatorSet()
+        animatorSet.playTogether(objectAnimatorR, objectAnimatorX)
         animatorSet.duration = 200
         animatorSet.start()
     }
 
-    fun itemSubClickAnimator (holder: RecyclerView.ViewHolder){
+    fun itemSubClickAnimator(holder: RecyclerView.ViewHolder) {
         //+ 号旋转 用 补间动画
         val mAnimation = AnimationUtils.loadAnimation(holder.itemView.context, R.anim._add)
         holder.itemView.ivAdd.startAnimation(mAnimation)
@@ -119,57 +116,54 @@ class CrazyDiscountAdapter (var list: List<Goods>, var context: Context  ):
         holder.itemView.tvNum.x += 68
         // - 号 旋转平移 同时进行 用 属性动画
         val mIvSub = holder.itemView.ivSub
-        val objectAnimatorRSub : ObjectAnimator = ObjectAnimator.ofFloat(mIvSub ,"rotation",-180f,0f)
-        val objectAnimatorTSubX : ObjectAnimator = ObjectAnimator.ofFloat(mIvSub ,"translationX",-100f,0f)
-        val animatorSet  = AnimatorSet()
-        animatorSet.playTogether(objectAnimatorTSubX,objectAnimatorRSub)
+        val objectAnimatorRSub: ObjectAnimator = ObjectAnimator.ofFloat(mIvSub, "rotation", -180f, 0f)
+        val objectAnimatorTSubX: ObjectAnimator = ObjectAnimator.ofFloat(mIvSub, "translationX", -100f, 0f)
+        val animatorSet = AnimatorSet()
+        animatorSet.playTogether(objectAnimatorTSubX, objectAnimatorRSub)
         animatorSet.duration = 200
         animatorSet.start()
     }
 
     private fun itemAddClick(holder: RecyclerView.ViewHolder, position: Int) {
         var num = 0
-        val goods: Goods = list[position ]
+        val goods: Goods = list[position]
 
-        holder.itemView.ivAdd.setOnClickListener( object :View.OnClickListener{
+        holder.itemView.ivAdd.setOnClickListener(object : View.OnClickListener {
             @RequiresApi(Build.VERSION_CODES.O)
             override fun onClick(v: View?) {
-                Log.e("点击了：","+")
+                Log.e("点击了：", "+")
                 if (num == 0) {
                     num++
                     holder.itemView.tvNum.text = num.toString()
                     itemAddClickAnimator(holder)
 
-                }
-                else  if ( num > 0 && num < goods.mNum ) {
-                    num ++
+                } else if (num > 0 && num < goods.mNum) {
+                    num++
                     holder.itemView.tvNum.text = num.toString()
-                    Log.e("数量", holder.itemView.tvNum.text.toString() )
-                }
-                else if ( num == goods.mNum){
+                    Log.e("数量", holder.itemView.tvNum.text.toString())
+                } else if (num == goods.mNum) {
                     // + 变成灰色
-                    holder.itemView.ivAdd.setImageResource( R.drawable.add_unable )
+                    holder.itemView.ivAdd.setImageResource(R.drawable.add_unable)
                     holder.itemView.tvNum.text = num.toString()
-                    Toast.makeText(holder.itemView.context,"无法购买更多了", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(holder.itemView.context, "无法购买更多了", Toast.LENGTH_SHORT).show()
                 }
 
             }
         })
 
-        holder.itemView.ivSub.setOnClickListener( object :View.OnClickListener{
+        holder.itemView.ivSub.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-                if ( num ==1 ) {
+                if (num == 1) {
                     //收起 -
-                    num --
+                    num--
                     itemSubClickAnimator(holder)
-                    holder.itemView.ivAdd.setImageResource( R.drawable.add_able )
+                    holder.itemView.ivAdd.setImageResource(R.drawable.add_able)
                     holder.itemView.tvNum.text = num.toString()
                     Log.e("点击了- ", num.toString())
-                }
-                else  if ( num > 1 ) {
-                    num --
+                } else if (num > 1) {
+                    num--
                     holder.itemView.tvNum.text = num.toString()
-                    Log.e("数量", holder.itemView.tvNum.text.toString() )
+                    Log.e("数量", holder.itemView.tvNum.text.toString())
                 }
             }
         })

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Typeface
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -37,155 +38,191 @@ import kotlinx.android.synthetic.main.item_sort_left.*
 import kotlinx.android.synthetic.main.item_sort_left.view.*
 
 class SortFragment : Fragment() {
-    private var list :ArrayList<Catalog> = ArrayList ()
+    private var list: ArrayList<Catalog> = ArrayList()
+    //原装适配器写法
     private lateinit var sortLeftAdapter: SortLeftAdapter
-    private lateinit var sortContentAdapter: SortContentAdapter
+    private lateinit var sortRightAdapter: SortContentAdapter
+    //quick适配器
+    private lateinit var quickLeftAdapter: QuickLeftAdapter
+    private lateinit var quickRightAdapter: QuickRightAdapter
+    //quick用的布局管理器
+    private lateinit var leftLayoutManager: LinearLayoutManager
+    private lateinit var rightLayoutManager: LinearLayoutManager
+    //原装布局管理器
     private lateinit var gridLayoutManager: GridLayoutManager
-    var leftData :MutableList<LeftBean> = mutableListOf()
-    var rightData :MutableList<RightBean> = mutableListOf()
+    //数据实体
+    var leftData: MutableList<LeftBean> = mutableListOf()
+    var rightData: MutableList<RightBean> = mutableListOf()
     private var firstposition: Int = 0
     private var SCROLL_STATE = 0
-    var rightClick :Boolean = false
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    var rightClick: Boolean = false
+    lateinit var handler: Handler
 
-        val mView = inflater.inflate(R.layout.fragment_sort, container, false)
-        //初始化左侧内容
-        val mLeftText = mCatalogText
-        sortLeftAdapter = SortLeftAdapter (context!!, mLeftText,mView.rvContent)
-        gridLayoutManager = GridLayoutManager(context,1)
-        mView.rvLeft.layoutManager =gridLayoutManager
-        mView.rvLeft.adapter = sortLeftAdapter
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        //初始化右侧显示内容
-        val mlist = getList()
-        sortContentAdapter = SortContentAdapter(context!!, mlist )
-        gridLayoutManager = GridLayoutManager(context,1)
-        mView.rvContent.layoutManager =gridLayoutManager
-        mView.rvContent.adapter = sortContentAdapter
-
-        return mView
+         return inflater.inflate(R.layout.fragment_sort, container, false)
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-            //一次只能滑动一页，不能快速滑动
-            val pagerSnapHelper = PagerSnapHelper()
-            pagerSnapHelper.attachToRecyclerView(rvContent)
-            ivSearch.setOnClickListener{v->run{
-                val intent  = Intent()
+        initData()
+        initView()
+        //一次只能滑动一页，不能快速滑动
+        val pagerSnapHelper = PagerSnapHelper()
+        pagerSnapHelper.attachToRecyclerView(rvContent)
+        ivSearch.setOnClickListener {
+            run {
+                val intent = Intent()
                 intent.setClass(this@SortFragment.context!!, SearchActivity::class.java)
                 startActivity(intent)
 
-            }}
+            }
+        }
 
-            //滑动时，左侧导航栏同步改变选中状态
-       rvContent.addOnScrollListener(object :RecyclerView.OnScrollListener(){
+        //滑动时，左侧导航栏同步改变选中状态
+        rvContent.addOnScrollListener(object : RecyclerView.OnScrollListener() {
 
-                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                    super.onScrollStateChanged(recyclerView, newState)
-                    val manager = recyclerView.layoutManager as GridLayoutManager
-                    // 当不滚动时
-                    if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                        //获取最后一个完全显示的ItemPosition
-                        firstposition = manager.findFirstVisibleItemPosition()
-                        //滑动到特殊的位置会报错 闪退     java.lang.ArrayIndexOutOfBoundsException: length=17; index=-1
-                        if (firstposition == -1) {
-                            Log.e("滑到了奇怪的位置", firstposition.toString())
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                //使用原始适配器写法
+                /*           super.onScrollStateChanged(recyclerView, newState)
+                           val manager = recyclerView.layoutManager as GridLayoutManager
+                           // 当不滚动时
+                           if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                               //获取最后一个完全显示的ItemPosition
+                               firstposition = manager.findFirstVisibleItemPosition()
+                               //滑动到特殊的位置会报错 闪退     java.lang.ArrayIndexOutOfBoundsException: length=17; index=-1
+                               if (firstposition == -1) {
+                                   Log.e("滑到了奇怪的位置", firstposition.toString())
+                               } else {
+                                   tvCatalog.isEnabled = false
+                                   SCROLL_STATE = firstposition
+                                   sortLeftAdapter.notifyDataSetChanged()
+                              }
+                               //设置样式
+                               if ( SCROLL_STATE == firstposition )
+                               {
+                                   tvCatalog.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD))
+                                   val mSize: Float =context!!.resources.getDimension(R.dimen.mmm_font_s5)
+                                   tvCatalog.setTextSize(mSize)
+                                   tvCatalog.isEnabled = false
+                               }
+                               else {//未选中
+                                   tvCatalog.setTypeface(Typeface.DEFAULT)
+                                   val mSizeNor: Float =context!!.resources.getDimension(R.dimen.mmm_font_s4)
+                                   tvCatalog.setTextSize(mSizeNor)
+                                   tvCatalog.isEnabled = true
+                               }
+                           }*/
+
+                //使用quickBase适配器写法
+                if (rightClick == false && newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    val now: Int
+                    val first = rightLayoutManager.findFirstVisibleItemPosition()
+                    if (rightData.get(first).isTitle) {
+                        now = rightData.get(first).id
+                    } else {
+                        if (rightData.get(first).id + 1 > leftData.get(leftData.size - 1).id) {
+                            now = rightData.get(first).id
                         } else {
-                            tvCatalog.isEnabled = false
-                            SCROLL_STATE = firstposition
-                            sortLeftAdapter.notifyDataSetChanged()
-                       }
-                        //设置样式
-                        if ( SCROLL_STATE == firstposition )
-                        {
-                            tvCatalog.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD))
-                            val mSize: Float =context!!.resources.getDimension(R.dimen.mmm_font_s5)
-                            tvCatalog.setTextSize(mSize)
-                            tvCatalog.isEnabled = false
-                        }
-                        else {//未选中
-                            tvCatalog.setTypeface(Typeface.DEFAULT)
-                            val mSizeNor: Float =context!!.resources.getDimension(R.dimen.mmm_font_s4)
-                            tvCatalog.setTextSize(mSizeNor)
-                            tvCatalog.isEnabled = true
+                            now = rightData.get(first).id + 1
                         }
                     }
+                    //滑动右侧列表时 ：
+                    RecycUtil.moveToPositAndCenter(now, leftLayoutManager, rvLeft, handler)
+                    select(now)
+                } else if (rightClick == true && newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    rightClick = false
+                } else if (rightClick == true && newState == RecyclerView.SCROLL_STATE_DRAGGING) {
+                    rightClick = false
                 }
+            }
 
-
-       /*    override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-               super.onScrolled(recyclerView, dx, dy)
-               val manager = recyclerView.layoutManager as GridLayoutManager
-               val topPosition  = manager.findFirstVisibleItemPosition()
-
-           }*/
-
-            })
+        })
     }
 
-/*    fun initView () {
-        val leftLayoutManager  = LinearLayoutManager(context)
-          leftLayoutManager.orientation = LinearLayoutManager.VERTICAL
-        val rightLayoutManager = GridLayoutManager(context, 1)
-          rightLayoutManager.orientation = LinearLayoutManager.VERTICAL
+    fun initData() {
+
+
+        handler = Handler()
+
+        var i = 0
+        var j: Int
+        while (i < mCatalogText.size - 1) {
+            leftData.add(LeftBean(i, mCatalogText[i]))
+            j = 0
+            rightData.add(RightBean(i, mContentHeadImg[i], true))
+            while (j < mContentHeadImg.size - 1) {
+                rightData.add(RightBean(i, mContentHeadImg[i], false))
+                j++
+            }
+            i++
+
+        }
+    }
+
+    fun initView() {
+        leftLayoutManager = LinearLayoutManager(context)
+        leftLayoutManager.orientation = LinearLayoutManager.VERTICAL
+        rightLayoutManager = GridLayoutManager(context, 1)
+        rightLayoutManager.orientation = LinearLayoutManager.VERTICAL
 
         rvLeft.layoutManager = leftLayoutManager
         rvContent.layoutManager = rightLayoutManager
 
-        val leftItemD = DividerItemDecoration ( context , DividerItemDecoration.VERTICAL)
-        val rightItemD = DividerItemDecoration ( context , DividerItemDecoration.VERTICAL)
+        val leftItemD = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+        val rightItemD = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
 
         rvLeft.addItemDecoration(leftItemD)
         rvContent.addItemDecoration(rightItemD)
 
-        val leftAdapter = QuickLeftAdapter(R.layout.item_sort_left , leftData)
-        val rightAdapter = QuickRightAdapter(R.layout.item_sort_content , rightData)
+        quickLeftAdapter = QuickLeftAdapter(R.layout.item_sort_left, leftData)
+        quickRightAdapter = QuickRightAdapter(R.layout.item_sort_content, rightData)
 
-        rvLeft.adapter = leftAdapter
-        rvContent.adapter = rightAdapter
+//        rvLeft.adapter = sortLeftAdapter
+//        rvContent.adapter = sortRightAdapter
 
-        leftAdapter.setOnItemChildClickListener { adapter, view, position ->
+        quickLeftAdapter.setOnItemChildClickListener { _, _, position ->
             rightClick = true
-            select( position )
+            select(position)
 
-            var twoI=0
-            while (twoI<rightData.size){
-                if(rightData.get(twoI).id==leftData.get(position).id){
+            var rightI = 0
+            while (rightI < rightData.size) {
+                if (rightData.get(rightI).id == leftData.get(position).id) {
                     break;
                 }
-                twoI++
+                rightI++
             }
 
-            RecycUtil.moveToPositAndTop(twoI,twoLayoutM,rvContent,handler)
+            RecycUtil.moveToPositAndTop(rightI, rightLayoutManager, rvContent, handler)
 
         }
-    }*/
+    }
+
 
     fun getList(): ArrayList<Catalog> {
 
         for (i in 0 until mContentHeadImg.size) {
-            list.add( Catalog(mContentHeadImg[i],mAllItemImg1[i], mAllName1[i], mAllItemImg2[i], mAllName2[i],mAllItemImg3[i], mAllName3[i],
-                mAllItemImg4[i], mAllName4[i], mAllItemImg5[i], mAllName5[i],mAllItemImg6[i], mAllName6[i],mAllItemImg7[i], mAllName7[i],
-                mAllItemImg8[i], mAllName8[i],mAllItemImg9[i], mAllName9[i],mAllItemImg10[i], mAllName10[i],mAllItemImg11[i], mAllName11[i],
-                mAllItemImg12[i], mAllName12[i],mAllItemImg13[i], mAllName13[i],mAllItemImg14[i], mAllName14[i],mAllItemImg15[i], mAllName15[i]) )
+            list.add(
+                Catalog(
+                    mContentHeadImg[i], mAllItemImg1[i], mAllName1[i], mAllItemImg2[i], mAllName2[i], mAllItemImg3[i], mAllName3[i],
+                    mAllItemImg4[i], mAllName4[i], mAllItemImg5[i], mAllName5[i], mAllItemImg6[i], mAllName6[i], mAllItemImg7[i], mAllName7[i],
+                    mAllItemImg8[i], mAllName8[i], mAllItemImg9[i], mAllName9[i], mAllItemImg10[i], mAllName10[i], mAllItemImg11[i], mAllName11[i],
+                    mAllItemImg12[i], mAllName12[i], mAllItemImg13[i], mAllName13[i], mAllItemImg14[i], mAllName14[i], mAllItemImg15[i], mAllName15[i]
+                )
+            )
         }
         return list
     }
 
-/*    fun select(position:Int){
-        var i=.index
-        QuickLeftAdapter.index=position
-        if(i>=0){
-            sortLeftAdapter.notifyItemChanged(i)
+    fun select(position: Int) {
+        val i = quickLeftAdapter.index
+        quickLeftAdapter.index = position
+        if (i >= 0) {
+            quickLeftAdapter.notifyItemChanged(i)
         }
-        sortLeftAdapter.notifyItemChanged(position)
-    }*/
+        quickLeftAdapter.notifyItemChanged(position)
+    }
 
 }
