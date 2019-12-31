@@ -26,7 +26,6 @@ import com.mmm.mypupu.ui.fragment.SearchResultFragment
 import com.mmm.mypupu.ui.fragment.SortFragment
 import com.mmm.mypupu.ui.search.SearchActivity
 import com.mmm.mypupu.util.FragmentUtil
-import com.mmm.mypupu.util.FragmentUtils
 import kotlinx.android.synthetic.main.activity_main_test.*
 import kotlinx.android.synthetic.main.container_home.*
 import kotlinx.android.synthetic.main.toolbar_main.*

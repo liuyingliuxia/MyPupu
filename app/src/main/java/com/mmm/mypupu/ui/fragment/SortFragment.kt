@@ -12,29 +12,41 @@ import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.PagerSnapHelper
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.*
+import com.example.lilingzhi.tworecyc.util.RecycUtil
 import com.mmm.mypupu.R
+import com.mmm.mypupu.ui.adapter.QuickLeftAdapter
+import com.mmm.mypupu.ui.adapter.QuickRightAdapter
 import com.mmm.mypupu.ui.adapter.SortContentAdapter
 import com.mmm.mypupu.ui.adapter.SortLeftAdapter
 import com.mmm.mypupu.ui.bean.Catalog
+import com.mmm.mypupu.ui.bean.LeftBean
+import com.mmm.mypupu.ui.bean.RightBean
 import com.mmm.mypupu.ui.data.*
 import com.mmm.mypupu.ui.search.SearchActivity
+import kotlinx.android.synthetic.main.fragment_sort.*
 import kotlinx.android.synthetic.main.fragment_sort.view.*
 import kotlinx.android.synthetic.main.fragment_sort_test.*
+import kotlinx.android.synthetic.main.fragment_sort_test.ivSearch
+import kotlinx.android.synthetic.main.fragment_sort_test.rvContent
 import kotlinx.android.synthetic.main.fragment_sort_test.view.*
 import kotlinx.android.synthetic.main.fragment_sort_test.view.rvContent
+import kotlinx.android.synthetic.main.item_sort_left.*
+import kotlinx.android.synthetic.main.item_sort_left.view.*
 
 class SortFragment : Fragment() {
     private var list :ArrayList<Catalog> = ArrayList ()
-    private var tvLeftList: ArrayList<TextView?>  = ArrayList()
     private lateinit var sortLeftAdapter: SortLeftAdapter
     private lateinit var sortContentAdapter: SortContentAdapter
     private lateinit var gridLayoutManager: GridLayoutManager
-    private var lastposition: Int = 0
+    var leftData :MutableList<LeftBean> = mutableListOf()
+    var rightData :MutableList<RightBean> = mutableListOf()
+    private var firstposition: Int = 0
+    private var SCROLL_STATE = 0
+    var rightClick :Boolean = false
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,7 +55,6 @@ class SortFragment : Fragment() {
         val mView = inflater.inflate(R.layout.fragment_sort, container, false)
         //初始化左侧内容
         val mLeftText = mCatalogText
-
         sortLeftAdapter = SortLeftAdapter (context!!, mLeftText,mView.rvContent)
         gridLayoutManager = GridLayoutManager(context,1)
         mView.rvLeft.layoutManager =gridLayoutManager
@@ -62,11 +73,7 @@ class SortFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //val mCatalogId :ArrayList<RadioButton> = arrayListOf(rbCatalog1,rbCatalog2,rbCatalog3,rbCatalog4,rbCatalog5,rbCatalog6,rbCatalog7,
-          //  rbCatalog8,rbCatalog9,rbCatalog10,rbCatalog11,rbCatalog12,rbCatalog13,rbCatalog14,rbCatalog15,rbCatalog16,rbCatalog17)
-            //initCatalogText(mCatalogId)
 
-          //  rbCatalog1.isChecked = true
             //一次只能滑动一页，不能快速滑动
             val pagerSnapHelper = PagerSnapHelper()
             pagerSnapHelper.attachToRecyclerView(rvContent)
@@ -77,21 +84,8 @@ class SortFragment : Fragment() {
 
             }}
 
-       /* val llmLeft = view.rvLeft.layoutManager
-        val llmRight = view.rvContent.layoutManager
-        for ( i in 0 until mCatalogText.size)
-        {
-            tvLeftList[i] = llmLeft!!.findViewByPosition(i)
-            tvLeftList[i]!!.setOnClickListener { kotlin.run {
-                tvLeftList[i]!!.isEnabled = false
-                goBackOther(tvLeftList , i )
-                //切换到指定的item
-                llmRight!!.scrollToPosition(i)
-            } }
-        }*/
             //滑动时，左侧导航栏同步改变选中状态
-
-       /*     rvContent.addOnScrollListener(object :RecyclerView.OnScrollListener(){
+       rvContent.addOnScrollListener(object :RecyclerView.OnScrollListener(){
 
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                     super.onScrollStateChanged(recyclerView, newState)
@@ -99,41 +93,78 @@ class SortFragment : Fragment() {
                     // 当不滚动时
                     if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                         //获取最后一个完全显示的ItemPosition
-                        lastposition = manager.findFirstVisibleItemPosition()
+                        firstposition = manager.findFirstVisibleItemPosition()
                         //滑动到特殊的位置会报错 闪退     java.lang.ArrayIndexOutOfBoundsException: length=17; index=-1
-                        Log.e("position", lastposition.toString())
-                        if (lastposition == -1) {
-                            Log.e("position", lastposition.toString())
+                        if (firstposition == -1) {
+                            Log.e("滑到了奇怪的位置", firstposition.toString())
                         } else {
-                            mCatalogId[lastposition].isChecked = true
-                            for (j in 0 until lastposition) {
-                                mCatalogId[j].isChecked = false
-                                goBackOtherRB(mCatalogId, lastposition)
-                            }
-                            for (k in lastposition + 1..16) {
-                                mCatalogId[k].isChecked = false
-                                goBackOtherRB(mCatalogId, lastposition)
-                            }
-
-                            if (mCatalogId[lastposition].isChecked == false) {
-                                goBackOtherRB(mCatalogId, lastposition)
-                            } else {
-                                mCatalogId[lastposition].setTypeface(Typeface.defaultFromStyle(Typeface.BOLD))
-                                val mSize: Float = resources.getDimension(R.dimen.mmm_font_s5)
-                                mCatalogId[lastposition].setTextSize(mSize)
-                            }
-                            Log.e("state", mCatalogId[lastposition].isChecked.toString())
-                      }
+                            tvCatalog.isEnabled = false
+                            SCROLL_STATE = firstposition
+                            sortLeftAdapter.notifyDataSetChanged()
+                       }
+                        //设置样式
+                        if ( SCROLL_STATE == firstposition )
+                        {
+                            tvCatalog.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD))
+                            val mSize: Float =context!!.resources.getDimension(R.dimen.mmm_font_s5)
+                            tvCatalog.setTextSize(mSize)
+                            tvCatalog.isEnabled = false
+                        }
+                        else {//未选中
+                            tvCatalog.setTypeface(Typeface.DEFAULT)
+                            val mSizeNor: Float =context!!.resources.getDimension(R.dimen.mmm_font_s4)
+                            tvCatalog.setTextSize(mSizeNor)
+                            tvCatalog.isEnabled = true
+                        }
                     }
                 }
-            })*/
+
+
+       /*    override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+               super.onScrolled(recyclerView, dx, dy)
+               val manager = recyclerView.layoutManager as GridLayoutManager
+               val topPosition  = manager.findFirstVisibleItemPosition()
+
+           }*/
+
+            })
     }
 
- /*   //测试数据完整性
-    fun test (){
-        for ( i in 0 until allItemImgList.size){
-                val length= allItemImgList[i].size
-                Log.e("图片数据长度第$i 个",length.toString())
+/*    fun initView () {
+        val leftLayoutManager  = LinearLayoutManager(context)
+          leftLayoutManager.orientation = LinearLayoutManager.VERTICAL
+        val rightLayoutManager = GridLayoutManager(context, 1)
+          rightLayoutManager.orientation = LinearLayoutManager.VERTICAL
+
+        rvLeft.layoutManager = leftLayoutManager
+        rvContent.layoutManager = rightLayoutManager
+
+        val leftItemD = DividerItemDecoration ( context , DividerItemDecoration.VERTICAL)
+        val rightItemD = DividerItemDecoration ( context , DividerItemDecoration.VERTICAL)
+
+        rvLeft.addItemDecoration(leftItemD)
+        rvContent.addItemDecoration(rightItemD)
+
+        val leftAdapter = QuickLeftAdapter(R.layout.item_sort_left , leftData)
+        val rightAdapter = QuickRightAdapter(R.layout.item_sort_content , rightData)
+
+        rvLeft.adapter = leftAdapter
+        rvContent.adapter = rightAdapter
+
+        leftAdapter.setOnItemChildClickListener { adapter, view, position ->
+            rightClick = true
+            select( position )
+
+            var twoI=0
+            while (twoI<rightData.size){
+                if(rightData.get(twoI).id==leftData.get(position).id){
+                    break;
+                }
+                twoI++
+            }
+
+            RecycUtil.moveToPositAndTop(twoI,twoLayoutM,rvContent,handler)
+
         }
     }*/
 
@@ -148,40 +179,13 @@ class SortFragment : Fragment() {
         return list
     }
 
-/*
-    fun initCatalogText (mList :ArrayList <RadioButton> ){
-        val llm : LinearLayoutManager = rvContent.layoutManager as LinearLayoutManager
-
-        for ( i in 0 until mCatalogText.size ){
-            mList[i].setText(mCatalogText[i])
-
-            mList[i].setOnClickListener { run{
-               goBackOtherRB(mList , i)
-                //切换到指定的item
-                llm.scrollToPositionWithOffset(i, 0)
-                llm.stackFromEnd = false
-
-            } }
+/*    fun select(position:Int){
+        var i=.index
+        QuickLeftAdapter.index=position
+        if(i>=0){
+            sortLeftAdapter.notifyItemChanged(i)
         }
+        sortLeftAdapter.notifyItemChanged(position)
     }*/
 
-fun goBackOther(mList: ArrayList<TextView?> , i :Int) {
-    //选中的按钮 变大
-    mList[i]?.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD))
-    val mSize: Float = resources.getDimension(R.dimen.mmm_font_s5)
-    mList[i]?.setTextSize(mSize)
-    //让其他按钮变回原样
-    for (j in 0 until i) {
-        mList[j]?.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL))
-        val mSizeNor: Float = resources.getDimension(R.dimen.mmm_font_s4)
-        mList[j]?.setTextSize(mSizeNor)
-        mList[j]?.isEnabled = true
-    }
-    for (k in i + 1..16) {
-        mList[k]?.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL))
-        val mSizeNor: Float = resources.getDimension(R.dimen.mmm_font_s4)
-        mList[k]?.setTextSize(mSizeNor)
-        mList[k]?.isEnabled = true
-        }
-    }
 }

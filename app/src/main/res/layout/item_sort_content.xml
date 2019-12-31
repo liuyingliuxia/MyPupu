@@ -6,7 +6,9 @@
         android:columnCount="3"
         android:rowCount="6"
         android:background="@color/color1"
-        android:padding="@dimen/mmm_font_s10"
+        android:paddingLeft="@dimen/mmm_font_s10"
+        android:paddingTop="@dimen/mmm_font_s10"
+        android:paddingRight="@dimen/mmm_font_s16"
         android:orientation="horizontal">
 
         <ImageView
