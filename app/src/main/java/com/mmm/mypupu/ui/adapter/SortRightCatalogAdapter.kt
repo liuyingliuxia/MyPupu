@@ -29,10 +29,10 @@ class SortRightCatalogAdapter  (private val context: Context , private val list:
         return list.size
     }
 
-
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val h = holder.itemView
         val rightItemBean = list[position]
         Glide.with(mContext).load(rightItemBean.imgId).placeholder(R.drawable.place_holder_product_category_image).error(R.drawable.icon_coupon_all_not_usable).into(h.ivSort)
+        h.tvSort.setText(rightItemBean.text)
     }
 }

@@ -12,6 +12,6 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvRightCatalog"
         android:layout_width="260dp"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
 </LinearLayout>

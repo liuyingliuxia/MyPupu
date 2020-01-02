@@ -7,14 +7,14 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.mmm.mypupu.R
-import com.mmm.mypupu.ui.bean.RightBean2
+import com.mmm.mypupu.ui.bean.RightBean
 import com.mmm.mypupu.ui.bean.RightItemBean
 import kotlinx.android.synthetic.main.item_sort_right2.view.*
 
 
-class SortVP2Adapter (context: Context?, data: List<RightBean2>, vp2: ViewPager2) : RecyclerView.Adapter<SortVP2Adapter.ViewHolder>() {
+class SortVP2Adapter (context: Context?, data: List<RightBean>, vp2: ViewPager2) : RecyclerView.Adapter<SortVP2Adapter.ViewHolder>() {
     private val mContext = context
-    private val mData: List<RightBean2>
+    private val mData: List<RightBean>
     private val mInflater: LayoutInflater
     private val vp2: ViewPager2
 
