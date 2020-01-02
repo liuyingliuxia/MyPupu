@@ -4,11 +4,8 @@ import android.content.Context
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
 import androidx.fragment.app.FragmentStatePagerAdapter
-import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.fragment.*
-import kotlinx.android.synthetic.main.toolbar_main.*
 
 
 class MainViewPagerAdapter (var context: Context , fm: FragmentManager) : FragmentStatePagerAdapter (fm)  {

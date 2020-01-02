@@ -14,7 +14,7 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.bean.LeftBean
 import kotlinx.android.synthetic.main.item_sort_left.view.*
-
+//左侧目录 + 点击事件
 class QuickLeftAdapter(data :MutableList<LeftBean>) : BaseMultiItemQuickAdapter<LeftBean, BaseViewHolder>(data) {
     var index = -1
 
