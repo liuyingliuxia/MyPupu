@@ -64,3 +64,6 @@ android:singleLine="true"
             actSearch.isFocusableInTouchMode = true
             actSearch.requestFocus()
             window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
+15. 实现分类页面时，使用recycler嵌套recycler的方法 过于复杂
+
+16.getColor(Int) 的替代方案： ContextCompat.getColor(mContext,R.color.color23)

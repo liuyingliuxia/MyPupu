@@ -10,10 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
 
-        <activity android:name=".test.TestTimerActivity">
-
-        </activity>
-        <activity android:name=".test.TestAddActivity"></activity>
+        <activity android:name=".test.TestTimerActivity"></activity>
+        <activity android:name=".test.TestAddActivity" />
         <activity android:name=".ui.search.SearchActivity" />
         <activity android:name=".ui.main.MainActivity">
             <intent-filter>
@@ -22,12 +20,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".test.TestCatalogScroll">
-
-
-        </activity>
-
     </application>
 
 </manifest>

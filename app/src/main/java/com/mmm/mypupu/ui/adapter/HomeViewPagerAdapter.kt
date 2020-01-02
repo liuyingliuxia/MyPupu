@@ -14,7 +14,7 @@ import com.mmm.mypupu.ui.fragment.TabRecommendFragment
 import kotlinx.android.synthetic.main.toolbar_main.*
 
 
-class ViewPagerAdapter (var context: Context , fm: FragmentManager) : FragmentStatePagerAdapter (fm)  {
+class HomeViewPagerAdapter (var context: Context, fm: FragmentManager) : FragmentStatePagerAdapter (fm)  {
     private val mTabTitle = arrayOf(
         R.string.mmm_recommend,
         R.string.mmm_flash,

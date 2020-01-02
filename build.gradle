@@ -24,6 +24,19 @@ allprojects {
     }
 }
 
+ext {
+    compileSdkVersion = 29
+    buildToolsVersion = "29.0.2"
+    minSdkVersion = 16
+    targetSdkVersion = 29
+    supportVersion = "29.0.2"
+    libGlide = "4.9.0"
+    supportLibraryVersion = "29.0.2"
+    libEventbus = "3.1.1"
+    libGson = "2.8.6"
+    jiaozivideoplayer = "7.1.0"
+    libRxlifecycle3 = "3.1.0"
+}
 task clean(type: Delete) {
     delete rootProject.buildDir
 }

@@ -10,5 +10,4 @@
     android:paddingBottom="@dimen/mmm_font_s16"
     android:button="@null"
     android:text="@string/mmm_hotpot_festival"
-    android:textColor="@drawable/state_selected_c3_c23"
     android:textSize="@dimen/mmm_font_s12" />

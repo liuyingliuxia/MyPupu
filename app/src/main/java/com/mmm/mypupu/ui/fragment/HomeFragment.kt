@@ -6,19 +6,16 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.data.searchHint
-import com.mmm.mypupu.ui.adapter.ViewPagerAdapter
-import com.mmm.mypupu.ui.data.goodsPrice
+import com.mmm.mypupu.ui.adapter.HomeViewPagerAdapter
 import com.mmm.mypupu.ui.search.SearchActivity
 import kotlinx.android.synthetic.main.container_home.*
 import kotlinx.android.synthetic.main.toolbar_main.*
-import java.util.*
 
 
 class HomeFragment : Fragment(),SwipeRefreshLayout.OnRefreshListener {
@@ -45,7 +42,7 @@ class HomeFragment : Fragment(),SwipeRefreshLayout.OnRefreshListener {
     }
 
     private fun initViewPager () {
-        val ViewPagerAdapter  = ViewPagerAdapter(context!!, getChildFragmentManager())
+        val ViewPagerAdapter  = HomeViewPagerAdapter(context!!, getChildFragmentManager())
         //设置预加载数 全部的fragment
         vpMain.offscreenPageLimit = 3
         vpMain.adapter = ViewPagerAdapter

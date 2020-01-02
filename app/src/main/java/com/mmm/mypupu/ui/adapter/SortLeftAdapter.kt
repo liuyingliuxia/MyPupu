@@ -15,12 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.mmm.mypupu.R
-import com.mmm.mypupu.ui.bean.Catalog
-import com.mmm.mypupu.ui.data.mAllName1
 import com.mmm.mypupu.ui.data.mCatalogText
 import com.mmm.mypupu.ui.data.mSortHeadTag
-import com.mmm.mypupu.util.mT
-import kotlinx.android.synthetic.main.item_sort_content.view.*
 import kotlinx.android.synthetic.main.item_sort_left.view.*
 
 class SortLeftAdapter  (private val context: Context , private val list: ArrayList<String> , private val rvRight:RecyclerView):RecyclerView.Adapter<RecyclerView.ViewHolder>() {

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <declare-styleable name="ProgressWheel">
+        <attr name="matProg_progressIndeterminate" format="boolean" />
+        <attr name="matProg_barColor" format="color" />
+        <attr name="matProg_rimColor" format="color" />
+        <attr name="matProg_rimWidth" format="dimension" />
+        <attr name="matProg_spinSpeed" format="float" />
+        <attr name="matProg_barSpinCycleTime" format="integer" />
+        <attr name="matProg_circleRadius" format="dimension" />
+        <attr name="matProg_fillRadius" format="boolean" />
+        <attr name="matProg_barWidth" format="dimension" />
+        <attr name="matProg_linearProgress" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="MaxHeightView">
+        <attr name="mhv_HeightRatio" format="reference|float" />
+        <attr name="mhv_HeightDimen" format="reference|dimension" />
+    </declare-styleable>
+
+
+    <declare-styleable name="RoundLayoutXfermode">
+        <attr name="borderRadius" format="dimension" />
+        <attr name="borderStroke" format="dimension" />
+        <attr name="borderColor" format="color" />
+    </declare-styleable>
+
+
+    <declare-styleable name="RoundFrameLayoutMode">
+        <attr name="radius_" format="dimension" />
+        <attr name="topLeftRadius" format="dimension" />
+        <attr name="topRightRadius" format="dimension" />
+        <attr name="bottomLeftRadius" format="dimension" />
+        <attr name="bottomRightRadius" format="dimension" />
+    </declare-styleable>
+
+
+    <declare-styleable name="InsideLine">
+        <!--线条位置-->
+        <attr name="line_gravity">
+            <flag name="Left" value="0x01" />
+            <flag name="Top" value="0x02" />
+            <flag name="Right" value="0x04" />
+            <flag name="Bottom" value="0x08" />
+        </attr>
+        <!--线条颜色-->
+        <attr name="line_color" format="color" />
+        <!--线条高度-->
+        <attr name="line_size" format="dimension" />
+
+        <!--左线高度、颜色、前后偏移量-->
+        <attr name="line_left_size" format="dimension" />
+        <attr name="line_left_color" format="color" />
+        <attr name="line_left_start" format="dimension" />
+        <attr name="line_left_end" format="dimension" />
+
+        <!--右线高度、颜色、前后偏移量-->
+        <attr name="line_right_size" format="dimension" />
+        <attr name="line_right_color" format="color" />
+        <attr name="line_right_start" format="dimension" />
+        <attr name="line_right_end" format="dimension" />
+
+
+        <!--上线高度、颜色、前后偏移量-->
+        <attr name="line_top_size" format="dimension" />
+        <attr name="line_top_color" format="color" />
+        <attr name="line_top_start" format="dimension" />
+        <attr name="line_top_end" format="dimension" />
+
+
+        <!--下线高度、颜色、前后偏移量-->
+        <attr name="line_bottom_size" format="dimension" />
+        <attr name="line_bottom_color" format="color" />
+        <attr name="line_bottom_start" format="dimension" />
+        <attr name="line_bottom_end" format="dimension" />
+
+
+        <!--&lt;!&ndash;无用内容&ndash;&gt;-->
+        <!--&lt;!&ndash;水平中线高度、颜色、前后偏移量&ndash;&gt;-->
+        <!--<attr name="line_middle_h_size" format="dimension" />-->
+        <!--<attr name="line_middle_h_color" format="color" />-->
+        <!--<attr name="line_middle_h_start" format="dimension" />-->
+        <!--<attr name="line_middle_h_end" format="dimension" />-->
+
+        <!--&lt;!&ndash;垂直中线高度、颜色、前后偏移量&ndash;&gt;-->
+        <!--<attr name="line_middle_v_size" format="dimension" />-->
+        <!--<attr name="line_middle_v_color" format="color" />-->
+        <!--<attr name="line_middle_v_start" format="dimension" />-->
+        <!--<attr name="line_middle_v_end" format="dimension" />-->
+    </declare-styleable>
+
+
+    <!--分割线 支持水平垂直-->
+    <declare-styleable name="CutLine">
+        <!--线条位置-->
+        <attr name="cutline_orientation">
+            <flag name="Horizontal" value="0x01" />
+            <flag name="Vertical" value="0x02" />
+        </attr>
+        <!--线条数量-->
+        <attr name="cutline_count" format="integer" />
+        <!--线条颜色-->
+        <attr name="cutline_color" format="color" />
+        <!--线条高度-->
+        <attr name="cutline_size" format="dimension" />
+
+        <!--水平线条 数量、高度、颜色、前后偏移量-->
+        <attr name="cutline_h_count" format="integer" />
+        <attr name="cutline_h_size" format="dimension" />
+        <attr name="cutline_h_color" format="color" />
+        <attr name="cutline_h_start" format="dimension" />
+        <attr name="cutline_h_end" format="dimension" />
+
+        <!--垂直线条 数量、高度、颜色、前后偏移量-->
+        <attr name="cutline_v_count" format="integer" />
+        <attr name="cutline_v_size" format="dimension" />
+        <attr name="cutline_v_color" format="color" />
+        <attr name="cutline_v_start" format="dimension" />
+        <attr name="cutline_v_end" format="dimension" />
+
+    </declare-styleable>
+
+
+    <declare-styleable name="DashView">
+        <attr name="dashWidth" format="dimension" />
+        <attr name="lineWidth" format="dimension" />
+        <attr name="lineHeight" format="dimension" />
+        <attr name="lineColor" format="color" />
+        <attr name="dashOrientation">
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1" />
+        </attr>
+    </declare-styleable>
+
+
+    <!--GradientImageView 渐变颜色值-->
+    <declare-styleable name="GradientView">
+        <attr name="gradient_color_start" format="color" />
+        <attr name="gradient_color_end" format="color" />
+        <attr name="gradient_position_start" format="float" />
+        <attr name="gradient_position_end" format="float" />
+    </declare-styleable>
+</resources>

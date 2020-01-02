@@ -56,7 +56,7 @@ val sResultOriPrice :ArrayList<Double>  = arrayListOf(7.9,8.8,4.8)
 val test :ArrayList<String> = arrayListOf("1","2","3","4","5","6","7","8","9","10")
 
 val mCatalogText :ArrayList<String> = arrayListOf("火锅节","水果", "蔬菜", "肉禽蛋", "海鲜水产", "粮油调味", "早点", "熟食冻品", "牛奶面包", "酒水冲饮", "休闲零食",
-    "日用清洁" ,"护理美妆", "母婴", "鲜花宠物", "进口商品 ","地方特产","")
+    "日用清洁" ,"护理美妆", "母婴", "鲜花宠物", "进口商品 ","地方特产")
 
 val mContentHeadImg :ArrayList<Int > = arrayListOf(R.drawable.sort_head1,R.drawable.sort_head2,R.drawable.sort_head3,
     R.drawable.sort_head1, R.drawable.sort_head5,R.drawable.sort_head6,R.drawable.sort_head7, R.drawable.sort_head8,R.drawable.sort_head9,
@@ -176,3 +176,57 @@ val mAllItemImg15 : ArrayList<Int> = arrayListOf(R.drawable.item_bg_white,R.draw
     R.drawable.item_bg_white,R.drawable.item_bg_white,R.drawable.icon_more,R.drawable.icon_more,R.drawable.item_bg_white,R.drawable.icon_more,R.drawable.item_bg_white,R.drawable.item_bg_white,
     R.drawable.item_bg_white,R.drawable.item_bg_white,R.drawable.item_bg_white)
 val mSortNum :ArrayList<Int> = arrayListOf(13,14,18,14,15,16,14,14,15,22,14,20,14,9,9,12,6)
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+val mCatalog1 :ArrayList<Int> = arrayListOf(mAllItemImg1[1], mAllItemImg2[1], mAllItemImg3[1],mAllItemImg4[1], mAllItemImg5[1], mAllItemImg6[1],mAllItemImg7[1], mAllItemImg8[1], mAllItemImg9[1],
+    mAllItemImg10[1], mAllItemImg11[1], mAllItemImg12[1],mAllItemImg13[1])
+
+val mCatalog2 :ArrayList<Int> = arrayListOf(mAllItemImg1[2], mAllItemImg2[2], mAllItemImg3[2],mAllItemImg4[2], mAllItemImg5[2], mAllItemImg6[2],mAllItemImg7[2], mAllItemImg8[2], mAllItemImg9[2],
+    mAllItemImg10[2], mAllItemImg11[2], mAllItemImg12[2],mAllItemImg13[2], mAllItemImg14[2])
+
+val mCatalog3 :ArrayList<Int> = arrayListOf(mAllItemImg1[3], mAllItemImg2[3], mAllItemImg3[3],mAllItemImg4[3], mAllItemImg5[3], mAllItemImg6[3],mAllItemImg7[3], mAllItemImg8[3], mAllItemImg9[3],
+    mAllItemImg10[3], mAllItemImg11[3], mAllItemImg12[3],mAllItemImg13[3],mAllItemImg14[3],R.drawable.sort3_15,R.drawable.sort3_16,R.drawable.sort3_17,R.drawable.icon_more)
+
+val mCatalog4 :ArrayList<Int> = arrayListOf(mAllItemImg1[4], mAllItemImg2[4], mAllItemImg3[4],mAllItemImg4[4], mAllItemImg5[4], mAllItemImg6[4],mAllItemImg7[4], mAllItemImg8[4], mAllItemImg9[4],
+    mAllItemImg10[4], mAllItemImg11[4], mAllItemImg12[4],mAllItemImg13[4], mAllItemImg14[4])
+
+val mCatalog5 :ArrayList<Int> = arrayListOf(mAllItemImg1[5], mAllItemImg2[5], mAllItemImg3[5],mAllItemImg4[5], mAllItemImg5[5], mAllItemImg6[5],mAllItemImg7[5], mAllItemImg8[5], mAllItemImg9[5],
+    mAllItemImg10[5], mAllItemImg11[5], mAllItemImg12[5],mAllItemImg13[5],R.drawable.sort5_14,R.drawable.icon_more)
+
+val mCatalog6 :ArrayList<Int> = arrayListOf(mAllItemImg1[6], mAllItemImg2[6], mAllItemImg3[6],mAllItemImg4[6], mAllItemImg5[6], mAllItemImg6[6],mAllItemImg7[6], mAllItemImg8[6], mAllItemImg9[6],
+    mAllItemImg10[6], mAllItemImg11[6], mAllItemImg12[6],mAllItemImg13[6], mAllItemImg14[6],R.drawable.sort5_14,R.drawable.icon_more)
+
+//////////////////一下不一一录入//////////////////
+val mCatalog7 :ArrayList<Int> = arrayListOf(mAllItemImg1[1], mAllItemImg2[1], mAllItemImg3[1],mAllItemImg4[1], mAllItemImg5[1], mAllItemImg6[1],mAllItemImg7[1], mAllItemImg8[1], mAllItemImg9[1],
+    mAllItemImg10[1], mAllItemImg11[1], mAllItemImg12[1],mAllItemImg13[1])
+
+val mCatalog8 :ArrayList<Int> = arrayListOf(mAllItemImg1[2], mAllItemImg2[2], mAllItemImg3[2],mAllItemImg4[2], mAllItemImg5[2], mAllItemImg6[2],mAllItemImg7[2], mAllItemImg8[2], mAllItemImg9[2],
+    mAllItemImg10[2], mAllItemImg11[2], mAllItemImg12[2],mAllItemImg13[2], mAllItemImg14[2])
+
+val mCatalog9 :ArrayList<Int> = arrayListOf(mAllItemImg1[1], mAllItemImg2[1], mAllItemImg3[1],mAllItemImg4[1], mAllItemImg5[1], mAllItemImg6[1],mAllItemImg7[1], mAllItemImg8[1], mAllItemImg9[1],
+    mAllItemImg10[1], mAllItemImg11[1], mAllItemImg12[1],mAllItemImg13[1])
+
+val mCatalog10 :ArrayList<Int> = arrayListOf(mAllItemImg1[2], mAllItemImg2[2], mAllItemImg3[2],mAllItemImg4[2], mAllItemImg5[2], mAllItemImg6[2],mAllItemImg7[2], mAllItemImg8[2], mAllItemImg9[2],
+    mAllItemImg10[2], mAllItemImg11[2], mAllItemImg12[2],mAllItemImg13[2], mAllItemImg14[2])
+
+val mCatalog11 :ArrayList<Int> = arrayListOf(mAllItemImg1[1], mAllItemImg2[1], mAllItemImg3[1],mAllItemImg4[1], mAllItemImg5[1], mAllItemImg6[1],mAllItemImg7[1], mAllItemImg8[1], mAllItemImg9[1],
+    mAllItemImg10[1], mAllItemImg11[1], mAllItemImg12[1],mAllItemImg13[1])
+
+val mCatalog12 :ArrayList<Int> = arrayListOf(mAllItemImg1[2], mAllItemImg2[2], mAllItemImg3[2],mAllItemImg4[2], mAllItemImg5[2], mAllItemImg6[2],mAllItemImg7[2], mAllItemImg8[2], mAllItemImg9[2],
+    mAllItemImg10[2], mAllItemImg11[2], mAllItemImg12[2],mAllItemImg13[2], mAllItemImg14[2])
+
+val mCatalog13 :ArrayList<Int> = arrayListOf(mAllItemImg1[1], mAllItemImg2[1], mAllItemImg3[1],mAllItemImg4[1], mAllItemImg5[1], mAllItemImg6[1],mAllItemImg7[1], mAllItemImg8[1], mAllItemImg9[1],
+    mAllItemImg10[1], mAllItemImg11[1], mAllItemImg12[1],mAllItemImg13[1])
+
+val mCatalog14 :ArrayList<Int> = arrayListOf(mAllItemImg1[2], mAllItemImg2[2], mAllItemImg3[2],mAllItemImg4[2], mAllItemImg5[2], mAllItemImg6[2],mAllItemImg7[2], mAllItemImg8[2], mAllItemImg9[2],
+    mAllItemImg10[2], mAllItemImg11[2], mAllItemImg12[2],mAllItemImg13[2], mAllItemImg14[2])
+
+val mCatalog15 :ArrayList<Int> = arrayListOf(mAllItemImg1[1], mAllItemImg2[1], mAllItemImg3[1],mAllItemImg4[1], mAllItemImg5[1], mAllItemImg6[1],mAllItemImg7[1], mAllItemImg8[1], mAllItemImg9[1],
+    mAllItemImg10[1], mAllItemImg11[1], mAllItemImg12[1],mAllItemImg13[1])
+
+val mCatalog16 :ArrayList<Int> = arrayListOf(mAllItemImg1[2], mAllItemImg2[2], mAllItemImg3[2],mAllItemImg4[2], mAllItemImg5[2], mAllItemImg6[2],mAllItemImg7[2], mAllItemImg8[2], mAllItemImg9[2],
+    mAllItemImg10[2], mAllItemImg11[2], mAllItemImg12[2],mAllItemImg13[2], mAllItemImg14[2])
+
+val mCatalog17 :ArrayList<Int> = arrayListOf(mAllItemImg1[1], mAllItemImg2[1], mAllItemImg3[1],mAllItemImg4[1], mAllItemImg5[1], mAllItemImg6[1],mAllItemImg7[1], mAllItemImg8[1], mAllItemImg9[1],
+    mAllItemImg10[1], mAllItemImg11[1], mAllItemImg12[1],mAllItemImg13[1])

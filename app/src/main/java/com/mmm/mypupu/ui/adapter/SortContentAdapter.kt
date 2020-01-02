@@ -1,7 +1,6 @@
 package com.mmm.mypupu.ui.adapter
 
 import android.content.Context
-import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -12,15 +11,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.bean.Catalog
-import com.mmm.mypupu.ui.data.mAllName1
 import com.mmm.mypupu.ui.data.mSortHeadTag
 import com.mmm.mypupu.util.mT
-import kotlinx.android.synthetic.main.item_sort_content.view.*
+import kotlinx.android.synthetic.main.item_sort_right.view.*
 
 class SortContentAdapter (private val context: Context , private val list: ArrayList<Catalog> ):RecyclerView.Adapter<RecyclerView.ViewHolder>()  {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-            val itemView = LayoutInflater.from(context).inflate(R.layout.item_sort_content, parent, false)
+            val itemView = LayoutInflater.from(context).inflate(R.layout.item_sort_right, parent, false)
             val holder0 = Holder(itemView)
             return holder0
 

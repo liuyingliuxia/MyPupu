@@ -13,7 +13,6 @@ import com.mmm.mypupu.ui.adapter.CrazyDiscountAdapter
 import com.mmm.mypupu.ui.bean.Goods
 import com.mmm.mypupu.ui.data.*
 import com.mmm.mypupu.util.mT
-import kotlinx.android.synthetic.main.fragment_sort_test.*
 import kotlinx.android.synthetic.main.fragment_tab_crazy_discount.*
 import kotlinx.android.synthetic.main.fragment_tab_crazy_discount.view.*
 

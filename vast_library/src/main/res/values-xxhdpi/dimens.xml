@@ -1,0 +1,7 @@
+<resources>
+
+
+    <!--图片弧度-->
+    <dimen name="image_round_r5">5dp</dimen>
+
+</resources>
