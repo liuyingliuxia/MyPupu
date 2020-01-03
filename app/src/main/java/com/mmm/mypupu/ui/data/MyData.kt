@@ -175,6 +175,7 @@ val mAllItemImg14 : ArrayList<Int> = arrayListOf(R.drawable.item_bg_white,R.draw
 val mAllItemImg15 : ArrayList<Int> = arrayListOf(R.drawable.item_bg_white,R.drawable.item_bg_white ,R.drawable.icon_more,R.drawable.item_bg_white,R.drawable.icon_more,R.drawable.icon_more,
     R.drawable.item_bg_white,R.drawable.item_bg_white,R.drawable.icon_more,R.drawable.icon_more,R.drawable.item_bg_white,R.drawable.icon_more,R.drawable.item_bg_white,R.drawable.item_bg_white,
     R.drawable.item_bg_white,R.drawable.item_bg_white,R.drawable.item_bg_white)
+
 val mSortNum :ArrayList<Int> = arrayListOf(13,14,18,14,15,16,14,14,15,22,14,20,14,9,9,12,6)
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

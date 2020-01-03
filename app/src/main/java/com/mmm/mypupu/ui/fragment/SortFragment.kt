@@ -12,24 +12,21 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.*
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.adapter.QuickLeftAdapter
-import com.mmm.mypupu.ui.adapter.SortVP2Adapter
 import com.mmm.mypupu.ui.bean.LeftBean
-import com.mmm.mypupu.ui.bean.RightBean
 import com.mmm.mypupu.ui.data.*
 import com.mmm.mypupu.ui.search.SearchActivity
+import com.mmm.mytestutil.rvInRecycler.SortVP2Adapter
 import kotlinx.android.synthetic.main.fragment_sort.*
-import kotlinx.android.synthetic.main.item_sort_right.*
 
 class SortFragment : Fragment() {
     //quick适配器
     private lateinit var quickLeftAdapter: QuickLeftAdapter
-    private lateinit var vp2RightAdapter :SortVP2Adapter
+    private lateinit var vp2RightAdapter : SortVP2Adapter
     //quick用的布局管理器
     private lateinit var leftLayoutManager: LinearLayoutManager
     private lateinit var rightLayoutManager: LinearLayoutManager
     //数据实体
     var leftData: MutableList<LeftBean> = mutableListOf()
-    var rightData: MutableList<RightBean> = mutableListOf()
 
     var rightClick: Boolean = false
     lateinit var handler: Handler
@@ -44,7 +41,8 @@ class SortFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initData()
         initView()
-        vp2Right.adapter = SortVP2Adapter(context ,rightData,vp2Right)
+
+
         ivSearch.setOnClickListener {
             val intent = Intent()
             intent.setClass(this@SortFragment.context!!, SearchActivity::class.java)
@@ -54,22 +52,29 @@ class SortFragment : Fragment() {
 
     fun initData() {
         handler = Handler()
-        val rvItem = RecyclerView(context!!)
         val leftBean = LeftBean(0, "", 1)
-
+        val rvList :ArrayList<RecyclerView> = arrayListOf()
+        val rvView :RecyclerView = RecyclerView(context!!)
         for (i in 0..mCatalogText.size) {
             //根据itemType不同添加不同的数据
             if (i < mCatalogText.size) {
                 leftBean.type = LeftBean.TYPE_TEXT
                 leftData.add(LeftBean(i, mCatalogText[i], 1))
-                rightData.add(RightBean(i, mContentHeadImg[i],rvItem ))
+                //传入 rv itme的数量
+
             } else if (i == mCatalogText.size) {
                 leftBean.type = LeftBean.TYPE_EMPTY
                 leftData.add(LeftBean((mCatalogText.size), "", 2))
             }
         }
-
         Log.e("left", leftData.toString())
+        //绑定右侧 布局
+        for (i in  0.. 2) {
+            rvList.add(rvView)
+        }
+        vp2RightAdapter = SortVP2Adapter(context!! , rvList)
+
+
     }
 
     fun initView() {
@@ -80,9 +85,8 @@ class SortFragment : Fragment() {
         rightLayoutManager.orientation = LinearLayoutManager.VERTICAL
 
         rvLeft.layoutManager = leftLayoutManager
-
+        //vp2 不需要设置布局管理器 其子布局必须match
         quickLeftAdapter = QuickLeftAdapter(leftData)
-        vp2RightAdapter = SortVP2Adapter(context!! , rightData ,vp2Right )
 
         rvLeft.adapter = quickLeftAdapter
         vp2Right.adapter = vp2RightAdapter
@@ -92,13 +96,12 @@ class SortFragment : Fragment() {
             select(position)
 
             var rightI = 0
-            while (rightI < rightData.size) {
+       /*     while (rightI < rightData.size) {
                 if (rightData.get(rightI).id == leftData.get(position).id) {
                     break;
                 }
                 rightI++
-            }
-
+            }*/
         }
     }
 

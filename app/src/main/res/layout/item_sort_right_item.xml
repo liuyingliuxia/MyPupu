@@ -4,6 +4,7 @@
     android:orientation="vertical"
     android:layout_width="@dimen/mmm_font_s100"
     android:layout_height="@dimen/mmm_font_s100"
+    android:id="@+id/llSort"
     android:background="@color/color1"
     android:padding="@dimen/mmm_font_s10">
     <!-- 分类右侧小图+文字-->
