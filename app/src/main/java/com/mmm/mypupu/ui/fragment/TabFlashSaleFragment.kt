@@ -16,7 +16,7 @@ import com.mmm.mypupu.ui.adapter.FlashSaleAdapter
 import com.mmm.mypupu.ui.adapter.RecommendationAdapter
 import com.mmm.mypupu.ui.bean.Goods
 import com.mmm.mypupu.ui.data.*
-import com.mmm.mypupu.util.mT
+import com.mmm.mypupu.util.myUtil
 import kotlinx.android.synthetic.main.fragment_tab_crazy_discount.*
 import kotlinx.android.synthetic.main.fragment_tab_crazy_discount.view.*
 import kotlinx.android.synthetic.main.fragment_tab_flash_sale.*
@@ -63,11 +63,11 @@ class TabFlashSaleFragment : Fragment(){
                 //1代表底部,返回true表示没到底部,还可以滑
                 val isBottom = rvFlashSale.canScrollVertically(1)
                 if ( isBottom == false && STEP_REFRESH > 3 ){
-                    mT.t(context!! , "继续下滑加载更多")
+                    myUtil.talk(context!! , "继续下滑加载更多")
                     STEP_REFRESH --
                 }
                 else if (isBottom == false && STEP_REFRESH <3   )
-                    mT.t(context!! , "没有更多了")
+                    myUtil.talk(context!! , "没有更多了")
             }
         })
     }

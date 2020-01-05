@@ -4,5 +4,6 @@
     android:id="@+id/ivCatalogHead"
     android:layout_width="260dp"
     android:layout_height="100dp"
+    android:layout_marginLeft="16dp"
     android:src="@drawable/sort_head1"/>
 <!--分类右侧顶部大图-->

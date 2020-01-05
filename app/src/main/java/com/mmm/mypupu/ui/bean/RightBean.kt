@@ -16,3 +16,5 @@ data class itemBean ( var id : Int , var imgId:Int, var text :String ) {
 
 
 data class headImgBean ( var tag :String , var imgId :Int )
+
+data class TwoBean(var id:Int,var rv: RecyclerView )

@@ -10,11 +10,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.*
+import com.example.lilingzhi.tworecyc.util.RecycUtil
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.adapter.QuickLeftAdapter
 import com.mmm.mypupu.ui.bean.LeftBean
+import com.mmm.mypupu.ui.bean.TwoBean
 import com.mmm.mypupu.ui.data.*
 import com.mmm.mypupu.ui.search.SearchActivity
+import com.mmm.mypupu.ui.widgets.ChildRecyclerView
 import com.mmm.mytestutil.rvInRecycler.SortVP2Adapter
 import kotlinx.android.synthetic.main.fragment_sort.*
 
@@ -24,9 +27,10 @@ class SortFragment : Fragment() {
     private lateinit var vp2RightAdapter : SortVP2Adapter
     //quick用的布局管理器
     private lateinit var leftLayoutManager: LinearLayoutManager
-    private lateinit var rightLayoutManager: LinearLayoutManager
+  //  private lateinit var rightLayoutManager: LinearLayoutManager
     //数据实体
     var leftData: MutableList<LeftBean> = mutableListOf()
+    var rightData :MutableList<TwoBean> = mutableListOf()
 
     var rightClick: Boolean = false
     lateinit var handler: Handler
@@ -41,7 +45,10 @@ class SortFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initData()
         initView()
-
+        select(0) // 刚进入页面默认选中第一个
+        //一次只能滑动一页，不能快速滑动
+        val pagerSnapHelper = PagerSnapHelper()
+        pagerSnapHelper.attachToRecyclerView(vp2Right)
 
         ivSearch.setOnClickListener {
             val intent = Intent()
@@ -53,8 +60,8 @@ class SortFragment : Fragment() {
     fun initData() {
         handler = Handler()
         val leftBean = LeftBean(0, "", 1)
-        val rvList :ArrayList<RecyclerView> = arrayListOf()
-        val rvView :RecyclerView = RecyclerView(context!!)
+
+        val rvView  = ChildRecyclerView(context!!)
         for (i in 0..mCatalogText.size) {
             //根据itemType不同添加不同的数据
             if (i < mCatalogText.size) {
@@ -68,23 +75,35 @@ class SortFragment : Fragment() {
             }
         }
         Log.e("left", leftData.toString())
-        //绑定右侧 布局
-        for (i in  0.. 2) {
-            rvList.add(rvView)
+        //绑定右侧 布局 -> 子recycler
+        for (i in  0.. 16) {
+            rightData.add(TwoBean( i ,rvView  ))
         }
-        vp2RightAdapter = SortVP2Adapter(context!! , rvList)
+        vp2RightAdapter = SortVP2Adapter(context!! , rightData )
 
 
     }
 
     fun initView() {
+        //解决RecyclerView 内嵌套 RecyclerView 导致显示不全 的问题
+        val rightLayoutManager: LinearLayoutManager = object : LinearLayoutManager(context) {
+            override fun generateDefaultLayoutParams(): RecyclerView.LayoutParams {
+                return RecyclerView.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                )
+            }
+        }
+
+
         leftLayoutManager = LinearLayoutManager(context)
         leftLayoutManager.orientation = LinearLayoutManager.VERTICAL
 
-        rightLayoutManager = LinearLayoutManager(context)
+        //rightLayoutManager = LinearLayoutManager(context)
         rightLayoutManager.orientation = LinearLayoutManager.VERTICAL
 
         rvLeft.layoutManager = leftLayoutManager
+        vp2Right.layoutManager = rightLayoutManager
         //vp2 不需要设置布局管理器 其子布局必须match
         quickLeftAdapter = QuickLeftAdapter(leftData)
 
@@ -94,15 +113,29 @@ class SortFragment : Fragment() {
         quickLeftAdapter.setOnItemClickListener { _, _, position ->
             rightClick = true
             select(position)
+            //切换到指定的item
+            rightLayoutManager.scrollToPositionWithOffset(position, 0)
+            rightLayoutManager.stackFromEnd = false
 
-            var rightI = 0
-       /*     while (rightI < rightData.size) {
-                if (rightData.get(rightI).id == leftData.get(position).id) {
-                    break;
-                }
-                rightI++
-            }*/
         }
+
+        vp2Right.addOnScrollListener(object :RecyclerView.OnScrollListener(){
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                if (rightClick == false && newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    val now :Int
+                    val first = rightLayoutManager.findFirstVisibleItemPosition()
+                    now = rightData.get(first).id
+                    RecycUtil.moveToPositAndCenter(now , leftLayoutManager , rvLeft , handler )
+                    select(now)
+                }else if(rightClick==true&& newState == RecyclerView.SCROLL_STATE_IDLE){
+                    rightClick=false
+                }else if(rightClick==true&&newState == RecyclerView.SCROLL_STATE_DRAGGING){
+                    rightClick=false
+                }
+            }
+        })
+
+
     }
 
     fun select(position: Int) {
@@ -113,5 +146,6 @@ class SortFragment : Fragment() {
         }
         quickLeftAdapter.notifyItemChanged(position)
     }
+
 
 }

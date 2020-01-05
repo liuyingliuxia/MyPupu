@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 
 import androidx.viewpager.widget.ViewPager;
-
+//禁用了左右滑动的vp 用来切换fragment可解决不必要的bug
 public class NoScrollViewPager extends ViewPager {
     private boolean isScroll = false;
 

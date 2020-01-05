@@ -34,7 +34,6 @@ class QuickLeftAdapter(data :MutableList<LeftBean>) : BaseMultiItemQuickAdapter<
                     mTextView.setTextColor(ContextCompat.getColor(mContext,R.color.color23))
                     val mSizeNor: Float =mContext.resources.getDimension(R.dimen.mmm_font_s5)
                     mTextView.setTextSize(mSizeNor)
-//            mTextView.isEnabled = true
 
                 }else{
                     mTextView.setBackgroundColor(mContext.getColor(R.color.color8))

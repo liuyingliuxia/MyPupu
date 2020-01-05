@@ -23,55 +23,55 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clSearch"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@drawable/mmm_c02_s08_s00_w0_r0201"
-        android:orientation="horizontal"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:layout_marginTop="@dimen/mmm_font_s4"
-        android:paddingLeft="@dimen/mmm_font_s6"
-        android:paddingTop="@dimen/mmm_font_s6"
-        android:paddingBottom="@dimen/mmm_font_s6">
-
-        <AutoCompleteTextView
-            android:id="@+id/actSearch"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clSearch"
+            android:layout_width="283dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="@dimen/mmm_font_s10"
-            android:background="@null"
-            android:completionThreshold="1"
-            android:drawableLeft="@drawable/ic_search"
-            android:drawablePadding="@dimen/mmm_font_s10"
-            android:hint="@string/mmm_input_search"
-            android:imeOptions="actionSearch"
-            android:maxLength="8"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:textSize="@dimen/mmm_font_s16"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <ImageView
-            android:id="@+id/ivClose"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/close_2"
-            android:layout_gravity="end|center_vertical"
-            android:visibility="invisible"
-            android:paddingRight="@dimen/mmm_font_s10"
+            android:layout_marginTop="@dimen/mmm_font_s4"
+            android:layout_weight="1"
             android:background="@drawable/mmm_c02_s08_s00_w0_r0201"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/mmm_font_s6"
+            android:paddingTop="@dimen/mmm_font_s6"
+            android:paddingBottom="@dimen/mmm_font_s6">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <AutoCompleteTextView
+                android:id="@+id/actSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="@dimen/mmm_font_s10"
+                android:background="@null"
+                android:completionThreshold="1"
+                android:drawableLeft="@drawable/ic_search"
+                android:drawablePadding="@dimen/mmm_font_s10"
+                android:hint="@string/mmm_input_search"
+                android:imeOptions="actionSearch"
+                android:maxLength="8"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textSize="@dimen/mmm_font_s16"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <ImageView
+                android:id="@+id/ivClose"
+                android:layout_width="24dp"
+                android:layout_height="14dp"
+                android:layout_gravity="end|center_vertical"
+                android:background="@drawable/mmm_c02_s08_s00_w0_r0201"
+                android:paddingRight="@dimen/mmm_font_s10"
+                android:src="@drawable/close_2"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/tvSearch"

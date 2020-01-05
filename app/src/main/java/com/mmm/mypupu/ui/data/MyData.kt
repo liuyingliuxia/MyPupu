@@ -66,7 +66,7 @@ val mContentHeadImg :ArrayList<Int > = arrayListOf(R.drawable.sort_head1,R.drawa
 val mSortHeadTag :ArrayList<String> = arrayListOf("燃情火锅季","徐香猕猴桃 6.98元/500g","悠拣菜七叶心 2.99元/300g","燃情火锅季","碧渔鱿鱼（冻） 29.8元/300g",
     "合味道杯面（部分） 满15减3元","大希地帕尼尼 满20减8元","猪肚莲子汤 49.9元/750g","新希望低温纯牛奶 1.9元/180ml" ,"法国进口1664啤酒 7.5元/250ml","沃隆系列产品 满99减30元",
     "学生文具 满48减10元", "樱花花瓣沐浴露 19.9元/380ml","宝宝的圣诞礼物 精选上市","宠物系列 （部分） 满25减5元","什锦巧克力制品 69元/650g","马大姐糖果 买一送一")
-
+//////////////一个数组表示一每页的第x 个项///////////////////
 val mAllName1 :ArrayList<String> = arrayListOf("肉","水果礼盒","平价菜","平价猪肉","大闸蟹","网红驾到","面包烘培","卤味","鲜奶","整箱特惠","网红驾到","冬日防寒","面部护肤",
     "婴幼儿奶粉","鲜花","进口海鲜","福州特产")
 
@@ -157,15 +157,15 @@ val mAllItemImg10 : ArrayList<Int> = arrayListOf(R.drawable.sort1_10,R.drawable.
 
 
 val mAllItemImg11 : ArrayList<Int> = arrayListOf(R.drawable.sort1_11,R.drawable.fruit_sort10,R.drawable.sort3_11,R.drawable.sort4_11,R.drawable.sort5_11,R.drawable.sort6_11,
-    R.drawable.sort7_11,R.drawable.sort8_11,R.drawable.sort9_11,R.drawable.sort10_11,R.drawable.sort11_11,R.drawable.sort12_11,R.drawable.sort13_11,R.drawable.item_bg_white,
+    R.drawable.sort7_11,R.drawable.sort8_11,R.drawable.sort9_11,R.drawable.sort10_10,R.drawable.sort11_11,R.drawable.sort12_11,R.drawable.sort13_11,R.drawable.item_bg_white,
     R.drawable.item_bg_white, R.drawable.sort16_11,R.drawable.item_bg_white)
 
 val mAllItemImg12 : ArrayList<Int> = arrayListOf(R.drawable.sort1_12,R.drawable.sort2_12,R.drawable.sort3_12,R.drawable.sort4_12,R.drawable.sort5_12,R.drawable.sort6_12,
-    R.drawable.sort7_12,R.drawable.sort8_12,R.drawable.sort9_12,R.drawable.sort10_12,R.drawable.sort11_12,R.drawable.sort12_12,R.drawable.sort13_12,R.drawable.item_bg_white,
+    R.drawable.sort7_12,R.drawable.sort8_12,R.drawable.sort9_12,R.drawable.sort10_11,R.drawable.sort11_12,R.drawable.sort12_12,R.drawable.sort13_12,R.drawable.item_bg_white,
     R.drawable.item_bg_white, R.drawable.icon_more,R.drawable.item_bg_white)
 
 val mAllItemImg13 : ArrayList<Int> = arrayListOf(R.drawable.icon_more,R.drawable.sort2_13,R.drawable.sort3_13,R.drawable.sort4_13,R.drawable.sort5_13,R.drawable.sort6_13,
-    R.drawable.sort7_13,R.drawable.sort8_13,R.drawable.sort9_13,R.drawable.sort10_13,R.drawable.sort11_13,R.drawable.sort12_13,R.drawable.sort13_13,R.drawable.item_bg_white,R.drawable.item_bg_white,
+    R.drawable.sort7_13,R.drawable.sort8_13,R.drawable.sort9_13,R.drawable.sort10_12,R.drawable.sort11_13,R.drawable.sort12_13,R.drawable.sort13_13,R.drawable.item_bg_white,R.drawable.item_bg_white,
     R.drawable.item_bg_white,R.drawable.item_bg_white)
 
 
@@ -178,7 +178,7 @@ val mAllItemImg15 : ArrayList<Int> = arrayListOf(R.drawable.item_bg_white,R.draw
 
 val mSortNum :ArrayList<Int> = arrayListOf(13,14,18,14,15,16,14,14,15,22,14,20,14,9,9,12,6)
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////一个数组表示一个页面的item////////////////////////////////////////////////////////
 
 val mCatalog1 :ArrayList<Int> = arrayListOf(mAllItemImg1[0], mAllItemImg2[0], mAllItemImg3[0],mAllItemImg4[0], mAllItemImg5[0], mAllItemImg6[0],mAllItemImg7[0], mAllItemImg8[0], mAllItemImg9[0],
     mAllItemImg10[0], mAllItemImg11[0], mAllItemImg12[0],mAllItemImg13[0])
@@ -196,57 +196,91 @@ val mCatalog5 :ArrayList<Int> = arrayListOf(mAllItemImg1[4], mAllItemImg2[4], mA
     mAllItemImg10[4], mAllItemImg11[4], mAllItemImg12[4],mAllItemImg13[4],R.drawable.sort5_14,R.drawable.icon_more)
 
 val mCatalog6 :ArrayList<Int> = arrayListOf(mAllItemImg1[5], mAllItemImg2[5], mAllItemImg3[5],mAllItemImg4[5], mAllItemImg5[5], mAllItemImg6[5],mAllItemImg7[5], mAllItemImg8[5], mAllItemImg9[5],
-    mAllItemImg10[5], mAllItemImg11[5], mAllItemImg12[5],mAllItemImg13[5], mAllItemImg14[5],R.drawable.sort5_14,R.drawable.icon_more)
+    mAllItemImg10[5], mAllItemImg11[5], mAllItemImg12[5],mAllItemImg13[5], mAllItemImg14[5],R.drawable.sort5_15,R.drawable.icon_more)
 
-//////////////////一下不一一录入//////////////////
-val mCatalog7 :ArrayList<Int> = arrayListOf(mAllItemImg1[1], mAllItemImg2[1], mAllItemImg3[1],mAllItemImg4[1], mAllItemImg5[1], mAllItemImg6[1],mAllItemImg7[1], mAllItemImg8[1], mAllItemImg9[1],
-    mAllItemImg10[1], mAllItemImg11[1], mAllItemImg12[1],mAllItemImg13[1])
+val mCatalog7 :ArrayList<Int> = arrayListOf(mAllItemImg1[6], mAllItemImg2[6], mAllItemImg3[6],mAllItemImg4[6], mAllItemImg5[6], mAllItemImg6[6],mAllItemImg7[6], mAllItemImg8[6], mAllItemImg9[6],
+    mAllItemImg10[6], mAllItemImg11[6], mAllItemImg12[6],mAllItemImg13[6],R.drawable.icon_more)
 
-val mCatalog8 :ArrayList<Int> = arrayListOf(mAllItemImg1[2], mAllItemImg2[2], mAllItemImg3[2],mAllItemImg4[2], mAllItemImg5[2], mAllItemImg6[2],mAllItemImg7[2], mAllItemImg8[2], mAllItemImg9[2],
-    mAllItemImg10[2], mAllItemImg11[2], mAllItemImg12[2],mAllItemImg13[2], mAllItemImg14[2])
+val mCatalog8 :ArrayList<Int> = arrayListOf(mAllItemImg1[7], mAllItemImg2[7], mAllItemImg3[7],mAllItemImg4[7], mAllItemImg5[7], mAllItemImg6[7],mAllItemImg7[7], mAllItemImg8[7], mAllItemImg9[7],
+    mAllItemImg10[7], mAllItemImg11[7], mAllItemImg12[7],mAllItemImg13[7], R.drawable.icon_more)
 
-val mCatalog9 :ArrayList<Int> = arrayListOf(mAllItemImg1[1], mAllItemImg2[1], mAllItemImg3[1],mAllItemImg4[1], mAllItemImg5[1], mAllItemImg6[1],mAllItemImg7[1], mAllItemImg8[1], mAllItemImg9[1],
-    mAllItemImg10[1], mAllItemImg11[1], mAllItemImg12[1],mAllItemImg13[1])
+val mCatalog9 :ArrayList<Int> = arrayListOf(mAllItemImg1[8], mAllItemImg2[8], mAllItemImg3[8],mAllItemImg4[8], mAllItemImg5[8], mAllItemImg6[8],mAllItemImg7[8], mAllItemImg8[8], mAllItemImg9[8],
+    mAllItemImg10[8], mAllItemImg11[8], mAllItemImg12[8],mAllItemImg13[8],mAllItemImg14[8],mAllItemImg15[8])
 
-val mCatalog10 :ArrayList<Int> = arrayListOf(mAllItemImg1[2], mAllItemImg2[2], mAllItemImg3[2],mAllItemImg4[2], mAllItemImg5[2], mAllItemImg6[2],mAllItemImg7[2], mAllItemImg8[2], mAllItemImg9[2],
-    mAllItemImg10[2], mAllItemImg11[2], mAllItemImg12[2],mAllItemImg13[2], mAllItemImg14[2])
+val mCatalog10 :ArrayList<Int> = arrayListOf(mAllItemImg1[9], mAllItemImg2[9], mAllItemImg3[9],mAllItemImg4[9], mAllItemImg5[9], mAllItemImg6[9],mAllItemImg7[9], mAllItemImg8[9], mAllItemImg9[9],
+    mAllItemImg10[9], mAllItemImg11[9], mAllItemImg12[9],mAllItemImg13[9], mAllItemImg14[9],R.drawable.sort10_14,R.drawable.sort10_16,R.drawable.sort10_17,R.drawable.sort10_18,R.drawable.sort10_19,
+    R.drawable.sort10_20, R.drawable.sort10_21,R.drawable.icon_more)
 
-val mCatalog11 :ArrayList<Int> = arrayListOf(mAllItemImg1[1], mAllItemImg2[1], mAllItemImg3[1],mAllItemImg4[1], mAllItemImg5[1], mAllItemImg6[1],mAllItemImg7[1], mAllItemImg8[1], mAllItemImg9[1],
-    mAllItemImg10[1], mAllItemImg11[1], mAllItemImg12[1],mAllItemImg13[1])
+val mCatalog11 :ArrayList<Int> = arrayListOf(mAllItemImg1[10], mAllItemImg2[10], mAllItemImg3[10],mAllItemImg4[10], mAllItemImg5[10], mAllItemImg6[10],mAllItemImg7[10], mAllItemImg8[10], mAllItemImg9[10],
+    mAllItemImg10[10], mAllItemImg11[10], mAllItemImg12[10],mAllItemImg13[10],R.drawable.icon_more)
+//12 日用清洁 长度 20
+val mCatalog12 :ArrayList<Int> = arrayListOf(mAllItemImg1[11], mAllItemImg2[11], mAllItemImg3[11],mAllItemImg4[11], mAllItemImg5[11], mAllItemImg6[11],mAllItemImg7[11], mAllItemImg8[11], mAllItemImg9[11],
+    mAllItemImg10[11], mAllItemImg11[11], mAllItemImg12[11],mAllItemImg13[11], mAllItemImg14[11],R.drawable.sort12_15,R.drawable.sort12_16,R.drawable.sort12_17,R.drawable.sort12_18,R.drawable.sort12_19,
+    R.drawable.icon_more)
 
-val mCatalog12 :ArrayList<Int> = arrayListOf(mAllItemImg1[2], mAllItemImg2[2], mAllItemImg3[2],mAllItemImg4[2], mAllItemImg5[2], mAllItemImg6[2],mAllItemImg7[2], mAllItemImg8[2], mAllItemImg9[2],
-    mAllItemImg10[2], mAllItemImg11[2], mAllItemImg12[2],mAllItemImg13[2], mAllItemImg14[2])
+//13 护理美妆 长度 14
+val mCatalog13 :ArrayList<Int> = arrayListOf(mAllItemImg1[12], mAllItemImg2[12], mAllItemImg3[12],mAllItemImg4[12], mAllItemImg5[12], mAllItemImg6[12],mAllItemImg7[12], mAllItemImg8[12], mAllItemImg9[12],
+    mAllItemImg10[12], mAllItemImg11[12], mAllItemImg12[12],mAllItemImg13[12],R.drawable.icon_more)
 
-val mCatalog13 :ArrayList<Int> = arrayListOf(mAllItemImg1[1], mAllItemImg2[1], mAllItemImg3[1],mAllItemImg4[1], mAllItemImg5[1], mAllItemImg6[1],mAllItemImg7[1], mAllItemImg8[1], mAllItemImg9[1],
-    mAllItemImg10[1], mAllItemImg11[1], mAllItemImg12[1],mAllItemImg13[1])
+//14 母婴 长度 9
+val mCatalog14 :ArrayList<Int> = arrayListOf(mAllItemImg1[13], mAllItemImg2[13], mAllItemImg3[13],mAllItemImg4[13], mAllItemImg5[13], mAllItemImg6[13],mAllItemImg7[13], mAllItemImg8[13], mAllItemImg9[13],
+    mAllItemImg10[13], mAllItemImg11[13], mAllItemImg12[13],mAllItemImg13[13], mAllItemImg14[13])
+//15 鲜花宠物  长度 9
+val mCatalog15 :ArrayList<Int> = arrayListOf(mAllItemImg1[14], mAllItemImg2[14], mAllItemImg3[14],mAllItemImg4[14], mAllItemImg5[14], mAllItemImg6[14],mAllItemImg7[14], mAllItemImg8[14], mAllItemImg9[14])
+// 16 进口商品 长度 12
+val mCatalog16 :ArrayList<Int> = arrayListOf(mAllItemImg1[15], mAllItemImg2[15], mAllItemImg3[15],mAllItemImg4[15], mAllItemImg5[15], mAllItemImg6[15],mAllItemImg7[15], mAllItemImg8[15], mAllItemImg9[15],
+    R.drawable.sort16_10, mAllItemImg11[15], mAllItemImg12[15])
+// 17 地方特产 长度 6
+val mCatalog17 :ArrayList<Int> = arrayListOf(mAllItemImg1[16], mAllItemImg2[16], mAllItemImg3[16],mAllItemImg4[16], mAllItemImg5[16], mAllItemImg6[16])
+//////////////item 文字部分////////////
+val mCatalogName1 :ArrayList<String> = arrayListOf(mAllName1[0],mAllName2[0],mAllName3[0],mAllName4[0],mAllName5[0],mAllName6[0],mAllName7[0],mAllName8[0],mAllName9[0],mAllName10[0],
+    mAllName11[0], mAllName12[0], mAllName13[0])
 
-val mCatalog14 :ArrayList<Int> = arrayListOf(mAllItemImg1[2], mAllItemImg2[2], mAllItemImg3[2],mAllItemImg4[2], mAllItemImg5[2], mAllItemImg6[2],mAllItemImg7[2], mAllItemImg8[2], mAllItemImg9[2],
-    mAllItemImg10[2], mAllItemImg11[2], mAllItemImg12[2],mAllItemImg13[2], mAllItemImg14[2])
+val mCatalogName2 :ArrayList<String> =arrayListOf(mAllName1[1],mAllName2[1],mAllName3[1],mAllName4[1],mAllName5[1],mAllName6[1],mAllName7[1],mAllName8[1],mAllName9[1],mAllName10[1],
+    mAllName11[1], mAllName12[1], mAllName13[1], mAllName14[1])
 
-val mCatalog15 :ArrayList<Int> = arrayListOf(mAllItemImg1[1], mAllItemImg2[1], mAllItemImg3[1],mAllItemImg4[1], mAllItemImg5[1], mAllItemImg6[1],mAllItemImg7[1], mAllItemImg8[1], mAllItemImg9[1],
-    mAllItemImg10[1], mAllItemImg11[1], mAllItemImg12[1],mAllItemImg13[1])
+val mCatalogName3 :ArrayList<String> = arrayListOf(mAllName1[2],mAllName2[2],mAllName3[2],mAllName4[2],mAllName5[2],mAllName6[2],mAllName7[2],mAllName8[2],mAllName9[2],mAllName10[2],
+    mAllName11[2], mAllName12[2], mAllName13[2], mAllName14[2], "沙拉/配料", "干货", "酱菜" , "全部蔬菜")
 
-val mCatalog16 :ArrayList<Int> = arrayListOf(mAllItemImg1[2], mAllItemImg2[2], mAllItemImg3[2],mAllItemImg4[2], mAllItemImg5[2], mAllItemImg6[2],mAllItemImg7[2], mAllItemImg8[2], mAllItemImg9[2],
-    mAllItemImg10[2], mAllItemImg11[2], mAllItemImg12[2],mAllItemImg13[2], mAllItemImg14[2])
+val mCatalogName4 :ArrayList<String> = arrayListOf(mAllName1[3],mAllName2[3],mAllName3[3],mAllName4[3],mAllName5[3],mAllName6[3],mAllName7[3],mAllName8[3],mAllName9[3],mAllName10[3],
+    mAllName11[3], mAllName12[3], mAllName13[3], mAllName14[3])
 
-val mCatalog17 :ArrayList<Int> = arrayListOf(mAllItemImg1[1], mAllItemImg2[1], mAllItemImg3[1],mAllItemImg4[1], mAllItemImg5[1], mAllItemImg6[1],mAllItemImg7[1], mAllItemImg8[1], mAllItemImg9[1],
-    mAllItemImg10[1], mAllItemImg11[1], mAllItemImg12[1],mAllItemImg13[1])
+val mCatalogName5 :ArrayList<String> = arrayListOf(mAllName1[4],mAllName2[4],mAllName3[4],mAllName4[4],mAllName5[4],mAllName6[4],mAllName7[4],mAllName8[4],mAllName9[4],mAllName10[4],
+mAllName11[4], mAllName12[4], mAllName13[4], "海产干货","全部海鲜水产")
 
-val mCatalogName1 :ArrayList<String> = arrayListOf(mAllName1[1],mAllName2[1],mAllName3[1],mAllName4[1],mAllName5[1],mAllName6[1],mAllName7[1],mAllName8[1],mAllName9[1],mAllName10[1],
-    mAllName11[1], mAllName12[1], mAllName13[1])
+val mCatalogName6 :ArrayList<String> =arrayListOf(mAllName1[5],mAllName2[5],mAllName3[5],mAllName4[5],mAllName5[5],mAllName6[5],mAllName7[5],mAllName8[5],mAllName9[5],mAllName10[5],
+    mAllName11[5], mAllName12[5], mAllName13[5], mAllName14[5], "罐头酱菜" ,"全部粮油调味")
 
-val mCatalogName2 :ArrayList<String> =arrayListOf(mAllName1[2],mAllName2[2],mAllName3[2],mAllName4[2],mAllName5[2],mAllName6[2],mAllName7[2],mAllName8[2],mAllName9[2],mAllName10[2],
-    mAllName11[2], mAllName12[2], mAllName13[2], mAllName14[2])
+val mCatalogName7 :ArrayList<String> = arrayListOf(mAllName1[6],mAllName2[6],mAllName3[6],mAllName4[6],mAllName5[6],mAllName6[6],mAllName7[6],mAllName8[6],mAllName9[6],mAllName10[6],
+    mAllName11[6], mAllName12[6], mAllName13[6], mAllName14[6])
 
-val mCatalogName3 :ArrayList<String> = arrayListOf(mAllName1[3],mAllName2[3],mAllName3[3],mAllName4[3],mAllName5[3],mAllName6[3],mAllName7[3],mAllName8[3],mAllName9[3],mAllName10[3],
-    mAllName11[3], mAllName12[3], mAllName13[3], mAllName14[3], "沙拉/配料", "干货", "酱菜" , "全部蔬菜")
+val mCatalogName8 :ArrayList<String> =arrayListOf(mAllName1[7],mAllName2[7],mAllName3[7],mAllName4[7],mAllName5[7],mAllName6[7],mAllName7[7],mAllName8[7],mAllName9[7],mAllName10[7],
+    mAllName11[7], mAllName12[7], mAllName13[7], mAllName14[7])
 
-val mCatalogName4 :ArrayList<String> = arrayListOf(mAllName1[4],mAllName2[4],mAllName3[4],mAllName4[4],mAllName5[4],mAllName6[4],mAllName7[4],mAllName8[4],mAllName9[4],mAllName10[4],
-    mAllName11[4], mAllName12[4], mAllName13[4], mAllName14[4])
+val mCatalogName9 :ArrayList<String> = arrayListOf(mAllName1[8],mAllName2[8],mAllName3[8],mAllName4[8],mAllName5[8],mAllName6[8],mAllName7[8],mAllName8[8],mAllName9[8],mAllName10[8],
+    mAllName11[8], mAllName12[8], mAllName13[8], mAllName14[8], mAllName15[8])
 
-val mCatalogName5 :ArrayList<String> = arrayListOf(mAllName1[5],mAllName2[5],mAllName3[5],mAllName4[5],mAllName5[5],mAllName6[5],mAllName7[5],mAllName8[5],mAllName9[5],mAllName10[5],
-mAllName11[5], mAllName12[5], mAllName13[5], "海产干货","全部海鲜水产")
+val mCatalogName10 :ArrayList<String> = arrayListOf(mAllName1[9],mAllName2[9],mAllName3[9],mAllName4[9],mAllName5[9],mAllName6[9],mAllName7[9],mAllName8[9],mAllName9[9],mAllName10[9],
+    mAllName11[9], mAllName12[9], mAllName13[9], mAllName14[9],"豆奶植物饮料","凉粉甜粥","谷物麦片","咖啡奶茶","豆浆糊羹","蜂蜜糖浆","茶叶花茶","全部酒水冲饮")
 
-val mCatalogName6 :ArrayList<String> =arrayListOf(mAllName1[6],mAllName2[6],mAllName3[6],mAllName4[6],mAllName5[6],mAllName6[6],mAllName7[6],mAllName8[6],mAllName9[6],mAllName10[6],
-    mAllName11[6], mAllName12[6], mAllName13[6], mAllName14[6], mAllName15[6] ,"全部粮油调味")
-///////////////////剩余文字不再一一列举//////////
+val mCatalogName11 :ArrayList<String> = arrayListOf(mAllName1[10],mAllName2[10],mAllName3[10],mAllName4[10],mAllName5[10],mAllName6[10],mAllName7[10],mAllName8[10],mAllName9[10],mAllName10[10],
+    mAllName11[10], mAllName12[10], "辣条/熟食","全部休闲零食")
+
+val mCatalogName12 :ArrayList<String> =arrayListOf(mAllName1[11],mAllName2[11],mAllName3[11],mAllName4[11],mAllName5[11],mAllName6[11],mAllName7[11],mAllName8[11],mAllName9[11],mAllName10[11],
+    mAllName11[11], mAllName12[11], mAllName13[11], mAllName14[11], "纺织床用" ,"拖鞋袜子","文具运动","雨伞雨衣","驱虫用品","全部日用清洁")
+
+val mCatalogName13 :ArrayList<String> = arrayListOf(mAllName1[12],mAllName2[12],mAllName3[12],mAllName4[12],mAllName5[12],mAllName6[12],mAllName7[12],mAllName8[12],mAllName9[12],mAllName10[12],
+    mAllName11[12], mAllName12[12], mAllName13[12],"全部护理美妆")
+
+val mCatalogName14 :ArrayList<String> =arrayListOf(mAllName1[13],mAllName2[13],mAllName3[13],mAllName4[13],mAllName5[13],mAllName6[13],mAllName7[13],mAllName8[13],mAllName9[13])
+
+
+val mCatalogName15 :ArrayList<String> = arrayListOf(mAllName1[14],mAllName2[14],mAllName3[14],mAllName4[14],mAllName5[14],mAllName6[14],mAllName7[14],mAllName8[14],mAllName9[14])
+
+val mCatalogName16 :ArrayList<String> = arrayListOf(mAllName1[15],mAllName2[15],mAllName3[15],mAllName4[15],mAllName5[15],mAllName6[15],mAllName7[15],mAllName8[15],mAllName9[15],mAllName10[15],
+    mAllName11[15], mAllName12[15])
+
+val mCatalogName17:ArrayList<String> = arrayListOf(mAllName1[16],mAllName2[16],mAllName3[16],mAllName4[16],mAllName5[16],mAllName6[16])
+
+
+

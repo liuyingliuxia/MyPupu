@@ -65,23 +65,14 @@
         app:layout_constraintLeft_toRightOf="@+id/rvLeft"
         app:layout_constraintTop_toBottomOf="@+id/llTop" />-->
 
-    <LinearLayout
-        android:id="@+id/llRight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintLeft_toRightOf="@+id/rvLeft"
-        app:layout_constraintTop_toBottomOf="@+id/llTop"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <androidx.viewpager2.widget.ViewPager2
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/vp2Right"
             android:layout_width="300dp"
             android:layout_height="700dp"
             android:orientation="vertical"
-            android:layout_marginTop="@dimen/mmm_font_s10" />
+            android:layout_marginTop="@dimen/mmm_font_s10"
+            app:layout_constraintTop_toBottomOf="@+id/llTop"
+            app:layout_constraintRight_toRightOf="parent" />
 
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

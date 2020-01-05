@@ -1,28 +1,25 @@
 package com.mmm.mytestutil.rvInRecycler
 
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
 import android.content.Context
-import android.content.res.Resources
-import android.graphics.Paint
 import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.bean.headImgBean
 import com.mmm.mypupu.ui.bean.itemBean
+import com.mmm.mypupu.ui.widgets.ChildRecyclerView
 import com.mmm.mypupu.util.myUtil
-import kotlinx.android.synthetic.main.item_filter.view.*
 import kotlinx.android.synthetic.main.item_sort_right_head.view.*
 import kotlinx.android.synthetic.main.item_sort_right_item.view.*
+//子适配器
+
 //分类页面 最内层的 adapter
-class SortRightCatalogAdapter (var head: headImgBean, var listFoot: List<itemBean>, var context: Context  ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SortRightCatalogAdapter (var head: headImgBean, var listFoot: List<itemBean >, var context: Context , var rv :RecyclerView ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val TYPE_IMAGE = 0
     private val TYPE_ITEM = 1
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -53,13 +50,15 @@ class SortRightCatalogAdapter (var head: headImgBean, var listFoot: List<itemBea
         Log.e("size = " , listFoot.size.toString() )
         Log.e ("position = " ,position.toString())
         var item: itemBean = itemBean(0,0,"")
+
         if ( position > 0 )
         {
             item = listFoot[position -1 ]
         }
 
         val h = holder.itemView
-        Log.e("item ", item.toString())
+
+       // Log.e("item ", item.toString())
         if (TYPE_IMAGE ==  holder.itemViewType) {
             Glide.with(context).load(head.imgId).placeholder(R.drawable.place_holder_banner_home).error(R.drawable.icon_coupon_all_not_usable).into(h.ivCatalogHead)
             h.ivCatalogHead.setOnClickListener {
@@ -71,7 +70,10 @@ class SortRightCatalogAdapter (var head: headImgBean, var listFoot: List<itemBea
             h.llSort.setOnClickListener {
                 myUtil.talk(context, item.toString())
             }
+
         }
+
+
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -82,6 +84,5 @@ class SortRightCatalogAdapter (var head: headImgBean, var listFoot: List<itemBea
 
     }
 
-    class Holder(itemView: View) : RecyclerView.ViewHolder(itemView)
-
 }
+

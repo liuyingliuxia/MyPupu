@@ -79,7 +79,7 @@ class RecycUtil{
                         recyc.smoothScrollBy(0,offSet/2)
                     }
 
-                },50)
+                },10)
 
             }
 

@@ -18,9 +18,7 @@ import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.adapter.RecommendationAdapter
 import com.mmm.mypupu.ui.adapter.SearchInputAutoAdapter
 import com.mmm.mypupu.ui.bean.Goods
-import com.mmm.mypupu.ui.data.*
-import com.mmm.mypupu.ui.widgets.SaveHistory
-import com.mmm.mypupu.util.mT
+import com.mmm.mypupu.util.myUtil
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.activity_search.tvSearch
 import kotlinx.android.synthetic.main.container_home.*
@@ -66,12 +64,12 @@ class TabRecommendFragment : Fragment(){
                 //1代表底部,返回true表示没到底部,还可以滑
                 val isBottom = rvRecommend.canScrollVertically(1)
                 if ( isBottom == false && count < 2 ){
-                    mT.t(context!! , "继续下滑加载更多")
+                    myUtil.talk(context!! , "继续下滑加载更多")
                     list.addAll(Goods.newGoodsList(3))
                     recommendAdapter.notifyDataSetChanged()
                     count ++
                     if ( count == 2 ){
-                        mT.t(context!! , "没有更多了")
+                        myUtil.talk(context!! , "没有更多了")
                         Log.e("次数", count.toString())
                     }
                 }

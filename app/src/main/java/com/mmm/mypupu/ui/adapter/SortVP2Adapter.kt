@@ -11,19 +11,30 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mmm.mypupu.R
+import com.mmm.mypupu.ui.bean.TwoBean
 import com.mmm.mypupu.ui.bean.headImgBean
 import com.mmm.mypupu.ui.bean.itemBean
 import com.mmm.mypupu.ui.data.*
+import com.mmm.mypupu.ui.widgets.ChildRecyclerView
 import kotlinx.android.synthetic.main.item_sort_right.view.*
 
 //分类页面 右侧内容，使用vp2
+//父适配器
+class SortVP2Adapter(var context: Context, var list: List<TwoBean>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    private val TYPE_MUCH = 0
+    private val TYPE_LESS = 1
 
-class SortVP2Adapter (var context: Context, var list: List<RecyclerView>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    //    private lateinit var gridLM : GridLayoutManager
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val itemView = LayoutInflater.from(context).inflate(R.layout.item_sort_right, parent, false)
-        val holder = Holder(itemView)
-        return holder
+        if (viewType == TYPE_MUCH) {
+            //root = null 解决item太多时 显示不全的问题 (wrap_content) 
+            val itemView = LayoutInflater.from(context).inflate(R.layout.item_sort_right, null, false)
+            val holder = Holder(itemView)
+            return holder
+        } else {//item数少时 适配父容器（match_parent)
+            val itemView = LayoutInflater.from(context).inflate(R.layout.item_sort_right, parent, false)
+            val holder = Holder(itemView)
+            return holder
+        }
     }
 
     override fun getItemCount(): Int {
@@ -34,14 +45,16 @@ class SortVP2Adapter (var context: Context, var list: List<RecyclerView>) : Recy
         val h = holder.itemView
         val head = headImgBean(mSortHeadTag[position], mContentHeadImg[position])
 
-        val rvAdapter = SortRightCatalogAdapter(head, addAllItem(position), context)
+        val rvAdapter = SortRightCatalogAdapter(head, addAllItem(position), context, h.rvRightCatalog)
         val layoutManager = GridLayoutManager(context, 3)
+
         //设置根据类型不同，横跨不同列
         val spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
                 return if (position == 0) 3 else 1
             }
         }
+
         layoutManager.spanSizeLookup = spanSizeLookup
 
         layoutManager.orientation = GridLayoutManager.VERTICAL
@@ -49,46 +62,41 @@ class SortVP2Adapter (var context: Context, var list: List<RecyclerView>) : Recy
         h.rvRightCatalog.layoutManager = layoutManager
         h.rvRightCatalog.adapter = rvAdapter
 
-        h.rvRightCatalog.setOnTouchListener { v, event ->
-            when (event.action) {
-                //当用户按下的时候，我们告诉父组件，不要拦截我的事件（这个时候子组件是可以正常响应事件的），拿起之后就会告诉父组件可以阻止。
-                MotionEvent.ACTION_DOWN, MotionEvent.ACTION_MOVE -> v.parent.requestDisallowInterceptTouchEvent(
-                    true
-                )
-                MotionEvent.ACTION_UP -> v.parent.requestDisallowInterceptTouchEvent(false)
-            }
-            false
-        }
+    }
 
-        //还需判断内部rv滑倒底部时 才能翻页
-        h.rvRightCatalog.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                val isBottom = h.rvRightCatalog.canScrollVertically(1)
-                if ( isBottom == false  ){
-                 //到达底部 翻页
-
-                }else{ //未到达 继续下滑
-
-                }
-            }
-        })
+    override fun getItemViewType(position: Int): Int {
+       if (mSortNum[position]> 17){
+           return TYPE_MUCH
+       }else {
+           return TYPE_LESS
+       }
     }
 
     fun addAllItem(position: Int): ArrayList<itemBean> {
         val itemList: ArrayList<itemBean> = arrayListOf()
-        //第一个空的itemBean用来放第一张的大图
-        // itemList.add(itemBean(0,0,""))
-        when (position) {
+        val catalogImgList   = arrayListOf(mCatalog1, mCatalog2,mCatalog3, mCatalog4,mCatalog5, mCatalog6,mCatalog7, mCatalog8,mCatalog9, mCatalog10,mCatalog11,
+            mCatalog12, mCatalog13, mCatalog14,mCatalog15, mCatalog16,mCatalog17)
+
+        val catalogTextList   = arrayListOf(mCatalogName1, mCatalogName2,mCatalogName3, mCatalogName4,mCatalogName5, mCatalogName6,mCatalogName7, mCatalogName8,mCatalogName9, mCatalogName10,mCatalogName11,
+            mCatalogName12, mCatalogName13, mCatalogName14,mCatalogName15, mCatalogName16,mCatalogName17)
+        
+        for ( i in 0 until mSortNum[position]){
+            val iBean = itemBean( i , catalogImgList[position][i] , catalogTextList[position][i])
+            itemList.add(iBean)
+
+        }
+/*        when (position) {
             0 -> {
                 itemList.clear()
-                for (i in 0 until 13 /* mSortNum[position]*/) {
+                for (i in 0 until mSortNum[position]) {
                     val iBean = itemBean(i, mCatalog1[i], mCatalogName1[i])
                     itemList.add(iBean)
                 }
             }
+
             1 -> {
                 itemList.clear()
-                for (i in 0 until 14 /*mSortNum[position]*/) {
+                for (i in 0 until mSortNum[position]) {
                     val iBean = itemBean(i, mCatalog2[i], mCatalogName2[i])
                     itemList.add(iBean)
                 }
@@ -96,16 +104,128 @@ class SortVP2Adapter (var context: Context, var list: List<RecyclerView>) : Recy
             }
             2 -> {
                 itemList.clear()
-                for (i in 0 until 18 /* mSortNum[position]*/) {
+                for (i in 0 until mSortNum[position]) {
                     val iBean = itemBean(i, mCatalog3[i], mCatalogName3[i])
                     itemList.add(iBean)
                 }
-
-                Log.e("每一页的全部item", itemList.toString())
             }
-        }
+
+            3 -> {
+                itemList.clear()
+                for (i in 0 until mSortNum[position]) {
+                    val iBean = itemBean(i, mCatalog4[i], mCatalogName4[i])
+                    itemList.add(iBean)
+                }
+            }
+            4 -> {
+                itemList.clear()
+                for (i in 0 until mSortNum[position]) {
+                    val iBean = itemBean(i, mCatalog5[i], mCatalogName5[i])
+                    itemList.add(iBean)
+                }
+
+            }
+            5 -> {
+                itemList.clear()
+                for (i in 0 until mSortNum[position]) {
+                    val iBean = itemBean(i, mCatalog6[i], mCatalogName6[i])
+                    itemList.add(iBean)
+                }
+
+            }
+
+            6 -> {
+                itemList.clear()
+                for (i in 0 until mSortNum[position]) {
+                    val iBean = itemBean(i, mCatalog7[i], mCatalogName7[i])
+                    itemList.add(iBean)
+                }
+            }
+            7 -> {
+                itemList.clear()
+                for (i in 0 until mSortNum[position]) {
+                    val iBean = itemBean(i, mCatalog8[i], mCatalogName8[i])
+                    itemList.add(iBean)
+                }
+
+            }
+            8 -> {
+                itemList.clear()
+                for (i in 0 until mSortNum[position]) {
+                    val iBean = itemBean(i, mCatalog9[i], mCatalogName9[i])
+                    itemList.add(iBean)
+                }
+            }
+
+            9 -> {
+                itemList.clear()
+                for (i in 0 until mSortNum[position]) {
+                    val iBean = itemBean(i, mCatalog10[i], mCatalogName10[i])
+                    itemList.add(iBean)
+                }
+            }
+            10 -> {
+                itemList.clear()
+                for (i in 0 until mSortNum[position]) {
+                    val iBean = itemBean(i, mCatalog11[i], mCatalogName11[i])
+                    itemList.add(iBean)
+                }
+
+            }
+            11 -> {
+                itemList.clear()
+                for (i in 0 until mSortNum[position]) {
+                    val iBean = itemBean(i, mCatalog12[i], mCatalogName12[i])
+                    itemList.add(iBean)
+                }
+
+            }
+
+            12 -> {
+                itemList.clear()
+                for (i in 0 until mSortNum[position]) {
+                    val iBean = itemBean(i, mCatalog13[i], mCatalogName13[i])
+                    itemList.add(iBean)
+                }
+            }
+            13 -> {
+                itemList.clear()
+                for (i in 0 until mSortNum[position]) {
+                    val iBean = itemBean(i, mCatalog14[i], mCatalogName14[i])
+                    itemList.add(iBean)
+                }
+
+            }
+            14 -> {
+                itemList.clear()
+                for (i in 0 until mSortNum[position]) {
+                    val iBean = itemBean(i, mCatalog15[i], mCatalogName15[i])
+                    itemList.add(iBean)
+                }
+            }
+
+            15 -> {
+                itemList.clear()
+                for (i in 0 until mSortNum[position]) {
+                    val iBean = itemBean(i, mCatalog16[i], mCatalogName16[i])
+                    itemList.add(iBean)
+                }
+            }
+            16 -> {
+                itemList.clear()
+                for (i in 0 until mSortNum[position]) {
+                    val iBean = itemBean(i, mCatalog17[i], mCatalogName17[i])
+                    itemList.add(iBean)
+                }
+
+            }
+
+
+        }*/
+
         return itemList
     }
+
 }
 
 class Holder(itemView: View) : RecyclerView.ViewHolder(itemView)
