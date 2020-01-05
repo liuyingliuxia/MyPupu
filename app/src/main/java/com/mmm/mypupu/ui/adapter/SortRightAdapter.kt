@@ -1,21 +1,16 @@
 package com.mmm.mytestutil.rvInRecycler
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.bean.TwoBean
 import com.mmm.mypupu.ui.bean.headImgBean
 import com.mmm.mypupu.ui.bean.itemBean
 import com.mmm.mypupu.ui.data.*
-import com.mmm.mypupu.ui.widgets.ChildRecyclerView
 import kotlinx.android.synthetic.main.item_sort_right.view.*
 
 //分类页面 右侧内容，使用vp2
@@ -45,7 +40,7 @@ class SortVP2Adapter(var context: Context, var list: List<TwoBean>) : RecyclerVi
         val h = holder.itemView
         val head = headImgBean(mSortHeadTag[position], mContentHeadImg[position])
 
-        val rvAdapter = SortRightCatalogAdapter(head, addAllItem(position), context, h.rvRightCatalog)
+        val rvAdapter = SortRightChildAdapter(head, addAllItem(position), context, h.rvRightCatalog)
         val layoutManager = GridLayoutManager(context, 3)
 
         //设置根据类型不同，横跨不同列

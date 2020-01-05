@@ -66,11 +66,10 @@
         app:layout_constraintTop_toBottomOf="@+id/llTop" />-->
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/vp2Right"
+            android:id="@+id/rvRight"
             android:layout_width="300dp"
             android:layout_height="700dp"
             android:orientation="vertical"
-            android:layout_marginTop="@dimen/mmm_font_s10"
             app:layout_constraintTop_toBottomOf="@+id/llTop"
             app:layout_constraintRight_toRightOf="parent" />
 

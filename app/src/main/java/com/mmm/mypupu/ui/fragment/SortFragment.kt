@@ -24,7 +24,7 @@ import kotlinx.android.synthetic.main.fragment_sort.*
 class SortFragment : Fragment() {
     //quick适配器
     private lateinit var quickLeftAdapter: QuickLeftAdapter
-    private lateinit var vp2RightAdapter : SortVP2Adapter
+    private lateinit var rvRightAdapter : SortVP2Adapter
     //quick用的布局管理器
     private lateinit var leftLayoutManager: LinearLayoutManager
   //  private lateinit var rightLayoutManager: LinearLayoutManager
@@ -48,7 +48,7 @@ class SortFragment : Fragment() {
         select(0) // 刚进入页面默认选中第一个
         //一次只能滑动一页，不能快速滑动
         val pagerSnapHelper = PagerSnapHelper()
-        pagerSnapHelper.attachToRecyclerView(vp2Right)
+        pagerSnapHelper.attachToRecyclerView(rvRight)
 
         ivSearch.setOnClickListener {
             val intent = Intent()
@@ -79,7 +79,7 @@ class SortFragment : Fragment() {
         for (i in  0.. 16) {
             rightData.add(TwoBean( i ,rvView  ))
         }
-        vp2RightAdapter = SortVP2Adapter(context!! , rightData )
+        rvRightAdapter = SortVP2Adapter(context!! , rightData )
 
 
     }
@@ -103,12 +103,12 @@ class SortFragment : Fragment() {
         rightLayoutManager.orientation = LinearLayoutManager.VERTICAL
 
         rvLeft.layoutManager = leftLayoutManager
-        vp2Right.layoutManager = rightLayoutManager
+        rvRight.layoutManager = rightLayoutManager
         //vp2 不需要设置布局管理器 其子布局必须match
         quickLeftAdapter = QuickLeftAdapter(leftData)
 
         rvLeft.adapter = quickLeftAdapter
-        vp2Right.adapter = vp2RightAdapter
+        rvRight.adapter = rvRightAdapter
 
         quickLeftAdapter.setOnItemClickListener { _, _, position ->
             rightClick = true
@@ -119,7 +119,7 @@ class SortFragment : Fragment() {
 
         }
 
-        vp2Right.addOnScrollListener(object :RecyclerView.OnScrollListener(){
+        rvRight.addOnScrollListener(object :RecyclerView.OnScrollListener(){
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 if (rightClick == false && newState == RecyclerView.SCROLL_STATE_IDLE) {
                     val now :Int
