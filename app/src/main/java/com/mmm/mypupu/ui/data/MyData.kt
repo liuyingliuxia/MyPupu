@@ -208,7 +208,7 @@ val mCatalog9 :ArrayList<Int> = arrayListOf(mAllItemImg1[8], mAllItemImg2[8], mA
     mAllItemImg10[8], mAllItemImg11[8], mAllItemImg12[8],mAllItemImg13[8],mAllItemImg14[8],mAllItemImg15[8])
 
 val mCatalog10 :ArrayList<Int> = arrayListOf(mAllItemImg1[9], mAllItemImg2[9], mAllItemImg3[9],mAllItemImg4[9], mAllItemImg5[9], mAllItemImg6[9],mAllItemImg7[9], mAllItemImg8[9], mAllItemImg9[9],
-    mAllItemImg10[9], mAllItemImg11[9], mAllItemImg12[9],mAllItemImg13[9], mAllItemImg14[9],R.drawable.sort10_14,R.drawable.sort10_16,R.drawable.sort10_17,R.drawable.sort10_18,R.drawable.sort10_19,
+    mAllItemImg10[9], R.drawable.sort10_11, R.drawable.sort10_12 ,R.drawable.sort10_13 , R.drawable.sort10_14,R.drawable.sort10_15,R.drawable.sort10_16,R.drawable.sort10_17,R.drawable.sort10_18,R.drawable.sort10_19,
     R.drawable.sort10_20, R.drawable.sort10_21,R.drawable.icon_more)
 
 val mCatalog11 :ArrayList<Int> = arrayListOf(mAllItemImg1[10], mAllItemImg2[10], mAllItemImg3[10],mAllItemImg4[10], mAllItemImg5[10], mAllItemImg6[10],mAllItemImg7[10], mAllItemImg8[10], mAllItemImg9[10],

@@ -67,3 +67,9 @@ android:singleLine="true"
 15. 实现分类页面时，使用recycler嵌套recycler的方法 过于复杂
 
 16.getColor(Int) 的替代方案： ContextCompat.getColor(mContext,R.color.color23)
+
+17. 在最外层的recyclerView布局文件中加上descendantFocusability属性的值有三种：android:descendantFocusability="beforeDescendants"
+
+    beforeDescendants：viewgroup会优先其子类控件而获取到焦点
+    afterDescendants：viewgroup只有当其子类控件不需要获取焦点时才获取焦点
+    blocksDescendants：viewgroup会覆盖子类控件而直接获得焦点

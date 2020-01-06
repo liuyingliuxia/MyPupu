@@ -18,19 +18,19 @@ import com.mmm.mypupu.ui.bean.TwoBean
 import com.mmm.mypupu.ui.data.*
 import com.mmm.mypupu.ui.search.SearchActivity
 import com.mmm.mypupu.ui.widgets.ChildRecyclerView
-import com.mmm.mytestutil.rvInRecycler.SortVP2Adapter
+import com.mmm.mytestutil.rvInRecycler.SortRightAdapter
 import kotlinx.android.synthetic.main.fragment_sort.*
 
 class SortFragment : Fragment() {
     //quick适配器
     private lateinit var quickLeftAdapter: QuickLeftAdapter
-    private lateinit var rvRightAdapter : SortVP2Adapter
+    private lateinit var rvRightAdapter: SortRightAdapter
     //quick用的布局管理器
     private lateinit var leftLayoutManager: LinearLayoutManager
-  //  private lateinit var rightLayoutManager: LinearLayoutManager
+    //  private lateinit var rightLayoutManager: LinearLayoutManager
     //数据实体
     var leftData: MutableList<LeftBean> = mutableListOf()
-    var rightData :MutableList<TwoBean> = mutableListOf()
+    var rightData: MutableList<TwoBean> = mutableListOf()
 
     var rightClick: Boolean = false
     lateinit var handler: Handler
@@ -61,7 +61,7 @@ class SortFragment : Fragment() {
         handler = Handler()
         val leftBean = LeftBean(0, "", 1)
 
-        val rvView  = ChildRecyclerView(context!!)
+        val rvView = ChildRecyclerView(context!!)
         for (i in 0..mCatalogText.size) {
             //根据itemType不同添加不同的数据
             if (i < mCatalogText.size) {
@@ -76,11 +76,10 @@ class SortFragment : Fragment() {
         }
         Log.e("left", leftData.toString())
         //绑定右侧 布局 -> 子recycler
-        for (i in  0.. 16) {
-            rightData.add(TwoBean( i ,rvView  ))
+        for (i in 0..16) {
+            rightData.add(TwoBean(i, rvView))
         }
-        rvRightAdapter = SortVP2Adapter(context!! , rightData )
-
+        rvRightAdapter = SortRightAdapter(context!!, rightData)
 
     }
 
@@ -102,6 +101,9 @@ class SortFragment : Fragment() {
         //rightLayoutManager = LinearLayoutManager(context)
         rightLayoutManager.orientation = LinearLayoutManager.VERTICAL
 
+        rvRight.isFocusableInTouchMode = true //父布局获取焦点
+        rvRight.requestFocus()
+
         rvLeft.layoutManager = leftLayoutManager
         rvRight.layoutManager = rightLayoutManager
         //vp2 不需要设置布局管理器 其子布局必须match
@@ -119,18 +121,18 @@ class SortFragment : Fragment() {
 
         }
 
-        rvRight.addOnScrollListener(object :RecyclerView.OnScrollListener(){
+        rvRight.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 if (rightClick == false && newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    val now :Int
+                    val now: Int
                     val first = rightLayoutManager.findFirstVisibleItemPosition()
                     now = rightData.get(first).id
-                    RecycUtil.moveToPositAndCenter(now , leftLayoutManager , rvLeft , handler )
+                    RecycUtil.moveToPositAndCenter(now, leftLayoutManager, rvLeft, handler)
                     select(now)
-                }else if(rightClick==true&& newState == RecyclerView.SCROLL_STATE_IDLE){
-                    rightClick=false
-                }else if(rightClick==true&&newState == RecyclerView.SCROLL_STATE_DRAGGING){
-                    rightClick=false
+                } else if (rightClick == true && newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    rightClick = false
+                } else if (rightClick == true && newState == RecyclerView.SCROLL_STATE_DRAGGING) {
+                    rightClick = false
                 }
             }
         })

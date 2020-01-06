@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.item_sort_right.view.*
 
 //分类页面 右侧内容，使用vp2
 //父适配器
-class SortVP2Adapter(var context: Context, var list: List<TwoBean>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SortRightAdapter(var context: Context, var list: List<TwoBean>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val TYPE_MUCH = 0
     private val TYPE_LESS = 1
 
@@ -54,6 +54,9 @@ class SortVP2Adapter(var context: Context, var list: List<TwoBean>) : RecyclerVi
 
         layoutManager.orientation = GridLayoutManager.VERTICAL
 
+        h.rvRightCatalog.isFocusableInTouchMode = false//内部Recyclerview去除焦点
+        h.rvRightCatalog.requestFocus()
+
         h.rvRightCatalog.layoutManager = layoutManager
         h.rvRightCatalog.adapter = rvAdapter
 
@@ -80,147 +83,8 @@ class SortVP2Adapter(var context: Context, var list: List<TwoBean>) : RecyclerVi
             itemList.add(iBean)
 
         }
-/*        when (position) {
-            0 -> {
-                itemList.clear()
-                for (i in 0 until mSortNum[position]) {
-                    val iBean = itemBean(i, mCatalog1[i], mCatalogName1[i])
-                    itemList.add(iBean)
-                }
-            }
-
-            1 -> {
-                itemList.clear()
-                for (i in 0 until mSortNum[position]) {
-                    val iBean = itemBean(i, mCatalog2[i], mCatalogName2[i])
-                    itemList.add(iBean)
-                }
-
-            }
-            2 -> {
-                itemList.clear()
-                for (i in 0 until mSortNum[position]) {
-                    val iBean = itemBean(i, mCatalog3[i], mCatalogName3[i])
-                    itemList.add(iBean)
-                }
-            }
-
-            3 -> {
-                itemList.clear()
-                for (i in 0 until mSortNum[position]) {
-                    val iBean = itemBean(i, mCatalog4[i], mCatalogName4[i])
-                    itemList.add(iBean)
-                }
-            }
-            4 -> {
-                itemList.clear()
-                for (i in 0 until mSortNum[position]) {
-                    val iBean = itemBean(i, mCatalog5[i], mCatalogName5[i])
-                    itemList.add(iBean)
-                }
-
-            }
-            5 -> {
-                itemList.clear()
-                for (i in 0 until mSortNum[position]) {
-                    val iBean = itemBean(i, mCatalog6[i], mCatalogName6[i])
-                    itemList.add(iBean)
-                }
-
-            }
-
-            6 -> {
-                itemList.clear()
-                for (i in 0 until mSortNum[position]) {
-                    val iBean = itemBean(i, mCatalog7[i], mCatalogName7[i])
-                    itemList.add(iBean)
-                }
-            }
-            7 -> {
-                itemList.clear()
-                for (i in 0 until mSortNum[position]) {
-                    val iBean = itemBean(i, mCatalog8[i], mCatalogName8[i])
-                    itemList.add(iBean)
-                }
-
-            }
-            8 -> {
-                itemList.clear()
-                for (i in 0 until mSortNum[position]) {
-                    val iBean = itemBean(i, mCatalog9[i], mCatalogName9[i])
-                    itemList.add(iBean)
-                }
-            }
-
-            9 -> {
-                itemList.clear()
-                for (i in 0 until mSortNum[position]) {
-                    val iBean = itemBean(i, mCatalog10[i], mCatalogName10[i])
-                    itemList.add(iBean)
-                }
-            }
-            10 -> {
-                itemList.clear()
-                for (i in 0 until mSortNum[position]) {
-                    val iBean = itemBean(i, mCatalog11[i], mCatalogName11[i])
-                    itemList.add(iBean)
-                }
-
-            }
-            11 -> {
-                itemList.clear()
-                for (i in 0 until mSortNum[position]) {
-                    val iBean = itemBean(i, mCatalog12[i], mCatalogName12[i])
-                    itemList.add(iBean)
-                }
-
-            }
-
-            12 -> {
-                itemList.clear()
-                for (i in 0 until mSortNum[position]) {
-                    val iBean = itemBean(i, mCatalog13[i], mCatalogName13[i])
-                    itemList.add(iBean)
-                }
-            }
-            13 -> {
-                itemList.clear()
-                for (i in 0 until mSortNum[position]) {
-                    val iBean = itemBean(i, mCatalog14[i], mCatalogName14[i])
-                    itemList.add(iBean)
-                }
-
-            }
-            14 -> {
-                itemList.clear()
-                for (i in 0 until mSortNum[position]) {
-                    val iBean = itemBean(i, mCatalog15[i], mCatalogName15[i])
-                    itemList.add(iBean)
-                }
-            }
-
-            15 -> {
-                itemList.clear()
-                for (i in 0 until mSortNum[position]) {
-                    val iBean = itemBean(i, mCatalog16[i], mCatalogName16[i])
-                    itemList.add(iBean)
-                }
-            }
-            16 -> {
-                itemList.clear()
-                for (i in 0 until mSortNum[position]) {
-                    val iBean = itemBean(i, mCatalog17[i], mCatalogName17[i])
-                    itemList.add(iBean)
-                }
-
-            }
-
-
-        }*/
-
         return itemList
     }
-
 }
 
 class Holder(itemView: View) : RecyclerView.ViewHolder(itemView)

@@ -16,6 +16,7 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.bean.Goods
+import com.mmm.mypupu.util.myUtil
 import kotlinx.android.synthetic.main.item_crazy_discount.view.*
 import kotlinx.android.synthetic.main.item_recommend.view.*
 import kotlinx.android.synthetic.main.item_recommend.view.ivAdd
@@ -30,7 +31,7 @@ import kotlinx.android.synthetic.main.item_recommend.view.tvSubtitle
 import kotlinx.android.synthetic.main.item_recommend.view.tvTitle
 import kotlinx.android.synthetic.main.item_recommend.view.tvY2
 
-class CrazyDiscountAdapter(var list: List<Goods>, var context: Context) :
+class CrazyDiscountAdapter(var list: ArrayList<Goods>, var context: Context) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val TYPE_IMAGE = 0
     private val TYPE_GOODS = 1
@@ -73,7 +74,7 @@ class CrazyDiscountAdapter(var list: List<Goods>, var context: Context) :
             if (goods.mRemark.isEmpty()) {
                 holder.itemView.tvRemark.visibility = View.INVISIBLE
             }
-            itemAddClick(holder, position)
+            itemAddClick(holder, position )
             holder.itemView.llItemCrazy.setOnClickListener {
                 run {
                     Toast.makeText(context, goods.toString(), Toast.LENGTH_SHORT).show()
@@ -87,41 +88,6 @@ class CrazyDiscountAdapter(var list: List<Goods>, var context: Context) :
             return TYPE_IMAGE
         else
             return TYPE_GOODS
-
-    }
-
-    class Holder(itemView: View) : RecyclerView.ViewHolder(itemView)
-
-    fun itemAddClickAnimator(holder: RecyclerView.ViewHolder) {
-        //+ 号旋转 用 补间动画
-        val mAnimation = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.add)
-        holder.itemView.ivAdd.startAnimation(mAnimation)
-        // 数字部分直接平移 x轴
-        holder.itemView.tvNum.x -= 68
-        // - 号 旋转平移 同时进行 用 属性动画
-        val mIvSub = holder.itemView.ivSub
-        val objectAnimatorR: ObjectAnimator = ObjectAnimator.ofFloat(mIvSub, "rotation", 0f, 180f)
-        val objectAnimatorX: ObjectAnimator = ObjectAnimator.ofFloat(mIvSub, "translationX", 0f, -100f)
-        val animatorSet = AnimatorSet()
-        animatorSet.playTogether(objectAnimatorR, objectAnimatorX)
-        animatorSet.duration = 200
-        animatorSet.start()
-    }
-
-    fun itemSubClickAnimator(holder: RecyclerView.ViewHolder) {
-        //+ 号旋转 用 补间动画
-        val mAnimation = AnimationUtils.loadAnimation(holder.itemView.context, R.anim._add)
-        holder.itemView.ivAdd.startAnimation(mAnimation)
-        // 数字部分直接平移 x轴
-        holder.itemView.tvNum.x += 68
-        // - 号 旋转平移 同时进行 用 属性动画
-        val mIvSub = holder.itemView.ivSub
-        val objectAnimatorRSub: ObjectAnimator = ObjectAnimator.ofFloat(mIvSub, "rotation", -180f, 0f)
-        val objectAnimatorTSubX: ObjectAnimator = ObjectAnimator.ofFloat(mIvSub, "translationX", -100f, 0f)
-        val animatorSet = AnimatorSet()
-        animatorSet.playTogether(objectAnimatorTSubX, objectAnimatorRSub)
-        animatorSet.duration = 200
-        animatorSet.start()
     }
 
     private fun itemAddClick(holder: RecyclerView.ViewHolder, position: Int) {
@@ -131,7 +97,7 @@ class CrazyDiscountAdapter(var list: List<Goods>, var context: Context) :
         holder.itemView.ivAdd.setOnClickListener(object : View.OnClickListener {
             @RequiresApi(Build.VERSION_CODES.O)
             override fun onClick(v: View?) {
-                Log.e("点击了：", "+")
+              //  Log.e("点击了：", "+")
                 if (num == 0) {
                     num++
                     holder.itemView.tvNum.text = num.toString()
@@ -140,7 +106,7 @@ class CrazyDiscountAdapter(var list: List<Goods>, var context: Context) :
                 } else if (num > 0 && num < goods.mNum) {
                     num++
                     holder.itemView.tvNum.text = num.toString()
-                    Log.e("数量", holder.itemView.tvNum.text.toString())
+                    //Log.e("数量", holder.itemView.tvNum.text.toString())
                 } else if (num == goods.mNum) {
                     // + 变成灰色
                     holder.itemView.ivAdd.setImageResource(R.drawable.add_unable)
@@ -159,13 +125,14 @@ class CrazyDiscountAdapter(var list: List<Goods>, var context: Context) :
                     itemSubClickAnimator(holder)
                     holder.itemView.ivAdd.setImageResource(R.drawable.add_able)
                     holder.itemView.tvNum.text = num.toString()
-                    Log.e("点击了- ", num.toString())
+                   // Log.e("点击了- ", num.toString())
                 } else if (num > 1) {
                     num--
                     holder.itemView.tvNum.text = num.toString()
-                    Log.e("数量", holder.itemView.tvNum.text.toString())
+                   // Log.e("数量", holder.itemView.tvNum.text.toString())
                 }
             }
         })
     }
+
 }

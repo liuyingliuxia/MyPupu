@@ -85,6 +85,7 @@
     <string name="mmm_flashing">抢购中</string>
     <string name="mmm_about_to_begin">即将开始</string>
     <string name="mmm_meat">肉</string>
-    ==
+    <string name="mmm_no_more">没有更多了~</string>
+    <string name="mmm_load_more">正在加载...</string>
 
 </resources>

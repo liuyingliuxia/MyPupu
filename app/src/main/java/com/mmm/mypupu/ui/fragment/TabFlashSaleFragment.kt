@@ -27,7 +27,7 @@ import kotlinx.android.synthetic.main.fragment_tab_recommend.view.*
 
 class TabFlashSaleFragment : Fragment(){
     var INIT_LIST_NUM = 5
-    var STEP_REFRESH = 0
+    var LOAD_COUNT = 0
     private var list :ArrayList<Goods > = ArrayList ()
     private lateinit var flashSaleAdapter: FlashSaleAdapter
     private lateinit var linearLayoutManager: LinearLayoutManager
@@ -41,7 +41,7 @@ class TabFlashSaleFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         list = Goods.newGoodsList(INIT_LIST_NUM)
-        flashSaleAdapter = FlashSaleAdapter(list, context!!)
+        flashSaleAdapter = FlashSaleAdapter(list, context!!, LOAD_COUNT)
         linearLayoutManager = LinearLayoutManager(context)
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
         rvFlashSale.layoutManager =linearLayoutManager
@@ -51,7 +51,7 @@ class TabFlashSaleFragment : Fragment(){
             srlFlash.postDelayed({
                 srlFlash.isRefreshing = false
             }, 50)
-
+             LOAD_COUNT = 0
             list.clear()
             list.addAll(Goods.newGoodsList(7))
             flashSaleAdapter.notifyDataSetChanged()
@@ -62,12 +62,20 @@ class TabFlashSaleFragment : Fragment(){
                 super.onScrollStateChanged(recyclerView, newState)
                 //1代表底部,返回true表示没到底部,还可以滑
                 val isBottom = rvFlashSale.canScrollVertically(1)
-                if ( isBottom == false && STEP_REFRESH > 3 ){
-                    myUtil.talk(context!! , "继续下滑加载更多")
-                    STEP_REFRESH --
+                if ( isBottom == false && LOAD_COUNT < 2 ){
+                    list.addAll(Goods.newGoodsList(3))
+                    LOAD_COUNT ++
+                    rvFlashSale.postDelayed({
+                        flashSaleAdapter.notifyDataSetChanged()
+                    }, 1000)
+
                 }
-                else if (isBottom == false && STEP_REFRESH <3   )
-                    myUtil.talk(context!! , "没有更多了")
+                else if ( isBottom == false && LOAD_COUNT == 2 ){
+                    list.addAll(Goods.newGoodsList(0))//没有新的数据
+                    //  myUtil.talk(context!! , "到底了哦~" + "共有"+ list.size + "条数据" )
+                    flashSaleAdapter.notifyDataSetChanged()
+                    LOAD_COUNT ++
+                }
             }
         })
     }

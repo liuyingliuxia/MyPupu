@@ -1,6 +1,6 @@
 package com.mmm.mypupu.ui.fragment
 
-
+import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.afollestad.materialdialogs.MaterialDialog
 
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.adapter.RecommendationAdapter
@@ -28,10 +29,11 @@ import kotlinx.android.synthetic.main.fragment_tab_recommend.view.*
 import kotlinx.android.synthetic.main.toolbar_main.*
 
 class TabRecommendFragment : Fragment(){
-    var count = 0
-    private var list :MutableList<Goods > = ArrayList ()
+    var LOAD_COUNT = 0
+    private var list :ArrayList<Goods > = ArrayList ()
     private lateinit var recommendAdapter: RecommendationAdapter
     private lateinit var linearLayoutManager: LinearLayoutManager
+   private lateinit var mLoadingDialog :MaterialDialog
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,21 +43,23 @@ class TabRecommendFragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val randNum = ( 0..10 ).random()
+        val randNum = ( 1..10 ).random()
         list = Goods.newGoodsList(randNum)
-        recommendAdapter = RecommendationAdapter(list, context!!)
+        recommendAdapter = RecommendationAdapter(list, context!! , LOAD_COUNT)
         linearLayoutManager = LinearLayoutManager(context)
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
         rvRecommend.layoutManager =linearLayoutManager
         rvRecommend.adapter = recommendAdapter
 
         srlRecommend.setOnRefreshListener{
-            srlRecommend.postDelayed({
-                srlRecommend.isRefreshing = false
-            }, 50)
             list.clear()
             list.addAll(Goods.newGoodsList(7))
             recommendAdapter.notifyDataSetChanged()
+            LOAD_COUNT = 0
+            srlRecommend.postDelayed({
+                srlRecommend.isRefreshing = false
+            }, 50)
+
         }
 
         rvRecommend.addOnScrollListener(object : RecyclerView.OnScrollListener(){
@@ -63,18 +67,34 @@ class TabRecommendFragment : Fragment(){
                 super.onScrollStateChanged(recyclerView, newState)
                 //1代表底部,返回true表示没到底部,还可以滑
                 val isBottom = rvRecommend.canScrollVertically(1)
-                if ( isBottom == false && count < 2 ){
-                    myUtil.talk(context!! , "继续下滑加载更多")
+                if ( isBottom == false && LOAD_COUNT < 3 ){
                     list.addAll(Goods.newGoodsList(3))
                     recommendAdapter.notifyDataSetChanged()
-                    count ++
-                    if ( count == 2 ){
-                        myUtil.talk(context!! , "没有更多了")
-                        Log.e("次数", count.toString())
-                    }
+                    LOAD_COUNT ++
+                    showLoadingDialog(context!!)
+                    rvRecommend.postDelayed({
+                        mLoadingDialog.dismiss()
+                    }, 500)
+
+                }
+                else if ( isBottom == false && LOAD_COUNT == 3 ){
+                  //  myUtil.talk(context!! , "到底了哦~" + "共有"+ list.size + "条数据" )
+                    recommendAdapter.notifyDataSetChanged()
+                    LOAD_COUNT ++
                 }
             }
         })
+    }
+
+
+    fun showLoadingDialog (context: Context) {
+         mLoadingDialog = MaterialDialog.Builder(context)
+            .widgetColorRes(R.color.colorPrimary)
+            .progress(true , 0)
+            .cancelable(false)
+            .build()
+        mLoadingDialog.setContent("正在加载...")
+        mLoadingDialog.show()
     }
 
 }

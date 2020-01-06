@@ -23,7 +23,7 @@ class ChildRecyclerView(context: Context, attrs: AttributeSet?, defStyle: Int) :
             MotionEvent.ACTION_DOWN -> {
                 mLastY = event.getY()
                 //不允许父View拦截事件
-                parent.requestDisallowInterceptTouchEvent(true)
+                parent.requestDisallowInterceptTouchEvent(false)
             }
             MotionEvent.ACTION_MOVE -> {
                 val nowY: Float = event.getY()

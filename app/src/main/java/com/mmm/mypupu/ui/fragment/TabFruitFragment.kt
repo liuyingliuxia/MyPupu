@@ -25,7 +25,7 @@ import java.util.Collections.swap
 class TabFruitFragment: Fragment(),View.OnClickListener {
     private var rbClickTiems = 0
     private val INIT_NUM = 5
-    private var list :MutableList<Goods > = ArrayList ()
+    private var list :ArrayList<Goods > = ArrayList ()
     private lateinit var fruitAdapter: FruitAdapter
     private lateinit var linearLayoutManager: LinearLayoutManager
 
