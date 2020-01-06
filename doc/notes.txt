@@ -73,3 +73,6 @@ android:singleLine="true"
     beforeDescendants：viewgroup会优先其子类控件而获取到焦点
     afterDescendants：viewgroup只有当其子类控件不需要获取焦点时才获取焦点
     blocksDescendants：viewgroup会覆盖子类控件而直接获得焦点
+18. 嵌套recycler触摸事件思路分析：
+    子recycler 到达顶部或底部时，事件交给父容器拦截 处理（分发）
+    在子recycler内部滑动时，不分发出去，自己内部处理

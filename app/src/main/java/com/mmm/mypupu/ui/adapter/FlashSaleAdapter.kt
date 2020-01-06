@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.bean.Goods
+import kotlinx.android.synthetic.main.fragment_tab_flash_sale.view.*
 import kotlinx.android.synthetic.main.item_flash_sale.view.*
 import kotlinx.android.synthetic.main.item_flash_sale_head.view.*
 import kotlinx.android.synthetic.main.item_load_more.view.*
@@ -32,15 +33,13 @@ import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.math.absoluteValue
 
-class FlashSaleAdapter(var list: ArrayList<Goods>, var context: Context ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class FlashSaleAdapter(var list: ArrayList<Goods>, var context: Context , var load_count:Int) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val TYPE_IMAGE = 0
     private val TYPE_GOODS = 1
     private val TYPE_END = 2
     private val TYPE_LOAD = 3
-    private var mItemCountBefore :Int = 0
-    private var mItemCountAfter :Int = 0
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-       // Log.e("load_count ", LOAD_COUNT.toString() )
         if (viewType == TYPE_IMAGE) {
             val itemViewImg = LayoutInflater.from(context).inflate(R.layout.item_flash_sale_head, parent, false)
             val holder1 = Holder(itemViewImg)
@@ -131,20 +130,23 @@ class FlashSaleAdapter(var list: ArrayList<Goods>, var context: Context ) : Recy
                     }
                 }
             }
-        }
-        else if (TYPE_LOAD == holder.itemViewType) {
+        } else if (TYPE_LOAD == holder.itemViewType) {
             //手动开启加载 动画
             val mLoading :AnimationDrawable =  holder.itemView.ivLoading.drawable as AnimationDrawable
             mLoading.start()
+        } else if (TYPE_END == holder.itemViewType){
+            list.removeAt(position)
+            notifyDataSetChanged()
         }
     }
 
+    val noGoods = Goods(0,"","","","",0.0,0.0,0)
     override fun getItemViewType(position: Int): Int {
         if (position == 0)
             return TYPE_IMAGE
-        else if (position == itemCount - 1 )
+        else if (position == itemCount - 1 && list[list.size - 1] != noGoods )
             return TYPE_LOAD
-        else if (position == itemCount - 1 )
+        else if (position == itemCount - 1 && list[list.size - 1] == noGoods )
             return TYPE_END
         else
             return TYPE_GOODS

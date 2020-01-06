@@ -2,6 +2,7 @@ package com.mmm.mytestutil.rvInRecycler
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
@@ -11,6 +12,7 @@ import com.mmm.mypupu.ui.bean.TwoBean
 import com.mmm.mypupu.ui.bean.headImgBean
 import com.mmm.mypupu.ui.bean.itemBean
 import com.mmm.mypupu.ui.data.*
+import kotlinx.android.synthetic.main.fragment_sort.view.*
 import kotlinx.android.synthetic.main.item_sort_right.view.*
 
 //分类页面 右侧内容，使用vp2
@@ -53,9 +55,6 @@ class SortRightAdapter(var context: Context, var list: List<TwoBean>) : Recycler
         layoutManager.spanSizeLookup = spanSizeLookup
 
         layoutManager.orientation = GridLayoutManager.VERTICAL
-
-        h.rvRightCatalog.isFocusableInTouchMode = false//内部Recyclerview去除焦点
-        h.rvRightCatalog.requestFocus()
 
         h.rvRightCatalog.layoutManager = layoutManager
         h.rvRightCatalog.adapter = rvAdapter

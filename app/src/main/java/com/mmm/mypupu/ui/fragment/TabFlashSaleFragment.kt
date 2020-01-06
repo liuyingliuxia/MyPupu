@@ -3,6 +3,7 @@ package com.mmm.mypupu.ui.fragment
 
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -41,7 +42,7 @@ class TabFlashSaleFragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         list = Goods.newGoodsList(INIT_LIST_NUM)
-        flashSaleAdapter = FlashSaleAdapter(list, context!!, LOAD_COUNT)
+        flashSaleAdapter = FlashSaleAdapter(list, context!!,LOAD_COUNT)
         linearLayoutManager = LinearLayoutManager(context)
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
         rvFlashSale.layoutManager =linearLayoutManager
@@ -62,18 +63,20 @@ class TabFlashSaleFragment : Fragment(){
                 super.onScrollStateChanged(recyclerView, newState)
                 //1代表底部,返回true表示没到底部,还可以滑
                 val isBottom = rvFlashSale.canScrollVertically(1)
-                if ( isBottom == false && LOAD_COUNT < 2 ){
-                    list.addAll(Goods.newGoodsList(3))
+                if ( isBottom == false && LOAD_COUNT < 3 ){
+                    list.addAll(Goods.newGoodsList(5))
                     LOAD_COUNT ++
                     rvFlashSale.postDelayed({
                         flashSaleAdapter.notifyDataSetChanged()
                     }, 1000)
+                    Log.e("数据长度" ,list.size.toString())
 
                 }
-                else if ( isBottom == false && LOAD_COUNT == 2 ){
-                    list.addAll(Goods.newGoodsList(0))//没有新的数据
-                    //  myUtil.talk(context!! , "到底了哦~" + "共有"+ list.size + "条数据" )
-                    flashSaleAdapter.notifyDataSetChanged()
+                else if ( isBottom == false && LOAD_COUNT == 3 ){
+                    myUtil.talk(context!!,"请检查网络！")
+                    //myUtil.talk(context!! , "到底了哦~" + "共有"+ list.size + "条数据"+ " ,"+ LOAD_COUNT.toString() )
+                 //   flashSaleAdapter.notifyDataSetChanged()
+                    Log.e("数据长度/到底了" ,list.size.toString())
                     LOAD_COUNT ++
                 }
             }

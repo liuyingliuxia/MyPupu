@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -94,14 +95,12 @@ class SortFragment : Fragment() {
             }
         }
 
-
         leftLayoutManager = LinearLayoutManager(context)
         leftLayoutManager.orientation = LinearLayoutManager.VERTICAL
 
         //rightLayoutManager = LinearLayoutManager(context)
         rightLayoutManager.orientation = LinearLayoutManager.VERTICAL
 
-        rvRight.isFocusableInTouchMode = true //父布局获取焦点
         rvRight.requestFocus()
 
         rvLeft.layoutManager = leftLayoutManager
@@ -111,7 +110,7 @@ class SortFragment : Fragment() {
 
         rvLeft.adapter = quickLeftAdapter
         rvRight.adapter = rvRightAdapter
-
+        rvRight.isFocusable = false
         quickLeftAdapter.setOnItemClickListener { _, _, position ->
             rightClick = true
             select(position)
@@ -127,8 +126,8 @@ class SortFragment : Fragment() {
                     val now: Int
                     val first = rightLayoutManager.findFirstVisibleItemPosition()
                     now = rightData.get(first).id
-                    RecycUtil.moveToPositAndCenter(now, leftLayoutManager, rvLeft, handler)
-                    select(now)
+                    select(now) //刷新当前的item
+
                 } else if (rightClick == true && newState == RecyclerView.SCROLL_STATE_IDLE) {
                     rightClick = false
                 } else if (rightClick == true && newState == RecyclerView.SCROLL_STATE_DRAGGING) {
@@ -148,6 +147,5 @@ class SortFragment : Fragment() {
         }
         quickLeftAdapter.notifyItemChanged(position)
     }
-
 
 }
