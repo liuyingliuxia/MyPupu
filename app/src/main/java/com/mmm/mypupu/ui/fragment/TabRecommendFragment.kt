@@ -69,13 +69,13 @@ class TabRecommendFragment : Fragment(){
                 val isBottom = rvRecommend.canScrollVertically(1)
                 if ( isBottom == false && LOAD_COUNT < 3 ){
                     list.addAll(Goods.newGoodsList(3))
-                    recommendAdapter.notifyDataSetChanged()
                     LOAD_COUNT ++
                     showLoadingDialog(context!!)
                     rvRecommend.postDelayed({
-                        mLoadingDialog.dismiss()
+                        hideLoadingDialog()
                     }, 500)
 
+                    recommendAdapter.notifyDataSetChanged()
                 }
                 else if ( isBottom == false && LOAD_COUNT == 3 ){
                   //  myUtil.talk(context!! , "到底了哦~" + "共有"+ list.size + "条数据" )
@@ -97,4 +97,9 @@ class TabRecommendFragment : Fragment(){
         mLoadingDialog.show()
     }
 
+    fun hideLoadingDialog() {
+        if (mLoadingDialog != null && mLoadingDialog.isShowing ){
+            mLoadingDialog.dismiss()
+        }
+    }
 }

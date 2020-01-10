@@ -55,11 +55,7 @@ class CrazyDiscountAdapter(var list: ArrayList<Goods>, var context: Context) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val goods: Goods = list[position]
-
-        if (TYPE_IMAGE == holder.itemViewType) {
-
-        } else if (TYPE_GOODS == holder.itemViewType) {
-
+        if (TYPE_GOODS == holder.itemViewType) {
             holder.itemView.tag = position
             holder.itemView.ivGoods.setImageResource(goods.mImgPath)
             holder.itemView.tvTitle.text = goods.mName

@@ -1,23 +1,27 @@
 package com.mmm.mytestutil.rvInRecycler
 
 import android.content.Context
+import android.os.Build
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.mmm.mypupu.R
-import com.mmm.mypupu.ui.bean.TwoBean
+import com.mmm.mypupu.ui.bean.ParentBean
 import com.mmm.mypupu.ui.bean.headImgBean
 import com.mmm.mypupu.ui.bean.itemBean
 import com.mmm.mypupu.ui.data.*
-import kotlinx.android.synthetic.main.fragment_sort.view.*
+import kotlinx.android.synthetic.main.fragment_sort.*
 import kotlinx.android.synthetic.main.item_sort_right.view.*
 
 //分类页面 右侧内容，使用vp2
 //父适配器
-class SortRightAdapter(var context: Context, var list: List<TwoBean>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SortRightAdapter(var context: Context, var list: List<ParentBean>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val TYPE_MUCH = 0
     private val TYPE_LESS = 1
 
@@ -38,11 +42,12 @@ class SortRightAdapter(var context: Context, var list: List<TwoBean>) : Recycler
         return list.size
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val h = holder.itemView
         val head = headImgBean(mSortHeadTag[position], mContentHeadImg[position])
 
-        val rvAdapter = SortRightChildAdapter(head, addAllItem(position), context, h.rvRightCatalog)
+        val rvAdapter = SortRightChildAdapter(head, addAllItem(position), context)
         val layoutManager = GridLayoutManager(context, 3)
 
         //设置根据类型不同，横跨不同列
@@ -58,27 +63,36 @@ class SortRightAdapter(var context: Context, var list: List<TwoBean>) : Recycler
 
         h.rvRightCatalog.layoutManager = layoutManager
         h.rvRightCatalog.adapter = rvAdapter
+       if (addAllItem(position).size > 17) {//禁用父布局的事件拦截
+           // h.rvRightCatalog.parent.requestDisallowInterceptTouchEvent(true )
+            Log.e("拦截了 父布局", addAllItem(position).size.toString())
+        }
 
     }
 
+
     override fun getItemViewType(position: Int): Int {
-       if (mSortNum[position]> 17){
-           return TYPE_MUCH
-       }else {
-           return TYPE_LESS
-       }
+        if (mSortNum[position] > 17) {
+            return TYPE_MUCH
+        } else {
+            return TYPE_LESS
+        }
     }
 
     fun addAllItem(position: Int): ArrayList<itemBean> {
         val itemList: ArrayList<itemBean> = arrayListOf()
-        val catalogImgList   = arrayListOf(mCatalog1, mCatalog2,mCatalog3, mCatalog4,mCatalog5, mCatalog6,mCatalog7, mCatalog8,mCatalog9, mCatalog10,mCatalog11,
-            mCatalog12, mCatalog13, mCatalog14,mCatalog15, mCatalog16,mCatalog17)
+        val catalogImgList = arrayListOf(
+            mCatalog1, mCatalog2, mCatalog3, mCatalog4, mCatalog5, mCatalog6, mCatalog7, mCatalog8, mCatalog9, mCatalog10, mCatalog11,
+            mCatalog12, mCatalog13, mCatalog14, mCatalog15, mCatalog16, mCatalog17
+        )
 
-        val catalogTextList   = arrayListOf(mCatalogName1, mCatalogName2,mCatalogName3, mCatalogName4,mCatalogName5, mCatalogName6,mCatalogName7, mCatalogName8,mCatalogName9, mCatalogName10,mCatalogName11,
-            mCatalogName12, mCatalogName13, mCatalogName14,mCatalogName15, mCatalogName16,mCatalogName17)
-        
-        for ( i in 0 until mSortNum[position]){
-            val iBean = itemBean( i , catalogImgList[position][i] , catalogTextList[position][i])
+        val catalogTextList = arrayListOf(
+            mCatalogName1, mCatalogName2, mCatalogName3, mCatalogName4, mCatalogName5, mCatalogName6, mCatalogName7, mCatalogName8, mCatalogName9, mCatalogName10, mCatalogName11,
+            mCatalogName12, mCatalogName13, mCatalogName14, mCatalogName15, mCatalogName16, mCatalogName17
+        )
+
+        for (i in 0 until mSortNum[position]) {
+            val iBean = itemBean(i, catalogImgList[position][i], catalogTextList[position][i])
             itemList.add(iBean)
 
         }

@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.container_home.*
 import kotlinx.android.synthetic.main.toolbar_main.*
 
 
-class HomeFragment : Fragment(),SwipeRefreshLayout.OnRefreshListener {
+class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,17 +32,17 @@ class HomeFragment : Fragment(),SwipeRefreshLayout.OnRefreshListener {
         initViewPager()
         srlMain.setOnRefreshListener(this)
 
-        tvSearch.setOnClickListener{
-           kotlin.run {
-                val intent  = Intent()
+        tvSearch.setOnClickListener {
+            kotlin.run {
+                val intent = Intent()
                 intent.setClass(this@HomeFragment.context!!, SearchActivity::class.java)
                 startActivity(intent)
             }
         }
     }
 
-    private fun initViewPager () {
-        val ViewPagerAdapter  = HomeViewPagerAdapter(context!!, getChildFragmentManager())
+    private fun initViewPager() {
+        val ViewPagerAdapter = HomeViewPagerAdapter(context!!, getChildFragmentManager())
         //设置预加载数 全部的fragment
         vpMain.offscreenPageLimit = 3
         vpMain.adapter = ViewPagerAdapter
@@ -50,15 +50,16 @@ class HomeFragment : Fragment(),SwipeRefreshLayout.OnRefreshListener {
         tbMain.setupWithViewPager(vpMain)
 
     }
+
     override fun onRefresh() {
-        Handler().postDelayed(object :Runnable {
+        Handler().postDelayed(object : Runnable {
             override fun run() {
-                var i :Int = (0 until searchHint.size).random()
-                tvSearch.text = searchHint [i]
+                var i: Int = (0 until searchHint.size).random()
+                tvSearch.text = searchHint[i]
 
                 srlMain.isRefreshing = false
             }
-        },1000)
+        }, 1000)
     }
 
 

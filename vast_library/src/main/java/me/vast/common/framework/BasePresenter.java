@@ -16,9 +16,8 @@
 
 package me.vast.common.framework;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
-import com.trello.rxlifecycle2.LifecycleProvider;
 import com.trello.rxlifecycle3.LifecycleProvider;
 
 public interface BasePresenter<V extends BaseView> {

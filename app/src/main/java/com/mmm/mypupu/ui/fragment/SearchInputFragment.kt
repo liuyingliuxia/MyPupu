@@ -43,7 +43,7 @@ class SearchInputFragment : Fragment() {
                   // 直接进行搜索
                     toSearch()
                     //添加历史记录
-                    SaveHistory.saveSearchHistory(activity!!.actSearch.text.toString(),context)
+                    SaveHistory.saveSearchHistory(activity!!.actSearch.text.toString(),context as Context)
                     hideKeyforard(view)
                     activity!!.actSearch.isFocusable = false
                 }

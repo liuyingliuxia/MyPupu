@@ -12,10 +12,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.*
 import com.example.lilingzhi.tworecyc.util.RecycUtil
+import com.example.lilingzhi.tworecyc.util.RecycUtil.Companion.moveToPositAndTop
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.adapter.QuickLeftAdapter
 import com.mmm.mypupu.ui.bean.LeftBean
-import com.mmm.mypupu.ui.bean.TwoBean
+import com.mmm.mypupu.ui.bean.ParentBean
 import com.mmm.mypupu.ui.data.*
 import com.mmm.mypupu.ui.search.SearchActivity
 import com.mmm.mypupu.ui.widgets.ChildRecyclerView
@@ -31,7 +32,7 @@ class SortFragment : Fragment() {
     //  private lateinit var rightLayoutManager: LinearLayoutManager
     //数据实体
     var leftData: MutableList<LeftBean> = mutableListOf()
-    var rightData: MutableList<TwoBean> = mutableListOf()
+    var rightData: MutableList<ParentBean> = mutableListOf()
 
     var rightClick: Boolean = false
     lateinit var handler: Handler
@@ -46,11 +47,11 @@ class SortFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initData()
         initView()
-        select(0) // 刚进入页面默认选中第一个
-        //一次只能滑动一页，不能快速滑动
+        select(0)
+        // 刚进入页面默认选中第一个
+        //一次只能滑动一页，不能快速滑动, itemCount 太多时 会有滑动冲突 选择其他方式实现翻页效果
         val pagerSnapHelper = PagerSnapHelper()
         pagerSnapHelper.attachToRecyclerView(rvRight)
-
         ivSearch.setOnClickListener {
             val intent = Intent()
             intent.setClass(this@SortFragment.context!!, SearchActivity::class.java)
@@ -62,7 +63,7 @@ class SortFragment : Fragment() {
         handler = Handler()
         val leftBean = LeftBean(0, "", 1)
 
-        val rvView = ChildRecyclerView(context!!)
+        val rvView = RecyclerView(context!!)
         for (i in 0..mCatalogText.size) {
             //根据itemType不同添加不同的数据
             if (i < mCatalogText.size) {
@@ -78,7 +79,7 @@ class SortFragment : Fragment() {
         Log.e("left", leftData.toString())
         //绑定右侧 布局 -> 子recycler
         for (i in 0..16) {
-            rightData.add(TwoBean(i, rvView))
+            rightData.add(ParentBean(i, rvView))
         }
         rvRightAdapter = SortRightAdapter(context!!, rightData)
 
@@ -127,7 +128,6 @@ class SortFragment : Fragment() {
                     val first = rightLayoutManager.findFirstVisibleItemPosition()
                     now = rightData.get(first).id
                     select(now) //刷新当前的item
-
                 } else if (rightClick == true && newState == RecyclerView.SCROLL_STATE_IDLE) {
                     rightClick = false
                 } else if (rightClick == true && newState == RecyclerView.SCROLL_STATE_DRAGGING) {

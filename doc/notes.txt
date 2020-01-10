@@ -76,3 +76,11 @@ android:singleLine="true"
 18. 嵌套recycler触摸事件思路分析：
     子recycler 到达顶部或底部时，事件交给父容器拦截 处理（分发）
     在子recycler内部滑动时，不分发出去，自己内部处理
+
+19. 局部圆角
+    <!-- android:radius 圆角的半径 -->
+        <corners
+            android:topLeftRadius="8dp"
+            android:topRightRadius="8dp"
+            android:bottomRightRadius="0dp"
+            android:bottomLeftRadius="0dp"/>

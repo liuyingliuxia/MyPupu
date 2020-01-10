@@ -33,11 +33,12 @@ import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.math.absoluteValue
 
-class FlashSaleAdapter(var list: ArrayList<Goods>, var context: Context , var load_count:Int) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class FlashSaleAdapter(var list: ArrayList<Goods>, var context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val TYPE_IMAGE = 0
     private val TYPE_GOODS = 1
     private val TYPE_END = 2
     private val TYPE_LOAD = 3
+    private var mListSize = 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         if (viewType == TYPE_IMAGE) {
@@ -75,7 +76,7 @@ class FlashSaleAdapter(var list: ArrayList<Goods>, var context: Context , var lo
 
             val subMinu = timeList[1].minus(59).absoluteValue
             if (subMinu >= 0 && subMinu <= 9)
-                holder.itemView.tvMinute.setText(R.string.mmm_0 + subMinu.absoluteValue)
+                holder.itemView.tvMinute.setText(toTwo( subMinu.absoluteValue))
             else if (subMinu > 9)
                 holder.itemView.tvMinute.setText(subMinu.toString())
 
@@ -135,19 +136,24 @@ class FlashSaleAdapter(var list: ArrayList<Goods>, var context: Context , var lo
             val mLoading :AnimationDrawable =  holder.itemView.ivLoading.drawable as AnimationDrawable
             mLoading.start()
         } else if (TYPE_END == holder.itemViewType){
-            list.removeAt(position)
-            notifyDataSetChanged()
+         //   list.removeAt(position)
+           // notifyDataSetChanged()
         }
     }
 
     val noGoods = Goods(0,"","","","",0.0,0.0,0)
+
     override fun getItemViewType(position: Int): Int {
+        //数据加载 >50 时 显示 到底了 没有更多
         if (position == 0)
             return TYPE_IMAGE
-        else if (position == itemCount - 1 && list[list.size - 1] != noGoods )
+        else if (position == itemCount - 1 && position < 50 ){
+            mListSize = list.size
             return TYPE_LOAD
-        else if (position == itemCount - 1 && list[list.size - 1] == noGoods )
+        }
+        else if (position == itemCount - 1&& position >= 50 ){
             return TYPE_END
+        }
         else
             return TYPE_GOODS
     }
@@ -190,7 +196,6 @@ class FlashSaleAdapter(var list: ArrayList<Goods>, var context: Context , var lo
         }.start()
     }
 
-
     fun getNow(): List<Int> {
         /*   if (android.os.Build.VERSION.SDK_INT >= 24){
                return SimpleDateFormat(" HH:mm:ss").format(Date())
@@ -210,5 +215,4 @@ class FlashSaleAdapter(var list: ArrayList<Goods>, var context: Context , var lo
         else
             return "0" + time.toString()
     }
-
 }

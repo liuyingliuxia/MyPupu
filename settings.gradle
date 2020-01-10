@@ -1,2 +1,2 @@
-include ':app',"vast_library"
+include ':app'
 rootProject.name='MyPupu'

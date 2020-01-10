@@ -31,19 +31,17 @@ class SearchHistoryFragmemt : Fragment(){
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val mView = inflater.inflate(R.layout.fragment_search_history, container, false)
-
-        return mView
+        return inflater.inflate(R.layout.fragment_search_history, container, false)
     }
 
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val mHistoryArray : ArrayList<TextView> = arrayListOf(tvHistory1,tvHistory2,tvHistory3,tvHistory4,tvHistory5,tvHistory6)
-        view.postInvalidate()
+        view.postInvalidate() //刷新view
         addHistory(mHistoryArray)
         //清空历史记录
-        ivClean.setOnClickListener { v -> run{
+        ivClean.setOnClickListener {
             AlertDialog.Builder(context!!)
                 .setMessage("确认删除全部搜索历史")
                 .setPositiveButton("确定") {
@@ -53,13 +51,13 @@ class SearchHistoryFragmemt : Fragment(){
                         mHistoryArray[i].visibility = View.INVISIBLE
                     tvNoHistory.visibility = View.VISIBLE
                     //清空sp
-                   SaveHistory.clearSearchHistory(context)
+                   SaveHistory.clearSearchHistory(context!!)
                   }
                 }
                 .setNeutralButton("取消", null)
                 .create()
                 .show()
-              } }
+              }
         //历史记录item点击事件：
         for ( i in 0..5) {
 
@@ -70,21 +68,17 @@ class SearchHistoryFragmemt : Fragment(){
                 mHistoryArray[i].visibility = View.VISIBLE
 
             mHistoryArray[i].setOnClickListener {
-                kotlin.run {
                     activity!!.actSearch.setText(mHistoryArray[i].text)
                     // 直接进行搜索
                      toSearch()
                     hideKeyforard(view)
                     activity!!.actSearch.isFocusable = false
                 }
-            }
         }
-
         view.postInvalidate()
     }
 
     private fun toSearch () {
-
         val manager = activity!!.supportFragmentManager.beginTransaction()
         manager.replace(R.id.llContainer,SearchResultFragment())
         manager.commit()
@@ -99,7 +93,7 @@ class SearchHistoryFragmemt : Fragment(){
     //添加历史记录itm到容器
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
     private fun addHistory (mHistoryArray :ArrayList<TextView>) {
-        val mSaveList :List<String> = SaveHistory.getSearchHistory(context)
+        val mSaveList :List<String> = SaveHistory.getSearchHistory(context!!)
         if (mSaveList.isEmpty()){
             Log.e("无历史记录：",mSaveList.toString())
             for ( i in 0..5)
@@ -111,7 +105,7 @@ class SearchHistoryFragmemt : Fragment(){
             Log.e("历史记录：",mSaveList.toString())
             tvNoHistory.visibility = View.INVISIBLE
             ivClean.visibility = View.VISIBLE
-            for (i in 0..mSaveList.size.minus(1)) {
+            for (i in 0 .. 5) {
                  mHistoryArray[i].visibility = View.VISIBLE
                  mHistoryArray[i].setText( mSaveList[i])
             }

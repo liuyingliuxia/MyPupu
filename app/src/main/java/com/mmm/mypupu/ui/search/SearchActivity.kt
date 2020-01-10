@@ -7,38 +7,24 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.*
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AlertDialog
-import androidx.core.util.rangeTo
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.githang.statusbar.StatusBarCompat
 import com.mmm.mypupu.R
-import com.mmm.mypupu.ui.data.searchAutoCompleteGoods
+import com.mmm.mypupu.ui.bean.SearchHistoryBean
 import com.mmm.mypupu.ui.fragment.*
-import com.mmm.mypupu.ui.widgets.CustomLayout
 import com.mmm.mypupu.ui.widgets.SaveHistory
 import kotlinx.android.synthetic.main.activity_search.*
-import kotlinx.android.synthetic.main.fragment_search_history.*
-import kotlinx.android.synthetic.main.fragment_search_history.view.*
-import kotlinx.android.synthetic.main.item_search_history.*
-import java.nio.file.WatchEvent
-import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 class SearchActivity : AppCompatActivity(),TextWatcher {
 
-    val mStack = Stack <Fragment> ()
-    val HISTORY = 0
-    val RESULT = 1
-    val INPUT = 2
     val mHistoryFragmemt = SearchHistoryFragmemt()
     val mResultFragment = SearchResultFragment()
     val mInputFragment = SearchInputFragment()
@@ -63,7 +49,8 @@ class SearchActivity : AppCompatActivity(),TextWatcher {
                     actSearch.isFocusable = false
                     hideKeyforard(actSearch)
                     //添加历史记录
-                    SaveHistory.saveSearchHistory(actSearch.text.toString(),this)
+                    val historyBean = SearchHistoryBean( actSearch.text.toString())
+                    SaveHistory.saveSearchHistory(historyBean.title!!,this)
                     replaceFragment(mResultFragment,R.id.llContainer)
                 }
             }

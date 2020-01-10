@@ -19,7 +19,6 @@ import com.mmm.mypupu.util.myUtil
 import kotlinx.android.synthetic.main.item_recommend.view.*
 
 class SearchResultAdapter (var list: List<Goods>, var context: Context  ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private var rbClickTiems = 0
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
             val itemView = LayoutInflater.from(context).inflate(R.layout.item_recommend, parent, false)
             val holder= Holder(itemView)
@@ -34,7 +33,6 @@ class SearchResultAdapter (var list: List<Goods>, var context: Context  ): Recyc
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
             val goods: Goods = list[position]
             holder.itemView.tag = position
-
             holder.itemView.ivGoods.setImageResource(goods.mImgPath)
             holder.itemView.tvTitle.text = goods.mName
             holder.itemView.tvSubtitle.text = goods.mSubtitle

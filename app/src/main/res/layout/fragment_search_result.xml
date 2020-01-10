@@ -29,7 +29,7 @@
                 android:id="@+id/srlSearch"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:visibility="invisible">
+                android:visibility="gone">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvSearchResult"
@@ -38,7 +38,7 @@
 
             </com.mmm.mypupu.ui.widgets.VpSwipeRefreshLayout>
            <!-- 无商品时显示：-->
-            <LinearLayout
+            <FrameLayout
                 android:id="@+id/llNoGoods"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -47,20 +47,20 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/mmm_font_s200"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/mmm_font_s100"
                         android:src="@drawable/no_goods" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/mmm_font_s16"
-                        android:layout_gravity="center"
+                        android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/mmm_font_s20"
                         android:textColor="@color/color6"
                         android:text="@string/mmm_no_goods"/>
 
-            </LinearLayout>
+            </FrameLayout>
 
     </LinearLayout>
         <!-- 上下抽屉页-->

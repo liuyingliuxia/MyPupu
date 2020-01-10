@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.item_sort_right_item.view.*
 //子适配器
 
 //分类页面 最内层的 adapter
-class SortRightChildAdapter (var head: headImgBean, var listFoot: List<itemBean >, var context: Context, var rv :RecyclerView ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SortRightChildAdapter (var head: headImgBean, var listFoot: List<itemBean >, var context: Context ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val TYPE_IMAGE = 0
     private val TYPE_ITEM = 1
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -72,8 +72,6 @@ class SortRightChildAdapter (var head: headImgBean, var listFoot: List<itemBean 
             }
 
         }
-
-
     }
 
     override fun getItemViewType(position: Int): Int {

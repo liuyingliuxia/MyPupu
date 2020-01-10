@@ -16,8 +16,7 @@ class ChildRecyclerView(context: Context, attrs: AttributeSet?, defStyle: Int) :
     constructor(context: Context) : this(context, null) {}
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0) {}
 
-
-    override fun onTouchEvent(e: MotionEvent?): Boolean {
+    override fun dispatchTouchEvent(e: MotionEvent?): Boolean {
         val action = e!!.action
         when (action) {
             MotionEvent.ACTION_DOWN -> {
@@ -26,10 +25,9 @@ class ChildRecyclerView(context: Context, attrs: AttributeSet?, defStyle: Int) :
             }
             MotionEvent.ACTION_MOVE -> {
                 val nowY = e.y
-                isIntercept(nowY)
-                if (isBottomToTop || isTopToBottom) {
-                    parent.requestDisallowInterceptTouchEvent(false)
-                    return false
+             //   isIntercept(nowY) //判断是否到顶 或到底
+                if (isBottomToTop || isTopToBottom) { //触底或 到顶 时 交给父容器拦截
+                    parent.requestDisallowInterceptTouchEvent(false) // false 允许 ，true 不允许
                 } else {
                     parent.requestDisallowInterceptTouchEvent(true)
                 }
@@ -39,73 +37,43 @@ class ChildRecyclerView(context: Context, attrs: AttributeSet?, defStyle: Int) :
             }
         return super.onTouchEvent(e)
     }
-   /* override fun dispatchTouchEvent(event: MotionEvent): Boolean {
-        val action: Int = event.getAction()
-        when (action) {
-            MotionEvent.ACTION_DOWN -> {
-                mLastY = event.getY()
-                //不允许父View拦截事件
-                parent.requestDisallowInterceptTouchEvent(true)
-                //允许父View拦截事件
-                //parent.requestDisallowInterceptTouchEvent(false)
-            }
-            MotionEvent.ACTION_MOVE -> {
-                val nowY: Float = event.getY()
-               isIntercept(nowY)
-               if (isBottomToTop || isTopToBottom) {
-                    parent.requestDisallowInterceptTouchEvent(false)
-                    return false
-                } else {
-                    parent.requestDisallowInterceptTouchEvent(true)
-                }
-                parent.requestDisallowInterceptTouchEvent(true)
-                mLastY = nowY
-            }
-            MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> parent.requestDisallowInterceptTouchEvent(true)
-        }
-        Log.e ("当前位置",mLastY.toString())
-        return super.onTouchEvent(event)
-    }*/
 
-    override fun isFocused(): Boolean {
-        return true
-    }
-
-    fun isScrollTop(): Boolean {
-        //RecyclerView.canScrollVertically(-1)的值表示是否能向下滚动，false表示已经滚动到顶部
-        return !canScrollVertically(-1)
-    }
-
-    private fun isIntercept(nowY: Float) {
+   /* private fun isIntercept(nowY: Float) {
         isTopToBottom = false
         isBottomToTop = false
-        val layoutManager: RecyclerView.LayoutManager = getLayoutManager()!!
+        val layoutManager: LayoutManager = getLayoutManager()!!
+
         //得到当前界面可见数据的大小
-        val visibleItemCount: Int = layoutManager.getChildCount()
+        val visibleItemCount: Int = layoutManager.childCount
+
         //得到RecyclerView对应所有数据的大小
-        val totalItemCount: Int = layoutManager.getItemCount()
-        if (layoutManager is GridLayoutManager) { //得到当前界面，最后一个子视图对应的position
-            lastVisibleItemPosition = (layoutManager as GridLayoutManager)
-                .findLastVisibleItemPosition()
+        val totalItemCount: Int = layoutManager.itemCount
+
+        if (layoutManager is GridLayoutManager) {
+            //得到当前界面，最后一个子视图对应的position
+            lastVisibleItemPosition = (layoutManager).findLastVisibleItemPosition()
+
             //得到当前界面，第一个子视图的position
-            firstVisibleItemPosition = (layoutManager as GridLayoutManager)
-                .findFirstVisibleItemPosition()
+            firstVisibleItemPosition = (layoutManager).findFirstVisibleItemPosition()
         }
 
-      //  if (totalItemCount > 17){
-        Log.e("nestScrolling", "onScrollStateChanged")
         if (visibleItemCount > 0) {
-            if (lastVisibleItemPosition == totalItemCount ) { //最后视图对应的position等于总数-1时，说明上一次滑动结束时，触底了
+            if (lastVisibleItemPosition == totalItemCount ) {
+                //最后视图对应的position等于总数-1时，说明上一次滑动结束时，触底了
                 Log.e("nestScrolling", "触底了")
-                if (this@ChildRecyclerView.canScrollVertically(-1) && nowY < mLastY) { // 不能向上滑动
+                //RecyclerView.canScrollVertically(-1)的值表示是否能向下滚动，false表示已经滚动到顶部
+                if (this@ChildRecyclerView.canScrollVertically(-1) && nowY < mLastY) {
+                    // 不能向上滑动
                     Log.e("nestScrolling", "不能向上滑动")
                     isBottomToTop = true
                 } else {
                     Log.e("nestScrolling", "向下滑动")
                 }
-            } else if (firstVisibleItemPosition == 0) { //第一个视图的position等于0，说明上一次滑动结束时，触顶了
+            } else if (firstVisibleItemPosition == 0) {
+                //第一个视图的position等于0，说明上一次滑动结束时，触顶了
                 Log.d("nestScrolling", "触顶了")
-                if (this@ChildRecyclerView.canScrollVertically(1) && nowY > mLastY) { // 不能向下滑动
+                if (this@ChildRecyclerView.canScrollVertically(1) && nowY > mLastY) {
+                    // 不能向下滑动
                     Log.e("nestScrolling", "不能向下滑动")
                     isTopToBottom = true
                 } else {
@@ -113,5 +81,5 @@ class ChildRecyclerView(context: Context, attrs: AttributeSet?, defStyle: Int) :
                 }
             }
         }
-    }
+    }*/
 }
