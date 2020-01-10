@@ -99,7 +99,6 @@ class SortFragment : Fragment() {
         leftLayoutManager = LinearLayoutManager(context)
         leftLayoutManager.orientation = LinearLayoutManager.VERTICAL
 
-        //rightLayoutManager = LinearLayoutManager(context)
         rightLayoutManager.orientation = LinearLayoutManager.VERTICAL
 
         rvRight.requestFocus()

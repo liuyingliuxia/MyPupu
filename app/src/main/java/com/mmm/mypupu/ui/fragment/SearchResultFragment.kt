@@ -22,6 +22,7 @@ import com.mmm.mypupu.ui.data.*
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.activity_search.tvSearch
 import kotlinx.android.synthetic.main.container_home.*
+import kotlinx.android.synthetic.main.drawer_filter.*
 import kotlinx.android.synthetic.main.fragment_search_result.*
 import kotlinx.android.synthetic.main.fragment_search_result.view.*
 import kotlinx.android.synthetic.main.fragment_tab_fruit.*
@@ -32,6 +33,7 @@ import kotlinx.android.synthetic.main.toolbar_main.*
 class SearchResultFragment : Fragment() {
     private var rbClickTiems = 0
     val resultBean = SearchResultBean()
+    val randNum = (1..14).random()
     private lateinit var searchResultAdapter: SearchResultAdapter
     private lateinit var linearLayoutManager: LinearLayoutManager
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -40,6 +42,8 @@ class SearchResultFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initListener()
+
         srlSearch.setOnRefreshListener(object : SwipeRefreshLayout.OnRefreshListener {
             override fun onRefresh() {
                 Handler().postDelayed(object : Runnable {
@@ -50,13 +54,10 @@ class SearchResultFragment : Fragment() {
             }
         })
 
-        cbInStock.setOnClickListener(click)
-        rbPrice.setOnClickListener(click)
-        rbDiscount.setOnClickListener(click)
-        tvFilter.setOnClickListener(click)
+
         //随机生成 0~14条的假数据
         val state = (0..1).random()
-        val randNum = (1..14).random()
+
         if (state == 0)// 1/2的概率无结果
         {
             view.srlSearch.visibility = View.GONE
@@ -73,6 +74,23 @@ class SearchResultFragment : Fragment() {
         }
     }
 
+    fun initListener() {
+        val rbList = arrayListOf<RadioButton>(rbLabelSpecial ,rbLabelNewman , rbLabelNew , rbLabelHot , rbLabelFlash , rbLabelDiscount)
+        cbInStock.setOnClickListener(click)
+        rbPrice.setOnClickListener(click)
+        rbDiscount.setOnClickListener(click)
+        tvFilter.setOnClickListener(click)
+        cbInStock.setOnClickListener(click)
+        rbPrice.setOnClickListener(click)
+        rbDiscount.setOnClickListener(click)
+        tvFilter.setOnClickListener(click)
+        tvReset.setOnClickListener(click)
+        tvOk.setOnClickListener(click)
+
+        for ( i in rbList.indices)
+            rbList[i].setOnClickListener(click)
+    }
+    
     val click = View.OnClickListener { v ->
         when (v?.id) {
             R.id.cbInStock -> {
@@ -99,19 +117,48 @@ class SearchResultFragment : Fragment() {
             }
 
             R.id.tvOk -> {
-                Log.e("抽屉", "快关！")
-                if (vdSearchFilter.isDrawerOpen) {
                     vdSearchFilter.closeDrawer()
-                    Log.e("抽屉", "关！")
-                }
             }
 
+            R.id.rbLabelNew -> {
+                srlSearch.visibility = View.GONE
+                llNoGoods.visibility = View.VISIBLE
+            }
+            R.id.rbLabelFlash -> {
+                srlSearch.visibility = View.GONE
+                llNoGoods.visibility = View.VISIBLE
+            }
+            R.id.rbLabelDiscount -> {
+                resultBean.goodsList!!.clear()
+                searchResultAdapter.notifyDataSetChanged()
+            }
+            R.id.rbLabelNewman -> {
+                srlSearch.visibility = View.GONE
+                llNoGoods.visibility = View.VISIBLE
+            }
+            R.id.rbLabelSpecial -> {
+                srlSearch.visibility = View.GONE
+                llNoGoods.visibility = View.VISIBLE
+            }
+            R.id.rbLabelHot -> {
+                srlSearch.visibility = View.GONE
+                llNoGoods.visibility = View.VISIBLE
+            }
+            
             R.id.tvFilter -> {
                 if (vdSearchFilter.isDrawerOpen) {
                     vdSearchFilter.closeDrawer()
                 } else {
                     vdSearchFilter.openDrawerView()
                 }
+            }
+            R.id.tvReset -> {
+                val rbList = arrayListOf<RadioButton>(rbLabelSpecial ,rbLabelNewman , rbLabelNew , rbLabelHot , rbLabelFlash , rbLabelDiscount)
+                for ( i in rbList.indices) {
+                    rbList[i].isChecked = false
+                }
+                resultBean.goodsList = Goods.newGoodsList(randNum)
+                searchResultAdapter.notifyDataSetChanged()
             }
         }
     }

@@ -55,17 +55,8 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/vCutLine"
             app:layout_constraintLeft_toLeftOf="parent"/>
-<!--
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvRight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="@dimen/mmm_font_s10"
-        app:layout_constraintLeft_toRightOf="@+id/rvLeft"
-        app:layout_constraintTop_toBottomOf="@+id/llTop" />-->
 
-        <androidx.recyclerview.widget.RecyclerView
+        <com.mmm.mypupu.ui.widgets.ParentRecyclerView
             android:id="@+id/rvRight"
             android:layout_width="300dp"
             android:layout_height="700dp"

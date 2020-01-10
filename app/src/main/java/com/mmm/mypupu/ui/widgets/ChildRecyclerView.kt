@@ -16,7 +16,7 @@ class ChildRecyclerView(context: Context, attrs: AttributeSet?, defStyle: Int) :
     constructor(context: Context) : this(context, null) {}
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0) {}
 
-    override fun dispatchTouchEvent(e: MotionEvent?): Boolean {
+/*    override fun dispatchTouchEvent(e: MotionEvent?): Boolean {
         val action = e!!.action
         when (action) {
             MotionEvent.ACTION_DOWN -> {
@@ -25,7 +25,7 @@ class ChildRecyclerView(context: Context, attrs: AttributeSet?, defStyle: Int) :
             }
             MotionEvent.ACTION_MOVE -> {
                 val nowY = e.y
-             //   isIntercept(nowY) //判断是否到顶 或到底
+                isIntercept(nowY) //判断是否到顶 或到底
                 if (isBottomToTop || isTopToBottom) { //触底或 到顶 时 交给父容器拦截
                     parent.requestDisallowInterceptTouchEvent(false) // false 允许 ，true 不允许
                 } else {
@@ -38,7 +38,7 @@ class ChildRecyclerView(context: Context, attrs: AttributeSet?, defStyle: Int) :
         return super.onTouchEvent(e)
     }
 
-   /* private fun isIntercept(nowY: Float) {
+    private fun isIntercept(nowY: Float) {
         isTopToBottom = false
         isBottomToTop = false
         val layoutManager: LayoutManager = getLayoutManager()!!

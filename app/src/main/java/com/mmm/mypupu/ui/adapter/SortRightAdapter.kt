@@ -68,6 +68,13 @@ class SortRightAdapter(var context: Context, var list: List<ParentBean>) : Recyc
             Log.e("拦截了 父布局", addAllItem(position).size.toString())
         }
 
+        h.rvRightCatalog.setOnTouchListener { v, event ->
+            when (event.action){
+                MotionEvent.ACTION_DOWN , MotionEvent.ACTION_MOVE -> v.parent.requestDisallowInterceptTouchEvent(true)
+                MotionEvent.ACTION_UP -> v.parent.requestDisallowInterceptTouchEvent(false)
+            }
+            false
+        }
     }
 
 
