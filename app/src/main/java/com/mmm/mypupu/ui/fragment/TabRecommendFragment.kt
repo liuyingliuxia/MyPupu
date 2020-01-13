@@ -4,30 +4,17 @@ import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
-import android.util.TypedValue
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.afollestad.materialdialogs.MaterialDialog
-
 import com.mmm.mypupu.R
-import com.mmm.mypupu.ui.adapter.Holder
 import com.mmm.mypupu.ui.adapter.RecommendationAdapter
-import com.mmm.mypupu.ui.adapter.SearchInputAutoAdapter
 import com.mmm.mypupu.ui.bean.Goods
-import com.mmm.mypupu.util.myUtil
-import kotlinx.android.synthetic.main.activity_search.*
-import kotlinx.android.synthetic.main.activity_search.tvSearch
-import kotlinx.android.synthetic.main.container_home.*
-import kotlinx.android.synthetic.main.fragment_tab_flash_sale.*
 import kotlinx.android.synthetic.main.fragment_tab_recommend.*
-import kotlinx.android.synthetic.main.fragment_tab_recommend.view.*
-import kotlinx.android.synthetic.main.toolbar_main.*
 
 class TabRecommendFragment : Fragment() {
     var LOAD_COUNT = 0
@@ -71,12 +58,20 @@ class TabRecommendFragment : Fragment() {
                 if (isBottom == false && LOAD_COUNT < 3) {
                     list.addAll(Goods.newGoodsList(3))
                     LOAD_COUNT++
-             /*       Handler().postDelayed(object : Runnable {
-                        override fun run() {
+                    try {
+                        rvRecommend.post {
                             showLoadingDialog(context!!)
                         }
-                    }, 500)*/
-                    hideLoadingDialog()
+                        rvRecommend.postDelayed({
+                            hideLoadingDialog()
+                        }, 1000)
+
+                    } catch (e: Exception) {
+                        Log.e("异常", e.toString())
+                    } finally {
+                        hideLoadingDialog()
+                    }
+
                     recommendAdapter.notifyDataSetChanged()
                 } else if (isBottom == false && LOAD_COUNT == 3) {
                     //  myUtil.talk(context!! , "到底了哦~" + "共有"+ list.size + "条数据" )
@@ -86,7 +81,6 @@ class TabRecommendFragment : Fragment() {
             }
         })
     }
-
 
     fun showLoadingDialog(context: Context) {
         mLoadingDialog = MaterialDialog.Builder(context)
@@ -99,8 +93,8 @@ class TabRecommendFragment : Fragment() {
     }
 
     fun hideLoadingDialog() {
-        if (mLoadingDialog != null && mLoadingDialog.isShowing) {
+        if (this::mLoadingDialog.isInitialized && mLoadingDialog.isShowing) {
             mLoadingDialog.dismiss()
-        }
+        } else return
     }
 }

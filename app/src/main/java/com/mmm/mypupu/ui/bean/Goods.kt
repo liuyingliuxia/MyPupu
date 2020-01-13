@@ -3,35 +3,7 @@ package com.mmm.mypupu.ui.bean
 import com.mmm.mypupu.ui.data.*
 import java.io.Serializable
 
-class Goods :Serializable{
-    var mImgPath :Int = 0
-    var mName : String = " "
-    var mSubtitle :String = " "
-    var mQuantity : String =" "
-    var mRemark : String = " "
-    var mPrice :Double = 0.0
-    var mOriPrice :Double = 0.0
-    var mNum :Int = 0
-
-    constructor(
-        mImgPath: Int,
-        mName: String,
-        mSubtitle: String,
-        mQuantity: String,
-        mRemark: String,
-        mPrice: Double,
-        mOriPrice: Double,
-        mNum : Int
-    ) {
-        this.mImgPath = mImgPath
-        this.mName = mName
-        this.mSubtitle = mSubtitle
-        this.mQuantity = mQuantity
-        this.mRemark = mRemark
-        this.mPrice = mPrice
-        this.mOriPrice = mOriPrice
-        this.mNum = mNum
-    }
+data class Goods(var mImgPath: Int, var mName: String, var mSubtitle: String, var mQuantity: String, var mRemark: String, var mPrice: Double, var mOriPrice: Double, var mNum: Int) :Serializable{
 
     override fun toString(): String {
         return " 你点击了：$mName, 价格是：$mPrice 元"

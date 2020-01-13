@@ -32,7 +32,7 @@ import kotlinx.android.synthetic.main.toolbar_main.*
 
 class SearchResultFragment : Fragment() {
     private var rbClickTiems = 0
-    val resultBean = SearchResultBean()
+    private var resultBean = SearchResultBean()
     val randNum = (1..14).random()
     private lateinit var searchResultAdapter: SearchResultAdapter
     private lateinit var linearLayoutManager: LinearLayoutManager
@@ -53,7 +53,6 @@ class SearchResultFragment : Fragment() {
                 }, 500)
             }
         })
-
 
         //随机生成 0~14条的假数据
         val state = (0..1).random()
