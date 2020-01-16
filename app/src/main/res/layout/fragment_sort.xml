@@ -58,7 +58,7 @@
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/rvRight"
-            android:layout_width="300dp"
+            android:layout_width="280dp"
             android:layout_height="700dp"
             android:orientation="vertical"
             android:descendantFocusability="beforeDescendants"
