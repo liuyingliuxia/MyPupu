@@ -216,7 +216,7 @@ val mCatalog11 :ArrayList<Int> = arrayListOf(mAllItemImg1[10], mAllItemImg2[10],
 //12 日用清洁 长度 20
 val mCatalog12 :ArrayList<Int> = arrayListOf(mAllItemImg1[11], mAllItemImg2[11], mAllItemImg3[11],mAllItemImg4[11], mAllItemImg5[11], mAllItemImg6[11],mAllItemImg7[11], mAllItemImg8[11], mAllItemImg9[11],
     mAllItemImg10[11], mAllItemImg11[11], mAllItemImg12[11],mAllItemImg13[11], mAllItemImg14[11],R.drawable.sort12_15,R.drawable.sort12_16,R.drawable.sort12_17,R.drawable.sort12_18,R.drawable.sort12_19,
-    R.drawable.icon_more)
+    R.drawable.icon_more )
 
 //13 护理美妆 长度 14
 val mCatalog13 :ArrayList<Int> = arrayListOf(mAllItemImg1[12], mAllItemImg2[12], mAllItemImg3[12],mAllItemImg4[12], mAllItemImg5[12], mAllItemImg6[12],mAllItemImg7[12], mAllItemImg8[12], mAllItemImg9[12],
@@ -270,7 +270,7 @@ val mCatalogName12 :ArrayList<String> =arrayListOf(mAllName1[11],mAllName2[11],m
     mAllName11[11], mAllName12[11], mAllName13[11], mAllName14[11], "纺织床用" ,"拖鞋袜子","文具运动","雨伞雨衣","驱虫用品","全部日用清洁")
 
 val mCatalogName13 :ArrayList<String> = arrayListOf(mAllName1[12],mAllName2[12],mAllName3[12],mAllName4[12],mAllName5[12],mAllName6[12],mAllName7[12],mAllName8[12],mAllName9[12],mAllName10[12],
-    mAllName11[12], mAllName12[12], mAllName13[12],"全部护理美妆")
+    mAllName11[12], mAllName12[12], mAllName13[12],"全部护理美妆" )
 
 val mCatalogName14 :ArrayList<String> =arrayListOf(mAllName1[13],mAllName2[13],mAllName3[13],mAllName4[13],mAllName5[13],mAllName6[13],mAllName7[13],mAllName8[13],mAllName9[13])
 

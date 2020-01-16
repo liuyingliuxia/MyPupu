@@ -84,3 +84,4 @@ android:singleLine="true"
             android:topRightRadius="8dp"
             android:bottomRightRadius="0dp"
             android:bottomLeftRadius="0dp"/>
+20. 翻页时 最后 3个都 卡住 不流畅

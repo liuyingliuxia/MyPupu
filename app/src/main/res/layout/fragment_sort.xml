@@ -49,6 +49,10 @@
         android:background="@color/color6"
         app:layout_constraintTop_toBottomOf="@+id/llTop"/>
 
+    <com.google.android.material.tabs.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvLeft"
             android:layout_width="86dp"
@@ -56,7 +60,7 @@
             app:layout_constraintTop_toBottomOf="@+id/vCutLine"
             app:layout_constraintLeft_toLeftOf="parent"/>
 
-        <com.mmm.mypupu.ui.widgets.ParentRecyclerView
+        <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/rvRight"
             android:layout_width="300dp"
             android:layout_height="700dp"

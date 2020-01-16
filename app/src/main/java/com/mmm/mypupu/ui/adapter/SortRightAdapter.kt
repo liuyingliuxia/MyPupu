@@ -11,6 +11,7 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.bean.ParentBean
 import com.mmm.mypupu.ui.bean.headImgBean
@@ -26,20 +27,23 @@ class SortRightAdapter(var context: Context, var list: List<ParentBean>) : Recyc
     private val TYPE_LESS = 1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        if (viewType == TYPE_MUCH) {
-            //root = null 解决item太多时 显示不全的问题 (wrap_content) 
-            val itemView = LayoutInflater.from(context).inflate(R.layout.item_sort_right, null, false)
-            val holder = Holder(itemView)
-            return holder
-        } else {//item数少时 适配父容器（match_parent)
-            val itemView = LayoutInflater.from(context).inflate(R.layout.item_sort_right, parent, false)
-            val holder = Holder(itemView)
-            return holder
-        }
+//        if (viewType == TYPE_MUCH) {
+//            //root = null 解决item太多时 显示不全的问题 (wrap_content)
+//            val itemView = LayoutInflater.from(context).inflate(R.layout.item_sort_right, null, false)
+//            val holder = Holder(itemView)
+//            return holder
+//        } else {//item数少时 适配父容器（match_parent)
+//            val itemView = LayoutInflater.from(context).inflate(R.layout.item_sort_right, parent, false)
+//            val holder = Holder(itemView)
+//            return holder
+//        }
+        val itemView = LayoutInflater.from(context).inflate(R.layout.item_sort_right, parent, false)
+        val holder = Holder(itemView)
+        return holder
     }
 
     override fun getItemCount(): Int {
-        return list.size
+        if (list.size > 0) return list.size else return 0
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -63,28 +67,16 @@ class SortRightAdapter(var context: Context, var list: List<ParentBean>) : Recyc
 
         h.rvRightCatalog.layoutManager = layoutManager
         h.rvRightCatalog.adapter = rvAdapter
-       if (addAllItem(position).size > 17) {//禁用父布局的事件拦截
-           // h.rvRightCatalog.parent.requestDisallowInterceptTouchEvent(true )
-            Log.e("拦截了 父布局", addAllItem(position).size.toString())
-        }
-
-        h.rvRightCatalog.setOnTouchListener { v, event ->
-            when (event.action){
-                MotionEvent.ACTION_DOWN , MotionEvent.ACTION_MOVE -> v.parent.requestDisallowInterceptTouchEvent(true)
-                MotionEvent.ACTION_UP -> v.parent.requestDisallowInterceptTouchEvent(false)
-            }
-            false
-        }
     }
 
 
-    override fun getItemViewType(position: Int): Int {
-        if (mSortNum[position] > 17) {
-            return TYPE_MUCH
-        } else {
-            return TYPE_LESS
-        }
-    }
+//    override fun getItemViewType(position: Int): Int {
+//        if (mSortNum[position] > 17) {
+//            return TYPE_MUCH
+//        } else {
+//            return TYPE_LESS
+//        }
+//    }
 
     fun addAllItem(position: Int): ArrayList<itemBean> {
         val itemList: ArrayList<itemBean> = arrayListOf()
@@ -103,8 +95,32 @@ class SortRightAdapter(var context: Context, var list: List<ParentBean>) : Recyc
             itemList.add(iBean)
 
         }
+        addEmptyItem(mSortNum[position], itemList)
         return itemList
     }
+
+    //添加空item 修复 item过多时(>15)  滑动冲突 直接进入下一页的bug
+    fun addEmptyItem(count: Int , itemList:ArrayList<itemBean>) {
+        if (count > 15) {
+            if (count % 3 == 1) {
+                //增加 3个 空item
+                val emptyBean = itemBean(-1, 0, "")
+                for (i in 0..2)
+                    itemList.add(emptyBean)
+
+            } else if (count % 3 == 2) {
+                //增加 2 个空item
+                val emptyBean = itemBean(-1, 0, "")
+                for (i in 0..1)
+                    itemList.add(emptyBean)
+            }else if ( count % 3 == 0) {
+                //增在 1个空item
+                val emptyBean = itemBean(-1, 0, "")
+                    itemList.add(emptyBean)
+            }
+        }
+    }
+
 }
 
 class Holder(itemView: View) : RecyclerView.ViewHolder(itemView)

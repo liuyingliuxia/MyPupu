@@ -6,13 +6,11 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.*
-import com.example.lilingzhi.tworecyc.util.RecycUtil
-import com.example.lilingzhi.tworecyc.util.RecycUtil.Companion.moveToPositAndTop
+import androidx.viewpager2.widget.ViewPager2
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.adapter.QuickLeftAdapter
 import com.mmm.mypupu.ui.bean.LeftBean
@@ -49,9 +47,10 @@ class SortFragment : Fragment() {
         initView()
         select(0)
         // 刚进入页面默认选中第一个
+        rvRight.setCurrentItem(0)
         //一次只能滑动一页，不能快速滑动, itemCount 太多时 会有滑动冲突 选择其他方式实现翻页效果
-        val pagerSnapHelper = PagerSnapHelper()
-        pagerSnapHelper.attachToRecyclerView(rvRight)
+//        val pagerSnapHelper = PagerSnapHelper()
+//        pagerSnapHelper.attachToRecyclerView(rvRight)
         ivSearch.setOnClickListener {
             val intent = Intent()
             intent.setClass(this@SortFragment.context!!, SearchActivity::class.java)
@@ -104,38 +103,41 @@ class SortFragment : Fragment() {
         rvRight.requestFocus()
 
         rvLeft.layoutManager = leftLayoutManager
-        rvRight.layoutManager = rightLayoutManager
+        //  rvRight.layoutManager = rightLayoutManager
         //vp2 不需要设置布局管理器 其子布局必须match
         quickLeftAdapter = QuickLeftAdapter(leftData)
-
+        rvRight.setCurrentItem(0, true)
         rvLeft.adapter = quickLeftAdapter
         rvRight.adapter = rvRightAdapter
-        rvRight.isFocusable = false
+
         quickLeftAdapter.setOnItemClickListener { _, _, position ->
             rightClick = true
             select(position)
             //切换到指定的item
-            rightLayoutManager.scrollToPositionWithOffset(position, 0)
-            rightLayoutManager.stackFromEnd = false
-
+            rvRight.setCurrentItem(position, true)
         }
 
-        rvRight.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                if (rightClick == false && newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    val now: Int
-                    val first = rightLayoutManager.findFirstVisibleItemPosition()
-                    now = rightData.get(first).id
-                    select(now) //刷新当前的item
-                } else if (rightClick == true && newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    rightClick = false
-                } else if (rightClick == true && newState == RecyclerView.SCROLL_STATE_DRAGGING) {
-                    rightClick = false
-                }
+//        rvRight.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+//            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+//                if (rightClick == false && newState == RecyclerView.SCROLL_STATE_IDLE) {
+//                    val now: Int
+//                    val first = rightLayoutManager.findFirstVisibleItemPosition()
+//                    now = rightData.get(first).id
+//                    select(now) //刷新当前的item
+//                } else if (rightClick == true && newState == RecyclerView.SCROLL_STATE_IDLE) {
+//                    rightClick = false
+//                } else if (rightClick == true && newState == RecyclerView.SCROLL_STATE_DRAGGING) {
+//                    rightClick = false
+//                }
+//            }
+//        })
+
+        rvRight.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                select(position)
             }
         })
-
-
     }
 
     fun select(position: Int) {

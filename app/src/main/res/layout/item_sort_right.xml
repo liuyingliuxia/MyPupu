@@ -1,9 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--子recycler 作为父rv 的item-->
-<com.mmm.mypupu.ui.widgets.ChildRecyclerView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?><!--子recycler 作为父rv 的item-->
+<com.mmm.mypupu.ui.widgets.NestedScrollableHost xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/rvRightCatalog"
     android:layout_width="match_parent"
-    android:padding="@dimen/dp_10"
-    android:layout_height="match_parent" />
+    android:layout_height="match_parent">
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvRightCatalog"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/dp_10" />
+
+</com.mmm.mypupu.ui.widgets.NestedScrollableHost>
