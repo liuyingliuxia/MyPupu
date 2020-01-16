@@ -45,11 +45,8 @@ class RecycUtil{
         fun moveToPositAndCenter(n:Int, layoutM: LinearLayoutManager, recyc: RecyclerView,handler:Handler){
             var first=layoutM.findFirstVisibleItemPosition()
             var last=layoutM.findLastVisibleItemPosition()
-
-
             if(n<=first){
                 recyc.scrollToPosition(n)
-
                 handler.postDelayed({
                     first=layoutM.findFirstVisibleItemPosition()
                     last=layoutM.findLastVisibleItemPosition()

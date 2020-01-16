@@ -8,9 +8,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.size
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.*
 import androidx.viewpager2.widget.ViewPager2
+import com.example.lilingzhi.tworecyc.util.RecycUtil
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.adapter.QuickLeftAdapter
 import com.mmm.mypupu.ui.bean.LeftBean
@@ -136,6 +138,18 @@ class SortFragment : Fragment() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 select(position)
+                //val first = leftLayoutManager.findFirstVisibleItemPosition()
+               // val last = leftLayoutManager.findLastVisibleItemPosition()
+                if (position > 6  && position < 13)
+                    RecycUtil.moveToPositAndCenter(position, leftLayoutManager, rvLeft, handler)
+                else
+                    rvLeft.scrollToPosition(position) //不会居 到屏幕 中间
+            }
+
+            override fun onPageScrollStateChanged(state: Int) {
+                super.onPageScrollStateChanged(state)
+
+
             }
         })
     }
