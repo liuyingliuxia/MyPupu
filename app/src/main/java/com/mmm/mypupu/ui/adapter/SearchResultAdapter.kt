@@ -14,11 +14,11 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.mmm.mypupu.R
-import com.mmm.mypupu.ui.bean.Goods
+import com.mmm.mypupu.ui.bean.GoodsBean
 import com.mmm.mypupu.util.myUtil
 import kotlinx.android.synthetic.main.item_recommend.view.*
 
-class SearchResultAdapter (var list: List<Goods>, var context: Context  ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SearchResultAdapter (var list: List<GoodsBean>, var context: Context  ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
             val itemView = LayoutInflater.from(context).inflate(R.layout.item_recommend, parent, false)
             val holder= Holder(itemView)
@@ -31,7 +31,7 @@ class SearchResultAdapter (var list: List<Goods>, var context: Context  ): Recyc
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-            val goods: Goods = list[position]
+            val goods: GoodsBean = list[position]
             holder.itemView.tag = position
             holder.itemView.ivGoods.setImageResource(goods.mImgPath)
             holder.itemView.tvTitle.text = goods.mName
@@ -94,7 +94,7 @@ class SearchResultAdapter (var list: List<Goods>, var context: Context  ): Recyc
 
     private fun itemAddClick(holder: RecyclerView.ViewHolder, position: Int) {
         var num = 0
-        val goods: Goods = list[position ]
+        val goods: GoodsBean = list[position ]
 
         holder.itemView.ivAdd.setOnClickListener( object :View.OnClickListener{
             @RequiresApi(Build.VERSION_CODES.O)

@@ -14,10 +14,8 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.mmm.mypupu.R
-import com.mmm.mypupu.ui.bean.Goods
-import com.mmm.mypupu.util.myUtil
+import com.mmm.mypupu.ui.bean.GoodsBean
 import kotlinx.android.synthetic.main.item_fruit.view.*
-import kotlinx.android.synthetic.main.item_recommend.view.*
 import kotlinx.android.synthetic.main.item_recommend.view.ivAdd
 import kotlinx.android.synthetic.main.item_recommend.view.ivGoods
 import kotlinx.android.synthetic.main.item_recommend.view.ivSub
@@ -30,7 +28,7 @@ import kotlinx.android.synthetic.main.item_recommend.view.tvSubtitle
 import kotlinx.android.synthetic.main.item_recommend.view.tvTitle
 import kotlinx.android.synthetic.main.item_recommend.view.tvY2
 
-class FruitAdapter(var list: ArrayList<Goods>, var context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class FruitAdapter(var list: ArrayList<GoodsBean>, var context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val itemView = LayoutInflater.from(context).inflate(R.layout.item_fruit, parent, false)
@@ -43,7 +41,7 @@ class FruitAdapter(var list: ArrayList<Goods>, var context: Context) : RecyclerV
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val goods: Goods = list[position]
+        val goods: GoodsBean = list[position]
 
         holder.itemView.tag = position
 
@@ -103,7 +101,7 @@ class FruitAdapter(var list: ArrayList<Goods>, var context: Context) : RecyclerV
         animatorSet.start()
     }
 
-    private fun itemAddClick(holder: RecyclerView.ViewHolder, position: Int , goods: Goods) {
+    private fun itemAddClick(holder: RecyclerView.ViewHolder, position: Int , goods: GoodsBean) {
         var num = 0
         holder.itemView.ivAdd.setOnClickListener(object : View.OnClickListener {
             @RequiresApi(Build.VERSION_CODES.O)

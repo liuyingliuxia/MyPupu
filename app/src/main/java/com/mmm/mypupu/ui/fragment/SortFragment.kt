@@ -8,18 +8,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.size
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.*
 import androidx.viewpager2.widget.ViewPager2
 import com.example.lilingzhi.tworecyc.util.RecycUtil
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.adapter.QuickLeftAdapter
-import com.mmm.mypupu.ui.bean.LeftBean
+import com.mmm.mypupu.ui.bean.LeftCatalogBean
 import com.mmm.mypupu.ui.bean.ParentBean
 import com.mmm.mypupu.ui.data.*
 import com.mmm.mypupu.ui.search.SearchActivity
-import com.mmm.mypupu.ui.widgets.ChildRecyclerView
 import com.mmm.mytestutil.rvInRecycler.SortRightAdapter
 import kotlinx.android.synthetic.main.fragment_sort.*
 
@@ -31,7 +29,7 @@ class SortFragment : Fragment() {
     private lateinit var leftLayoutManager: LinearLayoutManager
     //  private lateinit var rightLayoutManager: LinearLayoutManager
     //数据实体
-    var leftData: MutableList<LeftBean> = mutableListOf()
+    var leftData: MutableList<LeftCatalogBean> = mutableListOf()
     var rightData: MutableList<ParentBean> = mutableListOf()
 
     var rightClick: Boolean = false
@@ -62,19 +60,19 @@ class SortFragment : Fragment() {
 
     fun initData() {
         handler = Handler()
-        val leftBean = LeftBean(0, "", 1)
+        val leftBean = LeftCatalogBean(0, "", 1)
 
         val rvView = RecyclerView(context!!)
         for (i in 0..mCatalogText.size) {
             //根据itemType不同添加不同的数据
             if (i < mCatalogText.size) {
-                leftBean.type = LeftBean.TYPE_TEXT
-                leftData.add(LeftBean(i, mCatalogText[i], 1))
+                leftBean.type = LeftCatalogBean.TYPE_TEXT
+                leftData.add(LeftCatalogBean(i, mCatalogText[i], 1))
                 //传入 rv itme的数量
 
             } else if (i == mCatalogText.size) {
-                leftBean.type = LeftBean.TYPE_EMPTY
-                leftData.add(LeftBean((mCatalogText.size), "", 2))
+                leftBean.type = LeftCatalogBean.TYPE_EMPTY
+                leftData.add(LeftCatalogBean((mCatalogText.size), "", 2))
             }
         }
         Log.e("left", leftData.toString())

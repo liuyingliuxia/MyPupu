@@ -8,16 +8,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.mmm.mypupu.R
-import com.mmm.mypupu.ui.bean.Goods
-import kotlinx.android.synthetic.main.fragment_tab_flash_sale.view.*
+import com.mmm.mypupu.ui.bean.GoodsBean
 import kotlinx.android.synthetic.main.item_flash_sale.view.*
 import kotlinx.android.synthetic.main.item_flash_sale_head.view.*
 import kotlinx.android.synthetic.main.item_load_more.view.*
-import kotlinx.android.synthetic.main.item_recommend.view.*
 import kotlinx.android.synthetic.main.item_recommend.view.ivGoods
 import kotlinx.android.synthetic.main.item_recommend.view.tvOriginalPrice
 import kotlinx.android.synthetic.main.item_recommend.view.tvPrice
@@ -26,14 +23,11 @@ import kotlinx.android.synthetic.main.item_recommend.view.tvRemark
 import kotlinx.android.synthetic.main.item_recommend.view.tvSubtitle
 import kotlinx.android.synthetic.main.item_recommend.view.tvTitle
 import kotlinx.android.synthetic.main.item_recommend.view.tvY2
-import java.nio.channels.Selector
-import java.text.ParsePosition
-import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.math.absoluteValue
 
-class FlashSaleAdapter(var list: ArrayList<Goods>, var context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class FlashSaleAdapter(var list: ArrayList<GoodsBean>, var context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val TYPE_IMAGE = 0
     private val TYPE_GOODS = 1
     private val TYPE_END = 2
@@ -102,7 +96,7 @@ class FlashSaleAdapter(var list: ArrayList<Goods>, var context: Context) : Recyc
         }
 
         if (position > 0 && position != itemCount - 1 ) {
-            val goods: Goods = list[position - 1]
+            val goods: GoodsBean = list[position - 1]
 
              if (TYPE_GOODS == holder.itemViewType) {
                 holder.itemView.tag = position
@@ -141,7 +135,7 @@ class FlashSaleAdapter(var list: ArrayList<Goods>, var context: Context) : Recyc
         }
     }
 
-    val noGoods = Goods(0,"","","","",0.0,0.0,0)
+    val noGoods = GoodsBean(0,"","","","",0.0,0.0,0)
 
     override fun getItemViewType(position: Int): Int {
         //数据加载 >50 时 显示 到底了 没有更多

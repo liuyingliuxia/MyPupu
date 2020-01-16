@@ -1,34 +1,23 @@
 package com.mmm.mypupu.ui.fragment
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AutoCompleteTextView
 import android.widget.RadioButton
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.mmm.mypupu.R
-import com.mmm.mypupu.ui.adapter.FruitAdapter
-import com.mmm.mypupu.ui.adapter.RecommendationAdapter
 import com.mmm.mypupu.ui.adapter.SearchResultAdapter
-import com.mmm.mypupu.ui.bean.Goods
+import com.mmm.mypupu.ui.bean.GoodsBean
 import com.mmm.mypupu.ui.bean.SearchResultBean
-import com.mmm.mypupu.ui.data.*
-import kotlinx.android.synthetic.main.activity_search.*
-import kotlinx.android.synthetic.main.activity_search.tvSearch
-import kotlinx.android.synthetic.main.container_home.*
 import kotlinx.android.synthetic.main.drawer_filter.*
 import kotlinx.android.synthetic.main.fragment_search_result.*
 import kotlinx.android.synthetic.main.fragment_search_result.view.*
-import kotlinx.android.synthetic.main.fragment_tab_fruit.*
-import kotlinx.android.synthetic.main.fragment_tab_recommend.view.*
 import kotlinx.android.synthetic.main.item_filter.*
-import kotlinx.android.synthetic.main.toolbar_main.*
 
 class SearchResultFragment : Fragment() {
     private var rbClickTiems = 0
@@ -62,7 +51,7 @@ class SearchResultFragment : Fragment() {
             view.srlSearch.visibility = View.GONE
             view.llNoGoods.visibility = View.VISIBLE
         } else {
-            resultBean.goodsList = Goods.newGoodsList(randNum)
+            resultBean.goodsList = GoodsBean.newGoodsList(randNum)
             view.srlSearch.visibility = View.VISIBLE
             view.llNoGoods.visibility = View.GONE
             searchResultAdapter = SearchResultAdapter(resultBean.goodsList!!, context!!)
@@ -95,12 +84,12 @@ class SearchResultFragment : Fragment() {
             R.id.cbInStock -> {
                 if (cbInStock.isChecked == true) {
                     resultBean.goodsList!!.clear()
-                    resultBean.goodsList!!.addAll(Goods.newFruitList(6))
+                    resultBean.goodsList!!.addAll(GoodsBean.newFruitList(6))
                     searchResultAdapter.notifyDataSetChanged()
 
                 } else {
                     resultBean.goodsList!!.clear()
-                    resultBean.goodsList!!.addAll(Goods.newFruitList(10))
+                    resultBean.goodsList!!.addAll(GoodsBean.newFruitList(10))
                     searchResultAdapter.notifyDataSetChanged()
                 }
             }
@@ -156,7 +145,7 @@ class SearchResultFragment : Fragment() {
                 for ( i in rbList.indices) {
                     rbList[i].isChecked = false
                 }
-                resultBean.goodsList = Goods.newGoodsList(randNum)
+                resultBean.goodsList = GoodsBean.newGoodsList(randNum)
                 searchResultAdapter.notifyDataSetChanged()
             }
         }
@@ -174,7 +163,7 @@ class SearchResultFragment : Fragment() {
                 rb.setCompoundDrawables(null, null, drawable, null)
 
                 resultBean.goodsList!!.clear()
-                resultBean.goodsList!!.addAll(Goods.newFruitList(5))
+                resultBean.goodsList!!.addAll(GoodsBean.newFruitList(5))
                 searchResultAdapter.notifyDataSetChanged()
             }
             1 -> {
@@ -186,7 +175,7 @@ class SearchResultFragment : Fragment() {
                 rb.setCompoundDrawables(null, null, drawable, null)
 
                 resultBean.goodsList!!.clear()
-                resultBean.goodsList!!.addAll(Goods.newFruitList(5))
+                resultBean.goodsList!!.addAll(GoodsBean.newFruitList(5))
                 searchResultAdapter.notifyDataSetChanged()
             }
             2 -> {
@@ -198,7 +187,7 @@ class SearchResultFragment : Fragment() {
                 rb.setCompoundDrawables(null, null, drawable, null)
 
                 resultBean.goodsList!!.clear()
-                resultBean.goodsList!!.addAll(Goods.newFruitList(5))
+                resultBean.goodsList!!.addAll(GoodsBean.newFruitList(5))
                 searchResultAdapter.notifyDataSetChanged()
             }
         }

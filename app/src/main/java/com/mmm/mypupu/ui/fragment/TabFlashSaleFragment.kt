@@ -2,7 +2,6 @@ package com.mmm.mypupu.ui.fragment
 
 
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,25 +10,14 @@ import android.view.ViewGroup
 import com.mmm.mypupu.R
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.mmm.mypupu.ui.adapter.CrazyDiscountAdapter
 import com.mmm.mypupu.ui.adapter.FlashSaleAdapter
-import com.mmm.mypupu.ui.adapter.RecommendationAdapter
-import com.mmm.mypupu.ui.bean.Goods
-import com.mmm.mypupu.ui.data.*
-import com.mmm.mypupu.util.myUtil
-import kotlinx.android.synthetic.main.fragment_tab_crazy_discount.*
-import kotlinx.android.synthetic.main.fragment_tab_crazy_discount.view.*
+import com.mmm.mypupu.ui.bean.GoodsBean
 import kotlinx.android.synthetic.main.fragment_tab_flash_sale.*
-import kotlinx.android.synthetic.main.fragment_tab_flash_sale.view.*
-import kotlinx.android.synthetic.main.fragment_tab_fruit.view.*
-import kotlinx.android.synthetic.main.fragment_tab_recommend.*
-import kotlinx.android.synthetic.main.fragment_tab_recommend.view.*
 
 class TabFlashSaleFragment : Fragment(){
     var INIT_LIST_NUM = 5
     //var LOAD_COUNT = 0
-    private var list :ArrayList<Goods > = ArrayList ()
+    private var list :ArrayList<GoodsBean > = ArrayList ()
     private lateinit var flashSaleAdapter: FlashSaleAdapter
     private lateinit var linearLayoutManager: LinearLayoutManager
     override fun onCreateView(
@@ -41,7 +29,7 @@ class TabFlashSaleFragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        list = Goods.newGoodsList(INIT_LIST_NUM)
+        list = GoodsBean.newGoodsList(INIT_LIST_NUM)
         flashSaleAdapter = FlashSaleAdapter(list, context!!)
         linearLayoutManager = LinearLayoutManager(context)
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
@@ -53,7 +41,7 @@ class TabFlashSaleFragment : Fragment(){
                 srlFlash.isRefreshing = false
             }, 50)
             list.clear()
-            list.addAll(Goods.newGoodsList(7))
+            list.addAll(GoodsBean.newGoodsList(7))
             flashSaleAdapter.notifyDataSetChanged()
         }
 
@@ -63,7 +51,7 @@ class TabFlashSaleFragment : Fragment(){
                 //1代表底部,返回true表示没到底部,还可以滑
                 val isBottom = rvFlashSale.canScrollVertically(1)
                 if ( isBottom == false && list.size < 50 ){
-                    list.addAll(Goods.newGoodsList(5))
+                    list.addAll(GoodsBean.newGoodsList(5))
                     rvFlashSale.postDelayed({
                         flashSaleAdapter.notifyDataSetChanged()
                     }, 1000)

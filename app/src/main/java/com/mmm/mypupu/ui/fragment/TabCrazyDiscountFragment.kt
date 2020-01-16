@@ -10,11 +10,9 @@ import com.mmm.mypupu.R
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mmm.mypupu.ui.adapter.CrazyDiscountAdapter
-import com.mmm.mypupu.ui.bean.Goods
-import com.mmm.mypupu.ui.data.*
+import com.mmm.mypupu.ui.bean.GoodsBean
 import com.mmm.mypupu.util.myUtil
 import kotlinx.android.synthetic.main.fragment_tab_crazy_discount.*
-import kotlinx.android.synthetic.main.fragment_tab_crazy_discount.view.*
 
 class TabCrazyDiscountFragment : Fragment() {
     var num: Int = 0
@@ -30,7 +28,7 @@ class TabCrazyDiscountFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val mList = Goods.newGoodsList(INIT_LIST_NUM)
+        val mList = GoodsBean.newGoodsList(INIT_LIST_NUM)
         mList.addAll(mList)
         crazyDiscountAdapter = CrazyDiscountAdapter(mList, context!!)
         linearLayoutManager = LinearLayoutManager(context)
@@ -45,7 +43,7 @@ class TabCrazyDiscountFragment : Fragment() {
                 val isBottom = rvCrazyDiscount.canScrollVertically(1)
                 if ( isBottom == false && num ==0 ){
                    myUtil.talk(context!! , "继续下滑加载更多")
-                        mList.addAll(Goods.newGoodsList(INIT_LIST_NUM))
+                        mList.addAll(GoodsBean.newGoodsList(INIT_LIST_NUM))
                     crazyDiscountAdapter.notifyDataSetChanged()
                     num ++
                 }

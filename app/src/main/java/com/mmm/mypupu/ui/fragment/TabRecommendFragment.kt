@@ -2,7 +2,6 @@ package com.mmm.mypupu.ui.fragment
 
 import android.content.Context
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -13,12 +12,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.afollestad.materialdialogs.MaterialDialog
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.adapter.RecommendationAdapter
-import com.mmm.mypupu.ui.bean.Goods
+import com.mmm.mypupu.ui.bean.GoodsBean
 import kotlinx.android.synthetic.main.fragment_tab_recommend.*
 
 class TabRecommendFragment : Fragment() {
     var LOAD_COUNT = 0
-    private var list: ArrayList<Goods> = ArrayList()
+    private var list: ArrayList<GoodsBean> = ArrayList()
     private lateinit var recommendAdapter: RecommendationAdapter
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var mLoadingDialog: MaterialDialog
@@ -32,7 +31,7 @@ class TabRecommendFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val randNum = (1..10).random()
-        list = Goods.newGoodsList(randNum)
+        list = GoodsBean.newGoodsList(randNum)
         recommendAdapter = RecommendationAdapter(list, context!!, LOAD_COUNT)
         linearLayoutManager = LinearLayoutManager(context)
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
@@ -41,7 +40,7 @@ class TabRecommendFragment : Fragment() {
 
         srlRecommend.setOnRefreshListener {
             list.clear()
-            list.addAll(Goods.newGoodsList(3))
+            list.addAll(GoodsBean.newGoodsList(3))
             recommendAdapter.notifyDataSetChanged()
             LOAD_COUNT = 0
             srlRecommend.postDelayed({
@@ -56,7 +55,7 @@ class TabRecommendFragment : Fragment() {
                 //1代表底部,返回true表示没到底部,还可以滑
                 val isBottom = rvRecommend.canScrollVertically(1)
                 if (isBottom == false && LOAD_COUNT < 3) {
-                    list.addAll(Goods.newGoodsList(3))
+                    list.addAll(GoodsBean.newGoodsList(3))
                     LOAD_COUNT++
                     try {
                         rvRecommend.post {

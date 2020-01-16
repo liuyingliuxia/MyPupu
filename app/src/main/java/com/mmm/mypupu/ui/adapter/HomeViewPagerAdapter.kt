@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.fragment.app.FragmentStatePagerAdapter
+import com.google.android.material.tabs.TabLayout
 import com.mmm.mypupu.R
+import com.mmm.mypupu.ui.bean.TabTitleBean
 import com.mmm.mypupu.ui.fragment.TabCrazyDiscountFragment
 import com.mmm.mypupu.ui.fragment.TabFlashSaleFragment
 import com.mmm.mypupu.ui.fragment.TabFruitFragment
@@ -14,20 +16,26 @@ import com.mmm.mypupu.ui.fragment.TabRecommendFragment
 import kotlinx.android.synthetic.main.toolbar_main.*
 
 
-class HomeViewPagerAdapter (var context: Context, fm: FragmentManager) : FragmentStatePagerAdapter (fm)  {
-    private val mTabTitle = arrayOf(
-        R.string.mmm_recommend,
-        R.string.mmm_flash,
-        R.string.mmm_crazy,
-        R.string.mmm_fruit
-    )
+class HomeViewPagerAdapter(var context: Context, fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
+    private val mTabTitleList: ArrayList<TabTitleBean> = arrayListOf()
+    private val tabTitleBean1 = TabTitleBean(0, R.string.mmm_recommend)
+    private val tabTitleBean2 = TabTitleBean(0, R.string.mmm_flash)
+    private val tabTitleBean3 = TabTitleBean(0, R.string.mmm_crazy)
+    private val tabTitleBean4 = TabTitleBean(0, R.string.mmm_fruit)
 
-    var mCrazyFragment : Fragment = TabCrazyDiscountFragment()
-    var mFlashFragment :Fragment = TabFlashSaleFragment()
-    var mFruitFragment :Fragment = TabFruitFragment ()
-    var mRecommend :Fragment = TabRecommendFragment ()
+    init {
+        mTabTitleList.add(tabTitleBean1)
+        mTabTitleList.add(tabTitleBean2)
+        mTabTitleList.add(tabTitleBean3)
+        mTabTitleList.add(tabTitleBean4)
+    }
 
-    var mFragmentList :MutableList <Fragment> = mutableListOf(mRecommend,mFlashFragment,mCrazyFragment,mFruitFragment)
+    private var mCrazyFragment: Fragment = TabCrazyDiscountFragment()
+    private var mFlashFragment: Fragment = TabFlashSaleFragment()
+    private var mFruitFragment: Fragment = TabFruitFragment()
+    private var mRecommend: Fragment = TabRecommendFragment()
+
+    private var mFragmentList: MutableList<Fragment> = mutableListOf(mRecommend, mFlashFragment, mCrazyFragment, mFruitFragment)
 
     override fun getItem(position: Int): Fragment {
         return mFragmentList[position]
@@ -35,14 +43,14 @@ class HomeViewPagerAdapter (var context: Context, fm: FragmentManager) : Fragmen
 
     override fun getPageTitle(position: Int): CharSequence? {
 
-        return context.resources.getString(mTabTitle[position])
+        return context.resources.getString(mTabTitleList[position].titleId)
     }
 
     override fun getCount(): Int {
-     return mFragmentList.size
+        return mFragmentList.size
     }
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
-          //  super.destroyItem(container, position, `object`)
+        //  super.destroyItem(container, position, `object`)
     }
 }

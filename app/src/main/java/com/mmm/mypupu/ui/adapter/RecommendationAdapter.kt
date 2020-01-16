@@ -1,28 +1,21 @@
 package com.mmm.mypupu.ui.adapter
 
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
 import android.content.Context
-import android.content.res.Resources
 import android.graphics.Paint
 import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationSet
-import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.core.view.marginRight
 import androidx.recyclerview.widget.RecyclerView
 import com.mmm.mypupu.R
-import com.mmm.mypupu.ui.bean.Goods
-import com.mmm.mypupu.ui.data.goodsNum
+import com.mmm.mypupu.ui.bean.GoodsBean
 import com.mmm.mypupu.util.myUtil
 import kotlinx.android.synthetic.main.item_recommend.view.*
 
-class RecommendationAdapter(var list: ArrayList<Goods>, var context: Context , var count :Int) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), View.OnClickListener {
+class RecommendationAdapter(var list: ArrayList<GoodsBean>, var context: Context, var count :Int) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), View.OnClickListener {
     private val TYPE_IMAGE = 0
     private val TYPE_GOODS = 1
     private val TYPE_END = 2
@@ -53,7 +46,7 @@ class RecommendationAdapter(var list: ArrayList<Goods>, var context: Context , v
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (position > 0 && position != itemCount - 1 ) {
-            val goods: Goods = list[position - 1]
+            val goods: GoodsBean = list[position - 1]
             if (TYPE_GOODS == holder.itemViewType) {
                 holder.itemView.tag = position
                 holder.itemView.ivGoods.setImageResource(goods.mImgPath)
@@ -89,7 +82,7 @@ class RecommendationAdapter(var list: ArrayList<Goods>, var context: Context , v
 
     fun itemAddClick(holder: RecyclerView.ViewHolder, position: Int) {
         var num = 0
-        var goods: Goods = Goods(0, "", "", "", "", 0.0, 0.0, 0)
+        var goods: GoodsBean = GoodsBean(0, "", "", "", "", 0.0, 0.0, 0)
         if (list.size > 0) {
             goods = list[position - 1]
         }

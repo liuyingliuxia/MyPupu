@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.bean.ParentBean
-import com.mmm.mypupu.ui.bean.headImgBean
-import com.mmm.mypupu.ui.bean.itemBean
+import com.mmm.mypupu.ui.bean.HeadImgBean
+import com.mmm.mypupu.ui.bean.ItemBean
 import com.mmm.mypupu.ui.data.*
 import kotlinx.android.synthetic.main.fragment_sort.*
 import kotlinx.android.synthetic.main.item_sort_right.view.*
@@ -49,7 +49,7 @@ class SortRightAdapter(var context: Context, var list: List<ParentBean>) : Recyc
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val h = holder.itemView
-        val head = headImgBean(mSortHeadTag[position], mContentHeadImg[position])
+        val head = HeadImgBean(mSortHeadTag[position], mContentHeadImg[position])
 
         val rvAdapter = SortRightChildAdapter(head, addAllItem(position), context)
         val layoutManager = GridLayoutManager(context, 3)
@@ -78,8 +78,8 @@ class SortRightAdapter(var context: Context, var list: List<ParentBean>) : Recyc
 //        }
 //    }
 
-    fun addAllItem(position: Int): ArrayList<itemBean> {
-        val itemList: ArrayList<itemBean> = arrayListOf()
+    fun addAllItem(position: Int): ArrayList<ItemBean> {
+        val itemList: ArrayList<ItemBean> = arrayListOf()
         val catalogImgList = arrayListOf(
             mCatalog1, mCatalog2, mCatalog3, mCatalog4, mCatalog5, mCatalog6, mCatalog7, mCatalog8, mCatalog9, mCatalog10, mCatalog11,
             mCatalog12, mCatalog13, mCatalog14, mCatalog15, mCatalog16, mCatalog17
@@ -91,7 +91,7 @@ class SortRightAdapter(var context: Context, var list: List<ParentBean>) : Recyc
         )
 
         for (i in 0 until mSortNum[position]) {
-            val iBean = itemBean(i, catalogImgList[position][i], catalogTextList[position][i])
+            val iBean = ItemBean(i, catalogImgList[position][i], catalogTextList[position][i])
             itemList.add(iBean)
 
         }
@@ -100,22 +100,22 @@ class SortRightAdapter(var context: Context, var list: List<ParentBean>) : Recyc
     }
 
     //添加空item 修复 item过多时(>15)  滑动冲突 直接进入下一页的bug
-    fun addEmptyItem(count: Int , itemList:ArrayList<itemBean>) {
+    fun addEmptyItem(count: Int , itemList:ArrayList<ItemBean>) {
         if (count > 15) {
             if (count % 3 == 1) {
                 //增加 3个 空item
-                val emptyBean = itemBean(-1, 0, "")
+                val emptyBean = ItemBean(-1, 0, "")
                 for (i in 0..2)
                     itemList.add(emptyBean)
 
             } else if (count % 3 == 2) {
                 //增加 2 个空item
-                val emptyBean = itemBean(-1, 0, "")
+                val emptyBean = ItemBean(-1, 0, "")
                 for (i in 0..1)
                     itemList.add(emptyBean)
             }else if ( count % 3 == 0) {
                 //增在 1个空item
-                val emptyBean = itemBean(-1, 0, "")
+                val emptyBean = ItemBean(-1, 0, "")
                     itemList.add(emptyBean)
             }
         }

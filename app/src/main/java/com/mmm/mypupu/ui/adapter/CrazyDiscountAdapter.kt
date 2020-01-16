@@ -1,24 +1,18 @@
 package com.mmm.mypupu.ui.adapter
 
 
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
 import android.content.Context
 import android.graphics.Paint
 import android.os.Build
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.mmm.mypupu.R
-import com.mmm.mypupu.ui.bean.Goods
-import com.mmm.mypupu.util.myUtil
+import com.mmm.mypupu.ui.bean.GoodsBean
 import kotlinx.android.synthetic.main.item_crazy_discount.view.*
-import kotlinx.android.synthetic.main.item_recommend.view.*
 import kotlinx.android.synthetic.main.item_recommend.view.ivAdd
 import kotlinx.android.synthetic.main.item_recommend.view.ivGoods
 import kotlinx.android.synthetic.main.item_recommend.view.ivSub
@@ -31,7 +25,7 @@ import kotlinx.android.synthetic.main.item_recommend.view.tvSubtitle
 import kotlinx.android.synthetic.main.item_recommend.view.tvTitle
 import kotlinx.android.synthetic.main.item_recommend.view.tvY2
 
-class CrazyDiscountAdapter(var list: ArrayList<Goods>, var context: Context) :
+class CrazyDiscountAdapter(var list: ArrayList<GoodsBean>, var context: Context) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val TYPE_IMAGE = 0
     private val TYPE_GOODS = 1
@@ -54,7 +48,7 @@ class CrazyDiscountAdapter(var list: ArrayList<Goods>, var context: Context) :
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val goods: Goods = list[position]
+        val goods: GoodsBean = list[position]
         if (TYPE_GOODS == holder.itemViewType) {
             holder.itemView.tag = position
             holder.itemView.ivGoods.setImageResource(goods.mImgPath)
@@ -88,7 +82,7 @@ class CrazyDiscountAdapter(var list: ArrayList<Goods>, var context: Context) :
 
     private fun itemAddClick(holder: RecyclerView.ViewHolder, position: Int) {
         var num = 0
-        val goods: Goods = list[position]
+        val goods: GoodsBean = list[position]
 
         holder.itemView.ivAdd.setOnClickListener(object : View.OnClickListener {
             @RequiresApi(Build.VERSION_CODES.O)

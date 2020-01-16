@@ -3,22 +3,14 @@ package com.mmm.mypupu.util
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.app.Activity
-import android.app.AlertDialog
-import android.app.Application
 import android.content.Context
 import android.content.Intent
-import android.os.Build
-import android.util.Log
-import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.afollestad.materialdialogs.MaterialDialog
 import com.mmm.mypupu.R
-import com.mmm.mypupu.ui.bean.Goods
 import kotlinx.android.synthetic.main.item_recommend.view.*
 import kotlin.math.absoluteValue
 

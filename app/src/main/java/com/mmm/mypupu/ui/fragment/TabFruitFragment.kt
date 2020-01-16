@@ -13,20 +13,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.adapter.FruitAdapter
-import com.mmm.mypupu.ui.bean.Goods
-import com.mmm.mypupu.ui.data.*
+import com.mmm.mypupu.ui.bean.GoodsBean
 import com.mmm.mypupu.util.myUtil
 import kotlinx.android.synthetic.main.drawer_filter.*
 import kotlinx.android.synthetic.main.fragment_tab_fruit.*
-import kotlinx.android.synthetic.main.fragment_tab_fruit.view.*
 import kotlinx.android.synthetic.main.item_filter.*
 import kotlinx.android.synthetic.main.toolbar_fruit.*
-import java.util.Collections.swap
 
 class TabFruitFragment : Fragment(), View.OnClickListener {
     private var rbClickTiems = 0
     private val INIT_NUM = 5
-    private var list: ArrayList<Goods> = ArrayList()
+    private var list: ArrayList<GoodsBean> = ArrayList()
     private lateinit var fruitAdapter: FruitAdapter
     private lateinit var linearLayoutManager: LinearLayoutManager
 
@@ -40,7 +37,7 @@ class TabFruitFragment : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        list = Goods.newFruitList(INIT_NUM)
+        list = GoodsBean.newFruitList(INIT_NUM)
         fruitAdapter = FruitAdapter(list, context!!)
         linearLayoutManager = LinearLayoutManager(context)
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
@@ -81,12 +78,12 @@ class TabFruitFragment : Fragment(), View.OnClickListener {
             R.id.cbInStock -> {
                 if (cbInStock.isChecked == true) {
                     list.clear()
-                    list.addAll(Goods.newFruitList(6))
+                    list.addAll(GoodsBean.newFruitList(6))
                     fruitAdapter.notifyDataSetChanged()
 
                 } else {
                     list.clear()
-                    list.addAll(Goods.newFruitList(10))
+                    list.addAll(GoodsBean.newFruitList(10))
                     fruitAdapter.notifyDataSetChanged()
                 }
             }
@@ -153,7 +150,7 @@ class TabFruitFragment : Fragment(), View.OnClickListener {
                 drawable.setBounds(0, 0, drawable.minimumWidth, drawable.minimumHeight)
                 rb.setCompoundDrawables(null, null, drawable, null)
                 list.clear()
-                list.addAll(Goods.newFruitList(10))
+                list.addAll(GoodsBean.newFruitList(10))
                 fruitAdapter.notifyDataSetChanged()
             }
             1 -> {
@@ -165,7 +162,7 @@ class TabFruitFragment : Fragment(), View.OnClickListener {
                 rb.setCompoundDrawables(null, null, drawable, null)
 
                 list.clear()
-                list.addAll(Goods.newFruitList(10))
+                list.addAll(GoodsBean.newFruitList(10))
                 fruitAdapter.notifyDataSetChanged()
             }
             2 -> {
@@ -177,7 +174,7 @@ class TabFruitFragment : Fragment(), View.OnClickListener {
                 rb.setCompoundDrawables(null, null, drawable, null)
 
                 list.clear()
-                list.addAll(Goods.newFruitList(10))
+                list.addAll(GoodsBean.newFruitList(10))
                 fruitAdapter.notifyDataSetChanged()
             }
         }
