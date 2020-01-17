@@ -15,23 +15,14 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.bean.GoodsBean
-import kotlinx.android.synthetic.main.item_fruit.view.*
-import kotlinx.android.synthetic.main.item_recommend.view.ivAdd
-import kotlinx.android.synthetic.main.item_recommend.view.ivGoods
-import kotlinx.android.synthetic.main.item_recommend.view.ivSub
-import kotlinx.android.synthetic.main.item_recommend.view.tvNum
-import kotlinx.android.synthetic.main.item_recommend.view.tvOriginalPrice
-import kotlinx.android.synthetic.main.item_recommend.view.tvPrice
-import kotlinx.android.synthetic.main.item_recommend.view.tvQuantity
-import kotlinx.android.synthetic.main.item_recommend.view.tvRemark
-import kotlinx.android.synthetic.main.item_recommend.view.tvSubtitle
-import kotlinx.android.synthetic.main.item_recommend.view.tvTitle
-import kotlinx.android.synthetic.main.item_recommend.view.tvY2
+import com.mmm.mypupu.util.myUtil.Companion.itemAddClickAnimator
+import com.mmm.mypupu.util.myUtil.Companion.itemSubClickAnimator
+import kotlinx.android.synthetic.main.item_recommend.view.*
 
 class FruitAdapter(var list: ArrayList<GoodsBean>, var context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val itemView = LayoutInflater.from(context).inflate(R.layout.item_fruit, parent, false)
+        val itemView = LayoutInflater.from(context).inflate(R.layout.item_recommend, parent, false)
         val holder = Holder(itemView)
         return holder
     }
@@ -59,9 +50,9 @@ class FruitAdapter(var list: ArrayList<GoodsBean>, var context: Context) : Recyc
             holder.itemView.tvRemark.visibility = View.INVISIBLE
         }
 
-        itemAddClick(holder, position , goods)
+        itemAddClick(holder , goods)
 
-        holder.itemView.llItemFruit.setOnClickListener {
+        holder.itemView.llItemGoods.setOnClickListener {
             run {
                 Toast.makeText(context, goods.toString(), Toast.LENGTH_SHORT).show()
             }
@@ -69,39 +60,7 @@ class FruitAdapter(var list: ArrayList<GoodsBean>, var context: Context) : Recyc
     }
 }
 
-    fun itemAddClickAnimator(holder: RecyclerView.ViewHolder) {
-        //+ 号旋转 用 补间动画
-        val mAnimation = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.add)
-        holder.itemView.ivAdd.startAnimation(mAnimation)
-        // 数字部分直接平移 x轴
-        holder.itemView.tvNum.x -= 68
-        // - 号 旋转平移 同时进行 用 属性动画
-        val mIvSub = holder.itemView.ivSub
-        val objectAnimatorR: ObjectAnimator = ObjectAnimator.ofFloat(mIvSub, "rotation", 0f, 180f)
-        val objectAnimatorX: ObjectAnimator = ObjectAnimator.ofFloat(mIvSub, "translationX", 0f, -100f)
-        val animatorSet = AnimatorSet()
-        animatorSet.playTogether(objectAnimatorR, objectAnimatorX)
-        animatorSet.duration = 200
-        animatorSet.start()
-    }
-
-    fun itemSubClickAnimator(holder: RecyclerView.ViewHolder) {
-        //+ 号旋转 用 补间动画
-        val mAnimation = AnimationUtils.loadAnimation(holder.itemView.context, R.anim._add)
-        holder.itemView.ivAdd.startAnimation(mAnimation)
-        // 数字部分直接平移 x轴
-        holder.itemView.tvNum.x += 68
-        // - 号 旋转平移 同时进行 用 属性动画
-        val mIvSub = holder.itemView.ivSub
-        val objectAnimatorRSub: ObjectAnimator = ObjectAnimator.ofFloat(mIvSub, "rotation", -180f, 0f)
-        val objectAnimatorTSubX: ObjectAnimator = ObjectAnimator.ofFloat(mIvSub, "translationX", -100f, 0f)
-        val animatorSet = AnimatorSet()
-        animatorSet.playTogether(objectAnimatorTSubX, objectAnimatorRSub)
-        animatorSet.duration = 200
-        animatorSet.start()
-    }
-
-    private fun itemAddClick(holder: RecyclerView.ViewHolder, position: Int , goods: GoodsBean) {
+    private fun itemAddClick(holder: RecyclerView.ViewHolder , goods: GoodsBean) {
         var num = 0
         holder.itemView.ivAdd.setOnClickListener(object : View.OnClickListener {
             @RequiresApi(Build.VERSION_CODES.O)

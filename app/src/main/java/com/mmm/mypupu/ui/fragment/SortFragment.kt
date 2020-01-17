@@ -143,12 +143,6 @@ class SortFragment : Fragment() {
                 else
                     rvLeft.scrollToPosition(position) //不会居 到屏幕 中间
             }
-
-            override fun onPageScrollStateChanged(state: Int) {
-                super.onPageScrollStateChanged(state)
-
-
-            }
         })
     }
 

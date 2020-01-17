@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.container_home.*
 import kotlinx.android.synthetic.main.toolbar_main.*
 
 
-class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
+class HomeFragment : Fragment(){
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,7 +30,7 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViewPager()
-        srlMain.setOnRefreshListener(this)
+        srlMain.setOnRefreshListener(refresh)
 
         tvSearch.setOnClickListener {
             kotlin.run {
@@ -51,7 +51,7 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
     }
 
-    override fun onRefresh() {
+    val refresh = SwipeRefreshLayout.OnRefreshListener {
         Handler().postDelayed(object : Runnable {
             override fun run() {
                 var i: Int = (0 until searchHint.size).random()
@@ -61,6 +61,4 @@ class HomeFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
             }
         }, 1000)
     }
-
-
 }

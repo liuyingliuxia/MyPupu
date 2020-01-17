@@ -80,20 +80,18 @@ class RecommendationAdapter(var list: ArrayList<GoodsBean>, var context: Context
             return TYPE_GOODS
     }
 
-    fun itemAddClick(holder: RecyclerView.ViewHolder, position: Int) {
+    private fun itemAddClick(holder: RecyclerView.ViewHolder, position: Int) {
         var num = 0
         var goods: GoodsBean = GoodsBean(0, "", "", "", "", 0.0, 0.0, 0)
         if (list.size > 0) {
             goods = list[position - 1]
         }
         holder.itemView.llItemGoods.setOnClickListener {
-            run {
                 Toast.makeText(context, goods.toString(), Toast.LENGTH_SHORT).show()
-            }
         }
-        holder.itemView.ivAdd.setOnClickListener(object : View.OnClickListener {
+
+        holder.itemView.ivAdd.setOnClickListener{
             @RequiresApi(Build.VERSION_CODES.O)
-            override fun onClick(v: View?) {
                 //  Log.e("点击了：", "+")
                 if (num == 0) {
                     num++
@@ -109,12 +107,9 @@ class RecommendationAdapter(var list: ArrayList<GoodsBean>, var context: Context
                     holder.itemView.tvNum.text = num.toString()
                     Toast.makeText(holder.itemView.context, "无法购买更多了", Toast.LENGTH_SHORT).show()
                 }
+        }
 
-            }
-        })
-
-        holder.itemView.ivSub.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(v: View?) {
+        holder.itemView.ivSub.setOnClickListener{
                 if (num == 1) {
                     //收起 -
                     num--
@@ -126,8 +121,7 @@ class RecommendationAdapter(var list: ArrayList<GoodsBean>, var context: Context
                     holder.itemView.tvNum.text = num.toString()
                     Log.e("数量", holder.itemView.tvNum.text.toString())
                 }
-            }
-        })
+        }
     }
 
     override fun onClick(v: View?) {

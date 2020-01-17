@@ -23,24 +23,20 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clSearch"
-            android:layout_width="283dp"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_marginTop="@dimen/mmm_font_s4"
             android:layout_weight="1"
+            android:layout_marginBottom="@dimen/dp_6"
             android:background="@drawable/mmm_c02_s08_s00_w0_r0201"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:orientation="horizontal"
-            android:paddingLeft="@dimen/mmm_font_s6"
-            android:paddingTop="@dimen/mmm_font_s6"
-            android:paddingBottom="@dimen/mmm_font_s6">
+            android:orientation="horizontal">
 
-            <AutoCompleteTextView
-                android:id="@+id/actSearch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <EditText
+                android:id="@+id/etSearch"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginLeft="@dimen/mmm_font_s10"
                 android:background="@null"
@@ -60,8 +56,8 @@
 
             <ImageView
                 android:id="@+id/ivClose"
-                android:layout_width="24dp"
-                android:layout_height="14dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="end|center_vertical"
                 android:background="@drawable/mmm_c02_s08_s00_w0_r0201"
                 android:paddingRight="@dimen/mmm_font_s10"
@@ -71,7 +67,7 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
     <TextView
         android:id="@+id/tvSearch"

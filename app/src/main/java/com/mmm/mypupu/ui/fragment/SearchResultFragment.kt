@@ -14,6 +14,8 @@ import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.adapter.SearchResultAdapter
 import com.mmm.mypupu.ui.bean.GoodsBean
 import com.mmm.mypupu.ui.bean.SearchResultBean
+import com.mmm.mypupu.util.myUtil
+import com.mmm.mypupu.util.myUtil.Companion.changedItemState3
 import kotlinx.android.synthetic.main.drawer_filter.*
 import kotlinx.android.synthetic.main.fragment_search_result.*
 import kotlinx.android.synthetic.main.fragment_search_result.view.*
@@ -62,7 +64,7 @@ class SearchResultFragment : Fragment() {
         }
     }
 
-    fun initListener() {
+    private fun initListener() {
         val rbList = arrayListOf<RadioButton>(rbLabelSpecial ,rbLabelNewman , rbLabelNew , rbLabelHot , rbLabelFlash , rbLabelDiscount)
         cbInStock.setOnClickListener(click)
         rbPrice.setOnClickListener(click)
@@ -82,7 +84,7 @@ class SearchResultFragment : Fragment() {
     val click = View.OnClickListener { v ->
         when (v?.id) {
             R.id.cbInStock -> {
-                if (cbInStock.isChecked == true) {
+                if (cbInStock.isChecked) {
                     resultBean.goodsList!!.clear()
                     resultBean.goodsList!!.addAll(GoodsBean.newFruitList(6))
                     searchResultAdapter.notifyDataSetChanged()
@@ -95,22 +97,24 @@ class SearchResultFragment : Fragment() {
             }
             R.id.rbPrice -> {
                 Log.e("折扣 选中状态 ", rbDiscount.isChecked.toString())
-                changedItemState3(rbPrice)
+                changedItemState3(rbPrice , activity!! )
 
             }
             R.id.rbDiscount -> {
                 Log.e("价格 选中状态 ", rbPrice.isChecked.toString())
                 rbDiscount.isChecked = !rbPrice.isChecked
-                changedItemState3(rbDiscount)
+                changedItemState3(rbDiscount , activity!!)
             }
 
             R.id.tvOk -> {
                     vdSearchFilter.closeDrawer()
             }
 
+
             R.id.rbLabelNew -> {
                 srlSearch.visibility = View.GONE
                 llNoGoods.visibility = View.VISIBLE
+                myUtil.talk(context!! ,"点击了${rbLabelNew.text}" )
             }
             R.id.rbLabelFlash -> {
                 srlSearch.visibility = View.GONE
@@ -146,48 +150,6 @@ class SearchResultFragment : Fragment() {
                     rbList[i].isChecked = false
                 }
                 resultBean.goodsList = GoodsBean.newGoodsList(randNum)
-                searchResultAdapter.notifyDataSetChanged()
-            }
-        }
-    }
-
-    //三种点击状态的切换
-    fun changedItemState3(rb: RadioButton) {
-        when (rbClickTiems) {
-            0 -> {
-                //从小到大排序
-                rbClickTiems++
-                rb.setTextColor(resources.getColor(R.color.color23))
-                val drawable = resources.getDrawable(R.drawable.icon_indicate_arrow_top_selected)
-                drawable.setBounds(0, 0, drawable.minimumWidth, drawable.minimumHeight)
-                rb.setCompoundDrawables(null, null, drawable, null)
-
-                resultBean.goodsList!!.clear()
-                resultBean.goodsList!!.addAll(GoodsBean.newFruitList(5))
-                searchResultAdapter.notifyDataSetChanged()
-            }
-            1 -> {
-                //从大到小排序
-                rbClickTiems++
-                rb.setTextColor(resources.getColor(R.color.color23))
-                val drawable = resources.getDrawable(R.drawable.icon_indicate_arrow_bottom_selected)
-                drawable.setBounds(0, 0, drawable.minimumWidth, drawable.minimumHeight)
-                rb.setCompoundDrawables(null, null, drawable, null)
-
-                resultBean.goodsList!!.clear()
-                resultBean.goodsList!!.addAll(GoodsBean.newFruitList(5))
-                searchResultAdapter.notifyDataSetChanged()
-            }
-            2 -> {
-                //还原
-                rbClickTiems = 0
-                rb.setTextColor(resources.getColor(R.color.color5))
-                val drawable = resources.getDrawable(R.drawable.icon_indicate_arrow_no_selected)
-                drawable.setBounds(0, 0, drawable.minimumWidth, drawable.minimumHeight)
-                rb.setCompoundDrawables(null, null, drawable, null)
-
-                resultBean.goodsList!!.clear()
-                resultBean.goodsList!!.addAll(GoodsBean.newFruitList(5))
                 searchResultAdapter.notifyDataSetChanged()
             }
         }

@@ -33,7 +33,7 @@
         <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/mmm_font_s10"
+            android:paddingTop="@dimen/dp_10"
             android:orientation="horizontal">
 
             <RadioButton
@@ -46,6 +46,7 @@
                 android:drawableTop="@drawable/tool_state_pressed_home"
                 android:gravity="center"
                 android:text="@string/mmm_home"
+                android:textSize="@dimen/mmm_font_s12"
                 android:textColor="@drawable/state_selected_c6_c23" />
 
             <RadioButton
@@ -56,6 +57,7 @@
                 android:button="@null"
                 android:drawableTop="@drawable/tool_state_pressed_sort"
                 android:gravity="center"
+                android:textSize="@dimen/mmm_font_s12"
                 android:textColor="@drawable/state_selected_c6_c23"
                 android:text="@string/mmm_sort"/>
 

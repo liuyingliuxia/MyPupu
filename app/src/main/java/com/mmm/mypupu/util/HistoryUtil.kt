@@ -1,11 +1,10 @@
-package com.mmm.mypupu.ui.widgets
+package com.mmm.mypupu.util
 
 import android.content.Context
-import android.text.TextUtils
 import android.util.Log
 import java.util.*
 
-object SaveHistory {
+object HistoryUtil {
     private const val PREFERENCE_NAME = "SAVE_HISTORY"
     private const val SEARCH_HISTORY = "HISTORY"
     // 保存搜索记录
@@ -48,7 +47,7 @@ object SaveHistory {
         val sp = context.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE)
         val longHistory = sp.getString(SEARCH_HISTORY, "")
         val tmpHistory = longHistory!!.split(",").toTypedArray() //split后长度为1有一个空串对象
-        val historyList = ArrayList(Arrays.asList(*tmpHistory))
+        val historyList = ArrayList(listOf(*tmpHistory))
         if (historyList.size == 1 && historyList[0] == "") { //如果没有搜索记录，split之后第0位是个空串的情况下
             historyList.clear() //清空集合，这个很关键
         }

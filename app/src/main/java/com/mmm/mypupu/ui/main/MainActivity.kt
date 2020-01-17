@@ -5,26 +5,25 @@ import android.os.Bundle
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import com.githang.statusbar.StatusBarCompat
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.adapter.MainViewPagerAdapter
-import com.mmm.mypupu.ui.fragment.HomeFragment
-import com.mmm.mypupu.ui.fragment.SortFragment
-import kotlinx.android.synthetic.main.activity_main_test.*
-import java.util.*
+import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity :AppCompatActivity(),View.OnClickListener{
+class MainActivity :AppCompatActivity(){
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_test)
+        setContentView(R.layout.activity_main)
         //设置沉浸式状态栏
         StatusBarCompat.setStatusBarColor(this, getColor(R.color.color1), true)
+        initView()
         initViewPager()
-        rbHome.setOnClickListener(this)
-        rbSort.setOnClickListener(this)
+    }
 
+    private fun initView() {
+        rbHome.setOnClickListener(click)
+        rbSort.setOnClickListener(click)
     }
 
     private fun initViewPager () {
@@ -35,8 +34,7 @@ class MainActivity :AppCompatActivity(),View.OnClickListener{
         nvpMain.currentItem = 0
     }
 
-    override fun onClick(v: View?) {
-
+    private val click = View.OnClickListener { v ->
         when (v?.id) {
             R.id.rbHome -> {
                 nvpMain.currentItem = 0
@@ -47,6 +45,5 @@ class MainActivity :AppCompatActivity(),View.OnClickListener{
             }
         }
     }
-
 
 }

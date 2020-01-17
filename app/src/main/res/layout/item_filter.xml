@@ -17,9 +17,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/mmm_font_s20"
             android:paddingRight="@dimen/mmm_font_s20"
-            android:paddingBottom="@dimen/mmm_font_s10"
-            android:background="@color/color1"
-            android:paddingTop="@dimen/mmm_font_s10">
+            android:background="@color/color1">
 
             <CheckBox
                 android:id="@+id/cbInStock"
@@ -27,6 +25,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="start"
                 android:button="@null"
+                style="@style/CenterPadding10"
                 android:drawableRight="@drawable/tool_state_pressed_in_stock"
                 android:text="@string/mmm_in_stock"
                 android:textColor="@drawable/state_selected_c5_c23"
@@ -53,6 +52,7 @@
                     android:textColor="@drawable/state_selected_c5_c23"
                     android:drawablePadding="@dimen/mmm_font_s2"
                     android:button="@null"
+                    style="@style/CenterPadding10"
                     android:text="@string/mmm_goods_price"
                     android:drawableEnd="@drawable/tool_state_pressed_arrow"
                     android:drawableRight="@drawable/tool_state_pressed_arrow" />
@@ -64,6 +64,7 @@
                     android:text="@string/mmm_discount"
                     android:button="@null"
                     android:layout_marginLeft="50dp"
+                    style="@style/CenterPadding10"
                     android:drawablePadding="@dimen/mmm_font_s2"
                     android:textColor="@drawable/state_selected_c5_c23"
                     android:drawableRight="@drawable/tool_state_pressed_arrow" />
@@ -76,6 +77,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="16dp"
                 android:button="@null"
+                style="@style/CenterPadding10"
                 android:drawableRight="@drawable/filter"
                 android:text="@string/mmm_filter"
                 android:textColor="@color/color5"

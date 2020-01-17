@@ -12,6 +12,8 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.bean.GoodsBean
+import com.mmm.mypupu.util.myUtil.Companion.itemAddClickAnimator
+import com.mmm.mypupu.util.myUtil.Companion.itemSubClickAnimator
 import kotlinx.android.synthetic.main.item_crazy_discount.view.*
 import kotlinx.android.synthetic.main.item_recommend.view.ivAdd
 import kotlinx.android.synthetic.main.item_recommend.view.ivGoods

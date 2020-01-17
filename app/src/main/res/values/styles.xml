@@ -41,4 +41,11 @@
         <item name="contentInsetStart">0dp</item>
     </style>
 
+    <style name="CenterPadding10" >
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingLeft">6dp</item>
+        <item name="android:paddingRight">6dp</item>
+    </style>
+
 </resources>

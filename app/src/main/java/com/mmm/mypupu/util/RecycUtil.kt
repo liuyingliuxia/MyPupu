@@ -26,7 +26,6 @@ class RecycUtil{
                 handler.postDelayed(Runnable {
                     first=layoutM.findFirstVisibleItemPosition()
                     last=layoutM.findLastVisibleItemPosition()
-                    Log.v("zzw"," rightclick:"+n+" first:"+first+" last:"+last)
 
                     if(recyc.getChildAt(last-first)==null){
 
@@ -34,11 +33,8 @@ class RecycUtil{
                         var offSet=recyc.getChildAt(last-first).top
                         recyc.smoothScrollBy(0,offSet)
                     }
-
                 },50)
-
             }
-
         }
 
         //移动到n的位置，并且居中
@@ -69,10 +65,8 @@ class RecycUtil{
                     first=layoutM.findFirstVisibleItemPosition()
                     last=layoutM.findLastVisibleItemPosition()
 
-                    if(recyc.getChildAt(last-first)==null){
-
-                    }else{
-                        var offSet=recyc.getChildAt(last-first).top
+                    if(recyc.getChildAt(last-first)!=null){
+                        val offSet=recyc.getChildAt(last-first).top
                         recyc.smoothScrollBy(0,offSet/2)
                     }
 

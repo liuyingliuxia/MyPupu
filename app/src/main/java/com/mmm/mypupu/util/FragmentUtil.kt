@@ -9,7 +9,7 @@ import androidx.fragment.app.FragmentTransaction
 import com.mmm.mypupu.R
 
 object FragmentUtil {
-
+    //Fragment的拓展函数 /备用
     inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> FragmentTransaction) = beginTransaction().func().commit()
 
     fun AppCompatActivity.addFragment(fragment: Fragment, frameId: Int) = supportFragmentManager.inTransaction { add(frameId, fragment) }
