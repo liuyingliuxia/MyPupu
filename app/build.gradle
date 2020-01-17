@@ -56,4 +56,7 @@ dependencies {
 
     implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
 
+    //操作 sqlite
+    implementation 'org.litepal.android:kotlin:3.0.0'
+
 }

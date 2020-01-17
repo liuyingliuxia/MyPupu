@@ -47,7 +47,7 @@ class SortFragment : Fragment() {
         initView()
         select(0)
         // 刚进入页面默认选中第一个
-        rvRight.setCurrentItem(0)
+        rvRight.currentItem = 0
         //一次只能滑动一页，不能快速滑动, itemCount 太多时 会有滑动冲突 选择其他方式实现翻页效果
 //        val pagerSnapHelper = PagerSnapHelper()
 //        pagerSnapHelper.attachToRecyclerView(rvRight)

@@ -3,6 +3,7 @@
     package="com.mmm.mypupu">
 
     <application
+        android:name=".MyPuPuApp"
         android:allowBackup="true"
         android:icon="@mipmap/bird"
         android:label="@string/app_name"
@@ -10,8 +11,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
 
-        <activity android:name=".test.TestTimerActivity"></activity>
-        <activity android:name=".test.TestAddActivity" />
         <activity android:name=".ui.search.SearchActivity" />
         <activity android:name=".ui.main.MainActivity">
             <intent-filter>

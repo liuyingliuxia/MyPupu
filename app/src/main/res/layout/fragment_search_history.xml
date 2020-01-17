@@ -39,8 +39,8 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/tvHistory"
         app:layout_constraintRight_toRightOf="parent" />
-
-           <!-- 6个历史记录的item-->
+<!--
+           &lt;!&ndash; 6个历史记录的item&ndash;&gt;
         <TextView
             android:id="@+id/tvHistory1"
             android:layout_width="wrap_content"
@@ -126,6 +126,16 @@
             android:layout_marginLeft="@dimen/mmm_font_s10"
             android:layout_marginTop="@dimen/mmm_font_s20"
             app:layout_constraintTop_toBottomOf="@+id/tvHistory3"
-            app:layout_constraintLeft_toRightOf="@+id/tvHistory5"/>
+            app:layout_constraintLeft_toRightOf="@+id/tvHistory5"/>-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvHistory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/mmm_font_s20"
+        android:paddingLeft="@dimen/dp_10"
+        android:paddingRight="@dimen/dp_10"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHistory"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

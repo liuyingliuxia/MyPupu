@@ -4,16 +4,16 @@ import android.content.Context
 import android.util.Log
 import java.util.*
 
+//废弃   使用sqlite存取数据
 object HistoryUtil {
     private const val PREFERENCE_NAME = "SAVE_HISTORY"
     private const val SEARCH_HISTORY = "HISTORY"
     // 保存搜索记录
-    fun saveSearchHistory(inputText: String, context: Context) {
-        if (inputText.isEmpty()) return
+   /* fun saveSearchHistory(inputText: String, context: Context) {
         val sp = context.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE)
         val oldHistory = sp.getString(SEARCH_HISTORY, "") //获取之前保存的历史记录
         val tmpHistory = oldHistory!!.split(",").toTypedArray() //逗号截取 保存在数组中
-        val historyList = ArrayList(Arrays.asList(*tmpHistory)) //将改数组转换成ArrayList
+        val historyList = ArrayList(listOf(*tmpHistory)) //将改数组转换成ArrayList
         val editor = sp.edit()
 
         if (historyList.size > 0) { //1.移除之前重复添加的元素
@@ -37,10 +37,10 @@ object HistoryUtil {
             Log.e("保存的数据", sb.toString())
             editor.apply()
         } else { //之前未添加过 size == 0
-            editor.putString(SEARCH_HISTORY, inputText + ",")
+            editor.putString(SEARCH_HISTORY, "$inputText,")
             editor.commit()
         }
-    }
+    }*/
 
     //获取搜索记录
     fun getSearchHistory(context: Context): List<String> {

@@ -12,6 +12,8 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.bean.GoodsBean
+import com.mmm.mypupu.util.myUtil.Companion.getNow
+import com.mmm.mypupu.util.myUtil.Companion.toTwo
 import kotlinx.android.synthetic.main.item_flash_sale.view.*
 import kotlinx.android.synthetic.main.item_flash_sale_head.view.*
 import kotlinx.android.synthetic.main.item_load_more.view.*
@@ -170,7 +172,7 @@ class FlashSaleAdapter(var list: ArrayList<GoodsBean>, var context: Context) : R
             override fun onTick(millisUntilFinished: Long) {
 
                 val sec = millisUntilFinished.div(1000)
-                holder.itemView.tvSecond.setText(toTwo(sec.toInt()))
+                holder.itemView.tvSecond.text = toTwo(sec.toInt())
             }
         }.start()
     }
@@ -190,23 +192,4 @@ class FlashSaleAdapter(var list: ArrayList<GoodsBean>, var context: Context) : R
         }.start()
     }
 
-    fun getNow(): List<Int> {
-        /*   if (android.os.Build.VERSION.SDK_INT >= 24){
-               return SimpleDateFormat(" HH:mm:ss").format(Date())
-           }else{*/
-        var tms = Calendar.getInstance()
-        //时区： 东八区，北京时间 HOUR_OF_DAY 24小时制
-        tms.timeZone = TimeZone.getTimeZone("GMT+8")
-        val mTimeList = arrayListOf<Int>(tms.get(Calendar.HOUR_OF_DAY), tms.get(Calendar.MINUTE), tms.get(Calendar.SECOND))
-        return mTimeList
-        // }
-
-    }
-
-    fun toTwo(time: Int): String {
-        if (time > 9)
-            return time.toString()
-        else
-            return "0" + time.toString()
-    }
 }

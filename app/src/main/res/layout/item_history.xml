@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tvHistoryItem"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/dp_10"
+    android:background="@drawable/mmm_c90_s01_s07_w1_r9006"
+    android:paddingLeft="@dimen/mmm_font_s8"
+    android:paddingTop="@dimen/mmm_font_s4"
+    android:paddingRight="@dimen/mmm_font_s8"
+    android:paddingBottom="@dimen/mmm_font_s4"
+    android:layout_marginTop="@dimen/dp_10"
+    android:text="@string/mmm_history"
+    android:textColor="@color/color3" />
