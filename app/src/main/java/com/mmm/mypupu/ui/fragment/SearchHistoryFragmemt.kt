@@ -18,11 +18,13 @@ import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.adapter.QuickHistoryAdapter
 import com.mmm.mypupu.ui.bean.SearchHistoryBean
 import com.mmm.mypupu.util.HistoryUtil
+import com.mmm.mypupu.util.myHistoryUtil
 import com.mmm.mypupu.util.myUtil
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.fragment_search_history.*
 import org.litepal.LitePal
 import org.litepal.extension.deleteAll
+import org.litepal.extension.find
 import org.litepal.extension.findAll
 
 class SearchHistoryFragmemt : Fragment() {
@@ -57,6 +59,7 @@ class SearchHistoryFragmemt : Fragment() {
             activity!!.etSearch.setText(historyList[position].title )
             // 直接进行搜索
             toSearch()
+            myHistoryUtil.addHistory(activity!!.etSearch)
             myUtil.hideKeyforard(activity!!.etSearch, activity!!)
         }
 
@@ -75,23 +78,6 @@ class SearchHistoryFragmemt : Fragment() {
                 .create()
                 .show()
         }
-
-
-        //历史记录item点击事件：
-/*        for (i in 0..5) {
-            if (mHistoryArray[i].text.isEmpty()) {
-                mHistoryArray[i].visibility = View.INVISIBLE
-            } else
-                mHistoryArray[i].visibility = View.VISIBLE
-
-            mHistoryArray[i].setOnClickListener {
-                activity!!.etSearch.setText(mHistoryArray[i].text)
-                // 直接进行搜索
-                toSearch()
-                myUtil.hideKeyforard(view, activity!!)
-                activity!!.etSearch.isFocusable = false
-            }
-        }*/
     }
 
     //开始 搜索 显示结果页

@@ -25,8 +25,11 @@ object myHistoryUtil {
             if (findResult.isEmpty()) {
                 historyBean.save()
                 Log.e("历史记录--", LitePal.findAll<SearchHistoryBean>().toString())
-            } else
+            } else { //删除已处在的 插入新的
                 Log.e("该数据已存在", "!")
+                findResult[0].delete()
+                historyBean.save()
+            }
         } else if (nowLite.size == 6) {
             //数据>= 6 时 删除最早搜索的一项 就是  第一个项 再添加新的
             if (findResult.isEmpty()) {
