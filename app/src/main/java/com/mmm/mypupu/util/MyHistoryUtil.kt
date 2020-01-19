@@ -29,15 +29,10 @@ object MyHistoryUtil {
         } else if (findResult.isEmpty() && nowLite.size == MAX_HISTORY) { //是新的记录 当前 ==6 删除第一条 插入新的
             nowLite[0].delete()
             historyBean.save()
-        } else if (findResult.isNotEmpty() && nowLite.size < MAX_HISTORY) { //是 旧的记录 当前 < 6  删除已存在的 插入新的
-            Log.e("该数据已存在", "!")
-            findResult[0].delete()
-            historyBean.save()
-        } else if (findResult.isNotEmpty() && nowLite.size == MAX_HISTORY){ //是旧的记录 当前 == 6 删除已存在的 插入新的
+        } else if (findResult.isNotEmpty()) { //是 旧的记录  直接删除旧的 插入新的
             Log.e("该数据已存在", "!")
             findResult[0].delete()
             historyBean.save()
         }
-
     }
 }
