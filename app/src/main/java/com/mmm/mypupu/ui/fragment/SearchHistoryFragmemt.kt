@@ -93,41 +93,9 @@ class SearchHistoryFragmemt : Fragment() {
         manager.commit()
     }
 
-    //添加历史记录itm到容器
-    /*  private fun addHistory(mBeanList: ArrayList<SearchHistoryBean>) {
-          val mSaveList: List<String> = HistoryUtil.getSearchHistory(context!!) // 获取 sp 中存储的历史记录
-          if (mSaveList.isEmpty()) {
-              for ( i in mBeanList.indices){
-                  mBeanList[i].isVisibily = false
-              //    mHistoryArray[i].visibility = View.INVISIBLE
-              }
-              tvNoHistory.visibility = View.VISIBLE
-              ivClean.visibility = View.INVISIBLE
-          } else {
-              Log.e("历史记录：", mSaveList.toString())
-
-              tvNoHistory.visibility = View.INVISIBLE
-              ivClean.visibility = View.VISIBLE
-  //            for ( i in mSaveList.indices ){
-  //                mBeanList[i].isVisibily = true
-  //                mBeanList[i].title = mSaveList[i]
-  //                mHistoryArray[i].text = mSaveList[i]
-  //                mHistoryArray[i].visibility = View.VISIBLE
-  //
-  //            }
-          }
-      }
-  */
     private fun getBeanList(): ArrayList<SearchHistoryBean> {
         val beanList = ArrayList<SearchHistoryBean>()
         val mList: List<SearchHistoryBean> = LitePal.findAll<SearchHistoryBean>()
-        if(mList.isNotEmpty()){
-            tvNoHistory.visibility = View.INVISIBLE
-            ivClean.visibility = View.VISIBLE
-        }else{
-            tvNoHistory.visibility = View.VISIBLE
-            ivClean.visibility = View.INVISIBLE
-        }
         //用 栈的数据结构 后进先出
         var range= mList.indices
         for ( i in range.reversed()){

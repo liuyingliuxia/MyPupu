@@ -21,11 +21,11 @@ class HorizontalItemDecoration(space: Int, mContext: Context) : RecyclerView.Ite
 //            outRect.left = space / 2
 //            outRect.right = 0
 //        } else { //中间其它的
-            outRect.left = space / 3
-            outRect.right = space / 3
-          // outRect.top = space / 2
-            //outRect.bottom = space /2
-    //    }
+        outRect.left = space / 3
+        outRect.right = space / 3
+        outRect.top = space / 2
+        outRect.bottom = space / 2
+        //    }
     }
 
 
