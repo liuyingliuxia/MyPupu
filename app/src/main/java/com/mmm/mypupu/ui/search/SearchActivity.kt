@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.*
 import android.view.inputmethod.EditorInfo
 import android.widget.*
@@ -16,15 +15,11 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.githang.statusbar.StatusBarCompat
 import com.mmm.mypupu.R
-import com.mmm.mypupu.ui.bean.SearchHistoryBean
 import com.mmm.mypupu.ui.fragment.*
-import com.mmm.mypupu.util.HistoryUtil
-import com.mmm.mypupu.util.myHistoryUtil.addHistory
-import com.mmm.mypupu.util.myUtil
-import com.mmm.mypupu.util.myUtil.Companion.hideKeyforard
+import com.mmm.mypupu.util.MyHistoryUtil.addHistory
+import com.mmm.mypupu.util.MyUtil
+import com.mmm.mypupu.util.MyUtil.Companion.hideKeyforard
 import kotlinx.android.synthetic.main.activity_search.*
-import org.litepal.LitePal
-import org.litepal.extension.find
 
 class SearchActivity : AppCompatActivity() {
 
@@ -102,11 +97,11 @@ class SearchActivity : AppCompatActivity() {
         //每次点击清空输入内容，都弹出键盘
         ivClose.setOnClickListener {
             etSearch.text = null
-            myUtil.showKeyBoard(etSearch, window)
+            MyUtil.showKeyBoard(etSearch, window)
         }
 
         etSearch.setOnClickListener {
-            myUtil.showKeyBoard(etSearch, window)
+            MyUtil.showKeyBoard(etSearch, window)
         }
 
         tvSearch.setOnClickListener {
@@ -122,7 +117,7 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun initFirst() {
-        myUtil.showKeyBoard(etSearch, window)
+        MyUtil.showKeyBoard(etSearch, window)
         //初始化显示第一个 fragment
         addFragment(mHistoryFragmemt, R.id.llContainer)
         ivBack.setOnClickListener { this.finish() }

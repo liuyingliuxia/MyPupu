@@ -12,8 +12,8 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.bean.GoodsBean
-import com.mmm.mypupu.util.myUtil.Companion.getNow
-import com.mmm.mypupu.util.myUtil.Companion.toTwo
+import com.mmm.mypupu.util.MyUtil.Companion.getNow
+import com.mmm.mypupu.util.MyUtil.Companion.toTwo
 import kotlinx.android.synthetic.main.item_flash_sale.view.*
 import kotlinx.android.synthetic.main.item_flash_sale_head.view.*
 import kotlinx.android.synthetic.main.item_load_more.view.*
@@ -25,7 +25,6 @@ import kotlinx.android.synthetic.main.item_recommend.view.tvRemark
 import kotlinx.android.synthetic.main.item_recommend.view.tvSubtitle
 import kotlinx.android.synthetic.main.item_recommend.view.tvTitle
 import kotlinx.android.synthetic.main.item_recommend.view.tvY2
-import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.math.absoluteValue
 

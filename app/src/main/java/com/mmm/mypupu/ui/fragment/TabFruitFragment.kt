@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.adapter.FruitAdapter
 import com.mmm.mypupu.ui.bean.GoodsBean
-import com.mmm.mypupu.util.myUtil
+import com.mmm.mypupu.util.MyUtil
 import kotlinx.android.synthetic.main.drawer_filter.*
 import kotlinx.android.synthetic.main.fragment_tab_fruit.*
 import kotlinx.android.synthetic.main.item_filter.*
@@ -52,7 +52,7 @@ class TabFruitFragment : Fragment(), View.OnClickListener {
 
         for (i in FruitSortList.indices) {
             FruitSortList[i].setOnClickListener {
-                myUtil.talk(context!!, FruitSortList[i].tag.toString())
+                MyUtil.talk(context!!, FruitSortList[i].tag.toString())
             }
         }
     }

@@ -2,7 +2,6 @@ package com.mmm.mytestutil.rvInRecycler
 
 import android.content.Context
 import android.os.Build
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,8 +11,7 @@ import com.bumptech.glide.Glide
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.bean.HeadImgBean
 import com.mmm.mypupu.ui.bean.ItemBean
-import com.mmm.mypupu.ui.widgets.ChildRecyclerView
-import com.mmm.mypupu.util.myUtil
+import com.mmm.mypupu.util.MyUtil
 import kotlinx.android.synthetic.main.item_sort_right_head.view.*
 import kotlinx.android.synthetic.main.item_sort_right_item.view.*
 
@@ -59,13 +57,13 @@ class SortRightChildAdapter(var head: HeadImgBean, var listFoot: List<ItemBean>,
         if (TYPE_IMAGE == holder.itemViewType) {
             Glide.with(context).load(head.imgId).placeholder(R.drawable.place_holder_banner_home).error(R.drawable.icon_coupon_all_not_usable).into(h.ivCatalogHead)
             h.ivCatalogHead.setOnClickListener {
-                myUtil.talk(context, head.tag)
+                MyUtil.talk(context, head.tag)
             }
         } else if (TYPE_ITEM == holder.itemViewType) {
             Glide.with(context).load(item.imgId).placeholder(R.drawable.place_holder_banner_home).error(R.drawable.icon_coupon_all_not_usable).into(h.ivSort)
             h.tvSort.setText(item.text)
             h.llSort.setOnClickListener {
-                myUtil.talk(context, item.toString())
+                MyUtil.talk(context, item.toString())
             }
             if (item.id == -1 ){
                 h.tvSort.visibility = View.INVISIBLE

@@ -14,8 +14,8 @@ import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.adapter.SearchResultAdapter
 import com.mmm.mypupu.ui.bean.GoodsBean
 import com.mmm.mypupu.ui.bean.SearchResultBean
-import com.mmm.mypupu.util.myUtil
-import com.mmm.mypupu.util.myUtil.Companion.changedItemState3
+import com.mmm.mypupu.util.MyUtil
+import com.mmm.mypupu.util.MyUtil.Companion.changedItemState3
 import kotlinx.android.synthetic.main.drawer_filter.*
 import kotlinx.android.synthetic.main.fragment_search_result.*
 import kotlinx.android.synthetic.main.fragment_search_result.view.*
@@ -114,7 +114,7 @@ class SearchResultFragment : Fragment() {
             R.id.rbLabelNew -> {
                 srlSearch.visibility = View.GONE
                 llNoGoods.visibility = View.VISIBLE
-                myUtil.talk(context!! ,"点击了${rbLabelNew.text}" )
+                MyUtil.talk(context!! ,"点击了${rbLabelNew.text}" )
             }
             R.id.rbLabelFlash -> {
                 srlSearch.visibility = View.GONE

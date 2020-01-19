@@ -79,4 +79,6 @@
     <dimen name="mmm_item_padding">10dp</dimen>
     <dimen name="mmm_no_more_height">40dp</dimen>
     <dimen name="dp_6">6dp</dimen>
+    <dimen name="dp_20">20dp</dimen>
+    <dimen name="dp_30">30dp</dimen>
 </resources>

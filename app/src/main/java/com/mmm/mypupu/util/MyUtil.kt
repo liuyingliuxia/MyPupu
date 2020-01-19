@@ -28,8 +28,13 @@ import kotlinx.android.synthetic.main.item_recommend.view.*
 import java.util.*
 import kotlin.math.absoluteValue
 
-class myUtil {
+class MyUtil {
     companion object {
+
+        fun dip2px(dpValue: Float, context: Context): Int {
+            val scale: Float = context.resources.displayMetrics.density
+            return (dpValue * scale + 0.5f).toInt()
+        }
 
         fun jumpView(context: Context, newActivity: Activity) {
             val intent = Intent()

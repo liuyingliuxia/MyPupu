@@ -1,8 +1,6 @@
 package com.mmm.mypupu.ui.fragment
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,15 +9,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.adapter.SearchInputAutoAdapter
-import com.mmm.mypupu.ui.bean.SearchHistoryBean
 import com.mmm.mypupu.ui.data.*
-import com.mmm.mypupu.util.HistoryUtil
-import com.mmm.mypupu.util.myHistoryUtil
-import com.mmm.mypupu.util.myUtil.Companion.hideKeyforard
+import com.mmm.mypupu.util.MyHistoryUtil
+import com.mmm.mypupu.util.MyUtil.Companion.hideKeyforard
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.fragment_search_input.view.*
-import org.litepal.LitePal
-import org.litepal.extension.find
 
 class SearchInputFragment : Fragment() {
     private var list: MutableList<String> = ArrayList()
@@ -45,7 +39,7 @@ class SearchInputFragment : Fragment() {
                 // 直接进行搜索
                 toSearch()
                 //添加历史记录
-                myHistoryUtil.addHistory(activity!!.etSearch)
+                MyHistoryUtil.addHistory(activity!!.etSearch)
                 hideKeyforard(activity!!.etSearch , activity!!)
             }
         })
@@ -64,7 +58,5 @@ class SearchInputFragment : Fragment() {
             list.add(searchAutoCompleteGoods[i])
         return list
     }
-
-
 
 }

@@ -35,9 +35,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/mmm_font_s20"
+        android:paddingBottom="@dimen/dp_10"
+        android:paddingRight="@dimen/dp_10"
+        android:paddingLeft="@dimen/dp_10"
         android:src="@drawable/icon_delete_search_history"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/tvHistory"
+        app:layout_constraintTop_toTopOf="@+id/tvHistory"
         app:layout_constraintRight_toRightOf="parent" />
 <!--
            &lt;!&ndash; 6个历史记录的item&ndash;&gt;
@@ -133,8 +136,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/mmm_font_s20"
-        android:paddingLeft="@dimen/dp_10"
-        android:paddingRight="@dimen/dp_10"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_40"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvHistory"/>
 

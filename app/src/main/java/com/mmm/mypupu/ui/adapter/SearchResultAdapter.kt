@@ -15,7 +15,7 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.bean.GoodsBean
-import com.mmm.mypupu.util.myUtil
+import com.mmm.mypupu.util.MyUtil
 import kotlinx.android.synthetic.main.item_recommend.view.*
 
 class SearchResultAdapter (var list: List<GoodsBean>, var context: Context  ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -52,7 +52,7 @@ class SearchResultAdapter (var list: List<GoodsBean>, var context: Context  ): R
             holder.itemView.requestFocus()
             itemAddClick(holder, position)
             holder.itemView.llItemGoods.setOnClickListener { run{
-                myUtil.talk(context,goods.toString())
+                MyUtil.talk(context,goods.toString())
             } }
     }
 

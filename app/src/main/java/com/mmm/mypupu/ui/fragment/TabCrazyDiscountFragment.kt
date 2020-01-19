@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mmm.mypupu.ui.adapter.CrazyDiscountAdapter
 import com.mmm.mypupu.ui.bean.GoodsBean
-import com.mmm.mypupu.util.myUtil
+import com.mmm.mypupu.util.MyUtil
 import kotlinx.android.synthetic.main.fragment_tab_crazy_discount.*
 
 class TabCrazyDiscountFragment : Fragment() {
@@ -42,13 +42,13 @@ class TabCrazyDiscountFragment : Fragment() {
                 //1代表底部,返回true表示没到底部,还可以滑
                 val isBottom = rvCrazyDiscount.canScrollVertically(1)
                 if ( isBottom == false && num ==0 ){
-                   myUtil.talk(context!! , "继续下滑加载更多")
+                   MyUtil.talk(context!! , "继续下滑加载更多")
                         mList.addAll(GoodsBean.newGoodsList(INIT_LIST_NUM))
                     crazyDiscountAdapter.notifyDataSetChanged()
                     num ++
                 }
                 else if (isBottom == false && num > 0  )
-                    myUtil.talk(context!! , "没有更多了")
+                    MyUtil.talk(context!! , "没有更多了")
             }
         })
     }

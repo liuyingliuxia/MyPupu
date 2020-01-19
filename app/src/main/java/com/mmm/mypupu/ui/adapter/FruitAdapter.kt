@@ -1,7 +1,5 @@
 package com.mmm.mypupu.ui.adapter
 
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
 import android.content.Context
 import android.graphics.Paint
 import android.os.Build
@@ -9,14 +7,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.bean.GoodsBean
-import com.mmm.mypupu.util.myUtil.Companion.itemAddClickAnimator
-import com.mmm.mypupu.util.myUtil.Companion.itemSubClickAnimator
+import com.mmm.mypupu.util.MyUtil.Companion.itemAddClickAnimator
+import com.mmm.mypupu.util.MyUtil.Companion.itemSubClickAnimator
 import kotlinx.android.synthetic.main.item_recommend.view.*
 
 class FruitAdapter(var list: ArrayList<GoodsBean>, var context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {

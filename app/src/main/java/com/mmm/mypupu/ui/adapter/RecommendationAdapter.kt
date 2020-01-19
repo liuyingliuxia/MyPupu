@@ -12,7 +12,7 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.bean.GoodsBean
-import com.mmm.mypupu.util.myUtil
+import com.mmm.mypupu.util.MyUtil
 import kotlinx.android.synthetic.main.item_recommend.view.*
 
 class RecommendationAdapter(var list: ArrayList<GoodsBean>, var context: Context, var count :Int) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), View.OnClickListener {
@@ -96,7 +96,7 @@ class RecommendationAdapter(var list: ArrayList<GoodsBean>, var context: Context
                 if (num == 0) {
                     num++
                     holder.itemView.tvNum.text = num.toString()
-                    myUtil.itemAddClickAnimator(holder)
+                    MyUtil.itemAddClickAnimator(holder)
                 } else if (num > 0 && num < goods.mNum) {
                     num++
                     holder.itemView.tvNum.text = num.toString()
@@ -114,7 +114,7 @@ class RecommendationAdapter(var list: ArrayList<GoodsBean>, var context: Context
                     //收起 -
                     num--
                     holder.itemView.tvNum.text = num.toString()
-                    myUtil.itemSubClickAnimator(holder)
+                    MyUtil.itemSubClickAnimator(holder)
                     holder.itemView.ivAdd.setImageResource(R.drawable.add_able)
                 } else if (num > 1) {
                     num--

@@ -2,34 +2,28 @@ package com.mmm.mypupu.ui.fragment
 
 import android.os.Build
 import android.os.Bundle
-import android.text.Editable
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
-import androidx.core.graphics.convertTo
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
 import com.mmm.mypupu.R
 import com.mmm.mypupu.ui.adapter.QuickHistoryAdapter
 import com.mmm.mypupu.ui.bean.SearchHistoryBean
-import com.mmm.mypupu.util.HistoryUtil
-import com.mmm.mypupu.util.myHistoryUtil
-import com.mmm.mypupu.util.myUtil
+import com.mmm.mypupu.ui.widgets.HorizontalItemDecoration
+import com.mmm.mypupu.ui.widgets.MyLayoutManager
+import com.mmm.mypupu.util.MyHistoryUtil
+import com.mmm.mypupu.util.MyUtil
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.fragment_search_history.*
 import org.litepal.LitePal
 import org.litepal.extension.deleteAll
-import org.litepal.extension.find
 import org.litepal.extension.findAll
 
 class SearchHistoryFragmemt : Fragment() {
     private lateinit var historyList :ArrayList<SearchHistoryBean>
-    private lateinit var layoutManager: GridLayoutManager
+    private lateinit var myLayoutManager: MyLayoutManager
     private lateinit var historyAdapter: QuickHistoryAdapter
 
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
@@ -44,13 +38,17 @@ class SearchHistoryFragmemt : Fragment() {
     }
 
     private fun initView(view: View) {
-        // 优化为 rv 显示历史记录
-
+        /*
+         *优化为 rv 显示历史记录 使用自动换行 @param MyLayoutManager
+         */
         historyList = getBeanList()
         historyAdapter = QuickHistoryAdapter(R.layout.item_history ,historyList)
-        layoutManager = GridLayoutManager(context, 3)
-        layoutManager.orientation = GridLayoutManager.VERTICAL
-        rvHistory.layoutManager = layoutManager
+        myLayoutManager = MyLayoutManager()
+        myLayoutManager.isAutoMeasureEnabled = true //非常重要
+        //myLayoutManager.orientation = GridLayoutManager.VERTICAL
+        //添加水平间距
+        rvHistory.addItemDecoration(HorizontalItemDecoration(20 , context!!))
+        rvHistory.layoutManager = myLayoutManager
         rvHistory.adapter = historyAdapter
 
         // addHistory(historyList)
@@ -59,8 +57,16 @@ class SearchHistoryFragmemt : Fragment() {
             activity!!.etSearch.setText(historyList[position].title )
             // 直接进行搜索
             toSearch()
-            myHistoryUtil.addHistory(activity!!.etSearch)
-            myUtil.hideKeyforard(activity!!.etSearch, activity!!)
+            MyHistoryUtil.addHistory(activity!!.etSearch)
+            MyUtil.hideKeyforard(activity!!.etSearch, activity!!)
+        }
+
+        if(historyList.isEmpty()){
+            ivClean.visibility = View.INVISIBLE
+            tvNoHistory.visibility = View.VISIBLE
+        }else {
+            ivClean.visibility = View.VISIBLE
+            tvNoHistory.visibility = View.INVISIBLE
         }
 
         //清空历史记录
