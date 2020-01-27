@@ -117,28 +117,13 @@ class SortFragment : Fragment() {
             rvRight.setCurrentItem(position, true)
         }
 
-//        rvRight.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-//            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-//                if (rightClick == false && newState == RecyclerView.SCROLL_STATE_IDLE) {
-//                    val now: Int
-//                    val first = rightLayoutManager.findFirstVisibleItemPosition()
-//                    now = rightData.get(first).id
-//                    select(now) //刷新当前的item
-//                } else if (rightClick == true && newState == RecyclerView.SCROLL_STATE_IDLE) {
-//                    rightClick = false
-//                } else if (rightClick == true && newState == RecyclerView.SCROLL_STATE_DRAGGING) {
-//                    rightClick = false
-//                }
-//            }
-//        })
-
         rvRight.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 select(position)
                 //val first = leftLayoutManager.findFirstVisibleItemPosition()
                // val last = leftLayoutManager.findLastVisibleItemPosition()
-                if (position > 6  && position < 13)
+                if (position in 7..12)
                     RecycUtil.moveToPositAndCenter(position, leftLayoutManager, rvLeft, handler)
                 else
                     rvLeft.scrollToPosition(position) //不会居 到屏幕 中间

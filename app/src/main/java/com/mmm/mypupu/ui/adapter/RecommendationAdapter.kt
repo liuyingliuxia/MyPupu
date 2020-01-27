@@ -37,10 +37,10 @@ class RecommendationAdapter(var list: ArrayList<GoodsBean>, var context: Context
     }
 
     override fun getItemCount(): Int {
-        if (list.size > 0) {
-            return list.size + 2
+        return if (list.size > 0) {
+            list.size + 2
         } else
-            return 0
+            0
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
